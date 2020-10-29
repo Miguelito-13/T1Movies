@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Oct 29, 2020 at 07:36 AM
+-- Generation Time: Oct 29, 2020 at 09:40 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -110,7 +110,7 @@ CREATE TABLE `movies` (
   `MOVIE_DESC` varchar(1000) NOT NULL,
   `RATED` varchar(10) NOT NULL DEFAULT '',
   `RATING` decimal(10,2) NOT NULL DEFAULT -1.00,
-  `POSTER` mediumblob NOT NULL,
+  `POSTER` varchar(30) NOT NULL,
   `SHOWING_IN_IMAX` tinyint(1) NOT NULL DEFAULT 0,
   `SHOWING_IN_DIRECTORS_CUT` tinyint(1) NOT NULL DEFAULT 0,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
@@ -314,7 +314,7 @@ CREATE TABLE `users_profile` (
   `GENDER_ID` int(11) DEFAULT NULL,
   `AGE` int(11) NOT NULL DEFAULT 1,
   `BIRTHDATE` date NOT NULL DEFAULT current_timestamp(),
-  `PROFILE_PIC` mediumblob NOT NULL,
+  `PROFILE_PIC` varchar(30) NOT NULL,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `CREATED_BY` int(11) NOT NULL DEFAULT -1,
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp(),
