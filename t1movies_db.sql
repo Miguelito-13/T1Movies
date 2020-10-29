@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Oct 26, 2020 at 03:57 AM
+-- Generation Time: Oct 29, 2020 at 07:36 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -110,6 +110,7 @@ CREATE TABLE `movies` (
   `MOVIE_DESC` varchar(1000) NOT NULL,
   `RATED` varchar(10) NOT NULL DEFAULT '',
   `RATING` decimal(10,2) NOT NULL DEFAULT -1.00,
+  `POSTER` mediumblob NOT NULL,
   `SHOWING_IN_IMAX` tinyint(1) NOT NULL DEFAULT 0,
   `SHOWING_IN_DIRECTORS_CUT` tinyint(1) NOT NULL DEFAULT 0,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
@@ -123,11 +124,11 @@ CREATE TABLE `movies` (
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`MOVIE_ID`, `MOVIE_TITLE`, `PREMIERE_DATE`, `MOVIE_DURATION`, `MOVIE_DESC`, `RATED`, `RATING`, `SHOWING_IN_IMAX`, `SHOWING_IN_DIRECTORS_CUT`, `CREATED_ON`, `CREATED_BY`, `MODIFIED_ON`, `MODIFIED_BY`, `ACTIVE`) VALUES
-(1, 'Star Wars: The Force Awakens', '2020-10-21 21:00:55', '03:10:30', '\"May the Force\"', 'PG', '3.75', 1, 1, '2020-10-21 21:00:55', -1, '2020-10-21 21:00:55', -1, 1),
-(2, 'Avengers endgame', '2020-10-21 21:01:32', '02:52:13', '\"Let\'s beat Thanos this time\"', 'G', '4.50', 1, 0, '2020-10-21 21:01:32', -1, '2020-10-21 21:01:32', -1, 1),
-(3, 'Parasite', '2020-10-21 21:03:06', '02:36:00', '\"Always shower before going to work\"', 'R-18', '4.75', 0, 0, '2020-10-21 21:03:06', -1, '2020-10-21 21:03:06', -1, 1),
-(4, 'Ang Pangarap kong Holdap', '2020-10-21 21:03:45', '02:15:45', '\"Mas malupit pa sa money heist\"', 'PG', '4.25', 0, 0, '2020-10-21 21:03:45', -1, '2020-10-21 21:03:45', -1, 1);
+INSERT INTO `movies` (`MOVIE_ID`, `MOVIE_TITLE`, `PREMIERE_DATE`, `MOVIE_DURATION`, `MOVIE_DESC`, `RATED`, `RATING`, `POSTER`, `SHOWING_IN_IMAX`, `SHOWING_IN_DIRECTORS_CUT`, `CREATED_ON`, `CREATED_BY`, `MODIFIED_ON`, `MODIFIED_BY`, `ACTIVE`) VALUES
+(1, 'Star Wars: The Force Awakens', '2020-10-21 21:00:55', '03:10:30', '\"May the Force\"', 'PG', '3.75', '', 1, 1, '2020-10-21 21:00:55', -1, '2020-10-21 21:00:55', -1, 1),
+(2, 'Avengers endgame', '2020-10-21 21:01:32', '02:52:13', '\"Let\'s beat Thanos this time\"', 'G', '4.50', '', 1, 0, '2020-10-21 21:01:32', -1, '2020-10-21 21:01:32', -1, 1),
+(3, 'Parasite', '2020-10-21 21:03:06', '02:36:00', '\"Always shower before going to work\"', 'R-18', '4.75', '', 0, 0, '2020-10-21 21:03:06', -1, '2020-10-21 21:03:06', -1, 1),
+(4, 'Ang Pangarap kong Holdap', '2020-10-21 21:03:45', '02:15:45', '\"Mas malupit pa sa money heist\"', 'PG', '4.25', '', 0, 0, '2020-10-21 21:03:45', -1, '2020-10-21 21:03:45', -1, 1);
 
 -- --------------------------------------------------------
 
@@ -281,7 +282,9 @@ INSERT INTO `tickets` (`TICKET_ID`, `RECEIPT_ID`, `COMPLETED`, `COMPLETED_ON`) V
 CREATE TABLE `users_account` (
   `ACCOUNT_ID` int(11) NOT NULL,
   `EMAIL` varchar(20) NOT NULL DEFAULT '',
+  `USERNAME` varchar(15) NOT NULL,
   `ACCOUNT_PASSWORD` varchar(15) NOT NULL DEFAULT '',
+  `ADMIN` tinyint(1) NOT NULL,
   `ACTIVE` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -289,10 +292,10 @@ CREATE TABLE `users_account` (
 -- Dumping data for table `users_account`
 --
 
-INSERT INTO `users_account` (`ACCOUNT_ID`, `EMAIL`, `ACCOUNT_PASSWORD`, `ACTIVE`) VALUES
-(1, 'allen@gmail.com', '123A45L689', 1),
-(2, 'kobe@gmail.com', '8K24O8B24E824', 0),
-(3, 'dua@gmail.com', '45D67U89A852', 1);
+INSERT INTO `users_account` (`ACCOUNT_ID`, `EMAIL`, `USERNAME`, `ACCOUNT_PASSWORD`, `ADMIN`, `ACTIVE`) VALUES
+(1, 'allen@gmail.com', '', '123A45L689', 0, 1),
+(2, 'kobe@gmail.com', '', '8K24O8B24E824', 0, 0),
+(3, 'dua@gmail.com', '', '45D67U89A852', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -311,6 +314,7 @@ CREATE TABLE `users_profile` (
   `GENDER_ID` int(11) DEFAULT NULL,
   `AGE` int(11) NOT NULL DEFAULT 1,
   `BIRTHDATE` date NOT NULL DEFAULT current_timestamp(),
+  `PROFILE_PIC` mediumblob NOT NULL,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `CREATED_BY` int(11) NOT NULL DEFAULT -1,
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp(),
@@ -321,10 +325,10 @@ CREATE TABLE `users_profile` (
 -- Dumping data for table `users_profile`
 --
 
-INSERT INTO `users_profile` (`USERS_ID`, `ACCOUNT_ID`, `FIRST_NAME`, `LAST_NAME`, `MI`, `CONTACT_NO`, `ADDRESS`, `GENDER_ID`, `AGE`, `BIRTHDATE`, `CREATED_ON`, `CREATED_BY`, `MODIFIED_ON`, `MODIFIED_BY`) VALUES
-(1, 1, 'Allen', 'De Guzman', 'G.', '321654987', 'Samplaoc, Manila', 1, 20, '2020-03-13', '2020-10-22 15:15:23', -1, '2020-10-22 15:15:23', -1),
-(2, 2, 'Kobe', 'Bryant', 'B.', '824824824', 'Los Angeles, California', 1, 42, '1987-08-23', '2020-10-22 15:23:35', -1, '2020-10-22 15:23:35', -1),
-(3, 3, 'Dua', 'Lipa', '', '654895218', 'London, England', 2, 42, '1995-08-22', '2020-10-22 15:25:03', -1, '2020-10-22 15:25:03', -1);
+INSERT INTO `users_profile` (`USERS_ID`, `ACCOUNT_ID`, `FIRST_NAME`, `LAST_NAME`, `MI`, `CONTACT_NO`, `ADDRESS`, `GENDER_ID`, `AGE`, `BIRTHDATE`, `PROFILE_PIC`, `CREATED_ON`, `CREATED_BY`, `MODIFIED_ON`, `MODIFIED_BY`) VALUES
+(1, 1, 'Allen', 'De Guzman', 'G.', '321654987', 'Samplaoc, Manila', 1, 20, '2020-03-13', '', '2020-10-22 15:15:23', -1, '2020-10-22 15:15:23', -1),
+(2, 2, 'Kobe', 'Bryant', 'B.', '824824824', 'Los Angeles, California', 1, 42, '1987-08-23', '', '2020-10-22 15:23:35', -1, '2020-10-22 15:23:35', -1),
+(3, 3, 'Dua', 'Lipa', '', '654895218', 'London, England', 2, 42, '1995-08-22', '', '2020-10-22 15:25:03', -1, '2020-10-22 15:25:03', -1);
 
 -- --------------------------------------------------------
 
