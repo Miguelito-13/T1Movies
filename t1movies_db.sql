@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Oct 30, 2020 at 12:14 PM
+-- Generation Time: Oct 30, 2020 at 02:56 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -281,10 +281,10 @@ INSERT INTO `tickets` (`TICKET_ID`, `RECEIPT_ID`, `COMPLETED`, `COMPLETED_ON`) V
 
 CREATE TABLE `users_account` (
   `ACCOUNT_ID` int(11) NOT NULL,
-  `EMAIL` varchar(20) NOT NULL DEFAULT '',
-  `USERNAME` varchar(15) NOT NULL,
-  `ACCOUNT_PASSWORD` varchar(255) NOT NULL DEFAULT '',
-  `ADMIN` tinyint(1) NOT NULL,
+  `USERNAME` varchar(50) NOT NULL DEFAULT '',
+  `EMAIL` varchar(50) NOT NULL DEFAULT '',
+  `ACCOUNT_PASSWORD` varchar(255) NOT NULL DEFAULT '12345',
+  `ADMIN` varchar(100) NOT NULL DEFAULT 'USER',
   `ACTIVE` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -292,10 +292,9 @@ CREATE TABLE `users_account` (
 -- Dumping data for table `users_account`
 --
 
-INSERT INTO `users_account` (`ACCOUNT_ID`, `EMAIL`, `USERNAME`, `ACCOUNT_PASSWORD`, `ADMIN`, `ACTIVE`) VALUES
-(1, 'allen@gmail.com', '', '123A45L689', 0, 1),
-(2, 'kobe@gmail.com', '', '8K24O8B24E824', 0, 0),
-(3, 'dua@gmail.com', '', '45D67U89A852', 0, 1);
+INSERT INTO `users_account` (`ACCOUNT_ID`, `USERNAME`, `EMAIL`, `ACCOUNT_PASSWORD`, `ADMIN`, `ACTIVE`) VALUES
+(1, 'BEASTMASTER69', 'allen@gmail.com', '12345', 'USER', 1),
+(2, '8Kobe24', 'kobe@gmail.com', 'ladksjflaskdjfkl', 'ADMIN', 1);
 
 -- --------------------------------------------------------
 
@@ -441,7 +440,8 @@ ALTER TABLE `tickets`
 --
 ALTER TABLE `users_account`
   ADD PRIMARY KEY (`ACCOUNT_ID`),
-  ADD UNIQUE KEY `EMAIL` (`EMAIL`,`USERNAME`);
+  ADD UNIQUE KEY `USERNAME` (`USERNAME`),
+  ADD UNIQUE KEY `EMAIL` (`EMAIL`);
 
 --
 -- Indexes for table `users_profile`
@@ -525,7 +525,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users_account`
 --
 ALTER TABLE `users_account`
-  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users_profile`
