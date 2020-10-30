@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Oct 29, 2020 at 09:40 AM
+-- Generation Time: Oct 30, 2020 at 06:30 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -283,7 +283,7 @@ CREATE TABLE `users_account` (
   `ACCOUNT_ID` int(11) NOT NULL,
   `EMAIL` varchar(20) NOT NULL DEFAULT '',
   `USERNAME` varchar(15) NOT NULL,
-  `ACCOUNT_PASSWORD` varchar(15) NOT NULL DEFAULT '',
+  `ACCOUNT_PASSWORD` varchar(255) NOT NULL DEFAULT '',
   `ADMIN` tinyint(1) NOT NULL,
   `ACTIVE` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -441,7 +441,8 @@ ALTER TABLE `tickets`
 -- Indexes for table `users_account`
 --
 ALTER TABLE `users_account`
-  ADD PRIMARY KEY (`ACCOUNT_ID`);
+  ADD PRIMARY KEY (`ACCOUNT_ID`),
+  ADD UNIQUE KEY `EMAIL` (`EMAIL`,`USERNAME`);
 
 --
 -- Indexes for table `users_profile`
