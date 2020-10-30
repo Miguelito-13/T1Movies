@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Oct 30, 2020 at 06:30 AM
+-- Generation Time: Oct 30, 2020 at 12:14 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -314,7 +314,6 @@ CREATE TABLE `users_profile` (
   `GENDER_ID` int(11) DEFAULT NULL,
   `AGE` int(11) NOT NULL DEFAULT 1,
   `BIRTHDATE` date NOT NULL DEFAULT current_timestamp(),
-  `PROFILE_PIC` varchar(30) NOT NULL,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `CREATED_BY` int(11) NOT NULL DEFAULT -1,
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp(),
@@ -325,10 +324,10 @@ CREATE TABLE `users_profile` (
 -- Dumping data for table `users_profile`
 --
 
-INSERT INTO `users_profile` (`USERS_ID`, `ACCOUNT_ID`, `FIRST_NAME`, `LAST_NAME`, `MI`, `CONTACT_NO`, `ADDRESS`, `GENDER_ID`, `AGE`, `BIRTHDATE`, `PROFILE_PIC`, `CREATED_ON`, `CREATED_BY`, `MODIFIED_ON`, `MODIFIED_BY`) VALUES
-(1, 1, 'Allen', 'De Guzman', 'G.', '321654987', 'Samplaoc, Manila', 1, 20, '2020-03-13', '', '2020-10-22 15:15:23', -1, '2020-10-22 15:15:23', -1),
-(2, 2, 'Kobe', 'Bryant', 'B.', '824824824', 'Los Angeles, California', 1, 42, '1987-08-23', '', '2020-10-22 15:23:35', -1, '2020-10-22 15:23:35', -1),
-(3, 3, 'Dua', 'Lipa', '', '654895218', 'London, England', 2, 42, '1995-08-22', '', '2020-10-22 15:25:03', -1, '2020-10-22 15:25:03', -1);
+INSERT INTO `users_profile` (`USERS_ID`, `ACCOUNT_ID`, `FIRST_NAME`, `LAST_NAME`, `MI`, `CONTACT_NO`, `ADDRESS`, `GENDER_ID`, `AGE`, `BIRTHDATE`, `CREATED_ON`, `CREATED_BY`, `MODIFIED_ON`, `MODIFIED_BY`) VALUES
+(1, 1, 'Allen', 'De Guzman', 'G.', '321654987', 'Samplaoc, Manila', 1, 20, '2020-03-13', '2020-10-22 15:15:23', -1, '2020-10-22 15:15:23', -1),
+(2, 2, 'Kobe', 'Bryant', 'B.', '824824824', 'Los Angeles, California', 1, 42, '1987-08-23', '2020-10-22 15:23:35', -1, '2020-10-22 15:23:35', -1),
+(3, 3, 'Dua', 'Lipa', '', '654895218', 'London, England', 2, 42, '1995-08-22', '2020-10-22 15:25:03', -1, '2020-10-22 15:25:03', -1);
 
 -- --------------------------------------------------------
 
