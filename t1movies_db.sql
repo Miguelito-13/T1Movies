@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Oct 30, 2020 at 02:56 PM
+-- Generation Time: Nov 01, 2020 at 03:23 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -311,8 +311,8 @@ CREATE TABLE `users_profile` (
   `CONTACT_NO` varchar(15) NOT NULL DEFAULT '',
   `ADDRESS` varchar(100) NOT NULL DEFAULT '''''',
   `GENDER_ID` int(11) DEFAULT NULL,
-  `AGE` int(11) NOT NULL DEFAULT 1,
-  `BIRTHDATE` date NOT NULL DEFAULT current_timestamp(),
+  `AGE` int(11) DEFAULT NULL,
+  `BIRTHDATE` varchar(100) DEFAULT NULL,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `CREATED_BY` int(11) NOT NULL DEFAULT -1,
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp(),
