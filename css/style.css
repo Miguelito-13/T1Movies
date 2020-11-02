@@ -155,44 +155,6 @@ body {
   width: 80%;
 }
 
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
-/* Now Showing & Coming Soon */
-/* .movies-list-container {
-  background-color: #eeeeee;
-} */
-.movies-list-container h3 {
-  color: #1c1a18;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.custom-movies-description h4 {
-  color: #1c1a18;
-  font-size: 1.75rem;
-  font-weight: 700;
-}
-
-.custom-movies-description p {
-  color: #1c1a18;
-  font-size: 1.25rem;
-}
-
-.custom-page-navigation a {
-  color: #1c1a18;
-  font-size: 1.15rem;
-}
-.custom-page-navigation a:hover,
-.custom-page-navigation .active {
-  color: #ffba00;
-  background-color: rgba(63, 63, 63, 0.8);
-}
-.custom-page-navigation a:focus {
-  box-shadow: none;
-}
-.custom-page-navigation .active {
-  cursor: default;
-}
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */ /* Scroll bar */ /* width */
 
 /* Scroll Bar */
