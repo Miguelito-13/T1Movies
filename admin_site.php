@@ -54,13 +54,13 @@ include("header.php");
                 <a href="#" class="list-group-item list-group-item-action bg-light">Users</a>
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
-        <!-- DO NOT REMOVE ! For sidebar -->
+        <!-- Temporary sidebar wrapper for page content below. Try removing to see result -->
         <div id="sidebar-wrapper">
             <div class="list-group list-group-flush">
             </div>
         </div>
-        <!-- DO NOT REMOVE ! For sidebar -->
+        <!-- Temporary sidebar wrapper for page content below. Try removing to see result -->
+        <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div class="bg-light pl-3" id="page-content-wrapper">
