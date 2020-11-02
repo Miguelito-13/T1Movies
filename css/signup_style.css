@@ -70,27 +70,28 @@ input[type="number"] {
 }
 
 .btn.custom-cancel {
-  width: 100%;
-  padding: 7px;
   background-color: #fcfcfc;
   border: 1px solid rgba(179, 23, 18, 1);
   color: #ff0000;
 }
-.btn.custom-cancel:hover {
-  background-color: #e6e6e6;
-  border: 1px solid rgba(179, 23, 18, 1);
+.btn.custom-cancel:hover,
+.btn.custom-cancel:focus {
+  background-color: #fcfcfc;
+  border: 1px soli d rgba(179, 23, 18, 1);
+  box-shadow: none;
   color: #e52d27;
 }
 
 .btn.custom-signup {
-  padding: 0px;
   background-color: rgba(255, 195, 68, 1);
   border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;
 }
-.btn.custom-signup:hover {
+.btn.custom-signup:hover,
+.btn.custom-signup:focus {
   background-color: rgba(255, 195, 68, 1);
   border: 1px solid rgba(255, 195, 68, 1);
+  box-shadow: none;
   color: #1c1a18;
 }
 
@@ -99,8 +100,10 @@ input[type="number"] {
   border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;
 }
-.btn.custom-close:hover {
+.btn.custom-close:hover,
+.btn.custom-close:focus {
   background-color: rgba(255, 195, 68, 1);
   border: 1px solid rgba(255, 195, 68, 1);
+  box-shadow: none;
   color: #1c1a18;
 }
