@@ -47,7 +47,7 @@
   </div>
 
   <div class="footer-copyright text-center py-2">
-    <p>©2020 <a href="index.html">T1 Movies Inc.</a> All Rights Reserved.</p>
+    <p>©2020 <a href="index.php">T1 Movies Inc.</a> All Rights Reserved.</p>
   </div>
 
 </footer>

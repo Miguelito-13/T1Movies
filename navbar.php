@@ -41,13 +41,13 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
           </div>
         </li>
       </ul>
-      
+
       <!-- Search form -->
-      <form class="form-inline form-search-custom">
+      <div class="form-inline form-search-custom">
         <input class="form-control search-custom" type="text" placeholder="Movie Title" aria-label="Search">
-        <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>          
-      </form>
-      
+        <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+      </div>
+
     </div>
     <div id="id01" class="modal">
       <?php include('login_form.php'); ?>

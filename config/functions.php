@@ -67,10 +67,9 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
                 mysqli_stmt_bind_result($stmt_user_login, $id_login, $username_login, $hashed_password_login);
                 if (mysqli_stmt_fetch($stmt_user_login)) {
                     if (password_verify($password_login, $hashed_password_login)) {
-                        session_start();
 
                         $_SESSION["loggedin"] = true;
-                        $_SESSION["id"] = $id;
+                        $_SESSION["id"] = $id_login;
                         $_SESSION["username"] = $username_login;
 
                         // Check admin
@@ -104,7 +103,6 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
                     mysqli_stmt_bind_result($stmt_email_login, $id_login, $email_login, $hashed_password_login);
                     if (mysqli_stmt_fetch($stmt_email_login)) {
                         if (password_verify($password_login, $hashed_password_login)) {
-                            session_start();
 
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id_login;
