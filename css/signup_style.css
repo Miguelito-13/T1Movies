@@ -70,17 +70,20 @@ input[type="number"] {
 }
 
 .btn.custom-cancel {
+  width: 100%;
+  padding: 7px;
   background-color: #fcfcfc;
   border: 1px solid rgba(179, 23, 18, 1);
   color: #ff0000;
 }
 .btn.custom-cancel:hover {
-  background-color: #fcfcfc;
-  border: 1px soli d rgba(179, 23, 18, 1);
+  background-color: #e6e6e6;
+  border: 1px solid rgba(179, 23, 18, 1);
   color: #e52d27;
 }
 
 .btn.custom-signup {
+  padding: 0px;
   background-color: rgba(255, 195, 68, 1);
   border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;

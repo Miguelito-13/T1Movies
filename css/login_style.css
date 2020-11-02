@@ -14,7 +14,7 @@ input[type="password"] {
 }
 
 /*set a style for the buttons*/
-button {
+input[type="submit"] {
   background-color: #ffba00;
   color: white;
   padding: 14px 20px;
@@ -25,7 +25,7 @@ button {
 }
 
 /* set a hover effect for the button*/
-button:hover {
+input[type="submit"]:hover {
   opacity: 0.8;
 }
 
@@ -34,6 +34,7 @@ button:hover {
   text-align: center;
   margin: 12px 0 12px 0;
   position: relative;
+  z-index: 99;
 }
 
 /*set padding to the container*/
