@@ -273,7 +273,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
 
         // Validate age
         $birthdate = new DateTime($bdate);
-        $today   = new DateTime('today');
+        $today = new DateTime('today');
         $age = $birthdate->diff($today)->y;
         if ($age < 12) {
             $bdate_err = "User must be 12y/o and above.";

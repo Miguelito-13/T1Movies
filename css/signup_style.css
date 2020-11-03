@@ -70,19 +70,22 @@ input[type="number"] {
 }
 
 .btn.custom-cancel {
+  width: 100%;
+  padding: 7px;
   background-color: #fcfcfc;
   border: 1px solid rgba(179, 23, 18, 1);
   color: #ff0000;
 }
 .btn.custom-cancel:hover,
 .btn.custom-cancel:focus {
-  background-color: #fcfcfc;
+  background-color: #f0f0f0;
   border: 1px soli d rgba(179, 23, 18, 1);
   box-shadow: none;
   color: #e52d27;
 }
 
 .btn.custom-signup {
+  padding: 0;
   background-color: rgba(255, 195, 68, 1);
   border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;
