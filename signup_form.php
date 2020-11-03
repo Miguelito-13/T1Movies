@@ -61,14 +61,14 @@ include('navbar.php');
 						<span class="help-block text-danger"><?php echo $lastName_err; ?></span>
 					</div>
 					<div class="row">
-						<div class="col-5">
+						<div class="col-sm-5">
 							<div class="form-group <?php echo (!empty($bdate_err)) ? 'has-error' : ''; ?>">
 								<label for="signup-bdate" class="signup-label">Birth Date</label><br>
 								<input id="signup-bdate" name="bdate" type="date" value="<?php echo $bdate['bdate']; ?>" />
 							</div>
 							<span class="help-block text-danger"><?php echo $bdate_err; ?></span>
 						</div>
-						<div class="col-7">
+						<div class="col-sm-7">
 							<div class="form-group <?php echo (!empty($sex_err)) ? 'has-error' : ''; ?>">
 								<label for="signup-gender" class="signup-label">Sex</label><br>
 								<form class="gender-form">
