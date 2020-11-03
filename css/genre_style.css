@@ -1,0 +1,16 @@
+.custom-genre-tab a {
+  color: #1c1a18;
+  font-size: 1.15rem;
+}
+.custom-genre-tab a:hover {
+  color: #ffba00;
+}
+
+.custom-genre-tab .active {
+  font-weight: 500;
+}
+
+.categories-button {
+  color: #1c1a18;
+  text-align: left;
+}
