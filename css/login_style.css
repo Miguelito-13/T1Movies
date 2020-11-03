@@ -1,5 +1,7 @@
 .login-modal {
   text-align: center;
+  margin: auto;
+  font-weight: 700;
 }
 
 /*assign full width inputs*/
@@ -14,7 +16,7 @@ input[type="password"] {
 }
 
 /*set a style for the buttons*/
-input[type="submit"] {
+button {
   background-color: #ffba00;
   color: white;
   padding: 14px 20px;
@@ -25,7 +27,7 @@ input[type="submit"] {
 }
 
 /* set a hover effect for the button*/
-input[type="submit"]:hover {
+button:hover {
   opacity: 0.8;
 }
 
@@ -34,7 +36,6 @@ input[type="submit"]:hover {
   text-align: center;
   margin: 12px 0 12px 0;
   position: relative;
-  z-index: 99;
 }
 
 /*set padding to the container*/
