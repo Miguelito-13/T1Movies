@@ -1,3 +1,12 @@
+<?php
+
+// Check if user already logged in
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+  $show_logout = "show";
+}
+
+?>
+
 <!-- header -->
 
 <header class="container-fluid" style="margin-bottom: 95px">
@@ -46,13 +55,23 @@
   
 
 <script>
-    // Modal call
-    let modal = document.getElementById('id01');
+  // Modal call
+  let modal = document.getElementById('id01');
 
-    //Close when clicked outside
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+  //Close when clicked outside
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
     }
+  }
+
+  //Show Logout, Hide Register
+  let show_logout = "<?php echo $show_logout ?>";
+  if (show_logout === "show") {
+    document.getElementById('id_logout').style.display = "block";
+    document.getElementById('id_loginregister').style.display = "none";
+  } else {
+    document.getElementById('id_logout').style.display = "none";
+    document.getElementById('id_loginregister').style.display = "block";
+  }
 </script>
