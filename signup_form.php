@@ -72,10 +72,10 @@ include('navbar.php');
 							<div class="form-group <?php echo (!empty($sex_err)) ? 'has-error' : ''; ?>">
 								<label for="signup-gender" class="signup-label">Sex</label><br>
 								<form class="gender-form">
-									<input id="signup-gender" name="sex" class="radio-button" type="radio" value=1 />
-									<label for="signup-gender">Male &nbsp;</label>
-									<input id="signup-gender" name="sex" class="radio-button" type="radio" value=2 />
-									<label for="signup-gender">Female</label>
+									<input id="signup-gender-male" name="sex" class="radio-button" type="radio" value=1 />
+									<label for="signup-gender-male">Male &nbsp;</label>
+									<input id="signup-gender-female" name="sex" class="radio-button" type="radio" value=2 />
+									<label for="signup-gender-female">Female</label>
 								</form>
 								<br><span class="help-block text-danger"><?php echo $sex_err; ?></span>
 							</div>
@@ -111,8 +111,8 @@ include('navbar.php');
 							<div class="<?php echo (!empty($terms_err)) ? 'has-error' : ''; ?>">
 								<div class=signup-confirmation>
 									<div class="form-check form-check-inline custom-form-check">
-										<input id="form-check-input signup-checkbox" name="terms" class="check-box" type="checkbox">
-										<label for="form-check-label signup-checkbox" class="confirmation-label">I have read and agree to the <a data-toggle="modal" data-target="#tncModal"><u>Terms and Conditions</u></a> of T1 Movies.</label>
+										<input id="form-check signup-checkbox" name="terms" class="check-box" type="checkbox">
+										<label for="form-check signup-checkbox" class="confirmation-label">I have read and agree to the <a data-toggle="modal" data-target="#tncModal"><u>Terms and Conditions</u></a> of T1 Movies.</label>
 									</div>
 								</div>
 								<span class="help-block text-danger"><?php echo $terms_err; ?></span>

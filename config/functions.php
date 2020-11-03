@@ -122,7 +122,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
                             // User
                             else {
                                 $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                                header("location: ./profile.php");
+                                header("location: ./index.php");
                             }
                         } else {
                             $show = "show";
