@@ -5,6 +5,8 @@
     <div class="movies-list-container">
 			<h3>COMING SOON</h3>
       <hr/>
+	    
+	<?php include('genre_nav.php'); ?>
 
       <div class="row justify-content-center custom-table mx-auto py-3">
         <div class="col-12 col-sm-4 col-md-2" >
