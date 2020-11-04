@@ -1,0 +1,36 @@
+/* Carousel */
+
+.carousel-announcement {
+  background: #eaeaea;
+  background-size: cover;
+  height: auto;
+  width: 100%;
+}
+
+.carousel-image-desktop {
+  height: 30vw;
+  object-fit: cover;
+  margin-left: 6vw;
+  margin-right: 10px;
+}
+.carousel-image-mobile {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-announcement h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 5vw;
+}
+.carousel-announcement h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 4vw;
+}
+.carousel-announcement h3 {
+  margin-left: 9.5vw;
+  text-align: left;
+  font-size: 2vw;
+}
