@@ -3,7 +3,7 @@
   <div class="container-fluid text-center text-md-left pb-2">
     <div class="row">
       <div class="col-md-3 my-auto mx-5">
-        <img src="images/T1_Logo_Final1.svg" alt="T1 Movies" class="img-fluid py-2" style="height: 100px" />
+        <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="img-fluid py-2" style="height: 100px" />
       </div>
       <hr class="clearfix w-100 d-md-none pb-3">
 
@@ -35,10 +35,10 @@
         <h3 class="text-uppercase pb-2">MOVIES</h3>
         <ul class="list-unstyled">
           <li>
-            <a href="nowshowing.php">Now Showing</a>
+            <a href="now_showing.php">Now Showing</a>
           </li>
           <li>
-            <a href="comingsoon.php">Coming Soon</a>
+            <a href="coming_soon.php">Coming Soon</a>
           </li>
         </ul>
       </div>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="footer-copyright text-center py-2">
-    <p>©2020 <a href="index.php">T1 Movies Inc.</a> All Rights Reserved.</p>
+    <p>©2020 <a href="home.php">T1 Movies Inc.</a> All Rights Reserved.</p>
   </div>
 
 </footer>
@@ -57,4 +57,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <!-- Main JS -->
-<script src="./js/functions.js"></script>
+<script src="../js/functions.js"></script>

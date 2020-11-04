@@ -1,4 +1,4 @@
-<?php include('./config/functions.php'); ?>
+<?php include('../config/functions.php'); ?>
 
 <div class="modal-content animate">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -7,7 +7,7 @@
         </div>
 
         <div class="container">
-            <h1 class="mx-auto mb-3">Login</h1>
+            <h1 class="mx-auto my-4 font-weight-bold">Login</h1>
             <hr />
             <div class="login-container w-100">
                 <div class="<?php echo (!empty($username_err_login)) ? 'has-error' : ''; ?>">
