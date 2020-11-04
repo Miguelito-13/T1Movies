@@ -132,7 +132,3 @@ include('navbar.php');
 
 <?php include('termsandconditions.php'); ?>
 <?php include('footer.php'); ?>
-
-<script>
-	document.querySelector("#bdate").valueAsDate = new Date();
-</script>
