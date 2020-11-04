@@ -45,7 +45,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       <!-- Search form -->
       <form class="form-inline form-search-custom">
         <input class="form-control search-custom" type="text" placeholder="Movie Title" aria-label="Search">
-        <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+        <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true"></i>
       </form>
     </div>
     <div id="id01" class="modal">

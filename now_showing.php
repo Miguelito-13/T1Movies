@@ -1,71 +1,79 @@
-<?php include('header.php'); ?>
-<?php include('navbar.php'); ?>
+<?php
 
-  <section class="container-fluid mb-5" style="margin-top: 150px; width: 90%">
-    <div class="genre-menu">
-      <nav>
-        <!-- insert dropdown button nav for genre here -->
-      </nav>
+session_start();
+
+include('header.php');
+include('navbar.php');
+
+?>
+<section class="container-fluid mb-5" style="margin-top: 150px; width: 90%">
+  <div class="genre-menu">
+    <nav>
+      <!-- insert dropdown button nav for genre here -->
+    </nav>
+  </div>
+
+  <div class="movies-list-container">
+    <h3>NOW SHOWING</h3>
+    <hr />
+
+    <?php include('genre_nav.php'); ?>
+
+    <div class="row justify-content-center custom-table mx-auto py-3">
+      <div class="col-12 col-sm-4 col-md-2">
+        <img src="images/sample_poster.jpg" style="width: 100%" />
+      </div>
+      <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
+        <h4 class="pt-2">Movie Title</h4>
+        <hr />
+        <p id="movieDescription">
+          The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
+        </p>
+        <div class="text-right mb-auto">
+          <!-- <button class="btn buy-button2" href="movie_profile.php">Buy Tickets</button> -->
+          <a class="btn buy-button2 p-0" href="movie_profile.php">Buy Tickets</a>
+        </div>
+      </div>
     </div>
 
-    <div class="movies-list-container">
-			<h3>NOW SHOWING</h3>
-      <hr/>
-
-      <?php include('genre_nav.php'); ?>
-
-      <div class="row justify-content-center custom-table mx-auto py-3">
-        <div class="col-12 col-sm-4 col-md-2" >
-          <img src="images/sample_poster.jpg" style="width: 100%"/>
-        </div>
-        <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
-          <h4 class="pt-2">Movie Title</h4> <hr/>
-          <p id="movieDescription">
-            The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
-          </p>
-          <div class="text-right mb-auto">
-            <!-- <button class="btn buy-button2" href="movie_profile.php">Buy Tickets</button> -->
-            <a class="btn buy-button2 p-0" href="movie_profile.php">Buy Tickets</a>
-          </div>
+    <div class="row justify-content-center custom-table mx-auto py-3">
+      <div class="col-12 col-sm-4 col-md-2">
+        <img src="images/sample_poster.jpg" style="width: 100%" />
+      </div>
+      <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
+        <h4 class="pt-2">Movie Title</h4>
+        <hr />
+        <p id="movieDescription">
+          The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
+        </p>
+        <div class="text-right mb-auto">
+          <!-- <button class="btn buy-button2" href="movie_profile.php">Buy Tickets</button> -->
+          <a class="btn buy-button2 p-0" href="movie_profile.php">Buy Tickets</a>
         </div>
       </div>
-
-      <div class="row justify-content-center custom-table mx-auto py-3">
-        <div class="col-12 col-sm-4 col-md-2" >
-          <img src="images/sample_poster.jpg" style="width: 100%"/>
-        </div>
-        <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
-          <h4 class="pt-2">Movie Title</h4> <hr/>
-          <p id="movieDescription">
-            The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
-          </p>
-          <div class="text-right mb-auto">
-            <!-- <button class="btn buy-button2" href="movie_profile.php">Buy Tickets</button> -->
-            <a class="btn buy-button2 p-0" href="movie_profile.php">Buy Tickets</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center custom-table mx-auto py-3">
-        <div class="col-12 col-sm-4 col-md-2" >
-          <img src="images/sample_poster.jpg" style="width: 100%"/>
-        </div>
-        <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
-          <h4 class="pt-2">Movie Title</h4> <hr/>
-          <p id="movieDescription">
-            The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
-          </p>
-          <div class="text-right mb-auto">
-            <!-- <button class="btn buy-button2" href="movie_profile.php">Buy Tickets</button> -->
-            <a class="btn buy-button2 p-0" href="movie_profile.php">Buy Tickets</a>
-          </div>
-        </div>
-      </div>
-
-      <hr/>
     </div>
-        
-    <!-- <nav aria-label="page-navigation">
+
+    <div class="row justify-content-center custom-table mx-auto py-3">
+      <div class="col-12 col-sm-4 col-md-2">
+        <img src="images/sample_poster.jpg" style="width: 100%" />
+      </div>
+      <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
+        <h4 class="pt-2">Movie Title</h4>
+        <hr />
+        <p id="movieDescription">
+          The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
+        </p>
+        <div class="text-right mb-auto">
+          <!-- <button class="btn buy-button2" href="movie_profile.php">Buy Tickets</button> -->
+          <a class="btn buy-button2 p-0" href="movie_profile.php">Buy Tickets</a>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+  </div>
+
+  <!-- <nav aria-label="page-navigation">
       <ul class="pagination justify-content-end custom-page-navigation">
         <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
@@ -84,9 +92,8 @@
         </li>
       </ul>
     </nav> -->
-	</section>
+</section>
 
-   
 
-	<?php include('footer.php'); ?>
 
+<?php include('footer.php'); ?>

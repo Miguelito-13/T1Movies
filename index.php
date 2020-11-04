@@ -16,7 +16,7 @@ include('header.php');
 
 ?>
 
-<body>
+<body class="bg-light">
   <?php include('navbar.php'); ?>
   <section>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -175,17 +175,6 @@ include('header.php');
 
   <?php include('footer.php'); ?>
 
-  <script>
-    // Modal call
-    let modal = document.getElementById('id01');
-
-    //Close when clicked outside
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
 </body>
 
 </html>

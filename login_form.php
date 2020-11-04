@@ -7,15 +7,15 @@
         </div>
 
         <div class="container">
-            <h1 class="login-modal">Login</h1>
+            <h1 class="mx-auto mb-3">Login</h1>
             <hr />
-            <div class="login-container">
+            <div class="login-container w-100">
                 <div class="<?php echo (!empty($username_err_login)) ? 'has-error' : ''; ?>">
                     <label><b>Username</b></label>
                     <input type="text" placeholder="Enter Username or Email" name="username" value="<?php echo $username_login; ?>">
                     <span class="help-block text-danger"><?php echo $username_err_login; ?></span>
                 </div>
-                <div class="<?php echo (!empty($password_err_login)) ? 'has-error' : ''; ?>">
+                <div class="mt-2 <?php echo (!empty($password_err_login)) ? 'has-error' : ''; ?>">
                     <label><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="password">
                     <span class="help-block text-danger"><?php echo $password_err_login; ?></span>
