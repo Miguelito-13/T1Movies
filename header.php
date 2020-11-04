@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>T1 CINEMA: Your Choice for Movie Tickets</title>
-    <link rel="shortcut icon" href="images/T1_Logo_Test2.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="images/T1_Logo_Final2.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/admin_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="css/navbar_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="css/login_style.css?v=<?php echo time(); ?>">
