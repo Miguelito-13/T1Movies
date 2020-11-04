@@ -3,7 +3,7 @@
   <div class="container-fluid text-center text-md-left pb-2">
     <div class="row">
       <div class="col-md-3 my-auto mx-5">
-        <img src="images/T1_Logo_Test2.svg" alt="T1 Movies" class="img-fluid py-2" style="height: 100px" />
+        <img src="images/T1_Logo_Final1.svg" alt="T1 Movies" class="img-fluid py-2" style="height: 100px" />
       </div>
       <hr class="clearfix w-100 d-md-none pb-3">
 
