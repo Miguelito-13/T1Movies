@@ -12,11 +12,13 @@
   object-fit: cover;
   margin-left: 6vw;
   margin-right: 10px;
+  filter: saturate(75%);
 }
 .carousel-image-mobile {
   height: auto;
   width: 100%;
   object-fit: cover;
+  filter: saturate(75%);
 }
 
 .carousel-announcement h1 {
