@@ -18,8 +18,8 @@ $firstName_err = $middleInitial_err = $lastName_err = "";
 $address = $address_err = "";
 $contact = $contact_err = "";
 $bdate = $bdate_err = "";
-$sex = $sex_err = "";
-$terms_err = "";
+$sex = $sex_err = $sex_male_check = $sex_female_check = "";
+$terms_err = $terms_check = "";
 
 // Process Login
 if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
@@ -275,16 +275,21 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
         $birthdate = new DateTime($bdate);
         $today = new DateTime('today');
         $age = $birthdate->diff($today)->y;
-        if ($age < 12) {
-            $bdate_err = "User must be 12y/o and above.";
+        if ($age < 10) {
+            $bdate_err = "User must be 10y/o and above.";
         } else if ($age > 100) {
-            $bdate_err = "User must still alive.";
+            $bdate_err = "User must be still alive.";
         }
     }
 
     // Validate sex
     if (isset($_POST['sex'])) {
         $sex = $_POST['sex'];
+        if ($sex == 1) {
+            $sex_male_check = "checked";
+        } else {
+            $sex_female_check = "checked";
+        }
     } else {
         $sex_err = "Please enter your sex.";
     }
@@ -292,6 +297,8 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
     // Validate terms
     if (empty($_POST['terms'])) {
         $terms_err = "Please read and agree to our Terms & Conditions.";
+    } else {
+        $terms_check = "checked";
     }
 
     // Validate Contact

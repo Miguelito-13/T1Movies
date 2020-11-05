@@ -11,9 +11,3 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
-//-***************************************
-//-*               Sign up
-//-***************************************
-//-*
-document.querySelector("#bdate").valueAsDate = new Date();

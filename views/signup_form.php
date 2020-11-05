@@ -64,7 +64,7 @@ include('navbar.php');
 						<div class="col-sm-5">
 							<div class="form-group <?php echo (!empty($bdate_err)) ? 'has-error' : ''; ?>">
 								<label for="signup-bdate" class="signup-label">Birth Date</label><br>
-								<input id="signup-bdate" name="bdate" type="date" value="<?php echo $bdate['bdate']; ?>" />
+								<input id="signup-bdate" name="bdate" type="date" value="<?php echo $bdate; ?>" />
 							</div>
 							<span class="help-block text-danger"><?php echo $bdate_err; ?></span>
 						</div>
@@ -72,9 +72,9 @@ include('navbar.php');
 							<div class="form-group <?php echo (!empty($sex_err)) ? 'has-error' : ''; ?>">
 								<label for="signup-gender" class="signup-label">Sex</label><br>
 								<form class="gender-form">
-									<input id="signup-gender-male" name="sex" class="radio-button" type="radio" value=1 />
+									<input id="signup-gender-male" name="sex" class="radio-button" type="radio" value=1 <?php echo $sex_male_check; ?> />
 									<label for="signup-gender-male">Male &nbsp;</label>
-									<input id="signup-gender-female" name="sex" class="radio-button" type="radio" value=2 />
+									<input id="signup-gender-female" name="sex" class="radio-button" type="radio" value=2 <?php echo $sex_female_check; ?> />
 									<label for="signup-gender-female">Female</label>
 								</form>
 								<br><span class="help-block text-danger"><?php echo $sex_err; ?></span>
@@ -111,7 +111,7 @@ include('navbar.php');
 							<div class="<?php echo (!empty($terms_err)) ? 'has-error' : ''; ?>">
 								<div class=signup-confirmation>
 									<div class="form-check form-check-inline custom-form-check">
-										<input id="form-check signup-checkbox" name="terms" class="check-box" type="checkbox">
+										<input id="form-check signup-checkbox" name="terms" class="check-box" type="checkbox" <?php echo $terms_check; ?>>
 										<label for="form-check signup-checkbox" class="confirmation-label">I have read and agree to the <a data-toggle="modal" data-target="#tncModal"><u>Terms and Conditions</u></a> of T1 Movies.</label>
 									</div>
 								</div>
@@ -132,3 +132,6 @@ include('navbar.php');
 
 <?php include('termsandconditions.php'); ?>
 <?php include('footer.php'); ?>
+
+<script>
+</script>

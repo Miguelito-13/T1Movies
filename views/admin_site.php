@@ -48,7 +48,7 @@ include("header.php");
         <!-- Sidebar -->
         <div class="border-right position-fixed bg-light" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Database</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Movies</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Users</a>
             </div>
@@ -64,9 +64,8 @@ include("header.php");
         <!-- Page Content -->
         <div class="bg-light" id="page-content-wrapper">
             <div class="container-fluid">
-                <!-- 
                 <form class="pt-4">
-                    <select name="users" onchange="showUser(this.value)">
+                    <select name="tables" onchange="showUser(this.value)">
                         <option value="">Select a table:</option>
                         <option value="1">cinema</option>
                         <option value="2">gender</option>
@@ -84,29 +83,13 @@ include("header.php");
                     </select>
                 </form>
                 <br>
-                <div id="txtHint"><b>Table info will be listed here...</b>
+                <div id="txtHint" class="mb-4"><b>Table info will be listed here...</b>
                     <br><br>
-                </div>-->
+                </div>
             </div>
+
             <div class="container-fluid">
-                <form class="pt-4">
-                    <select name="tables">
-                        <option value="">Select a table:</option>
-                        <option value="1">cinema</option>
-                        <option value="2">gender</option>
-                        <option value="3">genre</option>
-                        <option value="4">movies</option>
-                        <option value="5">movie_branches</option>
-                        <option value="6">movie_category</option>
-                        <option value="7">now_showing</option>
-                        <option value="8">receipt</option>
-                        <option value="9">reservation</option>
-                        <option value="10">tickets</option>
-                        <option value="11">users_account</option>
-                        <option value="12">users_profile</option>
-                        <option value="13">viewing_time</option>
-                    </select>
-                </form>
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -138,7 +121,7 @@ include("header.php");
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", "./config/getuser.php?q=" + str, true);
+                xmlhttp.open("GET", "../config/selectTable.php?q=" + str, true);
                 xmlhttp.send();
             }
         }

@@ -53,7 +53,7 @@ input[type="submit"]:hover {
   text-align: center;
   margin: auto;
   text-decoration: none;
-  color: #1c1a18;
+  color: #1c1a18 !important;
 }
 .psw a:hover {
   text-decoration: underline;
@@ -148,8 +148,8 @@ input[type="submit"]:hover {
 .signup-container a {
   text-decoration: none;
   font-weight: bold;
-  color: #1c1a18;
+  color: #1c1a18 !important;
 }
 .signup-container a:hover {
-  color: #ffba00;
+  color: #ffba00 !important;
 }
