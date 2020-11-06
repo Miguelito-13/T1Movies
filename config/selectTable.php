@@ -1,7 +1,7 @@
 <?php
 $q = intval($_GET['q']);
 
-include('config.php');
+require_once "config.php";
 
 // cinema
 if ($q == 1) {

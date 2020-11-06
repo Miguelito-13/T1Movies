@@ -374,8 +374,11 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
                 $param_age = $age;
                 mysqli_stmt_execute($stmt2);
 
-                echo '<script type="text/javascript">alert("Sign up Successful. Please log in to continue."); </script>';
-                $show = "show";
+                $_SESSION["loggedin"] = true;
+                $_SESSION["id"] = $id_login;
+                $_SESSION["email"] = $email_login;
+
+                echo '<script type="text/javascript">alert("Sign up Successful. Directing you to the home page."); window.location = "./home.php"; </script>';
             } else {
                 echo "Something went wrong. Please try again later.";
             }

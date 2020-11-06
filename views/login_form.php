@@ -12,13 +12,13 @@
             <div class="login-container w-100">
                 <div class="<?php echo (!empty($username_err_login)) ? 'has-error' : ''; ?>">
                     <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username or Email" name="username" value="<?php echo $username_login; ?>">
-                    <span class="help-block text-danger"><?php echo $username_err_login; ?></span>
+                    <input id="uText" type="text" placeholder="Enter Username or Email" name="username" value="<?php echo $username_login; ?>">
+                    <span id="error1" class="help-block text-danger"><?php echo $username_err_login; ?></span>
                 </div>
                 <div class="mt-2 <?php echo (!empty($password_err_login)) ? 'has-error' : ''; ?>">
                     <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password">
-                    <span class="help-block text-danger"><?php echo $password_err_login; ?></span>
+                    <input id="pText" type="password" placeholder="Enter Password" name="password">
+                    <span id="error2" class="help-block text-danger"><?php echo $password_err_login; ?></span>
                 </div>
                 <input name="login_button" type="submit" value="Login">
                 <br>
@@ -44,6 +44,10 @@
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            document.getElementById('error1').style.display = 'none';
+            document.getElementById('error2').style.display = 'none';
+            document.getElementById("uText").value = "";
+            document.getElementById("pText").value = "";
         }
     }
 

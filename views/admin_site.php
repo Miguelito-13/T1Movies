@@ -20,14 +20,17 @@ include("header.php");
 
 <body>
     <!-- ?php echo htmlspecialchars($_SESSION["username"]); ? -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom sticky-top">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <button class="btn btn-primary ml-3" id="menu-toggle">Toggle Menu</button>
+        <div class="ml-4 search-box">
+            <input type="text" autocomplete="off" placeholder="Search" />
+            <div class="result"></div>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,7 +68,7 @@ include("header.php");
         <div class="bg-light" id="page-content-wrapper">
             <div class="container-fluid">
                 <form class="pt-4">
-                    <select name="tables" onchange="showUser(this.value)">
+                    <select name="tables" onchange="showTable(this.value)">
                         <option value="">Select a table:</option>
                         <option value="1">cinema</option>
                         <option value="2">gender</option>
@@ -101,6 +104,7 @@ include("header.php");
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- Main JS -->
     <script>
         jQuery(document).ready(function($) {
@@ -110,7 +114,7 @@ include("header.php");
             });
         });
 
-        function showUser(str) {
+        function showTable(str) {
             if (str == "") {
                 document.getElementById("txtHint").innerHTML = "";
                 return;
@@ -125,6 +129,30 @@ include("header.php");
                 xmlhttp.send();
             }
         }
+
+        $(document).ready(function() {
+            $('.search-box input[type="text"]').on("keyup input", function() {
+                /* Get input value on change */
+                var inputVal = $(this).val();
+                var resultDropdown = $(this).siblings(".result");
+                if (inputVal.length) {
+                    $.get("../config/search.php", {
+                        term: inputVal
+                    }).done(function(data) {
+                        // Display the returned data in browser
+                        resultDropdown.html(data);
+                    });
+                } else {
+                    resultDropdown.empty();
+                }
+            });
+
+            // Set search input value on click of result item
+            $(document).on("click", ".result p", function() {
+                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+                $(this).parent(".result").empty();
+            });
+        });
     </script>
 
 </body>
