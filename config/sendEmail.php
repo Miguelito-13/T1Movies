@@ -21,7 +21,7 @@ if ($code == $temp_code) {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = '587';
 
-    $mail->setFrom('concepcionpatrickp@gmail.com'); // Gmail address which you used as SMTP server
+    $mail->setFrom('t1movies.tup@gmail.com'); // Gmail address which you used as SMTP server
     $mail->addAddress($email_forgot); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
 
     $mail->isHTML(true);
