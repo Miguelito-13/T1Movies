@@ -453,6 +453,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                         $temp_code = rand(300000, 500000);
                         $code = $temp_code;
                         include('sendEmail.php');
+                        $verify_code = "Enter code sent to your email.";
 
                         // Insert code
                         $sql = "UPDATE users_account SET VERIFY_CODE = '$code' WHERE USERNAME = '$username_forgot'";
@@ -515,7 +516,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                                 }
                             }
                         } else {
-                            $code_err_forgot = "Code is invalid. Clear the code input to resend code verification.";
+                            $code_err_forgot = "Code is invalid. Please enter the code again or clear the code input then submit to send a new code verification.";
                         }
                     }
                 }
