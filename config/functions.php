@@ -504,7 +504,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                                     if (mysqli_stmt_execute($stmt)) {
 
                                         // Password updated successfully. 
-                                        echo '<script type="text/javascript">alert("Password reset is successful. Directing you to the login modal."); </script>';
+                                        echo '<script type="text/javascript">alert("Password reset is successful. Please login to continue."); </script>';
 
                                         $show_code = "reset";
                                     } else {
