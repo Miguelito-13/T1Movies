@@ -48,11 +48,11 @@ include('navbar.php');
                         <div class="form-group <?php echo (!empty($password_err_forgot)) ? 'has-error' : ''; ?>">
                             <label id="forgot-password-label" for="forgot-password" class="forgot-label">Reset Password</label>
                             <input id="forgot-password" name="password" type="password" placeholder="Enter new Password" value="<?php echo $password_forgot; ?>" />
-                            <span class=" help-block text-danger"><?php echo $password_err_forgot; ?></span>
+                            <span id="forgot-pass-error" class="help-block"><?php echo $password_err_forgot; ?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($confirm_password_err_forgot)) ? 'has-error' : ''; ?>">
                             <input id="forgot-re-password" name="confirm_password" type="password" placeholder="Re-type new Password" value="<?php echo $confirm_password_forgot; ?>" />
-                            <span class="help-block text-danger"><?php echo $confirm_password_err_forgot; ?></span>
+                            <span id="forgot-confirm-error" class="help-block"><?php echo $confirm_password_err_forgot; ?></span>
                         </div>
                     </div>
 
@@ -89,6 +89,14 @@ include('navbar.php');
             document.getElementById('forgot-password-label').style.display = "block";
             document.getElementById('forgot-password').style.display = "block";
             document.getElementById('forgot-re-password').style.display = "block";
+        } else if (show_code === "show_code3") {
+            document.getElementById('forgot-code-label').style.display = "block";
+            document.getElementById('forgot-code').style.display = "block";
+            document.getElementById('forgot-password-label').style.display = "block";
+            document.getElementById('forgot-password').style.display = "block";
+            document.getElementById('forgot-re-password').style.display = "block";
+            document.getElementById('forgot-pass-error').style.color = "#dc3545";
+            document.getElementById('forgot-confirm-error').style.color = "#dc3545";
         } else if (show_code === "reset") {
             document.getElementById('forgot-code-label').style.display = "none";
             document.getElementById('forgot-code').style.display = "none";

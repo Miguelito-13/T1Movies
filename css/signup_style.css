@@ -123,3 +123,8 @@ input[id="forgot-password"],
 input[id="forgot-re-password"] {
   display: none;
 }
+
+span[id="forgot-pass-error"],
+span[id="forgot-confirm-error"] {
+  color: #28a745;
+}

@@ -475,6 +475,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                             if (empty(trim($_POST["password"]))) {
                                 $password_err_forgot = "Please enter a new password.";
                             } elseif (strlen(trim($_POST["password"])) < 6) {
+                                $show_code = "show_code3";
                                 $password_err_forgot = "Password must have atleast 6 characters.";
                             } else {
                                 $password_forgot = trim($_POST["password"]);
@@ -483,6 +484,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                             if (empty(trim($_POST["confirm_password"]))) {
                                 $confirm_password_err_forgot = "Please confirm password.";
                             } else {
+                                $show_code = "show_code3";
                                 $confirm_password_forgot = trim($_POST["confirm_password"]);
                                 if (empty($password_err_forgot) && ($password_forgot != $confirm_password_forgot)) {
                                     $confirm_password_err_forgot = "Password did not match.";
