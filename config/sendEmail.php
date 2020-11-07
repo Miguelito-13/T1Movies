@@ -22,11 +22,11 @@ if ($code == $temp_code) {
     $mail->Port = '587';
 
     $mail->setFrom('concepcionpatrickp@gmail.com'); // Gmail address which you used as SMTP server
-    $mail->addAddress('ptrckc10@gmail.com'); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
+    $mail->addAddress($email_forgot); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
 
     $mail->isHTML(true);
     $mail->Subject = 'T1 Movies (Verification Code)';
-    $mail->Body = "<h2>Code :</h2><br><h1>$code</h1><br><h3>Copy and paste it to the Verification code text input!</h3>";
+    $mail->Body = "<h2>Verification Code :</h2><h1>$code</h1><h3>Copy and paste it to the Verification code text input!</h3>";
 
     $mail->send();
 
