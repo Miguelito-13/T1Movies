@@ -23,7 +23,7 @@
                 <input name="login_button" type="submit" value="Login">
                 <br>
                 <span class="psw">
-                    <a href="#">Forgot password?</a>
+                    <a href="forgot_pass.php">Forgot password?</a>
                 </span>
             </div>
         </div>

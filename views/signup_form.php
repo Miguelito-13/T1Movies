@@ -17,9 +17,9 @@ include('navbar.php');
 
 ?>
 
-<section class="container-fluid" style="margin-top: 150px; width:90%">
-	<div class="signup-form">
-		<h3>REGISTER</h3>
+<section class="container-fluid bg-light pb-4" style="margin-top: 150px; width:90%">
+	<div class="signup-form ">
+		<h3 class="pt-3">REGISTER</h3>
 		<hr />
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 			<div class="row">
@@ -128,10 +128,8 @@ include('navbar.php');
 				</div>
 			</div>
 		</form>
+	</div>
 </section>
 
 <?php include('termsandconditions.php'); ?>
 <?php include('footer.php'); ?>
-
-<script>
-</script>

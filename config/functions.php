@@ -21,6 +21,15 @@ $bdate = $bdate_err = "";
 $sex = $sex_err = $sex_male_check = $sex_female_check = "";
 $terms_err = $terms_check = "";
 
+// Forgot variables
+$username_forgot = $username_err_forgot = "";
+$email_forgot = $email_err_forgot = "";
+$code_forgot = $code_err_forgot = "";
+$password_forgot = $password_err_forgot = "";
+$confirm_password_forgot = $confirm_password_err_forgot = "";
+$verify_forgot = $verify_code = "";
+$code = "";
+
 // Process Login
 if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
 
@@ -389,5 +398,141 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
     }
 
     // Close connection
+    mysqli_close($link);
+}
+
+// Process Forgot Password
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"]))) {
+
+    // Check
+    if (empty(trim($_POST["username"]))) {
+        $username_err_forgot = "Please enter username.";
+    } else {
+        $username_forgot = trim($_POST["username"]);
+    }
+
+    // Check
+    if (empty(trim($_POST["email"]))) {
+        $email_err_forgot = "Please enter email.";
+    } else {
+        $email_forgot = trim($_POST["email"]);
+    }
+
+    // Validate
+    if (empty($username_err_forgot) && empty($email_err_forgot)) {
+
+        // SQL Select
+        $sql_forgot = "SELECT ACCOUNT_ID, USERNAME, EMAIL FROM users_account WHERE USERNAME = ?";
+        $stmt_forgot = mysqli_prepare($link, $sql_forgot);
+
+        // Bind vars
+        mysqli_stmt_bind_param($stmt_forgot, "s", $param_username_forgot);
+
+        // Set params
+        $param_username_forgot = $username_forgot;
+
+        // Execute
+        if (mysqli_stmt_execute($stmt_forgot)) {
+            mysqli_stmt_store_result($stmt_forgot);
+
+            // Check username
+            if (mysqli_stmt_num_rows($stmt_forgot) == 1) {
+
+                // Check
+                $query_forgot = "SELECT * FROM users_account WHERE USERNAME='$username_forgot' LIMIT 1";
+                $results_forgot = mysqli_query($link, $query_forgot);
+
+                $fetch_forgot = mysqli_fetch_assoc($results_forgot);
+
+                // Email
+                if ($fetch_forgot['EMAIL'] == $email_forgot) {
+                    $verify_forgot = "Username and Email matched.";
+                    $show_code = "show_code";
+
+                    if (empty($_POST["code"])) {
+                        $temp_code = rand(300000, 500000);
+                        $code = $temp_code;
+                        include('sendEmail.php');
+
+                        // Insert code
+                        $sql = "UPDATE users_account SET VERIFY_CODE = '$code' WHERE USERNAME = '$username_forgot'";
+                        mysqli_query($link, $sql);
+                    } else {
+                        $code_forgot = trim($_POST["code"]);
+
+                        // Check code
+                        $query_code = "SELECT * FROM users_account WHERE USERNAME ='$username_forgot' LIMIT 1";
+                        $results_code = mysqli_query($link, $query_code);
+
+                        $code_check = mysqli_fetch_assoc($results_code);
+
+                        if ($code_forgot === $code_check['VERIFY_CODE']) {
+                            $show_code = "show_code2";
+                            $verify_code = "Code is verified.";
+
+                            // Validate password
+                            if (empty(trim($_POST["password"]))) {
+                                $password_err_forgot = "Please enter a new password.";
+                            } elseif (strlen(trim($_POST["password"])) < 6) {
+                                $password_err_forgot = "Password must have atleast 6 characters.";
+                            } else {
+                                $password_forgot = trim($_POST["password"]);
+                            }
+                            // Validate confirm password
+                            if (empty(trim($_POST["confirm_password"]))) {
+                                $confirm_password_err_forgot = "Please confirm password.";
+                            } else {
+                                $confirm_password_forgot = trim($_POST["confirm_password"]);
+                                if (empty($password_err_forgot) && ($password_forgot != $confirm_password_forgot)) {
+                                    $confirm_password_err_forgot = "Password did not match.";
+                                }
+                            }
+
+                            // Set new password
+                            if (empty($password_err_forgot) && empty($confirm_password_err_forgot)) {
+                                $sql_reset = "UPDATE users_account SET ACCOUNT_PASSWORD = ? WHERE USERNAME = '$username_forgot'";
+
+                                if ($stmt = mysqli_prepare($link, $sql_reset)) {
+                                    // Bind variables to the prepared statement as parameters
+                                    mysqli_stmt_bind_param($stmt, "s", $param_password);
+
+                                    // Set parameters
+                                    $param_password = password_hash($password_forgot, PASSWORD_DEFAULT);
+
+                                    // Attempt to execute the prepared statement
+                                    if (mysqli_stmt_execute($stmt)) {
+
+                                        // Password updated successfully. 
+                                        echo '<script type="text/javascript">alert("Password reset is successful. Directing you to the login modal."); </script>';
+
+                                        $show_code = "reset";
+                                    } else {
+                                        echo "Something went wrong. Please try again later.";
+                                    }
+
+                                    // Close statement
+                                    mysqli_stmt_close($stmt);
+                                }
+                            }
+                        } else {
+                            $code_err_forgot = "Code is invalid. Clear the code input to resend code verification.";
+                        }
+                    }
+                }
+                // User
+                else {
+                    $username_err_forgot = "Username and Email doesn't match or exist.";
+                }
+            } else {
+                $username_err_forgot = "Username and Email doesn't match or exist.";
+            }
+        } else {
+            echo "Something went wrong. Please reload or try again later.";
+        }
+
+        mysqli_stmt_close($stmt_forgot);
+    }
+
+    // Close
     mysqli_close($link);
 }

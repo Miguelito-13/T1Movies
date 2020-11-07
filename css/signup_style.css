@@ -110,3 +110,16 @@ input[type="number"] {
   box-shadow: none;
   color: #1c1a18;
 }
+
+/* FORGOT PASS */
+
+label[id="forgot-code-label"],
+input[id="forgot-code"] {
+  display: none;
+}
+
+label[id="forgot-password-label"],
+input[id="forgot-password"],
+input[id="forgot-re-password"] {
+  display: none;
+}
