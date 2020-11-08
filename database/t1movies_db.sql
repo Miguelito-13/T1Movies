@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Nov 08, 2020 at 07:46 AM
+-- Generation Time: Nov 07, 2020 at 02:33 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -206,6 +206,76 @@ INSERT INTO `now_showing` (`NOW_ID`, `MOVIE_ID`, `CINEMA_ID`, `BRANCH_ID`, `ACTI
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `receipt`
+--
+
+CREATE TABLE `receipt` (
+  `RECEIPT_ID` int(11) NOT NULL,
+  `RESERVE_ID` int(11) DEFAULT NULL,
+  `PAID` tinyint(1) NOT NULL DEFAULT 0,
+  `PAID_ON` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `receipt`
+--
+
+INSERT INTO `receipt` (`RECEIPT_ID`, `RESERVE_ID`, `PAID`, `PAID_ON`) VALUES
+(1, 1, 1, '2020-10-22 15:58:37'),
+(2, 2, 1, '2020-10-22 15:58:47'),
+(3, 3, 1, '2020-10-22 15:58:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `RESERVE_ID` int(11) NOT NULL,
+  `ACCOUNT_ID` int(11) DEFAULT NULL,
+  `NOW_ID` int(11) DEFAULT NULL,
+  `SEAT_ROW` int(11) NOT NULL DEFAULT 1,
+  `SEAT_NUMBER` int(11) NOT NULL DEFAULT 1,
+  `VIEWING_ID` int(11) DEFAULT NULL,
+  `DATE_OF_VIEWING` date NOT NULL DEFAULT current_timestamp(),
+  `DATE_CREATED` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`RESERVE_ID`, `ACCOUNT_ID`, `NOW_ID`, `SEAT_ROW`, `SEAT_NUMBER`, `VIEWING_ID`, `DATE_OF_VIEWING`, `DATE_CREATED`) VALUES
+(1, 1, 1, 5, 23, 4, '2020-06-23', '2020-10-22 15:49:01'),
+(2, 1, 1, 5, 24, 4, '2020-06-23', '2020-10-22 15:50:29'),
+(3, 3, 5, 9, 5, 8, '2020-09-14', '2020-10-22 15:50:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tickets`
+--
+
+CREATE TABLE `tickets` (
+  `TICKET_ID` int(11) NOT NULL,
+  `RECEIPT_ID` int(11) DEFAULT NULL,
+  `COMPLETED` tinyint(1) NOT NULL DEFAULT 0,
+  `COMPLETED_ON` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`TICKET_ID`, `RECEIPT_ID`, `COMPLETED`, `COMPLETED_ON`) VALUES
+(1, 1, 1, '2020-10-22 16:03:48'),
+(2, 2, 1, '2020-10-22 16:03:53'),
+(3, 3, 1, '2020-10-22 16:04:56');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users_account`
 --
 
@@ -336,6 +406,29 @@ ALTER TABLE `now_showing`
   ADD KEY `BRANCH_ID` (`BRANCH_ID`);
 
 --
+-- Indexes for table `receipt`
+--
+ALTER TABLE `receipt`
+  ADD PRIMARY KEY (`RECEIPT_ID`),
+  ADD KEY `RESERVE_ID` (`RESERVE_ID`);
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`RESERVE_ID`),
+  ADD KEY `ACCOUNT_ID` (`ACCOUNT_ID`),
+  ADD KEY `NOW_ID` (`NOW_ID`),
+  ADD KEY `VIEWING_ID` (`VIEWING_ID`);
+
+--
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`TICKET_ID`),
+  ADD KEY `RECEIPT_ID` (`RECEIPT_ID`);
+
+--
 -- Indexes for table `users_account`
 --
 ALTER TABLE `users_account`
@@ -403,6 +496,24 @@ ALTER TABLE `now_showing`
   MODIFY `NOW_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `receipt`
+--
+ALTER TABLE `receipt`
+  MODIFY `RECEIPT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `RESERVE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tickets`
+--
+ALTER TABLE `tickets`
+  MODIFY `TICKET_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users_account`
 --
 ALTER TABLE `users_account`
@@ -447,6 +558,26 @@ ALTER TABLE `now_showing`
   ADD CONSTRAINT `now_showing_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `movies` (`MOVIE_ID`),
   ADD CONSTRAINT `now_showing_ibfk_2` FOREIGN KEY (`CINEMA_ID`) REFERENCES `cinema` (`CINEMA_ID`),
   ADD CONSTRAINT `now_showing_ibfk_3` FOREIGN KEY (`BRANCH_ID`) REFERENCES `movie_branches` (`BRANCH_ID`);
+
+--
+-- Constraints for table `receipt`
+--
+ALTER TABLE `receipt`
+  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`RESERVE_ID`) REFERENCES `reservation` (`RESERVE_ID`);
+
+--
+-- Constraints for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `users_account` (`ACCOUNT_ID`),
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`NOW_ID`) REFERENCES `now_showing` (`NOW_ID`),
+  ADD CONSTRAINT `reservation_ibfk_3` FOREIGN KEY (`VIEWING_ID`) REFERENCES `viewing_time` (`VIEWING_ID`);
+
+--
+-- Constraints for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`RECEIPT_ID`) REFERENCES `receipt` (`RECEIPT_ID`);
 
 --
 -- Constraints for table `users_profile`
