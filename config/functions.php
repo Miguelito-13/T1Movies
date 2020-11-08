@@ -253,7 +253,6 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
 
     // Validate m.i.
     if (empty(trim($_POST["middleInitial"]))) {
-        $middleInitial_err = "Please enter your middle initial.";
     } else if (strlen(trim($_POST["middleInitial"])) > 1) {
         $middleInitial_err = "Please enter your valid middle initial";
     } else {

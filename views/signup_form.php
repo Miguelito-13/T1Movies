@@ -51,7 +51,7 @@ include('navbar.php');
 						<span class="help-block text-danger"><?php echo $firstName_err; ?></span>
 					</div>
 					<div class="form-group <?php echo (!empty($middleInitial_err)) ? 'has-error' : ''; ?>">
-						<label for="signup-name" class="signup-label">Middle Initial</label><br>
+						<label for="signup-name" class="signup-label">Middle Initial (optional)</label><br>
 						<input id="signup-mname" name="middleInitial" type="text" placeholder="Enter your Middle Initial" value="<?php echo $middleInitial; ?>" pattern="[a-zA-Z]{1,}" title="Middle initial only" />
 						<span class=" help-block text-danger"><?php echo $middleInitial_err; ?></span>
 					</div>
