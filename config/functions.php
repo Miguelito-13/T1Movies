@@ -454,13 +454,20 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                         while ($code == "") {
                             $temp_code = rand(300000, 500000);
 
-                            $query_check_code = "SELECT * FROM users_account WHERE USERNAME='$username_forgot' LIMIT 1";
-                            $results_check_code = mysqli_query($link, $query_check_code);
-                            $fetch_check_code = mysqli_fetch_assoc($results_check_code);
+                            // SQL Select
+                            $sql_check = "SELECT * FROM users_account WHERE VERIFY_CODE = '$temp_code'";
+                            $stmt_check = mysqli_prepare($link, $sql_check);
 
-                            if ($fetch_check_code['VERIFY_CODE'] != $temp_code) {
+                            // Execute
+                            mysqli_stmt_execute($stmt_check);
+                            mysqli_stmt_store_result($stmt_check);
+
+                            // Check code
+                            if (mysqli_stmt_num_rows($stmt_check) == 0) {
                                 $code = $temp_code;
                             }
+
+                            mysqli_stmt_close($stmt_check);
                         }
 
                         include('sendEmail.php');
