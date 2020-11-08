@@ -253,7 +253,6 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
 
     // Validate m.i.
     if (empty(trim($_POST["middleInitial"]))) {
-        $middleInitial_err = "Please enter your middle initial.";
     } else if (strlen(trim($_POST["middleInitial"])) > 1) {
         $middleInitial_err = "Please enter your valid middle initial";
     } else {
@@ -450,8 +449,20 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                     $show_code = "show_code";
 
                     if (empty($_POST["code"])) {
-                        $temp_code = rand(300000, 500000);
-                        $code = $temp_code;
+
+                        // Check existing code
+                        while ($code == "") {
+                            $temp_code = rand(300000, 500000);
+
+                            $query_check_code = "SELECT * FROM users_account WHERE USERNAME='$username_forgot' LIMIT 1";
+                            $results_check_code = mysqli_query($link, $query_check_code);
+                            $fetch_check_code = mysqli_fetch_assoc($results_check_code);
+
+                            if ($fetch_check_code['VERIFY_CODE'] != $temp_code) {
+                                $code = $temp_code;
+                            }
+                        }
+
                         include('sendEmail.php');
                         $verify_code = "Enter code sent to your email.";
 

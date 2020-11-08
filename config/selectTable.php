@@ -352,6 +352,7 @@ else if ($q == 11) {
 <th>ACCOUNT_PASSWORD (HASHED)</th>
 <th>ADMIN</th>
 <th>ACTIVE</th>
+<th>VERIFY_CODE</th>
 </tr>";
             while ($row = mysqli_fetch_array($res)) {
                 echo "<tr>";
@@ -361,6 +362,7 @@ else if ($q == 11) {
                 echo "<td>" . $row['ACCOUNT_PASSWORD'] . "</td>";
                 echo "<td>" . $row['ADMIN'] . "</td>";
                 echo "<td>" . $row['ACTIVE'] . "</td>";
+                echo "<td>" . $row['VERIFY_CODE'] . "</td>";
                 echo "</tr>";
             }
             echo "</table>";
