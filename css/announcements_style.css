@@ -25,14 +25,17 @@
   text-align: center;
   font-weight: bold;
   font-size: 5vw;
+  cursor: default;
 }
 .carousel-announcement h2 {
   text-align: center;
   font-weight: bold;
   font-size: 4vw;
+  cursor: default;
 }
 .carousel-announcement h3 {
   margin-left: 9.5vw;
   text-align: left;
   font-size: 2vw;
+  cursor: default;
 }
