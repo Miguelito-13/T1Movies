@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1: 3325
--- Generation Time: Nov 01, 2020 at 03:23 AM
+-- Generation Time: Nov 07, 2020 at 02:33 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -282,19 +282,12 @@ INSERT INTO `tickets` (`TICKET_ID`, `RECEIPT_ID`, `COMPLETED`, `COMPLETED_ON`) V
 CREATE TABLE `users_account` (
   `ACCOUNT_ID` int(11) NOT NULL,
   `USERNAME` varchar(50) NOT NULL DEFAULT '',
-  `EMAIL` varchar(50) NOT NULL DEFAULT '',
+  `EMAIL` varchar(50) DEFAULT '',
   `ACCOUNT_PASSWORD` varchar(255) NOT NULL DEFAULT '12345',
-  `ADMIN` varchar(100) NOT NULL DEFAULT 'USER',
+  `ADMIN` varchar(100) NOT NULL DEFAULT 'USERS',
+  `VERIFY_CODE` int(11) NOT NULL DEFAULT 98765,
   `ACTIVE` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users_account`
---
-
-INSERT INTO `users_account` (`ACCOUNT_ID`, `USERNAME`, `EMAIL`, `ACCOUNT_PASSWORD`, `ADMIN`, `ACTIVE`) VALUES
-(1, 'BEASTMASTER69', 'allen@gmail.com', '12345', 'USER', 1),
-(2, '8Kobe24', 'kobe@gmail.com', 'ladksjflaskdjfkl', 'ADMIN', 1);
 
 -- --------------------------------------------------------
 
@@ -440,8 +433,7 @@ ALTER TABLE `tickets`
 --
 ALTER TABLE `users_account`
   ADD PRIMARY KEY (`ACCOUNT_ID`),
-  ADD UNIQUE KEY `USERNAME` (`USERNAME`),
-  ADD UNIQUE KEY `EMAIL` (`EMAIL`);
+  ADD UNIQUE KEY `USERS` (`USERNAME`,`EMAIL`,`VERIFY_CODE`);
 
 --
 -- Indexes for table `users_profile`
@@ -525,7 +517,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users_account`
 --
 ALTER TABLE `users_account`
-  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users_profile`
