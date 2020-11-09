@@ -20,12 +20,9 @@ include("header.php");
 
 <body>
     <!-- ?php echo htmlspecialchars($_SESSION["username"]); ? -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <button class="btn btn-primary ml-3" id="menu-toggle">Toggle Menu</button>
-        <div class="form-inline ml-4 my-2 my-lg-0 search-box">
-            <input type="text" autocomplete="off" class="form-control" placeholder="Search">
-            <div class="result"></div>
-        </div>
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark flex-md-nowrap p-1 shadow">
+        <button class="btn btn-primary ml-3" id="menu-toggle">Menu</button>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,6 +64,12 @@ include("header.php");
                     <div class="container-fluid p-3">
                         <h1>Dashboard</h1>
                         <hr />
+                        <h3>Recent Transactions: </h3>
+                        <h3>Total Movies: </h3>
+                        <h3>Movies (Now Showing): </h3>
+                        <h3>Movies (Coming Soon): </h3>
+                        <h3>Total Users:</h3>
+                        <h3>Total Users (Active): </h3>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="list-database" role="tabpanel" aria-labelledby="list-database-list">
@@ -76,7 +79,7 @@ include("header.php");
                         <hr />
                         <form class="">
                             <select name="tables" onchange="showTable(this.value)">
-                                <option value="">Select a table:</option>
+                                <option value="0">Select a table:</option>
                                 <option value="1">cinema</option>
                                 <option value="2">gender</option>
                                 <option value="3">genre</option>
@@ -93,13 +96,7 @@ include("header.php");
                             </select>
                         </form>
                         <br>
-                        <div id="txtHint" class="mb-4"><b>Table info will be listed here...</b>
-                            <br><br>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid">
-
+                        <div id="txtHint" class="mb-4"></div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="list-movies" role="tabpanel" aria-labelledby="list-movies-list">

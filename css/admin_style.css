@@ -68,27 +68,6 @@ th {
 body {
   font-family: Arial, sans-serif;
 }
-/* Formatting search box */
 
-.result {
-  position: fixed;
-  z-index: 999;
-  background: white;
-  top: 3rem;
-}
-.search-box input[type="text"],
-.result {
-  width: 400px;
-  box-sizing: border-box;
-}
-/* Formatting result items */
-.result p {
-  margin: 0;
-  padding: 7px 10px;
-  border: 1px solid #cccccc;
-  border-top: none;
-  cursor: pointer;
-}
-.result p:hover {
-  background: #f2f2f2;
+@media (max-width: 600px) {
 }

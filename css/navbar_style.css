@@ -71,6 +71,32 @@ header {
   box-shadow: none;
 }
 
+.search-result {
+  position: absolute;
+  z-index: 999;
+  top: 100%;
+  left: 0;
+}
+.search-box input[type="text"],
+.search-result {
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Formatting search-result items */
+.search-result p {
+  margin: 0;
+  padding: 7px 10px;
+  border: 1px solid #cccccc;
+  border-top: none;
+  cursor: pointer;
+}
+.search-result p:hover {
+  background: #f2f2f2;
+}
+
+@media (max-width: 600px) {
+}
+
 /* -------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Account */
 .account {

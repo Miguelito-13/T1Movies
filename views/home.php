@@ -18,12 +18,10 @@ include('header.php');
 
 <body class="bg-light">
   <?php
-    include('navbar.php');
-    include('announcements.php');
+  include('navbar.php');
+  include('announcements.php');
   ?>
-
   <hr />
-
   <!-- main body -->
   <section class="container-fluid">
     <div class="general-container">

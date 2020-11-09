@@ -3,8 +3,11 @@ $q = intval($_GET['q']);
 
 require_once "config.php";
 
+if ($q == 0) {
+    echo "<b>Table info will be listed here...</b><br><br>";
+}
 // cinema
-if ($q == 1) {
+else if ($q == 1) {
     $sql = "SELECT * FROM cinema";
     if ($res = mysqli_query($link, $sql)) {
         if (mysqli_num_rows($res) > 0) {
@@ -101,7 +104,8 @@ else if ($q == 4) {
     $sql = "SELECT * FROM movies";
     if ($res = mysqli_query($link, $sql)) {
         if (mysqli_num_rows($res) > 0) {
-            echo "<table>
+            echo '
+            <table>
 <tr>
 <th>MOVIE_ID</th>
 <th>MOVIE_TITLE</th>
@@ -118,7 +122,7 @@ else if ($q == 4) {
 <th>MODIFIED_ON</th>
 <th>MODIFIED_BY</th>
 <th>ACTIVE</th>
-</tr>";
+</tr>';
             while ($row = mysqli_fetch_array($res)) {
                 echo "<tr>";
                 echo "<td>" . $row['MOVIE_ID'] . "</td>";
@@ -351,8 +355,8 @@ else if ($q == 11) {
 <th>EMAIL</th>
 <th>ACCOUNT_PASSWORD (HASHED)</th>
 <th>ADMIN</th>
-<th>ACTIVE</th>
 <th>VERIFY_CODE</th>
+<th>ACTIVE</th>
 </tr>";
             while ($row = mysqli_fetch_array($res)) {
                 echo "<tr>";
@@ -361,8 +365,8 @@ else if ($q == 11) {
                 echo "<td>" . $row['EMAIL'] . "</td>";
                 echo "<td>" . $row['ACCOUNT_PASSWORD'] . "</td>";
                 echo "<td>" . $row['ADMIN'] . "</td>";
-                echo "<td>" . $row['ACTIVE'] . "</td>";
                 echo "<td>" . $row['VERIFY_CODE'] . "</td>";
+                echo "<td>" . $row['ACTIVE'] . "</td>";
                 echo "</tr>";
             }
             echo "</table>";

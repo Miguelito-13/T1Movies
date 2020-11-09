@@ -42,11 +42,14 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
           </div>
         </li>
       </ul>
+
       <!-- Search form -->
       <form class="form-inline form-search-custom">
-        <input class="form-control search-custom" type="text" placeholder="Movie Title" aria-label="Search">
-        <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true"></i>
+        <input id="search" class="form-control search-custom" type="text" placeholder="Movie Title" autocomplete="off" aria-label="Search">
+        <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true" type="submit"></i>
+        <div class="search-result"></div>
       </form>
+
     </div>
     <div id="id01" class="modal">
       <?php include('login_form.php'); ?>
@@ -77,5 +80,38 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
   } else {
     document.getElementById('id_logout').style.display = "none";
     document.getElementById('id_loginregister').style.display = "block";
+  }
+
+  // Search
+  let search = document.getElementById("search");
+  window.onclick = function(event) {
+    if (event.target == search) {
+      $(document).ready(function() {
+        $('.form-search-custom input[type="text"]').on("keyup input", function() {
+          /* Get input value on change */
+          var inputVal = $(this).val();
+          var resultDropdown = $(this).siblings(".search-result");
+          if (inputVal.length) {
+            $.get("../config/functions.php", {
+              search_term: inputVal,
+            }).done(function(data) {
+              // Display the returned data in browser
+              resultDropdown.html(data);
+            });
+          } else {
+            resultDropdown.empty();
+          }
+        });
+
+        // Set search input value on click of result item
+        $(document).on("click", ".search-result p", function() {
+          $(this)
+            .parents(".form-search-custom")
+            .find('input[type="text"]')
+            .val($(this).text());
+          $(this).parent(".search-result").empty();
+        });
+      });
+    }
   }
 </script>
