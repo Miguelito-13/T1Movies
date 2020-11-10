@@ -71,11 +71,11 @@ header {
   box-shadow: none;
 }
 
-.search-result {  
-  position: absolute; 
+.search-result {
+  position: absolute;
   z-index: 999;
   top: 100%;
-  background-color:#1c1a18;
+  background-color: #1c1a18;
   min-width: 210px;
 }
 /* Formatting search-result items */
@@ -91,9 +91,10 @@ header {
 .search-result p:hover {
   background: #ffba00;
 }
-form, i{
+.form-search-custom,
+.form-search-custom i {
   caret-color: #ffba00;
-  color:#ffba00;
+  color: #ffba00;
 }
 
 @media (max-width: 600px) {
