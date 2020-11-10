@@ -60,6 +60,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 <script>
   // Modal call
   let modal = document.getElementById('id01');
+  let search = document.getElementById('search');
 
   //Close when clicked outside
   window.onclick = function(event) {
@@ -70,22 +71,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
     }
-  }
-
-  //Show Logout, Hide Register
-  let show_logout = "<?php echo $show_logout ?>";
-  if (show_logout === "show") {
-    document.getElementById('id_logout').style.display = "block";
-    document.getElementById('id_loginregister').style.display = "none";
-  } else {
-    document.getElementById('id_logout').style.display = "none";
-    document.getElementById('id_loginregister').style.display = "block";
-  }
-
-  // Search
-  let search = document.getElementById("search");
-  window.onclick = function(event) {
-    if (event.target == search) {
+    else if (event.target == search)
+    {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -113,5 +100,18 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         });
       });
     }
+  };
+
+  //Show Logout, Hide Register
+  let show_logout = "<?php echo $show_logout ?>";
+  if (show_logout === "show") {
+    document.getElementById('id_logout').style.display = "block";
+    document.getElementById('id_loginregister').style.display = "none";
+  } else {
+    document.getElementById('id_logout').style.display = "none";
+    document.getElementById('id_loginregister').style.display = "block";
   }
+
+  // Search
+ 
 </script>
