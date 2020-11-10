@@ -91,6 +91,10 @@ header {
 .search-result p:hover {
   background: #ffba00;
 }
+form, i{
+  caret-color: #ffba00;
+  color:#ffba00;
+}
 
 @media (max-width: 600px) {
 }
