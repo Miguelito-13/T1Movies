@@ -11,7 +11,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 <header class="container-fluid" style="margin-bottom: 98px">
   <nav class="navbar navbar-expand-md navbar-custom fixed-top px-5 py-0">
     <a class="navbar-brand logo" href="home.php">
-      <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="mx-auto my-1" style="height: 80px">
+      <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="mx-auto my-2" style="height: 70px">
     </a>
     <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon "></span>
