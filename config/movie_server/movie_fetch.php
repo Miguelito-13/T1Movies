@@ -43,6 +43,7 @@ foreach ($result as $row) {
         $sub_array[] = '<span class="text-success">(2) Now Showing</span>';
     }
     $sub_array[] = '<button data-toggle="modal" data-target="#movieModal" style="width: 100%" type="button" name="update" id="' . $row["MOVIE_ID"] . '" class="btn btn-info btn-sm update">Edit</button>';
+
     $data[] = $sub_array;
 }
 $output = array(

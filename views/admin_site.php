@@ -112,6 +112,12 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 <div class="tab-pane fade" id="list-movies" role="tabpanel" aria-labelledby="list-movies-list">
                     <!-- Content -->
                     <div class="container-fluid p-3">
+                        <h1 class="text-danger">THIS IS NOT WORKING!</h1>
+                        <hr />
+                        <h3 class="text-secondary">Access Below:</h3>
+                        <hr />
+                        <h4><a class="text-info" href="http://localhost/t1/front_end/config/movie_server/movie_index.php" target="_blank">http://localhost/t1/front_end/config/movie_server/movie_index.php</a></h4>
+                        <hr />
                         <h2>Movies</h2>
                         <hr />
                         <!-- Movies Table -->

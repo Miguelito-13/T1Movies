@@ -17,7 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body class="bg-secondary">
+<body class="bg-light">
     <div class="content" style="margin: 0 20% 0 20%">
         <h2>Movies</h2>
         <hr />
@@ -48,7 +48,7 @@
         <form method="post" id="movie_form" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title"></h4>
+                    <h4 class="modal-title">Add Movie</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
@@ -116,10 +116,10 @@
                         <label for="thriller">Thriller&nbsp;&nbsp;</label>
                     </div>
                     <!-- End of Genre -->
-                    <label class="title">Movie Poster *</label><br>
-                    <input type="file" name="movie_image" accept="image/*" /><br>
-                    <label class="title">Movie Poster Background *</label><br>
-                    <input type="file" name="movie_image_bg" accept="image/*" />
+                    <label class="p-title">Movie Poster *</label><br>
+                    <input id="poster" type="file" name="movie_image" accept="image/*" /><br>
+                    <label class="pbg-title">Movie Poster Background</label><br>
+                    <input id="poster_bg" type="file" name="movie_image_bg" accept="image/*" />
                     <br>
                     <label class="title">Movie Trailer *</label>
                     <input type="text" name="trailer" id="trailer" class="form-control" placeholder="URL Link" />
@@ -138,13 +138,13 @@
                     </div>
                     <div id="movie_branch" style="display: none;">
                         <label class="title">Movie Branch *</label><br>
-                        <input type="checkbox" id="Manila" name="branch" value=1>
+                        <input type="checkbox" id="Manila" name="Manila" value=1>
                         <label for="Manila">Manila &nbsp;</label>
-                        <input type="checkbox" id="Marikina" name="branch" value=2>
+                        <input type="checkbox" id="Marikina" name="Marikina" value=2>
                         <label for="Marikina">Marikina &nbsp;</label>
-                        <input type="checkbox" id="North" name="branch" value=3>
+                        <input type="checkbox" id="North" name="North" value=3>
                         <label for="North">North Edsa &nbsp;</label>
-                        <input type="checkbox" id="Bacoor" name="branch" value=4>
+                        <input type="checkbox" id="Bacoor" name="Bacoor" value=4>
                         <label for="Bacoor">Bacoor &nbsp;</label>
                         <br>
                     </div>
@@ -223,6 +223,8 @@
             $(".modal-title").text("Add Movie Details");
             $("#action").val("Add");
             $("#operation").val("Add");
+            $('.p-title').text("Movie Poster *");
+            $('.pbg-title').text("Movie Poster Background");
 
             // Hide on close
             $("#movie_branch").hide();
@@ -236,6 +238,149 @@
         $('input[name="movie_active"]').change(function() {
             if (this.value == 2) {
                 $("#movie_branch").show();
+
+                // Update
+                $("#active_now").prop('checked', true);
+                if ($('#active_now').is(':checked')) {
+                    var movie_active = $(this).attr("id");
+                    $.ajax({
+                        url: "movie_fetch_single.php",
+                        method: "POST",
+                        data: {
+                            movie_active: movie_active
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            // Manila
+                            // 1
+                            if (data.act_1 == 1) {
+                                $('#1_manila').attr('disabled', true);
+                            } else {
+                                $('#1_manila').attr('disabled', false);
+                            }
+                            // 2
+                            if (data.act_2 == 1) {
+                                $('#2_manila').attr('disabled', true);
+                            } else {
+                                $('#2_manila').attr('disabled', false);
+                            }
+                            // 3
+                            if (data.act_3 == 1) {
+                                $('#3_manila').attr('disabled', true);
+                            } else {
+                                $('#3_manila').attr('disabled', false);
+                            }
+                            // 4
+                            if (data.act_4 == 1) {
+                                $('#4_manila').attr('disabled', true);
+                            } else {
+                                $('#4_manila').attr('disabled', false);
+                            }
+                            // 5
+                            if (data.act_5 == 1) {
+                                $('#5_manila').attr('disabled', true);
+                            } else {
+                                $('#5_manila').attr('disabled', false);
+                            }
+
+                            // Marikina
+                            // 1
+                            if (data.act_6 == 1) {
+                                $('#1_marikina').attr('disabled', true);
+                            } else {
+                                $('#1_marikina').attr('disabled', false);
+                            }
+                            // 2
+                            if (data.act_7 == 1) {
+                                $('#2_marikina').attr('disabled', true);
+                            } else {
+                                $('#2_marikina').attr('disabled', false);
+                            }
+                            // 3
+                            if (data.act_8 == 1) {
+                                $('#3_marikina').attr('disabled', true);
+                            } else {
+                                $('#3_marikina').attr('disabled', false);
+                            }
+                            // 4
+                            if (data.act_9 == 1) {
+                                $('#4_marikina').attr('disabled', true);
+                            } else {
+                                $('#4_marikina').attr('disabled', false);
+                            }
+                            // 5
+                            if (data.act_10 == 1) {
+                                $('#5_marikina').attr('disabled', true);
+                            } else {
+                                $('#5_marikina').attr('disabled', false);
+                            }
+
+                            // North
+                            // 1
+                            if (data.act_11 == 1) {
+                                $('#1_north').attr('disabled', true);
+                            } else {
+                                $('#1_north').attr('disabled', false);
+                            }
+                            // 2
+                            if (data.act_12 == 1) {
+                                $('#2_north').attr('disabled', true);
+                            } else {
+                                $('#2_north').attr('disabled', false);
+                            }
+                            // 3
+                            if (data.act_13 == 1) {
+                                $('#3_north').attr('disabled', true);
+                            } else {
+                                $('#3_north').attr('disabled', false);
+                            }
+                            // 4
+                            if (data.act_14 == 1) {
+                                $('#4_north').attr('disabled', true);
+                            } else {
+                                $('#4_north').attr('disabled', false);
+                            }
+                            // 5
+                            if (data.act_15 == 1) {
+                                $('#5_north').attr('disabled', true);
+                            } else {
+                                $('#5_north').attr('disabled', false);
+                            }
+
+                            // Bacoor
+                            // 1
+                            if (data.act_16 == 1) {
+                                $('#1_bacoor').attr('disabled', true);
+                            } else {
+                                $('#1_bacoor').attr('disabled', false);
+                            }
+                            // 2
+                            if (data.act_17 == 1) {
+                                $('#2_bacoor').attr('disabled', true);
+                            } else {
+                                $('#2_bacoor').attr('disabled', false);
+                            }
+                            // 3
+                            if (data.act_18 == 1) {
+                                $('#3_bacoor').attr('disabled', true);
+                            } else {
+                                $('#3_bacoor').attr('disabled', false);
+                            }
+                            // 4
+                            if (data.act_19 == 1) {
+                                $('#4_bacoor').attr('disabled', true);
+                            } else {
+                                $('#4_bacoor').attr('disabled', false);
+                            }
+                            // 5
+                            if (data.act_20 == 1) {
+                                $('#5_bacoor').attr('disabled', true);
+                            } else {
+                                $('#5_bacoor').attr('disabled', false);
+                            }
+                        },
+                    });
+                }
             } else {
                 $("#movie_branch").hide();
                 $("#cinema_manila").hide();
@@ -254,25 +399,31 @@
         });
 
         // Movies - show cinema
-        $('input[name="branch"]').change(function() {
+        $('input[name="Manila"]').change(function() {
             if ($('#Manila').is(':checked')) {
                 $("#cinema_manila").show();
             } else {
                 $("#cinema_manila").hide();
                 $('input[name="cinema_manila"]').prop('checked', false);
             }
+        });
+        $('input[name="Marikina"]').change(function() {
             if ($('#Marikina').is(':checked')) {
                 $("#cinema_marikina").show();
             } else {
                 $("#cinema_marikina").hide();
                 $('input[name="cinema_marikina"]').prop('checked', false);
             }
+        });
+        $('input[name="North"]').change(function() {
             if ($('#North').is(':checked')) {
                 $("#cinema_north").show();
             } else {
                 $("#cinema_north").hide();
                 $('input[name="cinema_north"]').prop('checked', false);
             }
+        });
+        $('input[name="Bacoor"]').change(function() {
             if ($('#Bacoor').is(':checked')) {
                 $("#cinema_bacoor").show();
             } else {
@@ -280,6 +431,7 @@
                 $('input[name="cinema_bacoor"]').prop('checked', false);
             }
         });
+
 
         // Fetch
         var dataTable = $('#movie_table').DataTable({
@@ -373,7 +525,6 @@
             } else {
                 var thriller = 0;
             }
-            //movie_image
             var trailer = $("#trailer").val();
             var premiereDate = $("#premiereDate").val();
             var movie_active = $("input[name='movie_active']:checked").val();
@@ -505,7 +656,7 @@
             }
         });
 
-        // Fetch Single
+        // Update
         $(document).on('click', '.update', function() {
             var movie_id = $(this).attr("id");
             $.ajax({
@@ -634,17 +785,234 @@
                         $('input[name="cinema_marikina"]').prop('checked', false);
                         $('input[name="cinema_north"]').prop('checked', false);
                         $('input[name="cinema_bacoor"]').prop('checked', false);
-                    } else {
+                    } else if (data.movie_active == 2) {
                         $("#active_now").prop('checked', true);
                         $("#movie_branch").show();
+                        if (data.Manila == 1) {
+                            $("#Manila").prop('checked', true);
+                            $("#cinema_manila").show();
+                            if (data.cinema_manila == 1) {
+                                $("#1_manila").prop('checked', true);
+                            } else if (data.cinema_manila == 2) {
+                                $("#2_manila").prop('checked', true);
+                            } else if (data.cinema_manila == 3) {
+                                $("#3_manila").prop('checked', true);
+                            } else if (data.cinema_manila == 4) {
+                                $("#4_manila").prop('checked', true);
+                            } else {
+                                $("#5_manila").prop('checked', true);
+                            }
+                        } else {
+                            $("#Manila").prop('checked', false);
+                            $("#cinema_manila").hide();
+                            $('input[name="cinema_manila"]').prop('checked', false);
+                        }
+                        if (data.Marikina == 2) {
+                            $("#Marikina").prop('checked', true);
+                            $("#cinema_marikina").show();
+                            if (data.cinema_marikina == 1) {
+                                $("#1_marikina").prop('checked', true);
+                            } else if (data.cinema_marikina == 2) {
+                                $("#2_marikina").prop('checked', true);
+                            } else if (data.cinema_marikina == 3) {
+                                $("#3_marikina").prop('checked', true);
+                            } else if (data.cinema_marikina == 4) {
+                                $("#4_marikina").prop('checked', true);
+                            } else {
+                                $("#5_marikina").prop('checked', true);
+                            }
+                        } else {
+                            $("#Marikina").prop('checked', false);
+                            $("#cinema_marikina").hide();
+                            $('input[name="cinema_marikina"]').prop('checked', false);
+                        }
+                        if (data.North == 3) {
+                            $("#North").prop('checked', true);
+                            $("#cinema_north").show();
+                            if (data.cinema_north == 1) {
+                                $("#1_north").prop('checked', true);
+                            } else if (data.cinema_north == 2) {
+                                $("#2_north").prop('checked', true);
+                            } else if (data.cinema_north == 3) {
+                                $("#3_north").prop('checked', true);
+                            } else if (data.cinema_north == 4) {
+                                $("#4_north").prop('checked', true);
+                            } else {
+                                $("#5_north").prop('checked', true);
+                            }
+                        } else {
+                            $("#North").prop('checked', false);
+                            $("#cinema_north").hide();
+                            $('input[name="cinema_north"]').prop('checked', false);
+                        }
+                        if (data.Bacoor == 4) {
+                            $("#Bacoor").prop('checked', true);
+                            $("#cinema_bacoor").show();
+                            if (data.cinema_bacoor == 1) {
+                                $("#1_bacoor").prop('checked', true);
+                            } else if (data.cinema_bacoor == 2) {
+                                $("#2_bacoor").prop('checked', true);
+                            } else if (data.cinema_bacoor == 3) {
+                                $("#3_bacoor").prop('checked', true);
+                            } else if (data.cinema_bacoor == 4) {
+                                $("#4_bacoor").prop('checked', true);
+                            } else {
+                                $("#5_bacoor").prop('checked', true);
+                            }
+                        } else {
+                            $("#Bacoor").prop('checked', false);
+                            $("#cinema_bacoor").hide();
+                            $('input[name="cinema_bacoor"]').prop('checked', false);
+                        }
                     }
+
                     $('.modal-title').text("Edit Movie Details");
+                    $('.p-title').text("Update Movie Poster");
+                    $('.pbg-title').text("Update Movie Poster Background");
                     $('#movie_id').val(movie_id);
                     $('#action').val("Save");
                     $('#operation').val("Edit");
                 }
             });
         });
+        // Update
+        var movie_active = $(this).attr("id");
+        $.ajax({
+            url: "movie_fetch_single.php",
+            method: "POST",
+            data: {
+                movie_active: movie_active
+            },
+            dataType: "json",
+            success: function(data) {
+                // Manila
+                // 1
+                if (data.act_1 == 1) {
+                    $('#1_manila').attr('disabled', true);
+                } else {
+                    $('#1_manila').attr('disabled', false);
+                }
+                // 2
+                if (data.act_2 == 1) {
+                    $('#2_manila').attr('disabled', true);
+                } else {
+                    $('#2_manila').attr('disabled', false);
+                }
+                // 3
+                if (data.act_3 == 1) {
+                    $('#3_manila').attr('disabled', true);
+                } else {
+                    $('#3_manila').attr('disabled', false);
+                }
+                // 4
+                if (data.act_4 == 1) {
+                    $('#4_manila').attr('disabled', true);
+                } else {
+                    $('#4_manila').attr('disabled', false);
+                }
+                // 5
+                if (data.act_5 == 1) {
+                    $('#5_manila').attr('disabled', true);
+                } else {
+                    $('#5_manila').attr('disabled', false);
+                }
 
+                // Marikina
+                // 1
+                if (data.act_6 == 1) {
+                    $('#1_marikina').attr('disabled', true);
+                } else {
+                    $('#1_marikina').attr('disabled', false);
+                }
+                // 2
+                if (data.act_7 == 1) {
+                    $('#2_marikina').attr('disabled', true);
+                } else {
+                    $('#2_marikina').attr('disabled', false);
+                }
+                // 3
+                if (data.act_8 == 1) {
+                    $('#3_marikina').attr('disabled', true);
+                } else {
+                    $('#3_marikina').attr('disabled', false);
+                }
+                // 4
+                if (data.act_9 == 1) {
+                    $('#4_marikina').attr('disabled', true);
+                } else {
+                    $('#4_marikina').attr('disabled', false);
+                }
+                // 5
+                if (data.act_10 == 1) {
+                    $('#5_marikina').attr('disabled', true);
+                } else {
+                    $('#5_marikina').attr('disabled', false);
+                }
+
+                // North
+                // 1
+                if (data.act_11 == 1) {
+                    $('#1_north').attr('disabled', true);
+                } else {
+                    $('#1_north').attr('disabled', false);
+                }
+                // 2
+                if (data.act_12 == 1) {
+                    $('#2_north').attr('disabled', true);
+                } else {
+                    $('#2_north').attr('disabled', false);
+                }
+                // 3
+                if (data.act_13 == 1) {
+                    $('#3_north').attr('disabled', true);
+                } else {
+                    $('#3_north').attr('disabled', false);
+                }
+                // 4
+                if (data.act_14 == 1) {
+                    $('#4_north').attr('disabled', true);
+                } else {
+                    $('#4_north').attr('disabled', false);
+                }
+                // 5
+                if (data.act_15 == 1) {
+                    $('#5_north').attr('disabled', true);
+                } else {
+                    $('#5_north').attr('disabled', false);
+                }
+
+                // Bacoor
+                // 1
+                if (data.act_16 == 1) {
+                    $('#1_bacoor').attr('disabled', true);
+                } else {
+                    $('#1_bacoor').attr('disabled', false);
+                }
+                // 2
+                if (data.act_17 == 1) {
+                    $('#2_bacoor').attr('disabled', true);
+                } else {
+                    $('#2_bacoor').attr('disabled', false);
+                }
+                // 3
+                if (data.act_18 == 1) {
+                    $('#3_bacoor').attr('disabled', true);
+                } else {
+                    $('#3_bacoor').attr('disabled', false);
+                }
+                // 4
+                if (data.act_19 == 1) {
+                    $('#4_bacoor').attr('disabled', true);
+                } else {
+                    $('#4_bacoor').attr('disabled', false);
+                }
+                // 5
+                if (data.act_20 == 1) {
+                    $('#5_bacoor').attr('disabled', true);
+                } else {
+                    $('#5_bacoor').attr('disabled', false);
+                }
+            },
+        });
     });
 </script>

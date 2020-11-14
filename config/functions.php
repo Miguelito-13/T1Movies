@@ -511,7 +511,10 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 
                             // Set new password
                             if (empty($password_err_forgot) && empty($confirm_password_err_forgot)) {
-                                $sql_reset = "UPDATE users_account SET ACCOUNT_PASSWORD = ? WHERE USERNAME = '$username_forgot'";
+                                $dt = new DateTime();
+                                $today = $dt->format('Y-m-d H:i:s');
+
+                                $sql_reset = "UPDATE users_account SET ACCOUNT_PASSWORD = ?, MODIFIED_ON = '$today' WHERE USERNAME = '$username_forgot'";
 
                                 if ($stmt = mysqli_prepare($link, $sql_reset)) {
                                     mysqli_stmt_bind_param($stmt, "s", $param_password);
