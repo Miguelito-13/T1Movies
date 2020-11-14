@@ -57,12 +57,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
-  // Modal call
   let modal = document.getElementById("id01");
+  let search = document.getElementById("search");
 
   //Close when clicked outside
   window.onclick = function(event) {
+    // Login
     if (event.target == modal) {
       modal.style.display = "none";
       document.getElementById("error1").style.display = "none";
@@ -70,12 +72,8 @@
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
     }
-  };
-
-  // Search
-  let search = document.getElementById("search");
-  window.onclick = function(event) {
-    if (event.target == search) {
+    // Search
+    else if (event.target == search) {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -103,5 +101,5 @@
         });
       });
     }
-  }
+  };
 </script>

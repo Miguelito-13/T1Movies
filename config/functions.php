@@ -514,16 +514,13 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                                 $sql_reset = "UPDATE users_account SET ACCOUNT_PASSWORD = ? WHERE USERNAME = '$username_forgot'";
 
                                 if ($stmt = mysqli_prepare($link, $sql_reset)) {
-                                    // Bind variables to the prepared statement as parameters
                                     mysqli_stmt_bind_param($stmt, "s", $param_password);
 
-                                    // Set parameters
                                     $param_password = password_hash($password_forgot, PASSWORD_DEFAULT);
 
-                                    // Attempt to execute the prepared statement
                                     if (mysqli_stmt_execute($stmt)) {
 
-                                        // Password updated successfully. 
+                                        // Password updated successful
                                         echo '<script type="text/javascript">alert("Password reset is successful. Please login to continue."); </script>';
 
                                         $show_code = "reset";
@@ -560,23 +557,16 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 
 // Search
 if (isset($_REQUEST["search_term"])) {
-    // Prepare a select statement
-    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE ?";
+    $search = $_REQUEST["search_term"];
+
+    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$search%'";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_term);
 
-        // Set parameters
-        $param_term = $_REQUEST["search_term"] . '%';
-
-        // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
             $result = mysqli_stmt_get_result($stmt);
 
-            // Check number of rows in the result set
             if (mysqli_num_rows($result) > 0) {
-                // Fetch result rows as an associative array
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     echo "<p>" . $row["MOVIE_TITLE"] . "</p>";
                 }
@@ -588,7 +578,6 @@ if (isset($_REQUEST["search_term"])) {
         }
     }
 
-    // Close statement
     mysqli_stmt_close($stmt);
 
     // close connection
