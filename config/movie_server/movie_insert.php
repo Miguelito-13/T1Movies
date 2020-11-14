@@ -250,6 +250,24 @@ if (isset($_POST["operation"])) {
             $result = $statement->execute(['0', $curr_id]);
             $statement = $connection->prepare("UPDATE now_showing SET ACTIVE = ?, MODIFIED_ON = '$today' WHERE MOVIE_ID = ?");
             $result = $statement->execute(['0', $curr_id]);
+
+            // CINEMA
+            if (empty($_POST["Manila"])) {
+                $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND MOVIE_ID = '$curr_id'");
+                $result = $statement->execute();
+            }
+            if (empty($_POST["Marikina"])) {
+                $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND MOVIE_ID = '$curr_id'");
+                $result = $statement->execute();
+            }
+            if (empty($_POST["North"])) {
+                $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND MOVIE_ID = '$curr_id'");
+                $result = $statement->execute();
+            }
+            if (empty($_POST["Bacoor"])) {
+                $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND MOVIE_ID = '$curr_id'");
+                $result = $statement->execute();
+            }
         }
 
         // COMING SOON
