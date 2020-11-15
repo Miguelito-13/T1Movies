@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2020 at 04:30 PM
+-- Generation Time: Nov 15, 2020 at 10:58 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -42,26 +42,26 @@ CREATE TABLE `cinema` (
 --
 
 INSERT INTO `cinema` (`CINEMA_ID`, `BRANCH_ID`, `CINEMA_NO`, `NO_SEATS`, `MOVIE_ID`, `ACTIVE`, `MODIFIED_ON`) VALUES
-(1, 1, 1, 300, NULL, 0, '2020-11-14 16:02:44'),
-(2, 1, 2, 300, NULL, 0, '2020-11-14 15:50:07'),
-(3, 1, 3, 300, NULL, 0, '2020-11-14 14:49:00'),
-(4, 1, 4, 300, NULL, 0, '2020-11-14 15:50:07'),
-(5, 1, 5, 300, NULL, 0, '2020-11-14 15:58:33'),
-(6, 2, 1, 300, NULL, 0, '2020-11-14 16:02:44'),
-(7, 2, 2, 300, NULL, 0, '2020-11-14 15:50:07'),
-(8, 2, 3, 300, NULL, 0, '2020-11-14 14:49:00'),
-(9, 2, 4, 300, NULL, 0, '2020-11-14 15:50:07'),
-(10, 2, 5, 300, NULL, 0, '2020-11-14 15:58:33'),
-(11, 3, 1, 300, NULL, 0, '2020-11-14 16:02:44'),
-(12, 3, 2, 300, NULL, 0, '2020-11-14 15:50:07'),
-(13, 3, 3, 300, NULL, 0, '2020-11-14 14:49:00'),
-(14, 3, 4, 300, NULL, 0, '2020-11-14 15:50:07'),
-(15, 3, 5, 300, NULL, 0, '2020-11-14 15:58:33'),
-(16, 4, 1, 300, NULL, 0, '2020-11-14 16:02:44'),
-(17, 4, 2, 300, NULL, 0, '2020-11-14 15:50:07'),
-(18, 4, 3, 300, NULL, 0, '2020-11-14 14:49:00'),
-(19, 4, 4, 300, NULL, 0, '2020-11-14 15:50:07'),
-(20, 4, 5, 300, NULL, 0, '2020-11-14 15:58:33');
+(1, 1, 1, 80, NULL, 0, '2020-11-15 17:49:11'),
+(2, 1, 2, 80, NULL, 0, '2020-11-15 17:49:08'),
+(3, 1, 3, 80, NULL, 0, '2020-11-15 17:49:11'),
+(4, 1, 4, 80, NULL, 0, '2020-11-14 15:50:07'),
+(5, 1, 5, 80, NULL, 0, '2020-11-15 17:49:11'),
+(6, 2, 1, 80, NULL, 0, '2020-11-15 17:49:11'),
+(7, 2, 2, 80, NULL, 0, '2020-11-15 17:49:08'),
+(8, 2, 3, 80, NULL, 0, '2020-11-15 17:49:11'),
+(9, 2, 4, 80, NULL, 0, '2020-11-14 15:50:07'),
+(10, 2, 5, 80, NULL, 0, '2020-11-15 17:49:11'),
+(11, 3, 1, 80, NULL, 0, '2020-11-15 17:49:11'),
+(12, 3, 2, 80, NULL, 0, '2020-11-15 17:49:08'),
+(13, 3, 3, 80, NULL, 0, '2020-11-15 17:49:11'),
+(14, 3, 4, 80, NULL, 0, '2020-11-14 15:50:07'),
+(15, 3, 5, 80, NULL, 0, '2020-11-14 15:58:33'),
+(16, 4, 1, 80, NULL, 0, '2020-11-15 17:49:11'),
+(17, 4, 2, 80, NULL, 0, '2020-11-15 17:49:08'),
+(18, 4, 3, 80, NULL, 0, '2020-11-15 17:49:11'),
+(19, 4, 4, 80, NULL, 0, '2020-11-15 10:42:55'),
+(20, 4, 5, 80, NULL, 0, '2020-11-15 17:49:08');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,7 @@ INSERT INTO `cinema` (`CINEMA_ID`, `BRANCH_ID`, `CINEMA_NO`, `NO_SEATS`, `MOVIE_
 --
 
 CREATE TABLE `coming_soon` (
-  `CINEMA_ID` int(11) NOT NULL,
+  `COMING_ID` int(11) NOT NULL,
   `MOVIE_ID` int(11) DEFAULT NULL,
   `ACTIVE` int(11) DEFAULT NULL,
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
@@ -313,7 +313,7 @@ ALTER TABLE `cinema`
 -- Indexes for table `coming_soon`
 --
 ALTER TABLE `coming_soon`
-  ADD PRIMARY KEY (`CINEMA_ID`),
+  ADD PRIMARY KEY (`COMING_ID`),
   ADD KEY `MOVIE_ID` (`MOVIE_ID`);
 
 --
@@ -400,7 +400,7 @@ ALTER TABLE `cinema`
 -- AUTO_INCREMENT for table `coming_soon`
 --
 ALTER TABLE `coming_soon`
-  MODIFY `CINEMA_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `COMING_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `gender`

@@ -12,7 +12,7 @@
 
     <!-- datatable lib -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -241,7 +241,7 @@
 
                 // Update
                 $("#active_now").prop('checked', true);
-                if ($('#active_now').is(':checked')) {
+                if ($('#active_now').prop("checked") == true) {
                     var movie_active = $(this).attr("id");
                     $.ajax({
                         url: "movie_fetch_single.php",
@@ -863,6 +863,148 @@
                             $("#Bacoor").prop('checked', false);
                             $("#cinema_bacoor").hide();
                             $('input[name="cinema_bacoor"]').prop('checked', false);
+                        }
+
+                        // Disable
+                        if ($('#active_now').prop("checked") == true) {
+                            var movie_active = data.movie_active;
+                            $.ajax({
+                                url: "movie_fetch_single.php",
+                                method: "POST",
+                                data: {
+                                    movie_active: movie_active
+                                },
+                                dataType: "json",
+                                success: function(data) {
+                                    // Manila
+                                    // 1
+                                    if (data.act_1 == 1) {
+                                        $('#1_manila').attr('disabled', true);
+                                    } else {
+                                        $('#1_manila').attr('disabled', false);
+                                    }
+                                    // 2
+                                    if (data.act_2 == 1) {
+                                        $('#2_manila').attr('disabled', true);
+                                    } else {
+                                        $('#2_manila').attr('disabled', false);
+                                    }
+                                    // 3
+                                    if (data.act_3 == 1) {
+                                        $('#3_manila').attr('disabled', true);
+                                    } else {
+                                        $('#3_manila').attr('disabled', false);
+                                    }
+                                    // 4
+                                    if (data.act_4 == 1) {
+                                        $('#4_manila').attr('disabled', true);
+                                    } else {
+                                        $('#4_manila').attr('disabled', false);
+                                    }
+                                    // 5
+                                    if (data.act_5 == 1) {
+                                        $('#5_manila').attr('disabled', true);
+                                    } else {
+                                        $('#5_manila').attr('disabled', false);
+                                    }
+
+                                    // Marikina
+                                    // 1
+                                    if (data.act_6 == 1) {
+                                        $('#1_marikina').attr('disabled', true);
+                                    } else {
+                                        $('#1_marikina').attr('disabled', false);
+                                    }
+                                    // 2
+                                    if (data.act_7 == 1) {
+                                        $('#2_marikina').attr('disabled', true);
+                                    } else {
+                                        $('#2_marikina').attr('disabled', false);
+                                    }
+                                    // 3
+                                    if (data.act_8 == 1) {
+                                        $('#3_marikina').attr('disabled', true);
+                                    } else {
+                                        $('#3_marikina').attr('disabled', false);
+                                    }
+                                    // 4
+                                    if (data.act_9 == 1) {
+                                        $('#4_marikina').attr('disabled', true);
+                                    } else {
+                                        $('#4_marikina').attr('disabled', false);
+                                    }
+                                    // 5
+                                    if (data.act_10 == 1) {
+                                        $('#5_marikina').attr('disabled', true);
+                                    } else {
+                                        $('#5_marikina').attr('disabled', false);
+                                    }
+
+                                    // North
+                                    // 1
+                                    if (data.act_11 == 1) {
+                                        $('#1_north').attr('disabled', true);
+                                    } else {
+                                        $('#1_north').attr('disabled', false);
+                                    }
+                                    // 2
+                                    if (data.act_12 == 1) {
+                                        $('#2_north').attr('disabled', true);
+                                    } else {
+                                        $('#2_north').attr('disabled', false);
+                                    }
+                                    // 3
+                                    if (data.act_13 == 1) {
+                                        $('#3_north').attr('disabled', true);
+                                    } else {
+                                        $('#3_north').attr('disabled', false);
+                                    }
+                                    // 4
+                                    if (data.act_14 == 1) {
+                                        $('#4_north').attr('disabled', true);
+                                    } else {
+                                        $('#4_north').attr('disabled', false);
+                                    }
+                                    // 5
+                                    if (data.act_15 == 1) {
+                                        $('#5_north').attr('disabled', true);
+                                    } else {
+                                        $('#5_north').attr('disabled', false);
+                                    }
+
+                                    // Bacoor
+                                    // 1
+                                    if (data.act_16 == 1) {
+                                        $('#1_bacoor').attr('disabled', true);
+                                    } else {
+                                        $('#1_bacoor').attr('disabled', false);
+                                    }
+                                    // 2
+                                    if (data.act_17 == 1) {
+                                        $('#2_bacoor').attr('disabled', true);
+                                    } else {
+                                        $('#2_bacoor').attr('disabled', false);
+                                    }
+                                    // 3
+                                    if (data.act_18 == 1) {
+                                        $('#3_bacoor').attr('disabled', true);
+                                    } else {
+                                        $('#3_bacoor').attr('disabled', false);
+                                    }
+                                    // 4
+                                    if (data.act_19 == 1) {
+                                        $('#4_bacoor').attr('disabled', true);
+                                    } else {
+                                        $('#4_bacoor').attr('disabled', false);
+                                    }
+                                    // 5
+                                    if (data.act_20 == 1) {
+                                        $('#5_bacoor').attr('disabled', true);
+                                    } else {
+                                        $('#5_bacoor').attr('disabled', false);
+                                    }
+                                },
+                            });
                         }
                     }
 

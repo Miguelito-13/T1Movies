@@ -60,8 +60,6 @@ if (isset($_POST["movie_id"])) {
 }
 
 if (isset($_POST["movie_active"])) {
-    $active = $_POST["movie_active"];
-
     $output = array();
 
     // 1
