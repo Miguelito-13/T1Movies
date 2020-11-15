@@ -116,7 +116,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                         <hr />
                         <h3 class="text-secondary">Access Below:</h3>
                         <hr />
-                        <h4><a class="text-info" href="http://localhost/t1/front_end/config/movie_server/movie_index.php" target="_blank">http://localhost/t1/front_end/config/movie_server/movie_index.php</a></h4>
+                        <h4><a class="text-info" href="../config/movie_server/movie_index.php" target="_blank">movie_index.php</a></h4>
                         <hr />
                         <h2>Movies</h2>
                         <hr />
