@@ -164,7 +164,6 @@ if (isset($_POST["operation"])) {
     }
 
     if ($_POST["operation"] == "Edit") {
-
         // Movies
         $statement = $connection->prepare("UPDATE movies SET MOVIE_TITLE = :movie, MOVIE_DESC = :description, MOVIE_DURATION = :duration, RATED = :rated, RATING_USER = :rating_user, RATING_TITLE = :rating_title, TRAILER = :trailer, PREMIERE_DATE = :premiereDate, ACTIVE = :movie_active, MODIFIED_ON = '$today' WHERE MOVIE_ID = :id");
         $result = $statement->execute(
@@ -323,12 +322,22 @@ if (isset($_POST["operation"])) {
 
             // 1
             if ($manila == 1 && isset($_POST["Manila"])) {
+                $stmt = $connection->query("SELECT * FROM cinema WHERE BRANCH_ID = '1' AND MOVIE_ID = '$curr_id'");
+                while ($row = $stmt->fetch()) {
+                    if ($row['ACTIVE'] == 1) {
+                        $cinema = $row['CINEMA_NO'];
+                    }
+                }
                 $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
                 $result = $statement->execute(
                     array(
                         ':cinema_manila' =>  $_POST["cinema_manila"]
                     )
                 );
+                if ($cinema != $_POST["cinema_manila"]) {
+                    $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute();
+                }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND MOVIE_ID = '$curr_id'");
                 $result = $statement->execute();
@@ -336,12 +345,22 @@ if (isset($_POST["operation"])) {
 
             // 2
             if ($marikina == 2 && isset($_POST["Marikina"])) {
+                $stmt = $connection->query("SELECT * FROM cinema WHERE BRANCH_ID = '2' AND MOVIE_ID = '$curr_id'");
+                while ($row = $stmt->fetch()) {
+                    if ($row['ACTIVE'] == 1) {
+                        $cinema = $row['CINEMA_NO'];
+                    }
+                }
                 $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
                 $result = $statement->execute(
                     array(
                         ':cinema_marikina' =>  $_POST["cinema_marikina"]
                     )
                 );
+                if ($cinema != $_POST["cinema_marikina"]) {
+                    $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute();
+                }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND MOVIE_ID = '$curr_id'");
                 $result = $statement->execute();
@@ -349,12 +368,22 @@ if (isset($_POST["operation"])) {
 
             // 3
             if ($north == 3 && isset($_POST["North"])) {
-                $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND CINEMA_NO = :cinema_north ");
+                $stmt = $connection->query("SELECT * FROM cinema WHERE BRANCH_ID = '3' AND MOVIE_ID = '$curr_id'");
+                while ($row = $stmt->fetch()) {
+                    if ($row['ACTIVE'] == 1) {
+                        $cinema = $row['CINEMA_NO'];
+                    }
+                }
+                $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
                 $result = $statement->execute(
                     array(
                         ':cinema_north' =>  $_POST["cinema_north"]
                     )
                 );
+                if ($cinema != $_POST["cinema_north"]) {
+                    $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute();
+                }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND MOVIE_ID = '$curr_id'");
                 $result = $statement->execute();
@@ -362,12 +391,22 @@ if (isset($_POST["operation"])) {
 
             // 4
             if ($bacoor == 4 && isset($_POST["Bacoor"])) {
+                $stmt = $connection->query("SELECT * FROM cinema WHERE BRANCH_ID = '4' AND MOVIE_ID = '$curr_id'");
+                while ($row = $stmt->fetch()) {
+                    if ($row['ACTIVE'] == 1) {
+                        $cinema = $row['CINEMA_NO'];
+                    }
+                }
                 $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
                 $result = $statement->execute(
                     array(
                         ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
                     )
                 );
+                if ($cinema != $_POST["cinema_bacoor"]) {
+                    $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute();
+                }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND MOVIE_ID = '$curr_id'");
                 $result = $statement->execute();
