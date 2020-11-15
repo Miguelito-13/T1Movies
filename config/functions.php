@@ -511,6 +511,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 
                             // Set new password
                             if (empty($password_err_forgot) && empty($confirm_password_err_forgot)) {
+                                date_default_timezone_set('Asia/Manila');
                                 $dt = new DateTime();
                                 $today = $dt->format('Y-m-d H:i:s');
 

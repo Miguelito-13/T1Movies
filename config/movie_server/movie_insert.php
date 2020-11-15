@@ -3,6 +3,10 @@ include('movie_dbconn.php');
 include('movie_function.php');
 
 if (isset($_POST["operation"])) {
+    date_default_timezone_set('Asia/Manila');
+    $dt = new DateTime();
+    $today = $dt->format('Y-m-d H:i:s');
+
     if ($_POST["operation"] == "Add") {
         if (isset($_FILES['movie_image']) && isset($_FILES['movie_image_bg'])) {
             $img_name = $_FILES['movie_image']['name'];
@@ -114,9 +118,6 @@ if (isset($_POST["operation"])) {
                         )
                     );
 
-                    $dt = new DateTime();
-                    $today = $dt->format('Y-m-d H:i:s');
-
                     // CINEMA
                     $manila = $_POST["Manila"];
                     $marikina = $_POST["Marikina"];
@@ -161,9 +162,8 @@ if (isset($_POST["operation"])) {
             }
         }
     }
+
     if ($_POST["operation"] == "Edit") {
-        $dt = new DateTime();
-        $today = $dt->format('Y-m-d H:i:s');
 
         // Movies
         $statement = $connection->prepare("UPDATE movies SET MOVIE_TITLE = :movie, MOVIE_DESC = :description, MOVIE_DURATION = :duration, RATED = :rated, RATING_USER = :rating_user, RATING_TITLE = :rating_title, TRAILER = :trailer, PREMIERE_DATE = :premiereDate, ACTIVE = :movie_active, MODIFIED_ON = '$today' WHERE MOVIE_ID = :id");
