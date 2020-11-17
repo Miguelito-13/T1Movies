@@ -8,7 +8,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 ?>
 
 <!-- header -->
-<header class="container-fluid" style="margin-bottom: 98px">
+<header class="container-fluid" style="margin-bottom: 94px">
   <nav class="navbar navbar-expand-md navbar-custom fixed-top px-5 py-0">
     <a class="navbar-brand logo" href="home.php">
       <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="mx-auto my-2" style="height: 70px">
@@ -60,7 +60,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 <script>
   // Modal call
   let modal = document.getElementById('id01');
-  let search = document.getElementById('search');
 
   //Close when clicked outside
   window.onclick = function(event) {
@@ -70,7 +69,23 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       document.getElementById('error2').style.display = 'none';
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
-    } else if (event.target == search) {
+    }
+  }
+
+  //Show Logout, Hide Register
+  let show_logout = "<?php echo $show_logout ?>";
+  if (show_logout === "show") {
+    document.getElementById('id_logout').style.display = "block";
+    document.getElementById('id_loginregister').style.display = "none";
+  } else {
+    document.getElementById('id_logout').style.display = "none";
+    document.getElementById('id_loginregister').style.display = "block";
+  }
+
+  // Search
+  let search = document.getElementById("search");
+  window.onclick = function(event) {
+    if (event.target == search) {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -98,17 +113,5 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         });
       });
     }
-  };
-
-  //Show Logout, Hide Register
-  let show_logout = "<?php echo $show_logout ?>";
-  if (show_logout === "show") {
-    document.getElementById('id_logout').style.display = "block";
-    document.getElementById('id_loginregister').style.display = "none";
-  } else {
-    document.getElementById('id_logout').style.display = "none";
-    document.getElementById('id_loginregister').style.display = "block";
   }
-
-  // Search
 </script>

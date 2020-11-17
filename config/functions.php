@@ -561,10 +561,15 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 // Search
 if (isset($_REQUEST["search_term"])) {
     // Prepare a select statement
-    $search = $_REQUEST["search_term"];
-    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$search%'";
+    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE ?";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "s", $param_term);
+
+        // Set parameters
+        $param_term = $_REQUEST["search_term"] . '%';
+
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
             $result = mysqli_stmt_get_result($stmt);

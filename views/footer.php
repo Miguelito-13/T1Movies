@@ -60,7 +60,6 @@
 <script type="text/javascript">
   // Modal call
   let modal = document.getElementById("id01");
-  let search = document.getElementById("search");
 
   //Close when clicked outside
   window.onclick = function(event) {
@@ -71,8 +70,12 @@
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
     }
-    else if (event.target==search)
-    {
+  };
+
+  // Search
+  let search = document.getElementById("search");
+  window.onclick = function(event) {
+    if (event.target == search) {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -100,5 +103,5 @@
         });
       });
     }
-  };
+  }
 </script>

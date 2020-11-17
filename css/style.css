@@ -4,12 +4,6 @@ body {
   margin: 0;
 }
 
-/* Slideshow */
-.carousel-custom {
-  /* height: 400px; */
-  height: auto;
-}
-
 /* main body */
 .general-container {
   width: 90%;
