@@ -153,7 +153,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
         mysqli_stmt_close($stmt_email_login);
     }
 
-    // Close
+    // close connection	
     mysqli_close($link);
 }
 
@@ -396,7 +396,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
         }
     }
 
-    // Close connection
+    // close connection	
     mysqli_close($link);
 }
 
@@ -584,6 +584,6 @@ if (isset($_REQUEST["search_term"])) {
 
     mysqli_stmt_close($stmt);
 
-    // close connection
+    // close connection	
     mysqli_close($link);
 }

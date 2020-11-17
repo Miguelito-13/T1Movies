@@ -20,7 +20,7 @@ if (isset($_POST["operation"])) {
             if (in_array($img_ex_lc, $allowed_exs)) {
 
                 // MOVIE
-                $statement = $connection->prepare("INSERT INTO movies (MOVIE_TITLE, MOVIE_DESC, MOVIE_DURATION, RATED, RATING_USER, RATING_TITLE, TRAILER, PREMIERE_DATE, ACTIVE) VALUES (:movie, :description, :duration, :rated, :rating_user, :rating_title, :trailer, :premiereDate, :movie_active)");
+                $statement = $connection->prepare("INSERT INTO movies (MOVIE_TITLE, MOVIE_DESC, MOVIE_DURATION, RATED, RATING_USER, RATING_TITLE, TRAILER, PREMIERE_DATE, PRICE, ACTIVE) VALUES (:movie, :description, :duration, :rated, :rating_user, :rating_title, :trailer, :premiereDate, :price, :movie_active)");
                 $result = $statement->execute(
                     array(
                         ':movie'   =>  $_POST["movie"],
@@ -31,6 +31,7 @@ if (isset($_POST["operation"])) {
                         ':rating_title' =>  $_POST["rating_title"],
                         ':trailer' =>  $_POST["trailer"],
                         ':premiereDate' =>  $_POST["premiereDate"],
+                        ':price' =>  $_POST["price"],
                         ':movie_active' =>  $_POST["movie_active"]
                     )
                 );
@@ -39,6 +40,7 @@ if (isset($_POST["operation"])) {
                 while ($row = $stmt->fetch()) {
                     if ($row['MOVIE_TITLE'] == $_POST["movie"]) {
                         $curr_id = $row['MOVIE_ID'];
+                        $active = $row["ACTIVE"];
                     }
                 }
 
@@ -81,8 +83,6 @@ if (isset($_POST["operation"])) {
                     $statement = $connection->prepare("UPDATE movies SET POSTER_BG = ? WHERE MOVIE_ID = ?");
                     $result = $statement->execute([$new_img_name, $curr_id]);
                 }
-
-                $active = $_POST["movie_active"];
 
                 // INACTIVE
                 if ($active == 0) {
@@ -165,7 +165,7 @@ if (isset($_POST["operation"])) {
 
     if ($_POST["operation"] == "Edit") {
         // Movies
-        $statement = $connection->prepare("UPDATE movies SET MOVIE_TITLE = :movie, MOVIE_DESC = :description, MOVIE_DURATION = :duration, RATED = :rated, RATING_USER = :rating_user, RATING_TITLE = :rating_title, TRAILER = :trailer, PREMIERE_DATE = :premiereDate, ACTIVE = :movie_active, MODIFIED_ON = '$today' WHERE MOVIE_ID = :id");
+        $statement = $connection->prepare("UPDATE movies SET MOVIE_TITLE = :movie, MOVIE_DESC = :description, MOVIE_DURATION = :duration, RATED = :rated, RATING_USER = :rating_user, RATING_TITLE = :rating_title, TRAILER = :trailer, PREMIERE_DATE = :premiereDate, PRICE = :price, ACTIVE = :movie_active, MODIFIED_ON = '$today' WHERE MOVIE_ID = :id");
         $result = $statement->execute(
             array(
                 ':movie'   =>  $_POST["movie"],
@@ -176,6 +176,7 @@ if (isset($_POST["operation"])) {
                 ':rating_title' =>  $_POST["rating_title"],
                 ':trailer' =>  $_POST["trailer"],
                 ':premiereDate' =>  $_POST["premiereDate"],
+                ':price' =>  $_POST["price"],
                 ':movie_active' =>  $_POST["movie_active"],
                 ':id' => $_POST["movie_id"]
             )

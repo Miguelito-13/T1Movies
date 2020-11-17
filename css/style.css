@@ -96,7 +96,7 @@ body {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.text:hover {
+.overlay:hover .text {
   color: #ffba00;
   text-align: center;
   font-size: 1.25rem;
@@ -120,7 +120,7 @@ body {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
   }
-  .text:hover {
+  .overlay:hover .text {
     color: #ffba00;
     text-align: center;
     font-size: 2.25rem;
@@ -143,6 +143,7 @@ body {
   bottom: 2%;
   left: 10%;
   width: 80%;
+  padding: 10px;
 }
 .overlay .buy-button:hover {
   background-color: #ffba00;

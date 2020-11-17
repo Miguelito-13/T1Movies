@@ -20,6 +20,7 @@ if (isset($_POST["movie_id"])) {
         $output["poster_bg"] = $row["POSTER_BG"];
         $output["trailer"] = $row["TRAILER"];
         $output["premiereDate"] = $row["PREMIERE_DATE"];
+        $output["price"] = $row["PRICE"];
         $output["movie_active"] = $row["ACTIVE"];
     }
 

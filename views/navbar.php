@@ -49,31 +49,28 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true" type="submit"></i>
         <div class="search-result"></div>
       </form>
-    </div>
 
+    </div>
     <div id="id01" class="modal">
       <?php include('login_form.php'); ?>
     </div>
-
   </nav>
 </header>
 
 <script>
-  let modal = document.getElementById("id01");
-  let search = document.getElementById("search");
+  // Modal call
+  let modal = document.getElementById('id01');
+  let search = document.getElementById('search');
 
   //Close when clicked outside
   window.onclick = function(event) {
-    // Login
     if (event.target == modal) {
       modal.style.display = "none";
-      document.getElementById("error1").style.display = "none";
-      document.getElementById("error2").style.display = "none";
+      document.getElementById('error1').style.display = 'none';
+      document.getElementById('error2').style.display = 'none';
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
-    }
-    // Search
-    else if (event.target == search) {
+    } else if (event.target == search) {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -112,4 +109,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     document.getElementById('id_logout').style.display = "none";
     document.getElementById('id_loginregister').style.display = "block";
   }
+
+  // Search
 </script>

@@ -127,7 +127,10 @@
                     <label class="title" for="premiereDate">Premiere Date *</label><br>
                     <input type="datetime-local" id="premiereDate" name="premiereDate" /><br>
                     <br>
-                    <label class="title">Movie Active *</label><br>
+                    <label class="title">Ticket Price *</label>
+                    <input step="any" type="number" name="price" id="price" class="form-control" placeholder="0 php" />
+                    <br>
+                    <label class="title">Movie Active *</label>
                     <div id="movie_active">
                         <input id="active_inactive" name="movie_active" class="radio-button" type="radio" value=0 />
                         <label for="active_inactive">Inactive &nbsp;&nbsp;</label>
@@ -208,7 +211,7 @@
                     <input type="hidden" name="movie_id" id="movie_id" />
                     <input type="hidden" name="operation" id="operation" />
                     <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </form>
@@ -241,7 +244,7 @@
 
                 // Update
                 $("#active_now").prop('checked', true);
-                if ($('#active_now').prop("checked") == true) {
+                if ($('#active_now').is(':checked')) {
                     var movie_active = $(this).attr("id");
                     $.ajax({
                         url: "movie_fetch_single.php",
@@ -456,7 +459,7 @@
             var id = $("#id").val();
             var movie = $("#movie").val();
             var description = $("#description").val();
-            var duration = $("#description").val();
+            var duration = $("#duration").val();
             var rated = $("input[name='rated']:checked").val();
             var rating_user = $("#rating_user").val();
             var rating_title = $("#rating_title").val();
@@ -527,6 +530,7 @@
             }
             var trailer = $("#trailer").val();
             var premiereDate = $("#premiereDate").val();
+            var price = $("#price").val();
             var movie_active = $("input[name='movie_active']:checked").val();
             if ($("#Manila").is(':checked')) {
                 var Manila = $("#Manila").val();
@@ -553,7 +557,7 @@
             var cinema_north = $("input[name='cinema_north']:checked").val();
             var cinema_bacoor = $("input[name='cinema_bacoor']:checked").val();
 
-            if (movie != "" && description != "" && duration != "" && rated != undefined && rating_user != "" && rating_title != "" && trailer != "" && premiereDate != "" && movie_active != "") {
+            if (movie != "" && description != "" && duration != "" && rated != undefined && rating_user != "" && rating_title != "" && trailer != "" && premiereDate != "" && price != "" && movie_active != "") {
                 if (movie_active == 2 && Manila == 0 && Marikina == 0 && North == 0 && Bacoor == 0) {
                     alert("Movie Branch is required. (1 or more)");
                 } else if (movie_active == 2 && Manila == 0 && Marikina == 2 && North == 0 && Bacoor == 0 && cinema_marikina == undefined) {
@@ -735,7 +739,6 @@
                         $("#mystery").prop('checked', true);
                     } else {
                         $("#mystery").prop('checked', false);
-
                     }
                     if (data.romance == 11) {
                         $("#romance").prop('checked', true);
@@ -754,6 +757,7 @@
                     }
                     $("#trailer").val(data.trailer);
                     $("#premiereDate").val(data.premiereDate);
+                    $("#price").val(data.price);
                     $("#movie_active").val(data.movie_active);
                     if (data.movie_active == 0) {
                         $("#active_inactive").prop('checked', true);
