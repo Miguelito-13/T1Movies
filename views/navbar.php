@@ -70,9 +70,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       document.getElementById('error2').style.display = 'none';
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
-    }
-    else if (event.target == search)
-    {
+    } else if (event.target == search) {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -113,5 +111,4 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
   }
 
   // Search
- 
 </script>
