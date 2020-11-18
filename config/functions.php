@@ -591,7 +591,7 @@ if (isset($_REQUEST["search_term"])) {
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $date = substr($row['PREMIERE_DATE'], 0, 4);
                     echo '<p class="row"><img src="../images/movies/poster/' . $row['POSTER'] . '" style="width: 45px; margin-right:0px;"> ';
-                    echo '<span class="pt-0 col-9">' . $row["MOVIE_TITLE"] . '<br><span class="text-secondary">' . $date . '</span></span></p>';
+                    echo '<span class="pt-0 col-8">' . $row["MOVIE_TITLE"] . '<br><span class="text-secondary">' . $date . '</span></span></p>';
                 }
             } else {
                 echo "<p>No matches found</p>";
