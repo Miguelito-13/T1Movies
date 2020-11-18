@@ -52,7 +52,6 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 </tr>
             </thead>
         </table>
-        <br>
         <div align="right">
             <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
         </div>

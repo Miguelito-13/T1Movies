@@ -221,7 +221,9 @@ $(document).ready(function () {
 
   // Fetch
   var dataTable = $("#movie_table").DataTable({
-    paging: true,
+    scrollY: "50vh",
+    scrollCollapse: true,
+    paging: false,
     processing: true,
     serverSide: true,
     order: [],
