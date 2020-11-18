@@ -6,14 +6,14 @@
 
         // Subtotal
         let x = counter;
-        let y = 420; //price
-        let subTotal = x*y;
+        let y = 300; //price
+        let subTotal = x * y;
         document.getElementById("printSubtotal").innerHTML = subTotal;
-        
+
         //Total
         let a = subTotal;
         let b = 0;
-        let total = a+b;
+        let total = a + b;
         document.getElementById("printTotal").innerHTML = total;
 
         //Total (after change)
@@ -22,7 +22,4 @@
         // let total = i*j;
         // document.getElementById("printTotal").innerHTML = total;
     };
-
-    
 </script>
-

@@ -558,6 +558,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["view_movie"]))
 // Search Direct
 else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"]))) {
     $temp_search = trim($_POST["search_title"]);
+    $temp_search = substr($temp_search, 0, -4);
     $temp_search = strtoupper($temp_search);
     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$temp_search%'";
     $res = mysqli_query($link,  $sql);
@@ -588,8 +589,9 @@ if (isset($_REQUEST["search_term"])) {
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    echo '<p><img src="../images/movies/poster/' . $row['POSTER'] . '" style="width: 45px; margin-right:10px;"> ';
-                    echo $row["MOVIE_TITLE"] . '</p>';
+                    $date = substr($row['PREMIERE_DATE'], 0, 4);
+                    echo '<p class="row"><img src="../images/movies/poster/' . $row['POSTER'] . '" style="width: 45px; margin-right:0px;"> ';
+                    echo '<span class="pt-0 col-9">' . $row["MOVIE_TITLE"] . '<br><span class="text-secondary">' . $date . '</span></span></p>';
                 }
             } else {
                 echo "<p>No matches found</p>";
