@@ -580,7 +580,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"
 if (isset($_REQUEST["search_term"])) {
     $search = $_REQUEST["search_term"];
 
-    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$search%'";
+    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$search%' LIMIT 5";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
 
