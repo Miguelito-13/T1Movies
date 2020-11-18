@@ -1,6 +1,6 @@
 /* Now Showing & Coming Soon */
 
-.movies-list-container h3 {
+.movies-list-custom-checkbox h3 {
   color: #1c1a18;
   font-size: 2rem;
   font-weight: bold;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .movies-list-container h3 {
+  .movies-list-custom-checkbox h3 {
     color: #1c1a18;
     font-size: 1.5rem;
     font-weight: bold;
@@ -79,7 +79,7 @@
   }
 }
 
-.movies-list-container .buy-button2 {
+.movies-list-custom-checkbox .buy-button2 {
   background-color: #ffba00;
   border: 1px solid #ffba00;
   color: #fff;
@@ -91,8 +91,8 @@
   padding: 0;
   margin: 0;
 }
-.movies-list-container .buy-button2:hover,
-.movies-list-container .buy-button2:focus {
+.movies-list-custom-checkbox .buy-button2:hover,
+.movies-list-custom-checkbox .buy-button2:focus {
   background-color: #fcc736;
   border: 1px solid #fcc736;
   box-shadow: none;
@@ -102,7 +102,7 @@
 }
 
 @media screen and (max-width: 800px) {
-  .movies-list-container .buy-button2 {
+  .movies-list-custom-checkbox .buy-button2 {
     background-color: #ffba00;
     border: 1px solid #ffba00;
     color: #fff;
@@ -114,8 +114,8 @@
     padding: 0;
     margin: 0;
   }
-  .movies-list-container .buy-button2:hover,
-  .movies-list-container .buy-button2:focus {
+  .movies-list-custom-checkbox .buy-button2:hover,
+  .movies-list-custom-checkbox .buy-button2:focus {
     background-color: #fcc736;
     border: 1px solid #fcc736;
     box-shadow: none;
@@ -126,104 +126,278 @@
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* .movie-profile {
-  background-color: #655b50;
-} */
-
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
 /* Movie Profile */
-/* .custom-movie-profile {
-  background-color: #655b50;
-  margin-top: 50px;
+
+.custom-movie-profile {
+  color: #fff;
+}
+.opacity {
+  background-image: linear-gradient(
+    rgba(28, 26, 24, 0.6),
+    rgba(28, 26, 24, 0.98)
+  );
+  background-size: cover;
+  min-height: 88.5vh;
+}
+
+.custom-movie-poster {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .custom-movie-profile h3 {
-  color: #ffffff;
-  font-size: 2rem;
+  font-size: 2.75rem;
   font-weight: bold;
 }
-.custom-movie-profile p {
-  color: #ffffff;
+.custom-movie-profile hr {
+  border-top: 1px solid #fff;
+}
+.custom-movie-profile h6 {
   font-size: 1.15rem;
-  font-weight: 500;
-} */
-
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
-/* Movie Profile (More) */
-/* .custom-movie-profile-more {
-  background-color: #fafafa;
-  display: block;
-  border: 5px hidden #fafafa;
-  border-top-left-radius: 5vw;
-  border-top-right-radius: 5vw;
-  padding-top: 70px;
+  font-weight: 400;
 }
-
-.custom-movie-profile-more h4 {
-  color: #1c1a18;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.table-sched-price {
-  border: none;
-  cursor: default;
-}
-.table-sched-price thead {
-  background-color: rgba(28, 26, 24, 0.2);
-  color: #1c1a18;
-  font-size: 1.15rem;
-}
-.table-sched-price tbody {
-  color: #1c1a18;
-  font-size: 1.1rem;
-  height: 2.5rem;
-}
-
-@media screen and (max-width: 675px) {
-  .table-sched-price thead {
-    background-color: rgba(28, 26, 24, 0.2);
-    color: #1c1a18;
-    font-size: 1rem;
-  }
-  .table-sched-price tbody {
-    color: #1c1a18;
-    font-size: 0.9rem;
-    height: 2rem;
-  }
-}
-
-.transaction-button .buy-ticket-button,
-.transaction-button .buy-ticket-button:focus {
-  padding: 10px 25px;
-  background-color: rgba(255, 195, 68, 1);
-  border: 1px solid rgba(255, 195, 68, 1);
-  box-shadow: none;
+.custom-movie-profile .imdbRatingPlugin {
   color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: auto;
 }
-.transaction-button .buy-ticket-button:hover {
-  background-color: rgba(255, 195, 68, 0.8);
-  border: 1px solid rgba(255, 195, 68, 1);
+
+.custom-movie-profile h4 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.custom-movie-profile p {
+  font-size: 1.15rem;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.custom-movie-profile .watch-btn,
+.custom-movie-profile .watch-btn:focus {
+  color: #fff;
+  background-color: #ffba00;
+  padding: auto;
   box-shadow: none;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+.custom-movie-profile .watch-btn:hover {
   color: #1c1a18;
-} */
+  background-color: rgba(255, 195, 68, 1);
+  box-shadow: none;
+}
+
+@media screen and (max-width: 720px) {
+  .custom-movie-poster {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 0;
+  }
+
+  .custom-movie-profile h3 {
+    font-size: 2.15rem;
+    font-weight: bold;
+  }
+  .custom-movie-profile hr {
+    border-top: 1px solid #fff;
+  }
+  .custom-movie-profile h6 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .custom-movie-profile .imdbRatingPlugin {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: auto;
+  }
+
+  .custom-movie-profile h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .custom-movie-profile p {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  .custom-movie-profile .watch-btn,
+  .custom-movie-profile .watch-btn:focus {
+    color: #fff;
+    background-color: #ffba00;
+    padding: auto;
+    box-shadow: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  .custom-movie-profile .watch-btn:hover {
+    color: #1c1a18;
+    background-color: rgba(255, 195, 68, 1);
+    box-shadow: none;
+  }
+}
+
+.custom-trailer-modal .modal-body {
+  background: #000;
+}
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* Movie Profile */
+/* Movie Profile Transaction */
+
 .movie-navbar {
-  background-color: #1c1a18;
+  background-image: linear-gradient(
+    rgba(28, 26, 24, 0.97),
+    rgba(28, 26, 24, 1)
+  );
 }
 
-.custom-transaction table {
+.custom-movie-toggler,
+.custom-movie-toggler:focus,
+.custom-movie-toggler:active {
+  width: 100%;
+  color: #fff;
+  background-image: linear-gradient(
+    rgba(28, 26, 24, 0.96),
+    rgba(28, 26, 24, 1)
+  );
+  box-shadow: none;
+  outline: none;
   border: none;
+  border-radius: 0;
+}
+
+.movie-navbar .custom-select,
+.movie-navbar .custom-select:focus {
+  font-weight: bold;
+  box-shadow: none;
+  border: none;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Navigation Bar Seat Reservation */
+
+.custom-movie-profile-more label {
+  font-weight: 500;
+}
+
+/* Seat Reservation Form */
+.custom-seats {
+  background-color: #f3f3f3;
+}
+
+.seat-reservation-form table {
+  border: none;
+}
+
+.seat-reservation-form h6 {
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .custom-seats {
   border-left: 1px solid rgba(28, 26, 24, 0.5);
+  border-right: 1px solid rgba(28, 26, 24, 0.5);
 }
-.custom-seats-reservation {
-  background-color: #d7d7d7;
+
+/* Check Box */
+.custom-checkbox input[type="checkbox"]:enabled + label::before,
+.custom-checkbox input[type="checkbox"]:enabled + label::after {
+  background-color: #fff;
+  box-shadow: none;
+  border-radius: 3px;
+  border: 1px solid rgba(28, 26, 24, 0.5);
+  transition: 300ms ease-out;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + label::before,
+.custom-checkbox input[type="checkbox"]:checked + label::after {
+  background-color: #ffba00;
+  box-shadow: none;
+  border-radius: 3px;
+  border: 1px solid rgba(28, 26, 24, 0.3);
+  transition: 300ms ease-out;
+}
+
+.custom-checkbox input[type="checkbox"]:active + label::before,
+.custom-checkbox input[type="checkbox"]:active + label::after {
+  background-color: rgba(255, 195, 68, 0.75);
+  border: 1px solid rgba(28, 26, 24, 0.5);
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+.custom-checkbox input[type="checkbox"]:focus + label::before,
+.custom-checkbox input[type="checkbox"]:focus + label::after {
+  background-color: none;
+  border: 1px solid rgba(28, 26, 24, 0.5);
+  box-shadow: none;
+  border-radius: 3px;
+  transition: 250ms ease-in;
+}
+
+.custom-checkbox input[type="checkbox"]:disabled + label::before,
+.custom-checkbox input[type="checkbox"]:disabled + label::after {
+  background-color: rgba(28, 26, 24, 0.6);
+  border: 1px solid rgba(28, 26, 24, 0.5);
+  border-radius: 3px;
+  box-shadow: none;
+  color: red;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.transaction-table-title {
+  font-size: 1.25rem;
+}
+
+.custom-transaction table {
+  border: none;
+  font-size: 1.05rem;
+}
+
+.custom-transaction .transaction-table-subtitle,
+.custom-transaction .transaction-table-total {
+  font-weight: 600;
+}
+
+.transaction-button .buy-ticket-button,
+.transaction-button .buy-ticket-button:focus {
+  color: #fff;
+  background-color: #ffba00;
+  box-shadow: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-align: center;
+  height: 3rem;
+  padding: auto;
+}
+.transaction-button .buy-ticket-button:hover {
+  color: #1c1a18;
+  background-color: rgba(255, 195, 68, 1);
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Transaction Guidelines */
+
+.transaction-guidelines h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+}
+.transaction-guidelines ol,
+.transaction-guidelines p {
+  font-size: 1.1rem;
 }

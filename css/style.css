@@ -4,12 +4,6 @@ body {
   margin: 0;
 }
 
-/* Slideshow */
-.carousel-custom {
-  /* height: 400px; */
-  height: auto;
-}
-
 /* main body */
 .general-container {
   width: 90%;
@@ -131,28 +125,6 @@ body {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
   }
-}
-
-.overlay .buy-button {
-  background-color: #ffba00;
-  border: 1px solid #ffba00;
-  color: #fff;
-  text-align: center;
-  font-weight: 500;
-  position: absolute;
-  bottom: 2%;
-  left: 10%;
-  width: 80%;
-}
-.overlay .buy-button:hover {
-  background-color: #ffba00;
-  border: 1px solid #ffba00;
-  color: #1c1a18;
-  text-align: center;
-  position: absolute;
-  bottom: 2%;
-  left: 10%;
-  width: 80%;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */ /* Scroll bar */ /* width */
