@@ -152,11 +152,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
         mysqli_stmt_close($stmt_user_login);
         mysqli_stmt_close($stmt_email_login);
     }
-
-    // close connection	
-    mysqli_close($link);
 }
-
 
 // Process Register
 else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_button"]))) {
@@ -395,9 +391,6 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
             mysqli_stmt_close($stmt2);
         }
     }
-
-    // close connection	
-    mysqli_close($link);
 }
 
 // Process Forgot Password
@@ -554,9 +547,32 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 
         mysqli_stmt_close($stmt_forgot);
     }
+}
 
-    // Close
-    mysqli_close($link);
+// View Movie
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["view_movie"]))) {
+    $_SESSION["movie_id"] = $_POST["view_id"];
+    header("location: movie_profile.php");
+}
+
+// Search Direct
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"]))) {
+    $temp_search = trim($_POST["search_title"]);
+    $temp_search = strtoupper($temp_search);
+    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$temp_search%'";
+    $res = mysqli_query($link,  $sql);
+    if (mysqli_num_rows($res) > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+            $temp_row = trim($row['MOVIE_TITLE']);
+            $temp_row = strtoupper($temp_row);
+            if ($temp_search == $temp_row) {
+                $_SESSION["movie_id"] = $row['MOVIE_ID'];
+            }
+        }
+    } else {
+        $_SESSION["movie_id"] = 0;
+    }
+    header("location: movie_profile.php");
 }
 
 // Search
@@ -572,7 +588,8 @@ if (isset($_REQUEST["search_term"])) {
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    echo "<p>" . $row["MOVIE_TITLE"] . "</p>";
+                    echo '<p><img src="../images/movies/poster/' . $row['POSTER'] . '" style="width: 45px; margin-right:10px;"> ';
+                    echo $row["MOVIE_TITLE"] . '</p>';
                 }
             } else {
                 echo "<p>No matches found</p>";
@@ -583,7 +600,4 @@ if (isset($_REQUEST["search_term"])) {
     }
 
     mysqli_stmt_close($stmt);
-
-    // close connection	
-    mysqli_close($link);
 }

@@ -1,5 +1,3 @@
-<?php include('../config/functions.php'); ?>
-
 <div class="modal-content animate">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="imgcontainer">

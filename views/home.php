@@ -1,4 +1,6 @@
-<?php require_once "../config/config.php";
+<?php
+
+require_once "../config/config.php";
 
 session_start();
 
@@ -8,12 +10,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: admin_site.php");
     exit;
   }
-}
-
-if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["view_movie"]))) {
-  $_SESSION["movie_id"] = $_POST["view_id"];
-  header("location: movie_profile.php");
-  exit;
 }
 
 include('header.php');
@@ -45,7 +41,7 @@ include('header.php');
                 if (mysqli_num_rows($res) > 0) {
                   while ($row = mysqli_fetch_assoc($res)) { ?>
                     <div class="col-md-2 container mx-auto my-3 p-0">
-                      <img src="../images/movies/poster/<?= $row['POSTER'] ?>" alt="Movie Title" class="movie-poster">
+                      <img src="../images/movies/poster/<?= $row['POSTER'] ?>" alt="<?= $row['MOVIE_TITLE'] ?>" class="movie-poster">
                       <div class="overlay">
                         <a class="text"><?= $row['MOVIE_TITLE'] ?></a>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -58,7 +54,7 @@ include('header.php');
                   }
                 } else { ?>
                   <div class="col-md-4 text-center container mx-auto my-3 p-0">
-                    <h1>Movies Now Showing Soon...</h1>
+                    <h1>Movies Showing Soon...</h1>
                   </div>
                 <?php
                 } ?>
@@ -83,7 +79,7 @@ include('header.php');
                 if (mysqli_num_rows($res) > 0) {
                   while ($row = mysqli_fetch_assoc($res)) { ?>
                     <div class="col-md-2 container mx-auto my-3 p-0">
-                      <img src="../images/movies/poster/<?= $row['POSTER'] ?>" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
+                      <img src="../images/movies/poster/<?= $row['POSTER'] ?>" alt="<?= $row['MOVIE_TITLE'] ?>" class="movie-poster"> <!-- palitan nung php for db -->
                       <div class="overlay">
                         <a class="text"><?= $row['MOVIE_TITLE'] ?></a> <!-- palitan nung php for db -->
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

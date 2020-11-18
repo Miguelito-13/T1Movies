@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2020 at 08:29 AM
+-- Generation Time: Nov 17, 2020 at 12:13 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -42,8 +42,8 @@ CREATE TABLE `cinema` (
 --
 
 INSERT INTO `cinema` (`CINEMA_ID`, `BRANCH_ID`, `CINEMA_NO`, `NO_SEATS`, `MOVIE_ID`, `ACTIVE`, `MODIFIED_ON`) VALUES
-(1, 1, 1, 80, 3, 1, '2020-11-18 13:36:46'),
-(2, 1, 2, 80, 1, 0, '2020-11-18 15:09:00'),
+(1, 1, 1, 80, NULL, NULL, '2020-11-17 18:58:11'),
+(2, 1, 2, 80, NULL, NULL, '2020-11-17 18:58:04'),
 (3, 1, 3, 80, NULL, NULL, '2020-11-17 18:57:54'),
 (4, 1, 4, 80, NULL, NULL, '2020-11-17 18:57:46'),
 (5, 1, 5, 80, NULL, NULL, '2020-11-17 18:58:55'),
@@ -76,15 +76,6 @@ CREATE TABLE `coming_soon` (
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `coming_soon`
---
-
-INSERT INTO `coming_soon` (`COMING_ID`, `MOVIE_ID`, `ACTIVE`, `CREATED_ON`, `MODIFIED_ON`) VALUES
-(1, 1, 0, '2020-11-17 20:31:48', '2020-11-18 15:09:00'),
-(2, 2, 1, '2020-11-17 20:32:49', '2020-11-18 14:58:57'),
-(3, 3, 0, '2020-11-17 20:34:06', '2020-11-18 13:36:46');
 
 -- --------------------------------------------------------
 
@@ -130,15 +121,6 @@ CREATE TABLE `genre` (
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `genre`
---
-
-INSERT INTO `genre` (`GENRE_ID`, `MOVIE_ID`, `ACTION`, `ADVENTURE`, `ANIMATION`, `COMEDY`, `DRAMA`, `FAMILY`, `FANTASY`, `HORROR`, `MUSICAL`, `MYSTERY`, `ROMANCE`, `SCI_FI`, `THRILLER`, `MODIFIED_ON`) VALUES
-(1, 1, NULL, NULL, 3, NULL, 5, NULL, 7, NULL, 9, NULL, 11, NULL, 13, '2020-11-18 15:09:00'),
-(2, 2, NULL, 2, NULL, 4, NULL, 6, NULL, 8, NULL, 10, NULL, 12, NULL, '2020-11-18 14:58:57'),
-(3, 3, NULL, NULL, NULL, NULL, 5, 6, NULL, 8, 9, NULL, 11, 12, NULL, '2020-11-18 13:36:46');
-
 -- --------------------------------------------------------
 
 --
@@ -162,15 +144,6 @@ CREATE TABLE `movies` (
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `movies`
---
-
-INSERT INTO `movies` (`MOVIE_ID`, `MOVIE_TITLE`, `MOVIE_DESC`, `MOVIE_DURATION`, `RATED`, `RATING_USER`, `RATING_TITLE`, `POSTER`, `POSTER_BG`, `TRAILER`, `PREMIERE_DATE`, `PRICE`, `ACTIVE`, `CREATED_ON`, `MODIFIED_ON`) VALUES
-(1, 'Movie 1', '1.....The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios\' grand conclusion to twenty-two films, \"Avengers: Endgame.\"', 120, 'G', 'ur126089657', 'tt4154756', 'T1-5fb3c2b4a3a8a4.32824982.jpg', 'T1-BG-5fb3c2b4ac3445.59052116.jpg', 'https://www.youtube.com/embed/6ZfuNTqbHE8', '2020-12-01T20:31', 1000, 0, '2020-11-17 20:31:48', '2020-11-18 15:09:00'),
-(2, 'Movie 2', '2.....The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios\' grand conclusion to twenty-two films, \"Avengers: Endgame.\"', 200, 'PG-13', 'ur126089657', 'tt4154756', 'T1-5fb3c2f14fca08.93826835.jpg', 'T1-BG-5fb3c2f1598e29.34537444.jpg', 'https://www.youtube.com/embed/6ZfuNTqbHE8', '2020-11-24T20:32', 200, 1, '2020-11-17 20:32:49', '2020-11-18 14:58:57'),
-(3, 'Movie 3', '3....The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios\' grand conclusion to twenty-two films, \"Avengers: Endgame.\"', 300, 'PG-13', 'ur126089657', 'tt4154756', 'T1-5fb3c33e2661a1.75405408.jpg', 'T1-BG-5fb3c33e383469.89047761.jpg', 'https://www.youtube.com/embed/6ZfuNTqbHE8', '2020-06-16T08:33', 300, 2, '2020-11-17 20:34:06', '2020-11-18 13:36:46');
 
 -- --------------------------------------------------------
 
@@ -215,15 +188,6 @@ CREATE TABLE `now_showing` (
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `now_showing`
---
-
-INSERT INTO `now_showing` (`NOW_ID`, `MOVIE_ID`, `B_MANILA`, `B_MARIKINA`, `B_NORTH`, `B_BACOOR`, `C_MANILA`, `C_MARIKINA`, `C_NORTH`, `C_BACOOR`, `ACTIVE`, `CREATED_ON`, `MODIFIED_ON`) VALUES
-(1, 1, 1, NULL, NULL, NULL, 2, NULL, NULL, NULL, 0, '2020-11-17 20:31:48', '2020-11-18 15:09:00'),
-(2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2020-11-17 20:32:49', '2020-11-18 14:58:57'),
-(3, 3, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '2020-11-17 20:34:06', '2020-11-18 13:36:46');
 
 -- --------------------------------------------------------
 
@@ -313,15 +277,6 @@ CREATE TABLE `users_account` (
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users_account`
---
-
-INSERT INTO `users_account` (`ACCOUNT_ID`, `USERNAME`, `EMAIL`, `ACCOUNT_PASSWORD`, `ADMIN`, `VERIFY_CODE`, `ACTIVE`, `CREATED_ON`, `MODIFIED_ON`) VALUES
-(1, 'patrick', 'patrick@gmail.com', '$2y$10$VXq7VS6ja6rqL8wNQn9AbeVfvHY1imKoUMGuxUZMyRTrj1D2deF.y', 'ADMIN', NULL, 1, '2020-11-17 19:18:44', '2020-11-17 19:18:44'),
-(2, 'ptrckc', 'ptrckc10@gmail.com', '$2y$10$IWruuLij4pEdujI0hBx5fuRCLndNOqzLrgdJ0lx3TyksCZYv6dkpy', 'USERS', NULL, 1, '2020-11-17 19:19:39', '2020-11-17 19:19:39'),
-(3, 'patrick3', 'patrick3@gmail.com', '$2y$10$qEUiqkxkmpvezoo/35mqEuVBU.MZt995INFHxqIxt70de3KM/Q7f6', 'USERS', NULL, 1, '2020-11-17 20:48:27', '2020-11-17 20:48:27');
-
 -- --------------------------------------------------------
 
 --
@@ -342,15 +297,6 @@ CREATE TABLE `users_profile` (
   `CREATED_ON` datetime NOT NULL DEFAULT current_timestamp(),
   `MODIFIED_ON` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users_profile`
---
-
-INSERT INTO `users_profile` (`USERS_ID`, `ACCOUNT_ID`, `FIRST_NAME`, `LAST_NAME`, `MI`, `CONTACT_NO`, `ADDRESS`, `GENDER_ID`, `AGE`, `BIRTHDATE`, `CREATED_ON`, `MODIFIED_ON`) VALUES
-(1, 1, 'Pat', 'Co', 'P', '09212322299', '104', 1, 21, '1999-01-01', '2020-11-17 19:18:45', '2020-11-17 19:18:45'),
-(2, 2, 'Pat', 'Co', 'P', '09179914599', '104', 1, 21, '1999-01-02', '2020-11-17 19:19:40', '2020-11-17 19:19:40'),
-(3, 3, 'Pa', 'C', 'P', '09222532999', 'Cal', 2, 21, '1999-01-03', '2020-11-17 20:48:28', '2020-11-17 20:48:28');
 
 --
 -- Indexes for dumped tables
@@ -455,7 +401,7 @@ ALTER TABLE `cinema`
 -- AUTO_INCREMENT for table `coming_soon`
 --
 ALTER TABLE `coming_soon`
-  MODIFY `COMING_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `COMING_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `gender`
@@ -467,13 +413,13 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `GENRE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `GENRE_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `MOVIE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MOVIE_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `movie_branches`
@@ -485,7 +431,7 @@ ALTER TABLE `movie_branches`
 -- AUTO_INCREMENT for table `now_showing`
 --
 ALTER TABLE `now_showing`
-  MODIFY `NOW_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `NOW_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `receipt`
@@ -509,13 +455,13 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users_account`
 --
 ALTER TABLE `users_account`
-  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users_profile`
 --
 ALTER TABLE `users_profile`
-  MODIFY `USERS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `USERS_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -544,9 +490,7 @@ ALTER TABLE `genre`
 -- Constraints for table `now_showing`
 --
 ALTER TABLE `now_showing`
-  ADD CONSTRAINT `now_showing_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `movies` (`MOVIE_ID`),
-  ADD CONSTRAINT `now_showing_ibfk_2` FOREIGN KEY (`CINEMA_ID`) REFERENCES `cinema` (`CINEMA_ID`),
-  ADD CONSTRAINT `now_showing_ibfk_3` FOREIGN KEY (`BRANCH_ID`) REFERENCES `movie_branches` (`BRANCH_ID`);
+  ADD CONSTRAINT `now_showing_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `movies` (`MOVIE_ID`);
 
 --
 -- Constraints for table `receipt`

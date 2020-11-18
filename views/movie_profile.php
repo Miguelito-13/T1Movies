@@ -5,170 +5,258 @@ session_start();
 include('header.php');
 include('navbar.php');
 
-isset($_SESSION["search_title"]) ? $search_title = $_SESSION["search_title"] : $search_title = 0;
 isset($_SESSION["movie_id"]) ? $movie_id = $_SESSION["movie_id"] : $movie_id = 0;
 
-echo $movie_id . ' + ' . $search_title;
 ?>
 
 <!-- Movie Description and Reservation -->
-<section class="movie-profile">
-    <section class="container-fluid custom-movie-profile mb-3">
-        <div class="row mx-auto" style="width: 85%">
-            <div class="row" style="margin-top:49px" style="background: url(...)">
+<?php
+$sql = "SELECT * FROM movies WHERE MOVIE_ID = '$movie_id'";
+$res = mysqli_query($link,  $sql);
+if (mysqli_num_rows($res) > 0) {
+    while ($row = mysqli_fetch_assoc($res)) { ?>
+        <section id="movie-profile">
+            <section class="container-fluid custom-movie-profile mb-auto p-0" style="background: url(../images/movies/poster_bg/<?= $row['POSTER_BG'] ?>); background-size: cover; background-position: center; min-height: 88.5vh">
                 <!-- set horizontal poster as background with css -->
-                <!-- Movie Description -->
-                <div class="col-md-2 col-sm-4 mb-4">
-                    <img src="../images/sample_poster.jpg" class="px-3" style="width:100%" />
-                </div>
-                <div class="col-md-10 col-sm-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Movie Title -->
-                            <h3>MOVIE TITLE</h3>
-                            <hr />
-                        </div>
-                        <div class="col-md-2">
-                            <!-- <p><i class="fa fa-imdb" aria-hidden="true"></i> 0/10.0</p> -->
-                            <span class="imdbRatingPlugin" data-user="ur126089657" data-title="tt4154756" data-style="p4">
-                                <a href="https://www.imdb.com/title/tt4154756/?ref_=plg_rt_1"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_31x14.png" alt=" Avengers: Infinity War (2018) on IMDb" /></a>
-                            </span>
-                            <script>
-                                (function(d, s, id) {
-                                    var js, stags = d.getElementsByTagName(s)[0];
-                                    if (d.getElementById(id)) {
-                                        return;
-                                    }
-                                    js = d.createElement(s);
-                                    js.id = id;
-                                    js.src = "https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
-                                    stags.parentNode.insertBefore(js, stags);
-                                })(document, "script", "imdb-rating-api");
-                            </script>
-                        </div>
-                        <div class="col-md-2">
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> 2h 10min</p>
-                        </div>
-                        <div class="col-md-4">
-                            <p>2020 • Genre/Genre</p>
-                        </div>
-                    </div>
-                    <br />
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#trailerModal">
-                        Watch Trailer &nbsp;<i class="fa fa-play" aria-hidden="true"></i>
-                    </button>
+                <div class="container-fluid opacity">
+                    <div class="row mx-auto" style="width: 80%">
+                        <div class="row" style="margin-top:49px">
+                            <!-- Movie Description -->
+                            <div class="col-md-3 col-sm-5 mb-4 pr-5">
+                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" alt="<?= $row['MOVIE_TITLE'] ?>" />
+                            </div>
+                            <div class="col-md-9 col-sm-7">
+                                <div class="row pr-3">
+                                    <div class="col-md-12">
+                                        <!-- Movie Title -->
+                                        <h3><?= $row['MOVIE_TITLE'] ?></h3>
+                                        <hr />
+                                    </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="trailerModal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content modal-lg">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <div class="col-md-3 mb-2">
+                                        <h6>2020 • Genre/Genre</h6>
+                                    </div>
+                                    <div class="col-md-9 mb-2">
+                                        <h6><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $row['MOVIE_DURATION'] ?> min/s</h6>
+                                    </div>
+
+                                    <div class="col-md-12 mb-1">
+                                        <!-- <p><i class="fa fa-imdb" aria-hidden="true"></i> 0/10.0</p> -->
+                                        <span class="imdbRatingPlugin p-0 m-0" data-user="<?= $row['RATING_USER'] ?>" data-title="<?= $row['RATING_TITLE'] ?>" data-style="p4">
+                                            <a href="https://www.imdb.com/title/tt4154756/?ref_=plg_rt_1">
+                                                <!-- <img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_31x14.png" /> -->
+                                            </a>
+                                        </span>
+                                        <script>
+                                            (function(d, s, id) {
+                                                var js, stags = d.getElementsByTagName(s)[0];
+                                                if (d.getElementById(id)) {
+                                                    return;
+                                                }
+                                                js = d.createElement(s);
+                                                js.id = id;
+                                                js.src = "https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
+                                                stags.parentNode.insertBefore(js, stags);
+                                            })(document, "script", "imdb-rating-api");
+                                        </script>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="embed-responsive embed-responsive-16by9 custom-trailer mb-4 mx-auto">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6ZfuNTqbHE8" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
+                                <br />
+                                <button class="btn watch-btn m-0" data-toggle="modal" data-target="#trailerModal">
+                                    Watch Trailer &nbsp;<i class="fa fa-play" aria-hidden="true"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="trailerModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content modal-lg custom-trailer-modal p-0">
+                                            <div class="modal-body">
+                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button><br />
+                                                <div class="embed-responsive embed-responsive-16by9 custom-trailer m-0">
+                                                    <iframe class="embed-responsive-item" src="<?= $row['TRAILER'] ?>" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-12 mb-4" style="height: auto">
+                            <hr />
+                            <h4 class="mb-4">PLOT</h4>
+                            <p class="mx-auto" style="width: 95%">
+                                <?= $row['MOVIE_DESC'] ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <hr />
-            </div>
+            </section>
 
-            <!-- Movie Trailer -->
-            <!-- <div class="col-md-6 embed-responsive embed-responsive-16by9 custom-trailer mb-4 mx-auto">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6ZfuNTqbHE8" allowfullscreen="true"></iframe> replace "watch?v=" with "embed/"
-            </div> -->
+            <?php if ($row['ACTIVE'] == 0) { ?>
+            <?php } else if ($row['ACTIVE'] == 1) { ?>
+                <nav class="navbar navbar-expand-md bg-dark m-0 p-0">
+                    <h1 class="mx-auto py-3 text-warning">Coming Soon</h1>
+                </nav>
+            <?php } else { ?>
+                <nav class="navbar navbar-expand-md m-0 p-0">
+                    <button class="navbar-toggler custom-movie-toggler p-3" type="button" data-toggle="collapse" data-target="#collapsibleMovieNavbar">
+                        <span style="font-weight: bold">SCHEDULE</span>
+                    </button>
 
+                    <div class="collapse navbar-collapse" id="collapsibleMovieNavbar">
+                        <div class="movie-navbar" style="width: 100%">
+                            <div class="row px-auto d-flex justify-content-center">
+                                <div class="col-7 col-md-2 input-group mb-3 my-3">
+                                    <select class="custom-select" id="inputSelectTheater">
+                                        <option selected disabled>Select Theater</option>
+                                        <option value="Theater-1">SM Manila</option>
+                                        <option value="Theater-2">SM Marikina</option>
+                                        <option value="Theater-3">SM North Edsa</option>
+                                        <option value="Theater-4">SM Bacoor</option>
+                                    </select>
+                                </div>
 
-            <div class="col-12">
-                <hr />
-                <p class="mx-auto" style="width: 90%">
-                    description goes here... The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, "Avengers: Endgame."
-                </p>
-            </div>
-        </div>
-    </section>
+                                <div class=" col-7 col-md-2 input-group mb-3 my-3">
+                                    <select class="custom-select" id="inputSelectDate">
+                                        <option selected disabled>Select Date</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
 
-    <nav class="navbar navbar-expand-md movie-navbar" style="width: 100%">
-        <ul class="navbar-nav mx-auto my-auto">
-            <li class="nav-item active"><a class="nav-link mx-1 px-3" href="home.php"><i class="fa fa-calendar" aria-hidden="true"></i> DATE</a></li>
-            <li class="nav-item"><a class="nav-link mx-1 px-3" href="home.php">TIME</a></li>
-            <li class="nav-item"><a class="nav-link mx-1 px-3" href="home.php">THEATER</a></li>
-        </ul>
-    </nav>
-
-    <section class="container-fluid custom-movie-profile-more">
-        <div class="row mx-auto mt-3" style="width: 85%">
-            <!-- Seat Reservation Payment -->
-            <div class="col-md-4 mb-4 px-4 py-3 custom-transaction">
-                <table class="table table-hover table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">Seats Reserved</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Normal</td>
-                            <td>-</td>
-                            <td>₱0.00</td>
-                        </tr>
-                        <tr>
-                            <td>VIP</td>
-                            <td>-</td>
-                            <td>₱0.00</td>
-                        </tr>
-                        <thead class="table-total" style="border-top: 1px solid #1c1a18">
-                            <td>Total</td>
-                            <td>-</td>
-                            <td>₱0.00</td>
-                        </thead>
-                    </tbody>
-                </table>
-
-                <!-- Transaction Buttons -->
-                <div class="transaction-button d-flex align-items-end justify-content-end mb-5">
-                    <a class="btn btn-primary buy-ticket-button">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.354-7.646a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
-                        </svg>
-                        Purchase
-                    </a>
-                </div>
-            </div>
-
-            <!-- Seat Plan -->
-            <div class="col-md-8 custom-seats">
-                <div class="row">
-                    <div class="col-md-12 custom-seats-legend">
-                        <div class="row mx-auto">
-                            <div class="col-md-12">
-                                <div class="row ml-auto py-3">
-                                    <div class="col-2">Normal</div>
-                                    <div class="col-4">Special</div>
-                                    <div class="col-2">Selected</div>
-                                    <div class="col-2">Available</div>
-                                    <div class="col-2">Sold</div>
+                                <div class=" col-7 col-md-2 input-group mb-3 my-3">
+                                    <select class="custom-select" id="inputSelectTime">
+                                        <option selected disabled>Select Time</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </nav>
 
-                    <!-- Seat Reservation -->
-                    <div class="col-md-12 custom-seats-reservation py-3">
-                        <p>Seat Reservation goes here</p>
+
+                <section class="container-fluid custom-movie-profile-more">
+                    <div class="row mx-auto mt-3" style="width: 88%">
+                        <!-- Seat Plan -->
+                        <div class="col-md-8 order-md-12 custom-seats">
+                            <div class="row">
+                                <!-- Seat Reservation Navbar -->
+                                <div class="col-md-12 custom-seats-legend">
+                                    <div class="row mx-auto">
+                                        <div class="col-md-12">
+                                            <div class="row d-flex justify-content-center mx-auto mt-3 mb-0 px-auto py-2">
+                                                <div class="col-md-3 col-sm-4 col-4">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheckAvailable" onclick="return false">
+                                                        <label class="custom-control-label" for="customCheckAvailable">Available</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-4 col-4">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Selected" checked="checked" onclick="return false">
+                                                        <label class="custom-control-label" for="Selected">Selected</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-4 col-4">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Sold" checked="checked" disabled>
+                                                        <label class="custom-control-label" for="Sold">Sold</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php include('seat_reservation_function.php'); ?>
+
+                                <!-- Seat Reservation -->
+                                <div class="col-md-12 custom-seats-reservation py-3">
+                                    <?php include('seat_reservation.php'); ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seat Reservation Payment -->
+                        <div class="col-md-4 order-md-1 mb-4 px-4 py-3 custom-transaction">
+                            <table class="table table-hover table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3" class="transaction-table-title">SEATS RESERVED</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <thead>
+                                        <td class="transaction-table-subtitle">Seat Plan</td>
+                                        <td class="transaction-table-subtitle">Quantity</td>
+                                        <td class="transaction-table-subtitle">Price</td>
+                                    </thead>
+                                    <tr>
+                                        <td>Regular</td>
+                                        <td>
+                                            <div id="checkCount">0</div>
+                                        </td>
+                                        <td>
+                                            <div>₱<span id="printSubtotal">0</span>.00</div> <!-- checkCount * price -->
+                                        </td>
+                                    </tr>
+                                    <thead style="border-top: 1px solid #1c1a18">
+                                        <td class="transaction-table-total">Total</td>
+                                        <td class="transaction-table-total">-</td>
+                                        <td class="transaction-table-total">
+                                            <div>₱<span id="printTotal">0</span>.00</div> <!-- checkCount * price -->
+                                        </td>
+                                    </thead>
+                                </tbody>
+                            </table>
+
+                            <!-- Transaction Buttons -->
+                            <div class="transaction-button d-flex align-items-end justify-content-end mb-5">
+                                <button class="btn buy-ticket-button">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.354-7.646a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                    </svg>
+                                    Purchase
+                                </button>
+                            </div>
+
+                            <!-- Guidelines -->
+                            <div class="transaction-guidelines">
+                                <hr />
+                                <h4 class="mb-4">GUIDELINES FOR ONLINE TICKET PURCHASING:</h4>
+                                <p>Please note that the following should ALL bear the SAME NAME when buying tickets online:</p>
+                                <ol>
+                                    <li>T1 Movies user account.</li>
+                                    <li>Payment method to be used.</li>
+                                    <li>One (1) valid government ID to be presented for redemption.</li>
+                                </ol>
+                                <p>Ticket redemption through a representative is <b>NOT</b> allowed. Only the cardholder who transacted online can redeem the ticket.</p>
+                                <p>By proceeding to payment, you agree with the above redemption process. Price is inclusive of standard ticket charges.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
+            <?php } ?>
+        </section>
+    <?php
+    }
+} else { ?>
+    <section id="movie-profile">
+        <section class="container-fluid custom-movie-profile mb-auto p-0">
+            <!-- set horizontal poster as background with css -->
+            <div class="container-fluid opacity">
+                <h1 class="mx-auto">Movie Not Found!</h1>
             </div>
-
-        </div>
+        </section>
     </section>
-</section>
-
+<?php
+} ?>
 
 <?php include('footer.php'); ?>

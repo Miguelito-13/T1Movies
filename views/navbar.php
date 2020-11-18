@@ -8,7 +8,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 ?>
 
 <!-- header -->
-<header class="container-fluid" style="margin-bottom: 98px">
+<header class="container-fluid" style="margin-bottom: 94px">
   <nav class="navbar navbar-expand-md navbar-custom fixed-top px-5 py-0">
     <a class="navbar-brand logo" href="home.php">
       <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="mx-auto my-2" style="height: 70px">
@@ -44,9 +44,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       </ul>
 
       <!-- Search form -->
-      <form class="form-inline form-search-custom">
-        <input id="search" class="form-control search-custom" type="text" placeholder="Movie Title" autocomplete="off" aria-label="Search">
-        <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true" type="submit"></i>
+      <form class="form-inline form-search-custom" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <input name="search_title" id="search" class="form-control search-custom" type="text" placeholder="Movie Title" autocomplete="off" aria-label="Search">
+        <button type="submit" class="btn p-0" name="search_button" id="search_button">
+          <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true"></i>
+        </button>
         <div class="search-result"></div>
       </form>
 
@@ -94,6 +96,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             .parents(".form-search-custom")
             .find('input[type="text"]')
             .val($(this).text());
+          $("#search_button").trigger("click");
           $(this).parent(".search-result").empty();
         });
       });
@@ -109,6 +112,4 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     document.getElementById('id_logout').style.display = "none";
     document.getElementById('id_loginregister').style.display = "block";
   }
-
-  // Search
 </script>
