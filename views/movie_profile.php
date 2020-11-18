@@ -11,10 +11,11 @@ isset($_SESSION["movie_id"]) ? $movie_id = $_SESSION["movie_id"] : $movie_id = 0
 
 <!-- Movie Description and Reservation -->
 <?php
-$sql = "SELECT * FROM movies WHERE MOVIE_ID = '$movie_id'";
+$sql = "SELECT * from genre LEFT JOIN movies ON movies.MOVIE_ID = genre.MOVIE_ID WHERE movies.MOVIE_ID = '$movie_id'";
 $res = mysqli_query($link,  $sql);
 if (mysqli_num_rows($res) > 0) {
-    while ($row = mysqli_fetch_assoc($res)) { ?>
+    while ($row = mysqli_fetch_assoc($res)) {
+        $date = substr($row['PREMIERE_DATE'], 0, 4); ?>
         <section id="movie-profile">
             <section class="container-fluid custom-movie-profile mb-auto p-0" style="background: url(../images/movies/poster_bg/<?= $row['POSTER_BG'] ?>); background-size: cover; background-position: center; min-height: 88.5vh">
                 <!-- set horizontal poster as background with css -->
@@ -33,8 +34,21 @@ if (mysqli_num_rows($res) > 0) {
                                         <hr />
                                     </div>
 
-                                    <div class="col-md-3 mb-2">
-                                        <h6>2020 • Genre/Genre</h6>
+                                    <div class="col-md-12 mb-2">
+                                        <h6>• <?= $date ?> <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
+                                            <?php if ($row['ADVENTURE'] != 0) { ?>/&nbsp;Adventure<?php } ?>
+                                            <?php if ($row['ANIMATION'] != 0) { ?>/&nbsp;Animation<?php } ?>
+                                            <?php if ($row['COMEDY'] != 0) { ?>/&nbsp;Comedy<?php } ?>
+                                            <?php if ($row['DRAMA'] != 0) { ?>/&nbsp;Drama<?php } ?>
+                                            <?php if ($row['FAMILY'] != 0) { ?>/&nbsp;Family<?php } ?>
+                                            <?php if ($row['FANTASY'] != 0) { ?>/&nbsp;Fantasy<?php } ?>
+                                            <?php if ($row['HORROR'] != 0) { ?>/&nbsp;Horror<?php } ?>
+                                            <?php if ($row['MUSICAL'] != 0) { ?>/&nbsp;Musical<?php } ?>
+                                            <?php if ($row['MYSTERY'] != 0) { ?>/&nbsp;Mystery<?php } ?>
+                                            <?php if ($row['ROMANCE'] != 0) { ?>/&nbsp;Romance<?php } ?>
+                                            <?php if ($row['SCI_FI'] != 0) { ?>/&nbsp;Sci-Fi<?php } ?>
+                                            <?php if ($row['THRILLER'] != 0) { ?>/&nbsp;Thriller<?php } ?>
+                                        </h6>
                                     </div>
                                     <div class="col-md-9 mb-2">
                                         <h6><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $row['MOVIE_DURATION'] ?> min/s</h6>
