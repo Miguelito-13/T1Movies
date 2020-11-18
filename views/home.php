@@ -48,7 +48,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -56,7 +55,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -64,7 +62,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -72,7 +69,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -80,7 +76,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
               </div>
@@ -102,7 +97,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -110,7 +104,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -118,7 +111,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -126,7 +118,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
 
@@ -134,7 +125,6 @@ include('header.php');
                   <img src="../images/sample_poster.jpg" alt="Movie Title" class="movie-poster"> <!-- palitan nung php for db -->
                   <div class="overlay">
                     <a href="movie_profile.php" class="text">Avengers Infinity War</a> <!-- palitan nung php for db -->
-                    <button class="btn btn-warning buy-button">Buy Tickets</button>
                   </div>
                 </div>
               </div>
