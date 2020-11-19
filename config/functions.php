@@ -562,7 +562,6 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"
     if (is_numeric($test_search) == 1) {
         $temp_search = substr($temp_search, 0, -4);
     }
-    $temp_search = substr($temp_search, 0, -4);
     $temp_search = strtoupper($temp_search);
     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$temp_search%'";
     $res = mysqli_query($link,  $sql);
