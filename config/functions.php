@@ -558,6 +558,10 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["view_movie"]))
 // Search Direct
 else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"]))) {
     $temp_search = trim($_POST["search_title"]);
+    $test_search = substr($temp_search, -4);
+    if (is_numeric($test_search) == 1) {
+        $temp_search = substr($temp_search, 0, -4);
+    }
     $temp_search = substr($temp_search, 0, -4);
     $temp_search = strtoupper($temp_search);
     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$temp_search%'";
