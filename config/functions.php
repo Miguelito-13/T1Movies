@@ -579,14 +579,10 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"
 // Search
 if (isset($_REQUEST["search_term"])) {
     $search = $_REQUEST["search_term"];
-
     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$search%' LIMIT 5";
-
     if ($stmt = mysqli_prepare($link, $sql)) {
-
         if (mysqli_stmt_execute($stmt)) {
             $result = mysqli_stmt_get_result($stmt);
-
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                     $date = substr($row['PREMIERE_DATE'], 0, 4);
@@ -600,6 +596,5 @@ if (isset($_REQUEST["search_term"])) {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
     }
-
     mysqli_stmt_close($stmt);
 }

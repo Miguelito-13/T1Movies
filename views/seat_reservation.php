@@ -4,9 +4,9 @@
             <thead>
                 <tr class="row d-flex justify-content-center mx-auto">
                     <th class="col-12 text-center">
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                         <h6>SCREEN</h6>
-                        <hr class="mb-4"/>
+                        <hr class="mb-4" />
                     </th>
                 </tr>
             </thead>
@@ -192,7 +192,9 @@
                 </tr>
 
                 <tr class="d-flex justify-content-center mx-auto">
-                    <td class="col-12 py-0"><hr/></td>
+                    <td class="col-12 py-0">
+                        <hr />
+                    </td>
                 </tr>
 
                 <!-- Row D Regular -->
@@ -494,3 +496,29 @@
         </table>
     </form>
 </div>
+
+<script type="text/javascript">
+    // Seat Reservation Form Checkbox
+    window.updateCount = function() {
+        const counter = $(".checkCounter:checked").length;
+        document.getElementById("checkCount").innerHTML = counter;
+
+        // Subtotal
+        let x = counter;
+        let y = <?= $row['PRICE'] ?>; //price
+        let subTotal = x * y;
+        document.getElementById("printSubtotal").innerHTML = subTotal;
+
+        //Total
+        let a = subTotal;
+        let b = 0;
+        let total = a + b;
+        document.getElementById("printTotal").innerHTML = total;
+
+        //Total (after change)
+        // let i = counter;
+        // let j = 420; //price
+        // let total = i*j;
+        // document.getElementById("printTotal").innerHTML = total;
+    };
+</script>

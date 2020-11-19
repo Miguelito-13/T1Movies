@@ -189,8 +189,6 @@ if (mysqli_num_rows($res) > 0) {
                                     </div>
                                 </div>
 
-                                <?php include('seat_reservation_function.php'); ?>
-
                                 <!-- Seat Reservation -->
                                 <div class="col-md-12 custom-seats-reservation py-3">
                                     <?php include('seat_reservation.php'); ?>
