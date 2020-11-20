@@ -571,6 +571,8 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"
             $temp_row = strtoupper($temp_row);
             if ($temp_search == $temp_row) {
                 $_SESSION["movie_id"] = $row['MOVIE_ID'];
+            } else {
+                $_SESSION["movie_id"] = $temp_search;
             }
         }
     } else {
