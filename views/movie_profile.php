@@ -34,7 +34,7 @@ if (mysqli_num_rows($res) > 0) {
                                         <hr />
                                     </div>
 
-                                    <div class="col-md-12 mb-2">
+                                    <div class="col-md-12 mb-1">
                                         <h6>• <?= $date ?> <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
                                             <?php if ($row['ADVENTURE'] != 0) { ?>/&nbsp;Adventure<?php } ?>
                                             <?php if ($row['ANIMATION'] != 0) { ?>/&nbsp;Animation<?php } ?>
@@ -50,11 +50,14 @@ if (mysqli_num_rows($res) > 0) {
                                             <?php if ($row['THRILLER'] != 0) { ?>/&nbsp;Thriller<?php } ?>
                                         </h6>
                                     </div>
-                                    <div class="col-md-9 mb-2">
+                                    <div class="col-md-9 mb-1">
                                         <h6><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $row['MOVIE_DURATION'] ?> min/s</h6>
                                     </div>
+                                    <div class="col-md-9">
+                                        <h6><i class="fa fa-star-half-o" aria-hidden="true"></i> <?= $row['RATED'] ?></h6>
+                                    </div>
 
-                                    <div class="col-md-12 mb-1">
+                                    <div class="col-md-12">
                                         <!-- <p><i class="fa fa-imdb" aria-hidden="true"></i> 0/10.0</p> -->
                                         <span class="imdbRatingPlugin p-0 m-0" data-user="<?= $row['RATING_USER'] ?>" data-title="<?= $row['RATING_TITLE'] ?>" data-style="p4">
                                             <a href="https://www.imdb.com/title/tt4154756/?ref_=plg_rt_1">
