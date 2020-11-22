@@ -2,7 +2,7 @@
 
 function get_total_all_records()
 {
-    include('movie_dbconn.php');
+    include('../config_pdo.php');
     $statement = $connection->prepare("SELECT * FROM movies");
     $statement->execute();
     $result = $statement->fetchAll();

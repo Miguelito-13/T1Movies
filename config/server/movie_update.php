@@ -1,6 +1,6 @@
 <?php
-include('movie_dbconn.php');
-include('movie_function.php');
+include('../config_pdo.php');
+include('movie_records.php');
 
 if (isset($_POST["operation"])) {
     date_default_timezone_set('Asia/Manila');

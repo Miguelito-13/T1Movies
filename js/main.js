@@ -31,7 +31,7 @@ $(document).ready(function () {
       if ($("#active_now").is(":checked")) {
         var movie_active = $(this).attr("id");
         $.ajax({
-          url: "../config/server/movie_fetch_single.php",
+          url: "../config/server/movie_data.php",
           method: "POST",
           data: {
             movie_active: movie_active,
@@ -229,7 +229,7 @@ $(document).ready(function () {
     order: [],
     info: true,
     ajax: {
-      url: "../config/server/movie_fetch.php",
+      url: "../config/server/movie_list.php",
       type: "POST",
     },
     columnDefs: [
@@ -675,7 +675,7 @@ $(document).ready(function () {
         } else {
           // Add or Update
           $.ajax({
-            url: "../config/server/movie_insert.php",
+            url: "../config/server/movie_update.php",
             method: "POST",
             data: new FormData(this),
             contentType: false,
@@ -695,7 +695,7 @@ $(document).ready(function () {
       // Add or Update
       else {
         $.ajax({
-          url: "../config/server/movie_insert.php",
+          url: "../config/server/movie_update.php",
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -720,7 +720,7 @@ $(document).ready(function () {
   $(document).on("click", ".update", function () {
     var movie_id = $(this).attr("id");
     $.ajax({
-      url: "../config/server/movie_fetch_single.php",
+      url: "../config/server/movie_data.php",
       method: "POST",
       data: {
         movie_id: movie_id,
@@ -929,7 +929,7 @@ $(document).ready(function () {
           if ($("#active_now").prop("checked") == true) {
             var movie_active = data.movie_active;
             $.ajax({
-              url: "../config/server/movie_fetch_single.php",
+              url: "../config/server/movie_data.php",
               method: "POST",
               data: {
                 movie_active: movie_active,

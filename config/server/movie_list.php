@@ -1,7 +1,7 @@
 <?php
 
-include('movie_dbconn.php');
-include('movie_function.php');
+include('../config_pdo.php');
+include('movie_records.php');
 
 // Fetch
 $query = '';
