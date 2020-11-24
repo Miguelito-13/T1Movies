@@ -87,15 +87,31 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
 
                         $logged_in_user_login = mysqli_fetch_assoc($results_login);
 
+                        date_default_timezone_set('Asia/Manila');
+                        $dt = new DateTime();
+                        $today = $dt->format('Y-m-d H:i:s');
+
                         // Admin
                         if ($logged_in_user_login['ADMIN'] == 'ADMIN') {
                             $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                            header("location: ./admin_site.php");
+                            if ($logged_in_user_login['ACTIVE'] == 0) {
+                                $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE USERNAME = '$username_login'";
+                                mysqli_query($link, $sql);
+                                echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./admin_site.php"; </script>';
+                            } else {
+                                header("location: ./admin_site.php");
+                            }
                         }
                         // User
                         else {
                             $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                            header("location: ./home.php");
+                            if ($logged_in_user_login['ACTIVE'] == 0) {
+                                $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE USERNAME = '$username_login'";
+                                mysqli_query($link, $sql);
+                                echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./home.php"; </script>';
+                            } else {
+                                header("location: ./home.php");
+                            }
                         }
                     } else {
                         $show = "show";
@@ -123,15 +139,31 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
 
                             $logged_in_user_login = mysqli_fetch_assoc($results_login);
 
+                            date_default_timezone_set('Asia/Manila');
+                            $dt = new DateTime();
+                            $today = $dt->format('Y-m-d H:i:s');
+
                             // Admin
-                            if ($logged_in_user_login['ADMIN'] != 'ADMIN') {
+                            if ($logged_in_user_login['ADMIN'] == 'ADMIN') {
                                 $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                                header("location: ./admin_site.php");
+                                if ($logged_in_user_login['ACTIVE'] == 0) {
+                                    $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE EMAIL='$email_login'";
+                                    mysqli_query($link, $sql);
+                                    echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./admin_site.php"; </script>';
+                                } else {
+                                    header("location: ./admin_site.php");
+                                }
                             }
                             // User
                             else {
                                 $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                                header("location: ./home.php");
+                                if ($logged_in_user_login['ACTIVE'] == 0) {
+                                    $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE EMAIL='$email_login'";
+                                    mysqli_query($link, $sql);
+                                    echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./home.php"; </script>';
+                                } else {
+                                    header("location: ./home.php");
+                                }
                             }
                         } else {
                             $show = "show";

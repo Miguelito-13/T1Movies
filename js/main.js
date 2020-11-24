@@ -4,7 +4,9 @@
 //-*
 
 $(document).ready(function () {
+  /********************************************************************************************/
   // Users
+
   // Fetch
   var userTable = $("#user_table").DataTable({
     scrollY: "50vh",
@@ -24,6 +26,62 @@ $(document).ready(function () {
         targets: [0, 1, 2, 3, 4, 5],
       },
     ],
+  });
+
+  // Insert
+  $(document).on("submit", "#user_form", function (user) {
+    user.preventDefault();
+    $.ajax({
+      url: "../config/server/user_update.php",
+      method: "POST",
+      data: new FormData(this),
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        $("#user_form")[0].reset();
+        $("#userModal").modal("hide");
+        userTable.ajax.reload();
+      },
+    });
+  });
+
+  // Update
+  $(document).on("click", ".edit-user", function () {
+    var account_id = $(this).attr("id");
+    $.ajax({
+      url: "../config/server/user_data.php",
+      method: "POST",
+      data: {
+        account_id: account_id,
+      },
+      dataType: "json",
+      success: function (data) {
+        $("#userModal").modal("show");
+        $("#user_operation").val("Edit");
+        $("#account_id").val(account_id);
+
+        $(".account_id").text(data.account_id);
+        $(".user_id").text(data.user_id);
+        $(".name").text(data.name);
+        $(".username").text(data.username);
+        $(".email").text(data.email);
+        $(".password").text(data.password);
+        $(".address").text(data.address);
+        $(".contact").text(data.contact);
+        data.gender == 1
+          ? $(".gender").text("Male")
+          : $(".gender").text("Female");
+        $(".birthdate").text(data.birthdate);
+        $(".age").text(data.age);
+        $(".code").text(data.code);
+        data.type == "ADMIN"
+          ? $("#type_admin").prop("checked", true)
+          : $("#type_user").prop("checked", true);
+        data.active == 0
+          ? $("#user_inactive").prop("checked", true)
+          : $("#user_active").prop("checked", true);
+      },
+    });
   });
 
   /********************************************************************************************/
@@ -264,9 +322,8 @@ $(document).ready(function () {
   });
 
   // Insert
-  $(document).on("submit", "#movie_form", function (event) {
-    event.preventDefault();
-    var id = $("#id").val();
+  $(document).on("submit", "#movie_form", function (movie) {
+    movie.preventDefault();
     var movie = $("#movie").val();
     var description = $("#description").val();
     var duration = $("#duration").val();
@@ -750,8 +807,6 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (data) {
-        $("#movieModal").modal("show");
-        $("#id").val(data.id);
         $("#movie").val(data.movie);
         $("#description").val(data.description);
         $("#duration").val(data.duration);
@@ -1171,6 +1226,7 @@ $(document).ready(function () {
           }
         }
 
+        $("#movieModal").modal("show");
         $(".modal-title").text("Edit Movie Details");
         $(".p-title").text("Update Movie Poster");
         $(".pbg-title").text("Update Movie Poster Background");

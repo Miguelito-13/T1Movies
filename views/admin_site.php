@@ -20,8 +20,11 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 <html>
 
 <head>
-    <title>Movie Server</title>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>T1 SERVER</title>
+    <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
     <!-- Bootstrap Lib -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -58,7 +61,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 <tr>
                     <th>ACCOUNT ID</th>
                     <th>USERNAME</th>
-                    <th>EMAIL</th>
+                    <th>EMAIL ADDRESS</th>
                     <th>TYPE</th>
                     <th>ACTIVE</th>
                     <th scope="col">MODIFY</th>
@@ -90,13 +93,69 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 
 </html>
 
+<div id="userModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="user_form" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                    <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <label>Account ID: </label>
+                    <span class="account_id"></span><br>
+                    <label>User ID: </label>
+                    <span class="user_id"></span><br>
+                    <label>Full Name: </label>
+                    <span class="name"></span><br>
+                    <label>Username: </label>
+                    <span class="username"></span><br>
+                    <label>Email: </label>
+                    <span class="email"></span><br>
+                    <label>Password Hash: </label>
+                    <span class="password"></span><br>
+                    <label>Address: </label>
+                    <span class="address"></span><br>
+                    <label>Contact: </label>
+                    <span class="contact"></span><br>
+                    <label>Gender: </label>
+                    <span class="gender"></span><br>
+                    <label>Birthdate: </label>
+                    <span class="birthdate"></span><br>
+                    <label>Age: </label>
+                    <span class="age"></span><br>
+                    <label>Last Verification Code: </label>
+                    <span class="code"></span><br>
+                    <label class="title">User Type: &nbsp;</label>
+                    <input id="type_admin" name="users_type" class="radio-button" type="radio" value="ADMIN" />
+                    <label for="type_admin">Admin &nbsp;</label>
+                    <input id="type_user" name="users_type" class="radio-button" type="radio" value="USERS" />
+                    <label for="type_user">User &nbsp;</label>
+                    <br>
+                    <label class="title">User Active: &nbsp;</label>
+                    <input id="user_inactive" name="users_active" class="radio-button" type="radio" value=0 />
+                    <label for="user_inactive">Inactive &nbsp;</label>
+                    <input id="user_active" name="users_active" class="radio-button" type="radio" value=1 />
+                    <label for="user_active">Active &nbsp;</label>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="account_id" id="account_id" />
+                    <input type="hidden" name="user_operation" id="user_operation" />
+                    <input type="submit" name="user_action" id="user_action" class="btn btn-primary" value="Save" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div id="movieModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="movie_form" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Movie</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
                     <label class="title">Movie Title *</label>
