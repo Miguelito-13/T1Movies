@@ -4,6 +4,29 @@
 //-*
 
 $(document).ready(function () {
+  // Users
+  // Fetch
+  var userTable = $("#user_table").DataTable({
+    scrollY: "50vh",
+    scrollCollapse: true,
+    paging: false,
+    processing: true,
+    serverSide: true,
+    order: [],
+    info: true,
+    ajax: {
+      url: "../config/server/user_list.php",
+      type: "POST",
+    },
+    columnDefs: [
+      {
+        orderable: false,
+        targets: [0, 1, 2, 3, 4, 5],
+      },
+    ],
+  });
+
+  /********************************************************************************************/
   // Movies
   $("#add_button").click(function () {
     $("#movie_form")[0].reset();
@@ -220,7 +243,7 @@ $(document).ready(function () {
   });
 
   // Fetch
-  var dataTable = $("#movie_table").DataTable({
+  var movieTable = $("#movie_table").DataTable({
     scrollY: "50vh",
     scrollCollapse: true,
     paging: false,
@@ -686,7 +709,7 @@ $(document).ready(function () {
               } else {
                 $("#movie_form")[0].reset();
                 $("#movieModal").modal("hide");
-                dataTable.ajax.reload();
+                movieTable.ajax.reload();
               }
             },
           });
@@ -706,7 +729,7 @@ $(document).ready(function () {
             } else {
               $("#movie_form")[0].reset();
               $("#movieModal").modal("hide");
-              dataTable.ajax.reload();
+              movieTable.ajax.reload();
             }
           },
         });
@@ -717,7 +740,7 @@ $(document).ready(function () {
   });
 
   // Update
-  $(document).on("click", ".update", function () {
+  $(document).on("click", ".edit-movie", function () {
     var movie_id = $(this).attr("id");
     $.ajax({
       url: "../config/server/movie_data.php",
@@ -1156,5 +1179,23 @@ $(document).ready(function () {
         $("#operation").val("Edit");
       },
     });
+  });
+
+  $(document).on("click", ".delete", function () {
+    var movie_id = $(this).attr("id");
+    if (confirm("Confirm Delete Movie?")) {
+      $.ajax({
+        url: "../config/server/movie_delete.php",
+        method: "POST",
+        data: {
+          movie_id: movie_id,
+        },
+        success: function (data) {
+          movieTable.ajax.reload();
+        },
+      });
+    } else {
+      return false;
+    }
   });
 });

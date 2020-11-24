@@ -34,11 +34,41 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 </head>
 
 <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-info" href="../views/profile.php">Profile</a></li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger" href="../config/logout.php">Sign out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content" style="margin: 0 20% 0 20%">
+        <h2>Users</h2>
+        <!-- Movies Table -->
+        <table id="user_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ACCOUNT ID</th>
+                    <th>USERNAME</th>
+                    <th>EMAIL</th>
+                    <th>TYPE</th>
+                    <th>ACTIVE</th>
+                    <th scope="col">MODIFY</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
     <div class="content" style="margin: 0 20% 0 20%">
         <h2>Movies</h2>
-        <a href="../views/profile.php">Profile</a><br>
-        <a href="../config/logout.php">Sign out</a>
-        <hr />
         <!-- Movies Table -->
         <table id="movie_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
             <thead class="thead-dark">
@@ -227,6 +257,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 <div class="modal-footer">
                     <input type="hidden" name="movie_id" id="movie_id" />
                     <input type="hidden" name="operation" id="operation" />
+                    <button type="button" class="btn btn-secondary delete mr-auto" data-dismiss="modal">Delete</button>
                     <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>

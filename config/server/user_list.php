@@ -1,23 +1,24 @@
 <?php
 
 include('../config_pdo.php');
-include('movie_records.php');
+include('user_records.php');
 
 // Fetch
 $query = '';
 $output = array();
-$query .= "SELECT * FROM movies ";
+$query .= "SELECT * FROM users_account ";
 
 if (isset($_POST["search"]["value"])) {
-    $query .= 'WHERE MOVIE_TITLE LIKE "%' . $_POST["search"]["value"] . '%" ';
-    $query .= 'OR RATED LIKE "%' . $_POST["search"]["value"] . '%" ';
+    $query .= 'WHERE USERNAME LIKE "%' . $_POST["search"]["value"] . '%" ';
+    $query .= 'OR EMAIL LIKE "%' . $_POST["search"]["value"] . '%" ';
+    $query .= 'OR ADMIN LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= 'OR ACTIVE LIKE "%' . $_POST["search"]["value"] . '%" ';
 }
 
 if (isset($_POST["order"])) {
     $query .= 'ORDER BY ' . $_POST['order']['0']['column'] . ' ' . $_POST['order']['0']['dir'] . ' ';
 } else {
-    $query .= 'ORDER BY MOVIE_ID ASC ';
+    $query .= 'ORDER BY ACCOUNT_ID ASC ';
 }
 
 if ($_POST["length"] != -1) {
@@ -31,18 +32,16 @@ $data = array();
 $filtered_rows = $statement->rowCount();
 foreach ($result as $row) {
     $sub_array = array();
-    $sub_array[] = $row["MOVIE_ID"];
-    $sub_array[] = $row["MOVIE_TITLE"];
-    $sub_array[] = $row["RATED"];
-    $sub_array[] = $row["PREMIERE_DATE"];
+    $sub_array[] = $row["ACCOUNT_ID"];
+    $sub_array[] = $row["USERNAME"];
+    $sub_array[] = $row["EMAIL"];
+    $sub_array[] = $row["ADMIN"];
     if ($row["ACTIVE"] == 0) {
         $sub_array[] = '<span class="text-danger">(0) Inactive</span>';
-    } else if ($row["ACTIVE"] == 1) {
-        $sub_array[] = '<span class="text-primary">(1) Coming Soon</span>';
     } else {
-        $sub_array[] = '<span class="text-success">(2) Now Showing</span>';
+        $sub_array[] = '<span class="text-success">(1) Active</span>';
     }
-    $sub_array[] = '<button data-toggle="modal" data-target="#movieModal" style="width: 100%" type="button" id="' . $row["MOVIE_ID"] . '" class="btn btn-info btn-sm edit-movie">Edit</button>';
+    $sub_array[] = '<button data-toggle="modal" data-target="#userModal" style="width: 100%" type="button" id="' . $row["ACCOUNT_ID"] . '" class="btn btn-info btn-sm edit-user">Edit</button>';
 
     $data[] = $sub_array;
 }
