@@ -14,119 +14,301 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     exit;
 }
 
-include("header.php");
-
 ?>
 
-<body>
-    <!-- ?php echo htmlspecialchars($_SESSION["username"]); ? -->
-    <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark flex-md-nowrap p-1 shadow">
-        <button class="btn btn-primary ml-3" id="menu-toggle">Menu</button>
+<!DOCTYPE html>
+<html>
+    <?php include('header.php'); ?>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-4 mt-2 mt-lg-0 ml-md-auto mr-4">
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../config/logout.php">Sign out</a>
-                </li>
-            </ul>
+    <body style="width: 100%">
+        <?php include('navbar.php'); ?>
+        
+        <div class="content" style="margin: 0 20% 0 20%">
+            <h2>Cinema</h2>
+            <!-- Movies Table -->
+            <table id="cinema_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>BRANCH ID</th>
+                        <th>CINEMA</th>
+                        <th>SEATS</th>
+                        <th>CURRENT MOVIE</th>
+                        <th scope="col">ACTIVE</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-    </nav>
 
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <div class="border-right position-fixed bg-light" id="sidebar-wrapper">
-            <div class="list-group list-group-flush" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-dashboard-list" data-toggle="list" href="#list-dashboard" role="tab" aria-controls="dashboard">Dashboard</a>
-                <a class="list-group-item list-group-item-action" id="list-database-list" data-toggle="list" href="#list-database" role="tab" aria-controls="database">Database</a>
-                <a class="list-group-item list-group-item-action" id="list-movies-list" data-toggle="list" href="#list-movies" role="tab" aria-controls="movies">Movies</a>
-                <a class="list-group-item list-group-item-action" id="list-users-list" data-toggle="list" href="#list-users" role="tab" aria-controls="users">Users</a>
+        <div class="content" style="margin: 0 20% 0 20%">
+            <h2>Users</h2>
+            <!-- Movies Table -->
+            <table id="user_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ACCOUNT ID</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL ADDRESS</th>
+                        <th>TYPE</th>
+                        <th>ACTIVE</th>
+                        <th scope="col">MODIFY</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="content" style="margin: 0 20% 0 20%">
+            <h2>Movies</h2>
+            <!-- Movies Table -->
+            <table id="movie_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>MOVIE ID</th>
+                        <th>MOVIE TITLE</th>
+                        <th>RATED</th>
+                        <th>PREMIERE DATE</th>
+                        <th>ACTIVE</th>
+                        <th scope="col">MODIFY</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="d-flex justify-content-end">
+                <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
             </div>
         </div>
-        <!-- Temporary sidebar wrapper for page content below. Try removing to see result -->
-        <div id="sidebar-wrapper">
-            <div class="list-group">
-            </div>
-        </div>
-        <!-- Temporary sidebar wrapper for page content below. Try removing to see result -->
-        <!-- /#sidebar-wrapper -->
+    </body>
 
-        <!-- Page Content -->
-        <div class="bg-light" id="page-content-wrapper">
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="list-dashboard" role="tabpanel" aria-labelledby="list-dashboard-list">
-                    <!-- Content -->
-                    <div class="container-fluid p-3">
-                        <h1>Dashboard</h1>
-                        <hr />
-                        <h3>Recent Transactions: </h3>
-                        <h3>Total Movies: </h3>
-                        <h3>Movies (Now Showing): </h3>
-                        <h3>Movies (Coming Soon): </h3>
-                        <h3>Total Users:</h3>
-                        <h3>Total Users (Active): </h3>
-                    </div>
+</html>
+
+<div id="userModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="user_form" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit User</h4>
+                    <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
                 </div>
-                <div class="tab-pane fade" id="list-database" role="tabpanel" aria-labelledby="list-database-list">
-                    <!-- Content -->
-                    <div class="container-fluid p-3">
-                        <h2>Database</h2>
-                        <hr />
-                        <form class="">
-                            <select name="tables" onchange="showTable(this.value)">
-                                <option value="0">Select a table:</option>
-                                <option value="1">cinema</option>
-                                <option value="2">gender</option>
-                                <option value="3">genre</option>
-                                <option value="4">movies</option>
-                                <option value="5">movie_branches</option>
-                                <option value="6">movie_category</option>
-                                <option value="7">now_showing</option>
-                                <option value="8">receipt</option>
-                                <option value="9">reservation</option>
-                                <option value="10">tickets</option>
-                                <option value="11">users_account</option>
-                                <option value="12">users_profile</option>
-                                <option value="13">viewing_time</option>
-                            </select>
-                        </form>
-                        <br>
-                        <div id="txtHint" class="mb-4"></div>
-                    </div>
+                <div class="modal-body">
+                    <label>Account ID: </label>
+                    <span class="account_id"></span><br>
+                    <label>User ID: </label>
+                    <span class="user_id"></span><br>
+                    <label>Full Name: </label>
+                    <span class="name"></span><br>
+                    <label>Username: </label>
+                    <span class="username"></span><br>
+                    <label>Email: </label>
+                    <span class="email"></span><br>
+                    <label>Password Hash: </label>
+                    <span class="password"></span><br>
+                    <label>Address: </label>
+                    <span class="address"></span><br>
+                    <label>Contact: </label>
+                    <span class="contact"></span><br>
+                    <label>Gender: </label>
+                    <span class="gender"></span><br>
+                    <label>Birthdate: </label>
+                    <span class="birthdate"></span><br>
+                    <label>Age: </label>
+                    <span class="age"></span><br>
+                    <label>Last Verification Code: </label>
+                    <span class="code"></span><br>
+                    <label class="title">User Type: &nbsp;</label>
+                    <input id="type_admin" name="users_type" class="radio-button" type="radio" value="ADMIN" />
+                    <label for="type_admin">Admin &nbsp;</label>
+                    <input id="type_user" name="users_type" class="radio-button" type="radio" value="USERS" />
+                    <label for="type_user">User &nbsp;</label>
+                    <br>
+                    <label class="title">User Active: &nbsp;</label>
+                    <input id="user_inactive" name="users_active" class="radio-button" type="radio" value=0 />
+                    <label for="user_inactive">Inactive &nbsp;</label>
+                    <input id="user_active" name="users_active" class="radio-button" type="radio" value=1 />
+                    <label for="user_active">Active &nbsp;</label>
                 </div>
-                <div class="tab-pane fade" id="list-movies" role="tabpanel" aria-labelledby="list-movies-list">
-                    <!-- Content -->
-                    <div class="container-fluid p-3">
-                        <h2>Movies</h2>
-                        <hr />
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="list-users" role="tabpanel" aria-labelledby="list-users-list">
-                    <!-- Content -->
-                    <div class="container-fluid p-3">
-                        <h2>Users</h2>
-                        <hr />
-                    </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="account_id" id="account_id" />
+                    <input type="hidden" name="user_operation" id="user_operation" />
+                    <input type="submit" name="user_action" id="user_action" class="btn btn-primary" value="Save" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
-        </div>
-        <!-- /#page-content-wrapper -->
-
+        </form>
     </div>
-    <!-- /#wrapper -->
+</div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<div id="movieModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="movie_form" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Movie</h4>
+                    <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <label class="title">Movie Title *</label>
+                    <input type="text" name="movie" id="movie" class="form-control" placeholder="Movie" />
+                    <br>
+                    <label class="title">Movie Description *</label>
+                    <input type="text" name="description" id="description" class="form-control" placeholder="Description" />
+                    <br>
+                    <label class="title">Movie Duration *</label>
+                    <input type="number" name="duration" id="duration" class="form-control" placeholder="0 min/s" />
+                    <br>
+                    <label class="title">Movie Rated *</label><br>
+                    <input id="rated_g" name="rated" class="radio-button" type="radio" value="G" />
+                    <label for="rated_g">G &nbsp;</label>
+                    <input id="rated_pg" name="rated" class="radio-button" type="radio" value="PG" />
+                    <label for="rated_pg">PG &nbsp;</label>
+                    <input id="rated_pg_13" name="rated" class="radio-button" type="radio" value="PG-13" />
+                    <label for="rated_pg_13">PG-13 &nbsp;</label>
+                    <input id="rated_r" name="rated" class="radio-button" type="radio" value="R" />
+                    <label for="rated_r">R &nbsp;</label>
+                    <input id="rated_nc" name="rated" class="radio-button" type="radio" value="NC-17" />
+                    <label for="rated_nc">NC-17</label>
+                    <br>
+                    <label class="title">Movie Rating *</label>
+                    <input type="text" name="rating_user" id="rating_user" class="form-control" placeholder="data-user" />
+                    <input type="text" name="rating_title" id="rating_title" class="form-control" placeholder="data-title" />
+                    <br>
+                    <!-- Genre -->
+                    <label class="title">Movie Genre</label>
+                    <div class="col-12">
+                        <input type="checkbox" id="action_" name="action_" value=1>
+                        <label for="action_">Action&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="adventure" name="adventure" value=2>
+                        <label for="adventure">Adventure&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="animation" name="animation" value=3>
+                        <label for="animation">Animation&nbsp;&nbsp;</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" id="comedy" name="comedy" value=4>
+                        <label for="comedy">Comedy&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="drama" name="drama" value=5>
+                        <label for="drama">Drama&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="family" name="family" value=6>
+                        <label for="family">Family&nbsp;&nbsp;</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" id="fantasy" name="fantasy" value=7>
+                        <label for="fantasy">Fantasy&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="horror" name="horror" value=8>
+                        <label for="horror">Horror&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="musical" name="musical" value=9>
+                        <label for="musical">Musical&nbsp;&nbsp;</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" id="mystery" name="mystery" value=10>
+                        <label for="mystery">Mystery&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="romance" name="romance" value=11>
+                        <label for="romance">Romance&nbsp;&nbsp;</label>
+                        <input type="checkbox" id="sci" name="sci" value=12>
+                        <label for="sci">Sci-Fi&nbsp;&nbsp;</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" id="thriller" name="thriller" value=13>
+                        <label for="thriller">Thriller&nbsp;&nbsp;</label>
+                    </div>
+                    <!-- End of Genre -->
+                    <label class="p-title">Movie Poster *</label><br>
+                    <input id="poster" type="file" name="movie_image" accept="image/*" /><br>
+                    <label class="pbg-title">Movie Poster Background</label><br>
+                    <input id="poster_bg" type="file" name="movie_image_bg" accept="image/*" />
+                    <br>
+                    <label class="title">Movie Trailer *</label>
+                    <input type="text" name="trailer" id="trailer" class="form-control" placeholder="URL Link" />
+                    <br>
+                    <label class="title" for="premiereDate">Premiere Date *</label><br>
+                    <input type="datetime-local" id="premiereDate" name="premiereDate" /><br>
+                    <br>
+                    <label class="title">Ticket Price *</label>
+                    <input step="any" type="number" name="price" id="price" class="form-control" placeholder="0 php" />
+                    <br>
+                    <label class="title">Movie Active *</label>
+                    <div id="movie_active">
+                        <input id="active_inactive" name="movie_active" class="radio-button" type="radio" value=0 />
+                        <label for="active_inactive">Inactive &nbsp;&nbsp;</label>
+                        <input id="active_coming" name="movie_active" class="radio-button" type="radio" value=1 />
+                        <label for="active_coming">Coming Soon &nbsp;&nbsp;</label>
+                        <input class="active_now" id="active_now" name="movie_active" class="radio-button" type="radio" value=2 />
+                        <label for="active_now">Now Showing &nbsp;&nbsp;</label>
+                    </div>
+                    <div id="movie_branch" style="display: none;">
+                        <label class="title">Movie Branch *</label><br>
+                        <input type="checkbox" id="Manila" name="Manila" value=1>
+                        <label for="Manila">Manila &nbsp;</label>
+                        <input type="checkbox" id="Marikina" name="Marikina" value=2>
+                        <label for="Marikina">Marikina &nbsp;</label>
+                        <input type="checkbox" id="North" name="North" value=3>
+                        <label for="North">North Edsa &nbsp;</label>
+                        <input type="checkbox" id="Bacoor" name="Bacoor" value=4>
+                        <label for="Bacoor">Bacoor &nbsp;</label>
+                        <br>
+                    </div>
+                    <div id="cinema_manila" style="display: none;">
+                        <label class="title">Cinema (Manila) *</label><br>
+                        <input id="1_manila" name="cinema_manila" class="radio-button" type="radio" value=1 />
+                        <label for="1_manila">1 &nbsp;&nbsp;</label>
+                        <input id="2_manila" name="cinema_manila" class="radio-button" type="radio" value=2 />
+                        <label for="2_manila">2 &nbsp;&nbsp;</label>
+                        <input id="3_manila" name="cinema_manila" class="radio-button" type="radio" value=3 />
+                        <label for="3_manila">3 &nbsp;&nbsp;</label>
+                        <input id="4_manila" name="cinema_manila" class="radio-button" type="radio" value=4 />
+                        <label for="4_manila">4 &nbsp;&nbsp;</label>
+                        <input id="5_manila" name="cinema_manila" class="radio-button" type="radio" value=5 />
+                        <label for="5_manila">5 &nbsp;&nbsp;</label>
+                        <br>
+                    </div>
+                    <div id="cinema_marikina" style="display: none;">
+                        <label class="title">Cinema (Marikina) *</label><br>
+                        <input id="1_marikina" name="cinema_marikina" class="radio-button" type="radio" value=1 />
+                        <label for="1_marikina">1 &nbsp;&nbsp;</label>
+                        <input id="2_marikina" name="cinema_marikina" class="radio-button" type="radio" value=2 />
+                        <label for="2_marikina">2 &nbsp;&nbsp;</label>
+                        <input id="3_marikina" name="cinema_marikina" class="radio-button" type="radio" value=3 />
+                        <label for="3_marikina">3 &nbsp;&nbsp;</label>
+                        <input id="4_marikina" name="cinema_marikina" class="radio-button" type="radio" value=4 />
+                        <label for="4_marikina">4 &nbsp;&nbsp;</label>
+                        <input id="5_marikina" name="cinema_marikina" class="radio-button" type="radio" value=5 />
+                        <label for="5_marikina">5 &nbsp;&nbsp;</label>
+                        <br>
+                    </div>
+                    <div id="cinema_north" style="display: none;">
+                        <label class="title">Cinema (North Edsa) *</label><br>
+                        <input id="1_north" name="cinema_north" class="radio-button" type="radio" value=1 />
+                        <label for="1_north">1 &nbsp;&nbsp;</label>
+                        <input id="2_north" name="cinema_north" class="radio-button" type="radio" value=2 />
+                        <label for="2_north">2 &nbsp;&nbsp;</label>
+                        <input id="3_north" name="cinema_north" class="radio-button" type="radio" value=3 />
+                        <label for="3_north">3 &nbsp;&nbsp;</label>
+                        <input id="4_north" name="cinema_north" class="radio-button" type="radio" value=4 />
+                        <label for="4_north">4 &nbsp;&nbsp;</label>
+                        <input id="5_north" name="cinema_north" class="radio-button" type="radio" value=5 />
+                        <label for="5_north">5 &nbsp;&nbsp;</label>
+                        <br>
+                    </div>
+                    <div id="cinema_bacoor" style="display: none;">
+                        <label class="title">Cinema (Bacoor) *</label><br>
+                        <input id="1_bacoor" name="cinema_bacoor" class="radio-button" type="radio" value=1 />
+                        <label for="1_bacoor">1 &nbsp;&nbsp;</label>
+                        <input id="2_bacoor" name="cinema_bacoor" class="radio-button" type="radio" value=2 />
+                        <label for="2_bacoor">2 &nbsp;&nbsp;</label>
+                        <input id="3_bacoor" name="cinema_bacoor" class="radio-button" type="radio" value=3 />
+                        <label for="3_bacoor">3 &nbsp;&nbsp;</label>
+                        <input id="4_bacoor" name="cinema_bacoor" class="radio-button" type="radio" value=4 />
+                        <label for="4_bacoor">4 &nbsp;&nbsp;</label>
+                        <input id="5_bacoor" name="cinema_bacoor" class="radio-button" type="radio" value=5 />
+                        <label for="5_bacoor">5 &nbsp;&nbsp;</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="movie_id" id="movie_id" />
+                    <input type="hidden" name="operation" id="operation" />
+                    <button type="button" class="btn btn-secondary delete mr-auto" data-dismiss="modal">Delete</button>
+                    <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!-- Main JS -->
-    <script type="text/javascript" src="../js/main.js"></script>
-
-</body>
+<script src="../js/main.js"></script>

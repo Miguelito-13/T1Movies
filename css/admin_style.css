@@ -1,73 +1,125 @@
-/*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/templates/simple-sidebar)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
-
-#wrapper {
-  overflow-x: auto;
-}
-
-#sidebar-wrapper {
-  min-height: 100%;
-  margin-left: -15rem;
-  -webkit-transition: margin 0.25s ease-out;
-  -moz-transition: margin 0.25s ease-out;
-  -o-transition: margin 0.25s ease-out;
-  transition: margin 0.25s ease-out;
-}
-
-#sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
-}
-
-#sidebar-wrapper .list-group {
-  width: 15rem;
-}
-
-#page-content-wrapper {
-  min-width: 100vw;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
-}
-
-@media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
-
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
-
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
-}
-
-table {
+/* header */
+header {
   width: 100%;
-  border-collapse: collapse;
+  height: auto;
 }
 
-table,
-td,
-th {
-  border: 1px solid black;
-  padding: 5px;
-}
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
 
-th {
+/* NAVIGATION BAR */
+.admin-navbar-custom {
+  background-color: #1c1a18;
+}
+.admin-navbar-custom a {
+  color: white;
+}
+.navbar-custom .nav-item.active,
+.navbar-custom .nav-item:hover .nav-link,
+.dropdown-menu .dropdown-item.active {
+  background-color: #1c1a18;
+  color: #ffc344;
+}
+.navbar-nav li {
+  font-size: 1.25rem;
+}
+.navbar-custom .dropdown-menu,
+.navbar-custom .dropdown-menu button {
+  background-color: #1c1a18;
+  color: white;
+}
+.navbar-custom .dropdown-menu a,
+.navbar-custom .dropdown-menu button {
+  font-size: 1.1rem;
+  height: auto;
+  padding: 10px 20px;
+  margin: auto;
   text-align: left;
 }
+.navbar-custom .dropdown-menu a:hover,
+.navbar-custom .dropdown-menu button:hover {
+  color: #ffc344;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.custom-toggler.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.8);
+  height: 50px;
+  width: 50px;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  height: 25px;
+  width: 25px;
+  margin: auto;
+}
 
-body {
-  font-family: Arial, sans-serif;
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Search Bar */
+.navbar-custom .search-custom {
+  color: white;
+  background-color: #1c1a18;
+  border: none;
+  border-bottom: 1px solid #fff;
+  border-radius: 0;
+}
+.navbar-custom .search-custom:focus {
+  color: white;
+  background-color: #1c1a18;
+  border: none;
+  border-bottom: 1px solid #fff;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.search-result {
+  position: absolute;
+  z-index: 999;
+  top: 100%;
+  background-color: #1c1a18;
+  min-width: 210px;
+}
+/* Formatting search-result items */
+.search-result p {
+  color: white;
+  margin: auto;
+  padding: 7px 10px;
+  padding-right: 20px;
+  border: 1px solid #ffc344;
+  border-top: none;
+  cursor: pointer;
+}
+.search-result p:hover {
+  background: #ffba00;
+}
+.form-search-custom,
+.form-search-custom i {
+  caret-color: #ffba00;
+  color: #ffba00;
 }
 
 @media (max-width: 600px) {
 }
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Account */
+.account {
+  float: right;
+  overflow: auto;
+  z-index: 10;
+  padding: 5x;
+  /* margin: 3px; */
+}
+.account-div {
+  float: left;
+  margin-right: 15px;
+}
+.account-button {
+  background-color: #ffba00;
+  width: 135px;
+  height: 40px;
+  font-size: 15px;
+  padding: 3px;
+  font-size: 1em;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */

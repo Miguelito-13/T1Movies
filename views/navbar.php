@@ -44,9 +44,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       </ul>
 
       <!-- Search form -->
-      <form class="form-inline form-search-custom">
-        <input id="search" class="form-control search-custom" type="text" placeholder="Movie Title" autocomplete="off" aria-label="Search">
-        <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true" type="submit"></i>
+      <form class="form-inline form-search-custom" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <input name="search_title" id="search" class="form-control search-custom" type="text" placeholder="Movie Title" autocomplete="off" aria-label="Search">
+        <button type="submit" class="btn p-0" name="search_button" id="search_button">
+          <i class="fa fa-search text-white ml-3 d-lg-inline d-none" aria-hidden="true"></i>
+        </button>
         <div class="search-result"></div>
       </form>
 
@@ -60,6 +62,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 <script>
   // Modal call
   let modal = document.getElementById('id01');
+  let search = document.getElementById('search');
 
   //Close when clicked outside
   window.onclick = function(event) {
@@ -69,23 +72,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
       document.getElementById('error2').style.display = 'none';
       document.getElementById("uText").value = "";
       document.getElementById("pText").value = "";
-    }
-  }
-
-  //Show Logout, Hide Register
-  let show_logout = "<?php echo $show_logout ?>";
-  if (show_logout === "show") {
-    document.getElementById('id_logout').style.display = "block";
-    document.getElementById('id_loginregister').style.display = "none";
-  } else {
-    document.getElementById('id_logout').style.display = "none";
-    document.getElementById('id_loginregister').style.display = "block";
-  }
-
-  // Search
-  let search = document.getElementById("search");
-  window.onclick = function(event) {
-    if (event.target == search) {
+    } else if (event.target == search) {
       $(document).ready(function() {
         $('.form-search-custom input[type="text"]').on("keyup input", function() {
           /* Get input value on change */
@@ -109,9 +96,20 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             .parents(".form-search-custom")
             .find('input[type="text"]')
             .val($(this).text());
+          $("#search_button").trigger("click");
           $(this).parent(".search-result").empty();
         });
       });
     }
+  };
+
+  //Show Logout, Hide Register
+  let show_logout = "<?php echo $show_logout ?>";
+  if (show_logout === "show") {
+    document.getElementById('id_logout').style.display = "block";
+    document.getElementById('id_loginregister').style.display = "none";
+  } else {
+    document.getElementById('id_logout').style.display = "none";
+    document.getElementById('id_loginregister').style.display = "block";
   }
 </script>
