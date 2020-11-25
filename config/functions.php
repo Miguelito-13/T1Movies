@@ -87,15 +87,31 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
 
                         $logged_in_user_login = mysqli_fetch_assoc($results_login);
 
+                        date_default_timezone_set('Asia/Manila');
+                        $dt = new DateTime();
+                        $today = $dt->format('Y-m-d H:i:s');
+
                         // Admin
                         if ($logged_in_user_login['ADMIN'] == 'ADMIN') {
                             $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                            header("location: ./admin_site.php");
+                            if ($logged_in_user_login['ACTIVE'] == 0) {
+                                $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE USERNAME = '$username_login'";
+                                mysqli_query($link, $sql);
+                                echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./admin_site.php"; </script>';
+                            } else {
+                                header("location: ./admin_site.php");
+                            }
                         }
                         // User
                         else {
                             $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                            header("location: ./home.php");
+                            if ($logged_in_user_login['ACTIVE'] == 0) {
+                                $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE USERNAME = '$username_login'";
+                                mysqli_query($link, $sql);
+                                echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./home.php"; </script>';
+                            } else {
+                                header("location: ./home.php");
+                            }
                         }
                     } else {
                         $show = "show";
@@ -123,15 +139,31 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
 
                             $logged_in_user_login = mysqli_fetch_assoc($results_login);
 
+                            date_default_timezone_set('Asia/Manila');
+                            $dt = new DateTime();
+                            $today = $dt->format('Y-m-d H:i:s');
+
                             // Admin
-                            if ($logged_in_user_login['ADMIN'] != 'ADMIN') {
+                            if ($logged_in_user_login['ADMIN'] == 'ADMIN') {
                                 $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                                header("location: ./admin_site.php");
+                                if ($logged_in_user_login['ACTIVE'] == 0) {
+                                    $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE EMAIL='$email_login'";
+                                    mysqli_query($link, $sql);
+                                    echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./admin_site.php"; </script>';
+                                } else {
+                                    header("location: ./admin_site.php");
+                                }
                             }
                             // User
                             else {
                                 $_SESSION["user_type"] = $logged_in_user_login['ADMIN'];
-                                header("location: ./home.php");
+                                if ($logged_in_user_login['ACTIVE'] == 0) {
+                                    $sql = "UPDATE users_account SET ACTIVE = 1, MODIFIED_ON = '$today' WHERE EMAIL='$email_login'";
+                                    mysqli_query($link, $sql);
+                                    echo '<script type="text/javascript">alert("Account is Activated!"); window.location = "./home.php"; </script>';
+                                } else {
+                                    header("location: ./home.php");
+                                }
                             }
                         } else {
                             $show = "show";
@@ -152,11 +184,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["login_button"]))) {
         mysqli_stmt_close($stmt_user_login);
         mysqli_stmt_close($stmt_email_login);
     }
-
-    // Close
-    mysqli_close($link);
 }
-
 
 // Process Register
 else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_button"]))) {
@@ -395,9 +423,6 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
             mysqli_stmt_close($stmt2);
         }
     }
-
-    // Close connection
-    mysqli_close($link);
 }
 
 // Process Forgot Password
@@ -470,7 +495,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                             mysqli_stmt_close($stmt_check);
                         }
 
-                        include('sendEmail.php');
+                        include('email.php');
                         $verify_code = "Enter code sent to your email.";
 
                         // Insert code
@@ -511,19 +536,20 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 
                             // Set new password
                             if (empty($password_err_forgot) && empty($confirm_password_err_forgot)) {
-                                $sql_reset = "UPDATE users_account SET ACCOUNT_PASSWORD = ? WHERE USERNAME = '$username_forgot'";
+                                date_default_timezone_set('Asia/Manila');
+                                $dt = new DateTime();
+                                $today = $dt->format('Y-m-d H:i:s');
+
+                                $sql_reset = "UPDATE users_account SET ACCOUNT_PASSWORD = ?, MODIFIED_ON = '$today' WHERE USERNAME = '$username_forgot'";
 
                                 if ($stmt = mysqli_prepare($link, $sql_reset)) {
-                                    // Bind variables to the prepared statement as parameters
                                     mysqli_stmt_bind_param($stmt, "s", $param_password);
 
-                                    // Set parameters
                                     $param_password = password_hash($password_forgot, PASSWORD_DEFAULT);
 
-                                    // Attempt to execute the prepared statement
                                     if (mysqli_stmt_execute($stmt)) {
 
-                                        // Password updated successfully. 
+                                        // Password updated successful
                                         echo '<script type="text/javascript">alert("Password reset is successful. Please login to continue."); </script>';
 
                                         $show_code = "reset";
@@ -553,32 +579,52 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
 
         mysqli_stmt_close($stmt_forgot);
     }
+}
 
-    // Close
-    mysqli_close($link);
+// View Movie
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["view_movie"]))) {
+    $_SESSION["movie_id"] = $_POST["view_id"];
+    header("location: movie_profile.php");
+}
+
+// Search Direct
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"]))) {
+    $temp_search = trim($_POST["search_title"]);
+    $test_search = substr($temp_search, -4);
+    if (is_numeric($test_search) == 1) {
+        $temp_search = substr($temp_search, 0, -4);
+    }
+    $temp_search = strtoupper($temp_search);
+    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$temp_search%'";
+    $res = mysqli_query($link,  $sql);
+    if (mysqli_num_rows($res) > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+            $temp_row = trim($row['MOVIE_TITLE']);
+            $temp_row = strtoupper($temp_row);
+            if ($temp_search == $temp_row) {
+                $_SESSION["movie_id"] = $row['MOVIE_ID'];
+            } else {
+                $_SESSION["movie_id"] = $temp_search;
+            }
+        }
+    } else {
+        $_SESSION["movie_id"] = 0;
+    }
+    header("location: movie_profile.php");
 }
 
 // Search
 if (isset($_REQUEST["search_term"])) {
-    // Prepare a select statement
-    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE ?";
-
+    $search = $_REQUEST["search_term"];
+    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$search%' LIMIT 5";
     if ($stmt = mysqli_prepare($link, $sql)) {
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_term);
-
-        // Set parameters
-        $param_term = $_REQUEST["search_term"] . '%';
-
-        // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
             $result = mysqli_stmt_get_result($stmt);
-
-            // Check number of rows in the result set
             if (mysqli_num_rows($result) > 0) {
-                // Fetch result rows as an associative array
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    echo "<p>" . $row["MOVIE_TITLE"] . "</p>";
+                    $date = substr($row['PREMIERE_DATE'], 0, 4);
+                    echo '<p class="row"><img src="../images/movies/poster/' . $row['POSTER'] . '" style="width: 45px; margin-right:0px;"> ';
+                    echo '<span class="pt-0 col-8">' . $row["MOVIE_TITLE"] . '<br><span class="text-secondary">' . $date . '</span></span></p>';
                 }
             } else {
                 echo "<p>No matches found</p>";
@@ -587,10 +633,5 @@ if (isset($_REQUEST["search_term"])) {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         }
     }
-
-    // Close statement
     mysqli_stmt_close($stmt);
-
-    // close connection
-    mysqli_close($link);
 }

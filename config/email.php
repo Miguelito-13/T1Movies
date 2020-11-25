@@ -16,13 +16,13 @@ if ($code == $temp_code) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 't1movies.tup@gmail.com'; // Gmail address which you want to use as SMTP server
-    $mail->Password = 't1movies_123'; // Gmail address Password
+    $mail->Username = 't1movies.tup@gmail.com'; // Email as SMTP server
+    $mail->Password = 't1movies_123'; // Email SMTP server Password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = '587';
 
-    $mail->setFrom('t1movies.tup@gmail.com'); // Gmail address which you used as SMTP server
-    $mail->addAddress($email_forgot); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
+    $mail->setFrom('t1movies.tup@gmail.com'); // Email as SMTP server
+    $mail->addAddress($email_forgot); // Email receiver
 
     $mail->isHTML(true);
     $mail->Subject = 'T1 Movies (Verification Code)';

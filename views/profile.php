@@ -16,8 +16,8 @@ include('navbar.php');
 <div class="container">
     <h1>Hey
         <b>
-            <?php echo htmlspecialchars($_SESSION["username"]); ?>
-            <?php echo htmlspecialchars($_SESSION["email"]); ?>
+            <?php echo htmlspecialchars(isset($_SESSION["username"])) ? $_SESSION["username"] : ""; ?>
+            <?php echo htmlspecialchars(isset($_SESSION["email"])) ? $_SESSION["email"] : ""; ?>
         </b>
         ! Welcome to Profile</h1>
 </div>
