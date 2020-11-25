@@ -54,6 +54,22 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     </nav>
 
     <div class="content" style="margin: 0 20% 0 20%">
+        <h2>Cinema</h2>
+        <!-- Movies Table -->
+        <table id="cinema_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>BRANCH ID</th>
+                    <th>CINEMA</th>
+                    <th>SEATS</th>
+                    <th>CURRENT MOVIE</th>
+                    <th scope="col">ACTIVE</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="content" style="margin: 0 20% 0 20%">
         <h2>Users</h2>
         <!-- Movies Table -->
         <table id="user_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">

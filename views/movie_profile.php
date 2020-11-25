@@ -112,11 +112,14 @@ if (mysqli_num_rows($res) > 0) {
                 </div>
             </section>
 
-            <?php if ($row['ACTIVE'] == 0) { ?>
+            <?php if ($row['ACTIVE'] == 0) { /*THIS IS FOR INACTIVE*/ ?>
+                <!-- THIS IS FOR INACTIVE, you may leave it blank or put design-->
             <?php } else if ($row['ACTIVE'] == 1) { ?>
+                <!-- ****************** design this ******************** -->
                 <nav class="navbar navbar-expand-md bg-dark m-0 p-0">
                     <h1 class="mx-auto py-3 text-warning">Coming Soon</h1>
                 </nav>
+                <!-- ****************** design this ******************** -->
             <?php } else { ?>
                 <nav class="navbar navbar-expand-md m-0 p-0">
                     <button class="navbar-toggler custom-movie-toggler p-3" type="button" data-toggle="collapse" data-target="#collapsibleMovieNavbar">
@@ -265,9 +268,45 @@ if (mysqli_num_rows($res) > 0) {
 } else { ?>
     <section id="movie-profile">
         <section class="container-fluid custom-movie-profile mb-auto p-0">
-            <!-- set horizontal poster as background with css -->
+            <!-- set horizontal poster as background with css
+        ETO CHIEF! 
+    -->
             <div class="container-fluid opacity">
-                <h1 class="mx-auto">Movie Not Found!</h1>
+                <?php if (is_numeric($movie_id) == 1) { ?>
+
+                    <!-- ****************** design this ******************** -->
+                    <h1 class="mx-auto">Movie Not Found!</h1>
+                    <!-- ****************** design this ******************** -->
+
+                    <?php } else {
+                    $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$movie_id%' LIMIT 50";
+                    if ($stmt = mysqli_prepare($link, $sql)) {
+                        if (mysqli_stmt_execute($stmt)) {
+                            $result = mysqli_stmt_get_result($stmt);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                    $date = substr($row['PREMIERE_DATE'], 0, 4); ?>
+
+                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                        <input name="view_id" type="text" value="<?= $row['MOVIE_ID'] ?>" style="display: none;">
+
+                                        <!-- design this [Don't Delete: name="view_movie" & type="submit"]-->
+                                        <button name="view_movie" type="submit" class="row border border-warning bg-warning m-2">
+                                            <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 45px; margin-right:0px;">
+                                            <span class="pt-0 col-8"><?= $row["MOVIE_TITLE"] ?><br>
+                                                <span class="text-secondary"><?= $date ?></span>
+                                            </span>
+                                        </button>
+                                        <!-- ****************** design this ******************** -->
+
+                                    </form>
+                <?php
+                                }
+                            }
+                        }
+                    }
+                    mysqli_stmt_close($stmt);
+                } ?>
             </div>
         </section>
     </section>

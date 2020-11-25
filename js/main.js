@@ -5,7 +5,30 @@
 
 $(document).ready(function () {
   /********************************************************************************************/
-  // Users
+  // CINEMA
+  // Fetch
+  var cinemaTable = $("#cinema_table").DataTable({
+    scrollY: "50vh",
+    scrollCollapse: true,
+    paging: false,
+    processing: true,
+    serverSide: true,
+    order: [],
+    info: true,
+    ajax: {
+      url: "../config/server/cinema_list.php",
+      type: "POST",
+    },
+    columnDefs: [
+      {
+        orderable: false,
+        targets: [0, 1, 2, 3, 4],
+      },
+    ],
+  });
+
+  /********************************************************************************************/
+  // USERS
 
   // Fetch
   var userTable = $("#user_table").DataTable({
@@ -85,7 +108,8 @@ $(document).ready(function () {
   });
 
   /********************************************************************************************/
-  // Movies
+  // MOVIES
+
   $("#add_button").click(function () {
     $("#movie_form")[0].reset();
     $(".modal-title").text("Add Movie Details");

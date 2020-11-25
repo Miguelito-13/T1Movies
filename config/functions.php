@@ -495,7 +495,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"
                             mysqli_stmt_close($stmt_check);
                         }
 
-                        include('sendEmail.php');
+                        include('email.php');
                         $verify_code = "Enter code sent to your email.";
 
                         // Insert code
