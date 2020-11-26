@@ -117,6 +117,7 @@ $(document).ready(function () {
     $("#operation").val("Add");
     $(".p-title").text("Movie Poster *");
     $(".pbg-title").text("Movie Poster Background");
+    $(".delete").prop("disabled", true);
 
     // Hide on close
     $("#movie_branch").hide();
@@ -1259,26 +1260,27 @@ $(document).ready(function () {
         $("#movie_id").val(movie_id);
         $("#action").val("Save");
         $("#operation").val("Edit");
+        $(".delete").prop("disabled", false);
+
+        // Delete
+        $(document).on("click", ".delete", function () {
+          if (confirm("Confirm Delete " + data.movie + "?")) {
+            $.ajax({
+              url: "../config/server/movie_delete.php",
+              method: "POST",
+              data: {
+                movie_id: movie_id,
+              },
+              success: function (data) {
+                movieTable.ajax.reload();
+                cinemaTable.ajax.reload();
+              },
+            });
+          } else {
+            return false;
+          }
+        });
       },
     });
-  });
-
-  $(document).on("click", ".delete", function () {
-    var movie_id = $(this).attr("id");
-    if (confirm("Confirm Delete Movie?")) {
-      $.ajax({
-        url: "../config/server/movie_delete.php",
-        method: "POST",
-        data: {
-          movie_id: movie_id,
-        },
-        success: function (data) {
-          movieTable.ajax.reload();
-          cinemaTable.ajax.reload();
-        },
-      });
-    } else {
-      return false;
-    }
   });
 });
