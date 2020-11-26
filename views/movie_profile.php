@@ -35,7 +35,9 @@ if (mysqli_num_rows($res) > 0) {
                                     </div>
 
                                     <div class="col-md-12 mb-1">
-                                        <h6>• <?= $date ?> <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
+                                        <h6>
+                                            • <?= $date ?>
+                                            <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
                                             <?php if ($row['ADVENTURE'] != 0) { ?>/&nbsp;Adventure<?php } ?>
                                             <?php if ($row['ANIMATION'] != 0) { ?>/&nbsp;Animation<?php } ?>
                                             <?php if ($row['COMEDY'] != 0) { ?>/&nbsp;Comedy<?php } ?>
@@ -266,19 +268,28 @@ if (mysqli_num_rows($res) > 0) {
     <?php
     }
 } else { ?>
-    <section id="movie-profile">
+    <section class="container-fluid search-results-container mb-5" style="margin-top: 150px; width: 90%">
         <section class="container-fluid custom-movie-profile mb-auto p-0">
             <!-- set horizontal poster as background with css
         ETO CHIEF! 
     -->
-            <div class="container-fluid opacity">
+            <div class="container-fluid search-results"> <!-- removed "opacity" class -->
                 <?php if (is_numeric($movie_id) == 1) { ?>
 
-                    <!-- ****************** design this ******************** -->
-                    <h1 class="mx-auto">Movie Not Found!</h1>
-                    <!-- ****************** design this ******************** -->
+                    <!-- Movie Not Found -->
+                    <div class="movies-list-container">
+                        <!--  for "< ?= $movie_id ? >" -->
+                        <h3>SEARCH RESULTS</h3>
+                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);"/>
+                    </div>
+                    <?php include('movie_not_found.php'); ?>
 
-                    <?php } else {
+                <?php } else { ?>
+                    <div class="movies-list-container">
+                        <h3>SEARCH RESULTS for "<?= $movie_id ?>"</h3>
+                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);"/>
+                    </div>
+                    <?php
                     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$movie_id%' LIMIT 50";
                     if ($stmt = mysqli_prepare($link, $sql)) {
                         if (mysqli_stmt_execute($stmt)) {
@@ -291,14 +302,8 @@ if (mysqli_num_rows($res) > 0) {
                                         <input name="view_id" type="text" value="<?= $row['MOVIE_ID'] ?>" style="display: none;">
 
                                         <!-- design this [Don't Delete: name="view_movie" & type="submit"]-->
-                                        <button name="view_movie" type="submit" class="row border border-warning bg-warning m-2">
-                                            <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 45px; margin-right:0px;">
-                                            <span class="pt-0 col-8"><?= $row["MOVIE_TITLE"] ?><br>
-                                                <span class="text-secondary"><?= $date ?></span>
-                                            </span>
-                                        </button>
-                                        <!-- ****************** design this ******************** -->
-
+                                        <!-- SEARCH RESULTS -->
+                                        <?php include ('search_results.php'); ?>
                                     </form>
                 <?php
                                 }

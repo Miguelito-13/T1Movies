@@ -41,6 +41,8 @@ foreach ($result as $row) {
             while ($row2 = mysqli_fetch_assoc($res2)) {
                 $sub_array[] = $row2["MOVIE_TITLE"];
             }
+        } else {
+            $sub_array[] = "";
         }
     } else {
         $sub_array[] = $row["MOVIE_ID"];

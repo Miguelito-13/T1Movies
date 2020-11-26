@@ -18,64 +18,94 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 
 <!DOCTYPE html>
 <html>
-    <?php include('header.php'); ?>
 
-    <body style="width: 100%">
-        <?php include('navbar.php'); ?>
-        
-        <div class="content" style="margin: 0 20% 0 20%">
-            <h2>Cinema</h2>
-            <!-- Movies Table -->
-            <table id="cinema_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>BRANCH ID</th>
-                        <th>CINEMA</th>
-                        <th>SEATS</th>
-                        <th>CURRENT MOVIE</th>
-                        <th scope="col">ACTIVE</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>T1 SERVER</title>
+    <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
+    <!-- Bootstrap Lib -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <div class="content" style="margin: 0 20% 0 20%">
-            <h2>Users</h2>
-            <!-- Movies Table -->
-            <table id="user_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ACCOUNT ID</th>
-                        <th>USERNAME</th>
-                        <th>EMAIL ADDRESS</th>
-                        <th>TYPE</th>
-                        <th>ACTIVE</th>
-                        <th scope="col">MODIFY</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+    <!-- Datatable Lib -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
-        <div class="content" style="margin: 0 20% 0 20%">
-            <h2>Movies</h2>
-            <!-- Movies Table -->
-            <table id="movie_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>MOVIE ID</th>
-                        <th>MOVIE TITLE</th>
-                        <th>RATED</th>
-                        <th>PREMIERE DATE</th>
-                        <th>ACTIVE</th>
-                        <th scope="col">MODIFY</th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="d-flex justify-content-end">
-                <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
-            </div>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-info" href="../views/profile.php">Profile</a></li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger" href="../config/logout.php">Sign out</a>
+                </li>
+            </ul>
         </div>
-    </body>
+    </nav>
+
+    <div class="content" style="margin: 0 20% 0 20%">
+        <h2>Cinema</h2>
+        <!-- Movies Table -->
+        <table id="cinema_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>BRANCH ID</th>
+                    <th>CINEMA</th>
+                    <th>SEATS</th>
+                    <th>CURRENT MOVIE</th>
+                    <th scope="col">ACTIVE</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="content" style="margin: 0 20% 0 20%">
+        <h2>Users</h2>
+        <!-- Movies Table -->
+        <table id="user_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ACCOUNT ID</th>
+                    <th>USERNAME</th>
+                    <th>EMAIL ADDRESS</th>
+                    <th>TYPE</th>
+                    <th>ACTIVE</th>
+                    <th scope="col">MODIFY</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="content" style="margin: 0 20% 0 20%">
+        <h2>Movies</h2>
+        <!-- Movies Table -->
+        <table id="movie_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>MOVIE ID</th>
+                    <th>MOVIE TITLE</th>
+                    <th>RATED</th>
+                    <th>PREMIERE DATE</th>
+                    <th>ACTIVE</th>
+                    <th scope="col">MODIFY</th>
+                </tr>
+            </thead>
+        </table>
+        <div align="right">
+            <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
+        </div>
+    </div>
+</body>
 
 </html>
 
@@ -304,11 +334,11 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     <input type="hidden" name="operation" id="operation" />
                     <button type="button" class="btn btn-secondary delete mr-auto" data-dismiss="modal">Delete</button>
                     <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<script src="../js/main.js"></script>
+<script src="../js/server.js"></script>

@@ -594,6 +594,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"
     if (is_numeric($test_search) == 1) {
         $temp_search = substr($temp_search, 0, -4);
     }
+    $temp_word = $temp_search;
     $temp_search = strtoupper($temp_search);
     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$temp_search%'";
     $res = mysqli_query($link,  $sql);
@@ -604,7 +605,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["search_button"
             if ($temp_search == $temp_row) {
                 $_SESSION["movie_id"] = $row['MOVIE_ID'];
             } else {
-                $_SESSION["movie_id"] = $temp_search;
+                $_SESSION["movie_id"] = $temp_word;
             }
         }
     } else {

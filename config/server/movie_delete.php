@@ -5,7 +5,7 @@ include('movie_records.php');
 
 if (isset($_POST["movie_id"])) {
     $statement = $connection->prepare(
-        "DELETE FROM movies WHERE MOVIE_D = :id"
+        "DELETE FROM movies WHERE MOVIE_ID = :id"
     );
     $result = $statement->execute(
 

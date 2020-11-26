@@ -9,6 +9,7 @@ header {
 /* NAVIGATION BAR */
 .admin-navbar-custom {
   background-color: #1c1a18;
+  border-radius: 0;
 }
 .admin-navbar-custom a {
   color: white;
