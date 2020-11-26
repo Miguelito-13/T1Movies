@@ -117,7 +117,7 @@ $(document).ready(function () {
     $("#operation").val("Add");
     $(".p-title").text("Movie Poster *");
     $(".pbg-title").text("Movie Poster Background");
-    $(".delete").prop("disabled", true);
+    $(".delete").hide();
 
     // Hide on close
     $("#movie_branch").hide();
@@ -1260,7 +1260,7 @@ $(document).ready(function () {
         $("#movie_id").val(movie_id);
         $("#action").val("Save");
         $("#operation").val("Edit");
-        $(".delete").prop("disabled", false);
+        $(".delete").show();
 
         // Delete
         $(document).on("click", ".delete", function () {
@@ -1277,7 +1277,7 @@ $(document).ready(function () {
               },
             });
           } else {
-            return false;
+            location.reload();
           }
         });
       },

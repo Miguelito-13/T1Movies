@@ -334,11 +334,11 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     <input type="hidden" name="operation" id="operation" />
                     <button type="button" class="btn btn-secondary delete mr-auto" data-dismiss="modal">Delete</button>
                     <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<script src="../js/main.js"></script>
+<script src="../js/server.js"></script>
