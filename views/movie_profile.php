@@ -278,7 +278,9 @@ if (mysqli_num_rows($res) > 0) {
                     <h1 class="mx-auto">Movie Not Found!</h1>
                     <!-- ****************** design this ******************** -->
 
-                    <?php } else {
+                <?php } else { ?>
+                    <h2>Search for: <?= $movie_id ?></h2>
+                    <?php
                     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$movie_id%' LIMIT 50";
                     if ($stmt = mysqli_prepare($link, $sql)) {
                         if (mysqli_stmt_execute($stmt)) {
