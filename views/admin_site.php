@@ -332,7 +332,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 <div class="modal-footer">
                     <input type="hidden" name="movie_id" id="movie_id" />
                     <input type="hidden" name="operation" id="operation" />
-                    <button type="button" class="btn btn-secondary delete mr-auto" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-secondary delete mr-auto">Delete</button>
                     <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>

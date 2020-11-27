@@ -1260,27 +1260,33 @@ $(document).ready(function () {
         $("#movie_id").val(movie_id);
         $("#action").val("Save");
         $("#operation").val("Edit");
-        $(".delete").show();
-
-        // Delete
-        $(document).on("click", ".delete", function () {
-          if (confirm("Confirm Delete " + data.movie + "?")) {
-            $.ajax({
-              url: "../config/server/movie_delete.php",
-              method: "POST",
-              data: {
-                movie_id: movie_id,
-              },
-              success: function (data) {
-                movieTable.ajax.reload();
-                cinemaTable.ajax.reload();
-              },
-            });
-          } else {
-            location.reload();
-          }
-        });
+        $(".delete").hide(); // TEMP HIDE
+        $(".delete").prop("id", movie_id);
       },
     });
   });
+
+  /* 
+  // Delete - Not working, because movie has foreign key
+  $(document).on("click", ".delete", function () {
+    var movie_id = $(this).attr("id");
+    if (confirm("Confirm Delete Movie ID: " + movie_id + "?")) {
+      $.ajax({
+        url: "../config/server/movie_delete.php",
+        method: "POST",
+        data: {
+          movie_id: movie_id,
+        },
+        success: function (data) {
+          movieTable.ajax.reload();
+          cinemaTable.ajax.reload();
+          $("#movieModal").modal("hide");
+          alert(data);
+        },
+      });
+    } else {
+      return false;
+    }
+  });
+  */
 });
