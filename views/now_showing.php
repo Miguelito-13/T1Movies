@@ -7,12 +7,6 @@ include('navbar.php');
 
 ?>
 <section class="container-fluid mb-5" style="margin-top: 150px; width: 90%">
-  <div class="genre-menu">
-    <nav>
-      <!-- insert dropdown button nav for genre here -->
-    </nav>
-  </div>
-
   <div class="movies-list-container">
     <h3>NOW SHOWING</h3>
     <hr />

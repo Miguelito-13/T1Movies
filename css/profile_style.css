@@ -1,0 +1,176 @@
+/* PROFILE */
+
+.custom-profile-picture {
+  display: block;
+}
+.profile-picture {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.custom-profile-navbar ul {
+  display: flex;
+  justify-content: start;
+}
+
+.custom-profile-navbar a {
+  color: #1c1a18;
+  font-size: 1.25rem;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.custom-profile-navbar a:hover {
+  color: #ffba00;
+}
+.custom-profile-navbar a.active {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 720px) {
+  .custom-profile-navbar a {
+    color: #1c1a18;
+    font-size: 1.15rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .custom-profile-navbar ul {
+    display: flex;
+    justify-content: center;
+  }
+  .custom-profile-navbar a {
+    color: #1c1a18;
+    font-size: 0.9rem;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* USER PROFILE */
+
+.custom-users-profile p {
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: default;
+}
+.custom-users-profile span {
+  font-size: 1.15rem;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 720px) {
+  .custom-users-profile p {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .custom-users-profile span {
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+}
+@media screen and (max-width: 480px) {
+  .custom-users-profile p {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .custom-users-profile span {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+}
+
+.custom-users-profile .custom-edit-btn {
+  height: 50px;
+  padding: 10px 25px;
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.custom-users-profile .custom-edit-btn:hover,
+.custom-users-profile .custom-edit-btn:focus {
+  background-color: rgba(255, 195, 68, 0.8);
+  border: 1px solid rgba(255, 195, 68, 1);
+  box-shadow: none;
+  color: #1c1a18;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* TRANSACTION HISTORY */
+
+.custom-transaction-history table {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* EDIT PROFILE */
+
+.custom-users-profile h3 {
+  color: #1c1a18;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.custom-users-profile .custom-upload-btn {
+  padding: 5px 15px;
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+  color: #fff;
+}
+.custom-users-profile .custom-upload-btn:hover,
+.custom-users-profile .custom-upload-btn:focus {
+  background-color: rgba(255, 195, 68, 0.8);
+  border: 1px solid rgba(255, 195, 68, 1);
+  box-shadow: none;
+  color: #1c1a18;
+}
+
+.custom-users-profile label {
+  color: #1c1a18;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.custom-users-profile input {
+  width: 98%;
+  height: 45px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #1c1a18;
+  border: 1px solid rgba(28, 26, 24, 0.5);
+}
+
+.custom-users-profile .radio-button {
+  height: auto;
+  width: auto;
+  color: #1c1a18;
+}
+
+.gender-form {
+  margin: auto;
+}
+.gender-form label {
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.btn.custom-save {
+  padding: 0;
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+  color: #fff;
+}
+.btn.custom-save:hover,
+.btn.custom-save:focus {
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+  box-shadow: none;
+  color: #1c1a18;
+}

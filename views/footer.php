@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<footer class="page-footer font-small footer-custom mt-2 pt-2" id="main-footer">
+<footer class="footer page-footer font-small footer-custom pt-2" id="main-footer">
   <div class="container-fluid text-center text-md-left pb-2">
     <div class="row">
       <div class="col-md-3 my-auto mx-5">

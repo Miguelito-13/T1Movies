@@ -35,7 +35,9 @@ if (mysqli_num_rows($res) > 0) {
                                     </div>
 
                                     <div class="col-md-12 mb-1">
-                                        <h6>• <?= $date ?> <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
+                                        <h6>
+                                            • <?= $date ?>
+                                            <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
                                             <?php if ($row['ADVENTURE'] != 0) { ?>/&nbsp;Adventure<?php } ?>
                                             <?php if ($row['ANIMATION'] != 0) { ?>/&nbsp;Animation<?php } ?>
                                             <?php if ($row['COMEDY'] != 0) { ?>/&nbsp;Comedy<?php } ?>
@@ -114,11 +116,28 @@ if (mysqli_num_rows($res) > 0) {
 
             <?php if ($row['ACTIVE'] == 0) { /*THIS IS FOR INACTIVE*/ ?>
                 <!-- THIS IS FOR INACTIVE, you may leave it blank or put design-->
+                <!-- CHIEF: Upon checking, parang goods na to kahit wala nang ilagay -->
+                <hr style="border: 2em solid #1c1a18; margin: auto; padding: 0" />
             <?php } else if ($row['ACTIVE'] == 1) { ?>
                 <!-- ****************** design this ******************** -->
-                <nav class="navbar navbar-expand-md bg-dark m-0 p-0">
-                    <h1 class="mx-auto py-3 text-warning">Coming Soon</h1>
-                </nav>
+                <!-- <hr style="border: 3em solid #1c1a18; margin: auto; padding: 0" /> -->
+                <div class="container-fluid coming-soon-bottom my-0 py-4">
+                    <div class="row mt-4 mb-3 mx-auto" style="width: 80%">
+                        <div class="col-12 mb-3">
+                            <h3 class="mx-auto">COMING SOON</h3>
+                        </div>
+                        <div class="col-12">
+
+                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date = date_create($row['PREMIERE_DATE']);
+                                                                                            echo date_format($date, "F d, Y"); ?></b></p>
+                            <p class="mx-auto">
+                                <a href="home.php">Go back to homepage</a>, or try browsing what is
+                                <a href="now_showing.php">now showing</a> and other
+                                <a href="coming_soon.php">upcoming movies</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <!-- ****************** design this ******************** -->
             <?php } else { ?>
                 <nav class="navbar navbar-expand-md m-0 p-0">
@@ -160,7 +179,6 @@ if (mysqli_num_rows($res) > 0) {
                         </div>
                     </div>
                 </nav>
-
 
                 <section class="container-fluid custom-movie-profile-more">
                     <div class="row mx-auto mt-3" style="width: 88%">
@@ -266,42 +284,37 @@ if (mysqli_num_rows($res) > 0) {
     <?php
     }
 } else { ?>
-    <section id="movie-profile">
+    <section class="container-fluid search-results-container mb-5" style="margin-top: 150px; width: 90%">
         <section class="container-fluid custom-movie-profile mb-auto p-0">
             <!-- set horizontal poster as background with css
         ETO CHIEF! 
     -->
-            <div class="container-fluid opacity">
+            <div class="container-fluid search-results">
+                <!-- removed "opacity" class -->
                 <?php if (is_numeric($movie_id) == 1) { ?>
 
-                    <!-- ****************** design this ******************** -->
-                    <h1 class="mx-auto">Movie Not Found!</h1>
-                    <!-- ****************** design this ******************** -->
+                    <!-- Movie Not Found -->
+                    <div class="movies-list-container">
+                        <!--  for "< ?= $movie_id ? >" -->
+                        <h3>SEARCH RESULTS</h3>
+                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);" />
+                    </div>
+                    <?php include('movie_not_found.php'); ?>
 
                 <?php } else { ?>
-                    <h2>Search for: <?= $movie_id ?></h2>
+                    <div class="movies-list-container">
+                        <h3>SEARCH RESULTS for "<?= $movie_id ?>"</h3>
+                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);" />
+                    </div>
                     <?php
                     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$movie_id%' LIMIT 50";
                     if ($stmt = mysqli_prepare($link, $sql)) {
                         if (mysqli_stmt_execute($stmt)) {
                             $result = mysqli_stmt_get_result($stmt);
                             if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                    $date = substr($row['PREMIERE_DATE'], 0, 4); ?>
-
-                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                        <input name="view_id" type="text" value="<?= $row['MOVIE_ID'] ?>" style="display: none;">
-
-                                        <!-- design this [Don't Delete: name="view_movie" & type="submit"]-->
-                                        <button name="view_movie" type="submit" class="row border border-warning bg-warning m-2">
-                                            <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 45px; margin-right:0px;">
-                                            <span class="pt-0 col-8"><?= $row["MOVIE_TITLE"] ?><br>
-                                                <span class="text-secondary"><?= $date ?></span>
-                                            </span>
-                                        </button>
-                                        <!-- ****************** design this ******************** -->
-
-                                    </form>
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                    <!-- SEARCH RESULTS -->
+                                    <?php include('search_results.php'); ?>
                 <?php
                                 }
                             }
