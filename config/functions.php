@@ -527,7 +527,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["save_edit_butt
                 $param_id = $_SESSION["id"];
 
                 if (mysqli_stmt_execute($stmt_prof)) {
-                    echo '<script type="text/javascript">alert("Edit Profile Successful. Directing you to the profile page."); window.location = "./profile.php"; </script>';
+                    header("location: ./profile.php");
                 } else {
                     echo "Oops! Something went wrong. Please try again later.";
                 }
@@ -542,7 +542,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["save_edit_butt
                 $param_id = $_SESSION["id"];
 
                 if (mysqli_stmt_execute($stmt_prof)) {
-                    echo '<script type="text/javascript">alert("Edit Profile Successful. Directing you to the profile page."); window.location = "./profile.php"; </script>';
+                    header("location: ./profile.php");
                 } else {
                     echo "Oops! Something went wrong. Please try again later.";
                 }
