@@ -425,6 +425,135 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
     }
 }
 
+// Edit Profile
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["save_edit_button"]))) {
+
+    // Validate firstname
+    if (empty(trim($_POST["firstName"]))) {
+        $firstName_err = "Please enter your first name.";
+    } else {
+        $firstName = ucfirst($_POST["firstName"]);
+    }
+
+    // Validate m.i.
+    if (empty(trim($_POST["middleInitial"]))) {
+    } else if (strlen(trim($_POST["middleInitial"])) > 1) {
+        $middleInitial_err = "Please enter your valid middle initial";
+    } else {
+        $middleInitial = ucfirst($_POST["middleInitial"]);
+    }
+
+    // Validate lastname
+    if (empty(trim($_POST["lastName"]))) {
+        $lastName_err = "Please enter your last name.";
+    } else {
+        $lastName = ucfirst($_POST["lastName"]);
+    }
+
+    // Validate address
+    if (empty(trim($_POST["address"]))) {
+        $address_err = "Please enter your address.";
+    } else {
+        $address = $_POST["address"];
+    }
+
+    // Validate bdate
+    if (empty($_POST["bdate"])) {
+        $bdate_err = "Please enter your birth date.";
+    } else {
+        $bdate = $_POST["bdate"];
+
+        // Validate age
+        $birthdate = new DateTime($bdate);
+        $today = new DateTime();
+        $age = $birthdate->diff($today)->y;
+        if ($age < 10) {
+            $bdate_err = "User must be 10y/o and above.";
+        } else if ($age > 100) {
+            $bdate_err = "User must be still alive.";
+        }
+    }
+
+    // Validate sex
+    if (isset($_POST['sex'])) {
+        $sex = $_POST['sex'];
+    }
+
+    // Validate Contact
+    if (empty(trim($_POST["contact"]))) {
+    } else if (strlen(trim($_POST["contact"])) == 11) {
+        // SQL SELECT
+        $sql = "SELECT USERS_ID FROM users_profile WHERE CONTACT_NO = ?";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            // Bind vars
+            mysqli_stmt_bind_param($stmt, "s", $param_contact);
+
+            // Set params
+            $param_contact = trim($_POST["contact"]);
+
+            // Execute
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);
+
+                if (mysqli_stmt_num_rows($stmt) == 1) {
+                    $contact_err = "This contact is already registered.";
+                } else {
+                    $contact = trim($_POST["contact"]);
+                }
+            } else {
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            mysqli_stmt_close($stmt);
+        }
+    } else {
+        $contact_err = "Please enter a valid 11-digit contact number.";
+    }
+
+    // Check errors
+    if (empty($firstName_err) && empty($middleInitial_err) && empty($lastName_err) && empty($address_err) && empty($contact_err) && empty($bdate_err)) {
+        date_default_timezone_set('Asia/Manila');
+        $dt = new DateTime();
+        $today = $dt->format('Y-m-d H:i:s');
+
+        if (empty(trim($_POST["contact"]))) {
+            $sql = "UPDATE users_profile SET FIRST_NAME = '$firstName', MI = '$middleInitial', LAST_NAME = '$lastName', ADDRESS = '$address', GENDER_ID = '$sex', AGE = '$age', BIRTHDATE = '$bdate', MODIFIED_ON = '$today' WHERE ACCOUNT_ID = ?";
+
+            if ($stmt_prof = mysqli_prepare($link, $sql)) {
+                mysqli_stmt_bind_param($stmt_prof, "i", $param_id);
+
+                // Set parameters
+                $param_id = $_SESSION["id"];
+
+                if (mysqli_stmt_execute($stmt_prof)) {
+                    echo '<script type="text/javascript">alert("Edit Profile Successful. Directing you to the profile page."); window.location = "./profile.php"; </script>';
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else {
+            $sql = "UPDATE users_profile SET FIRST_NAME = '$firstName', MI = '$middleInitial', LAST_NAME = '$lastName', CONTACT_NO = '$contact', ADDRESS = '$address', GENDER_ID = '$sex', AGE = '$age', BIRTHDATE = '$bdate', MODIFIED_ON = '$today' WHERE ACCOUNT_ID = ?";
+
+            if ($stmt_prof = mysqli_prepare($link, $sql)) {
+                mysqli_stmt_bind_param($stmt_prof, "i", $param_id);
+
+                // Set parameters
+                $param_id = $_SESSION["id"];
+
+                if (mysqli_stmt_execute($stmt_prof)) {
+                    echo '<script type="text/javascript">alert("Edit Profile Successful. Directing you to the profile page."); window.location = "./profile.php"; </script>';
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        }
+
+        // Close statement
+        mysqli_stmt_close($stmt_prof);
+    }
+}
+
 // Process Forgot Password
 else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"]))) {
 
