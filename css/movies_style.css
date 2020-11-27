@@ -4,6 +4,7 @@
   color: #1c1a18;
   font-size: 2rem;
   font-weight: bold;
+  cursor: default;
 }
 
 .custom-table {
@@ -18,6 +19,7 @@
     color: #1c1a18;
     font-size: 1.5rem;
     font-weight: bold;
+    cursor: default;
   }
   .custom-table .custom-movies-description {
     height: auto;
@@ -27,11 +29,13 @@
     color: #1c1a18;
     font-size: 1rem;
     font-weight: 600;
+    cursor: default;
   }
   .custom-movies-description p {
     color: #1c1a18;
     font-size: 0.5rem;
     text-align: justify;
+    cursor: default;
   }
 }
 
@@ -39,11 +43,13 @@
   color: #1c1a18;
   font-size: 1.75rem;
   font-weight: 600;
+  cursor: default;
 }
 .custom-movies-description p {
   color: #1c1a18;
   font-size: 1.15rem;
   text-align: justify;
+  cursor: default;
 }
 .custom-movies-description a {
   color: #1c1a18;
@@ -61,11 +67,13 @@
     color: #1c1a18;
     font-size: 1.5rem;
     font-weight: 600;
+    cursor: default;
   }
   .custom-movies-description p {
     color: #1c1a18;
     font-size: 1rem;
     text-align: justify;
+    cursor: default;
   }
   .custom-movies-description a {
     color: #1c1a18;
@@ -136,6 +144,7 @@
   color: #1c1a18;
   font-size: 2rem;
   font-weight: bold;
+  cursor: default;
 }
 
 .search-results-container .custom-table {
@@ -150,12 +159,14 @@
   font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: default;
 }
 
 .search-results-container .custom-not-found p {
   font-size: 1.25rem;
   text-decoration: none;
   color: #1c1a18;
+  cursor: default;
 }
 
 .search-results-container .custom-not-found a {
@@ -174,6 +185,7 @@
     color: #1c1a18;
     font-size: 1.5rem;
     font-weight: bold;
+    cursor: default;
   }
   .search-results-container .custom-table .custom-movies-description {
     height: auto;
@@ -184,11 +196,13 @@
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
+    cursor: default;
   }
   .search-results-container .custom-movies-description p {
     color: #1c1a18;
     font-size: 0.5rem;
     text-align: justify;
+    cursor: default;
   }
 
   .search-results-container .custom-not-found h4 {
@@ -196,12 +210,14 @@
     font-size: 1.25rem;
     font-weight: 600;
     text-decoration: none;
+    cursor: default;
   }
 
   .search-results-container .custom-not-found p {
     font-size: 1rem;
     text-decoration: none;
     color: #1c1a18;
+    cursor: default;
   }
 
   .search-results-container .custom-not-found a {
@@ -217,11 +233,13 @@
   font-size: 1.75rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: default;
 }
 .search-results-container .custom-movies-description p {
   color: #1c1a18;
   font-size: 1.15rem;
   text-align: justify;
+  cursor: default;
 }
 .search-results-container .custom-movies-description a {
   color: #1c1a18;
@@ -240,11 +258,13 @@
     font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
+    cursor: default;
   }
   .search-results-container .custom-movies-description p {
     color: #1c1a18;
     font-size: 1rem;
     text-align: justify;
+    cursor: default;
   }
   .search-results-container .custom-movies-description a {
     color: #1c1a18;
@@ -261,12 +281,14 @@
     font-size: 1.25rem;
     font-weight: 600;
     text-decoration: none;
+    cursor: default;
   }
 
   .search-results-container .custom-not-found p {
     font-size: 1.15rem;
     text-decoration: none;
     color: #1c1a18;
+    cursor: default;
   }
 
   .search-results-container .custom-not-found a {
@@ -347,6 +369,7 @@
 .custom-movie-profile h3 {
   font-size: 2.75rem;
   font-weight: bold;
+  cursor: default;
 }
 .custom-movie-profile hr {
   border-top: 1px solid #fff;
@@ -354,6 +377,7 @@
 .custom-movie-profile h6 {
   font-size: 1.15rem;
   font-weight: 400;
+  cursor: default;
 }
 .custom-movie-profile .imdbRatingPlugin {
   color: #fff;
@@ -366,12 +390,14 @@
   font-size: 1.75rem;
   font-weight: 700;
   text-decoration: underline;
+  cursor: default;
 }
 .custom-movie-profile p {
   font-size: 1.15rem;
   font-weight: 400;
   text-align: justify;
   line-height: 1.5;
+  cursor: default;
 }
 
 .custom-movie-profile .watch-btn,
@@ -400,6 +426,7 @@
   .custom-movie-profile h3 {
     font-size: 2.15rem;
     font-weight: bold;
+    cursor: default;
   }
   .custom-movie-profile hr {
     border-top: 1px solid #fff;
@@ -407,6 +434,7 @@
   .custom-movie-profile h6 {
     font-size: 1rem;
     font-weight: 400;
+    cursor: default;
   }
   .custom-movie-profile .imdbRatingPlugin {
     color: #fff;
@@ -419,12 +447,14 @@
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: underline;
+    cursor: default;
   }
   .custom-movie-profile p {
     font-size: 1rem;
     font-weight: 400;
     text-align: justify;
     line-height: 1.5;
+    cursor: default;
   }
 
   .custom-movie-profile .watch-btn,
@@ -501,6 +531,7 @@
 .seat-reservation-form h6 {
   font-size: 1.25rem;
   font-weight: bold;
+  cursor: default;
 }
 
 .custom-seats {
@@ -594,8 +625,53 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-align: left;
+  cursor: default;
 }
 .transaction-guidelines ol,
 .transaction-guidelines p {
   font-size: 1.1rem;
+  cursor: default;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Coming Soon */
+.coming-soon-bottom {
+  background-image: linear-gradient(
+    rgba(28, 26, 24, 0.97),
+    rgba(28, 26, 24, 1)
+  );
+}
+.coming-soon-bottom h3 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: default;
+}
+.coming-soon-bottom h6 {
+  color: #ffba00;
+  font-size: 1.15rem;
+  font-weight: 500;
+  cursor: default;
+}
+.coming-soon-bottom p {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 400;
+  text-align: left;
+  cursor: default;
+}
+.coming-soon-bottom a {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-align: left;
+}
+.coming-soon-bottom a:hover {
+  color: #ffba00;
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
 }

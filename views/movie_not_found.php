@@ -6,9 +6,9 @@
             </div>
             <div class="col-12 mb-5">
                 <p>
-                    <a href="home.php"><p>Go back to homepage</a>, or try browsing what is 
-                    <a href="now_showing.php">showing now</a> and
-                    <a href="coming_soon.php">coming soon</a>.
+                    <a href="home.php">Go back to homepage</a>, or try browsing what is 
+                    <a href="now_showing.php">now showing</a> and
+                    <a href="coming_soon.php">upcoming movies</a>.
                 </p>
             </div>
         </div>

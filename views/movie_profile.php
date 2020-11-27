@@ -15,7 +15,7 @@ $sql = "SELECT * from genre LEFT JOIN movies ON movies.MOVIE_ID = genre.MOVIE_ID
 $res = mysqli_query($link,  $sql);
 if (mysqli_num_rows($res) > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
-        $date = substr($row['PREMIERE_DATE'], 0, 4); ?>
+        $date = substr($row['PREMIERE_DATE'], 0, 4);?>
         <section id="movie-profile">
             <section class="container-fluid custom-movie-profile mb-auto p-0" style="background: url(../images/movies/poster_bg/<?= $row['POSTER_BG'] ?>); background-size: cover; background-position: center; min-height: 88.5vh">
                 <!-- set horizontal poster as background with css -->
@@ -116,11 +116,27 @@ if (mysqli_num_rows($res) > 0) {
 
             <?php if ($row['ACTIVE'] == 0) { /*THIS IS FOR INACTIVE*/ ?>
                 <!-- THIS IS FOR INACTIVE, you may leave it blank or put design-->
+                <!-- CHIEF: Upon checking, parang goods na to kahit wala nang ilagay -->
+                <hr style="border: 2em solid #1c1a18; margin: auto; padding: 0" />
             <?php } else if ($row['ACTIVE'] == 1) { ?>
                 <!-- ****************** design this ******************** -->
-                <nav class="navbar navbar-expand-md bg-dark m-0 p-0">
-                    <h1 class="mx-auto py-3 text-warning">Coming Soon</h1>
-                </nav>
+                <!-- <hr style="border: 3em solid #1c1a18; margin: auto; padding: 0" /> -->
+                <div class="container-fluid coming-soon-bottom my-0 py-4">
+                    <div class="row mt-4 mb-3 mx-auto" style="width: 80%">
+                        <div class="col-12 mb-3">
+                            <h3 class="mx-auto">COMING SOON</h3>
+                        </div>
+                        <div class="col-12">
+                            
+                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date=date_create($row['PREMIERE_DATE']);echo date_format($date,"F d, Y");?></b></p>
+                            <p class="mx-auto">
+                                <a href="home.php">Go back to homepage</a>, or try browsing what is 
+                                <a href="now_showing.php">now showing</a> and other
+                                <a href="coming_soon.php">upcoming movies</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <!-- ****************** design this ******************** -->
             <?php } else { ?>
                 <nav class="navbar navbar-expand-md m-0 p-0">
@@ -162,7 +178,6 @@ if (mysqli_num_rows($res) > 0) {
                         </div>
                     </div>
                 </nav>
-
 
                 <section class="container-fluid custom-movie-profile-more">
                     <div class="row mx-auto mt-3" style="width: 88%">
