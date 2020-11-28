@@ -1,14 +1,9 @@
 /* PROFILE */
 
-.custom-profile-picture {
-  display: block;
-}
-.profile-picture {
-  width: 100%;
-  height: auto;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  object-fit: contain;
+.custom-profile h3 {
+  color: #1c1a18;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .custom-profile-navbar ul {
@@ -26,6 +21,7 @@
   color: #ffba00;
 }
 .custom-profile-navbar a.active {
+  color: #1c1a18;
   font-weight: 700;
 }
 
@@ -58,8 +54,8 @@
   cursor: default;
 }
 .custom-users-profile span {
-  font-size: 1.15rem;
-  font-weight: 300;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 @media screen and (max-width: 720px) {
@@ -68,7 +64,7 @@
     font-weight: 600;
   }
   .custom-users-profile span {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 300;
   }
 }
@@ -78,18 +74,18 @@
     font-weight: 600;
   }
   .custom-users-profile span {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 300;
   }
 }
 
 .custom-users-profile .custom-edit-btn {
-  height: 50px;
-  padding: 10px 25px;
+  height: 40px;
+  padding: 5px 20px;
   background-color: rgba(255, 195, 68, 1);
   border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 .custom-users-profile .custom-edit-btn:hover,

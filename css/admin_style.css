@@ -7,37 +7,42 @@ header {
 /* ---------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* NAVIGATION BAR */
-.admin-navbar-custom {
-  background-color: #1c1a18;
-  border-radius: 0;
+
+.admin-navbar-header {
+  width: 100%;
 }
-.admin-navbar-custom a {
+.admin-navbar-header .admin-navbar-custom {
+  background-color: #1c1a18;
+  border: 1px solid #1c1a18;
+  border-radius: 0%;
+}
+.admin-navbar-header .admin-navbar-custom a {
   color: white;
 }
-.navbar-custom .nav-item.active,
-.navbar-custom .nav-item:hover .nav-link,
+.admin-navbar-custom .nav-item.active,
+.admin-navbar-custom .nav-item:hover .nav-link,
 .dropdown-menu .dropdown-item.active {
   background-color: #1c1a18;
   color: #ffc344;
 }
-.navbar-nav li {
+.navbar-nav a {
   font-size: 1.25rem;
 }
-.navbar-custom .dropdown-menu,
-.navbar-custom .dropdown-menu button {
+.admin-navbar-custom .dropdown-menu,
+.admin-navbar-custom .dropdown-menu button {
   background-color: #1c1a18;
   color: white;
 }
-.navbar-custom .dropdown-menu a,
-.navbar-custom .dropdown-menu button {
-  font-size: 1.1rem;
+.admin-navbar-custom .dropdown-menu a,
+.admin-navbar-custom .dropdown-menu button {
+  font-size: 1.25rem;
   height: auto;
   padding: 10px 20px;
   margin: auto;
   text-align: left;
 }
-.navbar-custom .dropdown-menu a:hover,
-.navbar-custom .dropdown-menu button:hover {
+.admin-navbar-custom .dropdown-menu a:hover,
+.admin-navbar-custom .dropdown-menu button:hover {
   color: #ffc344;
   background-color: rgba(255, 255, 255, 0.15);
 }
@@ -55,72 +60,8 @@ header {
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* Search Bar */
-.navbar-custom .search-custom {
-  color: white;
-  background-color: #1c1a18;
-  border: none;
-  border-bottom: 1px solid #fff;
-  border-radius: 0;
-}
-.navbar-custom .search-custom:focus {
-  color: white;
-  background-color: #1c1a18;
-  border: none;
-  border-bottom: 1px solid #fff;
-  border-radius: 0;
-  box-shadow: none;
-}
+/* ADMIN TABLES */
 
-.search-result {
-  position: absolute;
-  z-index: 999;
-  top: 100%;
-  background-color: #1c1a18;
-  min-width: 210px;
+.custom-admin-table {
+  cursor: default;
 }
-/* Formatting search-result items */
-.search-result p {
-  color: white;
-  margin: auto;
-  padding: 7px 10px;
-  padding-right: 20px;
-  border: 1px solid #ffc344;
-  border-top: none;
-  cursor: pointer;
-}
-.search-result p:hover {
-  background: #ffba00;
-}
-.form-search-custom,
-.form-search-custom i {
-  caret-color: #ffba00;
-  color: #ffba00;
-}
-
-@media (max-width: 600px) {
-}
-
-/* -------------------------------------------------------------------------------------------------------------------------------------------- */
-/* Account */
-.account {
-  float: right;
-  overflow: auto;
-  z-index: 10;
-  padding: 5x;
-  /* margin: 3px; */
-}
-.account-div {
-  float: left;
-  margin-right: 15px;
-}
-.account-button {
-  background-color: #ffba00;
-  width: 135px;
-  height: 40px;
-  font-size: 15px;
-  padding: 3px;
-  font-size: 1em;
-}
-
-/* -------------------------------------------------------------------------------------------------------------------------------------------- */

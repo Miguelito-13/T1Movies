@@ -554,6 +554,278 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["save_edit_butt
     }
 }
 
+// Edit Account
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["edit_account_button"]))) {
+
+    // Validate username
+    if (empty(trim($_POST["username"]))) {
+        //$username_err = "Please enter a username.";
+    } else if (strlen(trim($_POST["username"])) < 4) {
+        $username_err = "Username must have atleast 4 characters.";
+    } else {
+        // SQL SELECT
+        $sql = "SELECT ACCOUNT_ID FROM users_account WHERE USERNAME = ?";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            // Bind vars
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+
+            // Set params
+            $param_username = trim($_POST["username"]);
+
+            // Execute
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);
+
+                if (mysqli_stmt_num_rows($stmt) == 1) {
+                    $username_err = "This username is already taken.";
+                } else {
+                    $username = trim($_POST["username"]);
+                }
+            } else {
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    // Validate email
+    if (empty(trim($_POST["email"]))) {
+        //$email_err = "Please enter your email.";
+    } else {
+        // SQL SELECT
+        $sql = "SELECT ACCOUNT_ID FROM users_account WHERE EMAIL = ?";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            // Bind vars
+            mysqli_stmt_bind_param($stmt, "s", $param_email);
+
+            // Set params
+            $param_email = trim($_POST["email"]);
+
+            // Execute
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);
+
+                if (mysqli_stmt_num_rows($stmt) == 1) {
+                    $email_err = "This email is already registered.";
+                } else {
+                    $email = trim($_POST["email"]);
+                }
+            } else {
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    // Validate password
+    if (empty(trim($_POST["password"]))) {
+        //$password_err = "Please enter a password.";
+    } elseif (strlen(trim($_POST["password"])) < 6) {
+        $password_err = "Password must have atleast 6 characters.";
+    } else {
+        $password = trim($_POST["password"]);
+    }
+
+    // Validate confirm password
+    if (empty(trim($_POST["confirm_password"])) && !empty(trim($_POST["password"]))) {
+        $confirm_password_err = "Please confirm password.";
+    } else {
+        $confirm_password = trim($_POST["confirm_password"]);
+        if (empty($password_err) && ($password != $confirm_password)) {
+            $confirm_password_err = "Password did not match.";
+        }
+    }
+
+    // Check input errors
+    if (empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)) {
+        date_default_timezone_set('Asia/Manila');
+        $dt = new DateTime();
+        $today = $dt->format('Y-m-d H:i:s');
+
+        // Prepare
+        if (empty($username) && empty($email) && empty($password)) {
+            header("location: ./profile.php");
+        } else if (empty($username) && !empty($email) && !empty($password)) {
+            $sql = "UPDATE users_account SET EMAIL = '$email', VERIFIED = '0', MODIFIED_ON = '$today', ACCOUNT_PASSWORD = ? WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "si", $param_password, $param_id);
+                // Set parameters
+                $param_password = password_hash($password, PASSWORD_DEFAULT);
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else if (empty($email) && !empty($username) && !empty($password)) {
+            $sql = "UPDATE users_account SET USERNAME = '$username', MODIFIED_ON = '$today', ACCOUNT_PASSWORD = ? WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "si", $param_password, $param_id);
+                // Set parameters
+                $param_password = password_hash($password, PASSWORD_DEFAULT);
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else if (empty($username) && empty($email) && !empty($password)) {
+            $sql = "UPDATE users_account SET MODIFIED_ON = '$today', ACCOUNT_PASSWORD = ? WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "si", $param_password, $param_id);
+                // Set parameters
+                $param_password = password_hash($password, PASSWORD_DEFAULT);
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else if (empty($username) && empty($password) && !empty($email)) {
+            $sql = "UPDATE users_account SET EMAIL = '$email', VERIFIED = '0', MODIFIED_ON = '$today' WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "i", $param_id);
+                // Set parameters
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else if (empty($email) && empty($password) && !empty($username)) {
+            $sql = "UPDATE users_account SET USERNAME = '$username', MODIFIED_ON = '$today' WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "i", $param_id);
+                // Set parameters
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else if (empty($password) && !empty($username) && !empty($email)) {
+            $sql = "UPDATE users_account SET USERNAME = '$username', EMAIL = '$email', VERIFIED = '0', MODIFIED_ON = '$today' WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "i", $param_id);
+                // Set parameters
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        } else {
+            $sql = "UPDATE users_account SET USERNAME = '$username', EMAIL = '$email', VERIFIED = '0', MODIFIED_ON = '$today', ACCOUNT_PASSWORD = ? WHERE ACCOUNT_ID = ?";
+            if ($stmt_acc = mysqli_prepare($link, $sql)) {
+                // Bind variables
+                mysqli_stmt_bind_param($stmt_acc, "si", $param_password, $param_id);
+                // Set parameters
+                $param_password = password_hash($password, PASSWORD_DEFAULT);
+                $param_id = $_SESSION["id"];
+                if (mysqli_stmt_execute($stmt_acc)) {
+                    header("location: ./profile.php");
+                } else {
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+        }
+
+        // Close statement
+        mysqli_stmt_close($stmt_acc);
+    }
+}
+
+// Process Verify Email
+else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["verify_email_button"]))) {
+
+    // Check
+    $id = $_SESSION["id"];
+
+    // Check
+    $query_forgot = "SELECT * FROM users_account WHERE ACCOUNT_ID = '$id' LIMIT 1";
+    $results_forgot = mysqli_query($link, $query_forgot);
+
+    $fetch_forgot = mysqli_fetch_assoc($results_forgot);
+
+    $email_forgot = $fetch_forgot['EMAIL'];
+
+    // Email
+    if ($fetch_forgot['VERIFIED'] == 0) {
+        $show_code = "show_code";
+
+        if (empty($_POST["code"])) {
+
+            // Check existing code
+            while ($code == "") {
+                $temp_code = rand(600000, 800000);
+
+                // SQL Select
+                $sql_check = "SELECT * FROM users_account WHERE VERIFY_CODE = '$temp_code'";
+                $stmt_check = mysqli_prepare($link, $sql_check);
+
+                // Execute
+                mysqli_stmt_execute($stmt_check);
+                mysqli_stmt_store_result($stmt_check);
+
+                // Check code
+                if (mysqli_stmt_num_rows($stmt_check) == 0) {
+                    $code = $temp_code;
+                }
+
+                mysqli_stmt_close($stmt_check);
+            }
+
+            include('email.php');
+            $verify_code = "Enter code sent to your email.";
+
+            // Insert code
+            $sql = "UPDATE users_account SET VERIFY_CODE = '$code' WHERE ACCOUNT_ID = '$id'";
+            mysqli_query($link, $sql);
+        } else {
+            $code_forgot = trim($_POST["code"]);
+
+            // Check code
+            $query_code = "SELECT * FROM users_account WHERE ACCOUNT_ID = '$id' LIMIT 1";
+            $results_code = mysqli_query($link, $query_code);
+
+            $code_check = mysqli_fetch_assoc($results_code);
+
+            if ($code_forgot === $code_check['VERIFY_CODE']) {
+                date_default_timezone_set('Asia/Manila');
+                $dt = new DateTime();
+                $today = $dt->format('Y-m-d H:i:s');
+
+                $sql = "UPDATE users_account SET VERIFIED = '1', MODIFIED_ON = '$today' WHERE ACCOUNT_ID = '$id'";
+                mysqli_query($link, $sql);
+
+                echo '<script type="text/javascript">alert("Email is Verified! Directing you to the Profile Page."); window.location = "./profile.php"; </script>';
+
+                $show_code = "reset";
+            } else {
+                $code_err_forgot = "Code is invalid. Please enter the code again or clear the code input then submit to send a new code verification.";
+            }
+        }
+    } else {
+        $verify_forgot = "Email is already verified.";
+    }
+}
+
 // Process Forgot Password
 else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["forgot_button"]))) {
 
