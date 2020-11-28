@@ -82,16 +82,16 @@
 .custom-users-profile .custom-edit-btn {
   height: 40px;
   padding: 5px 20px;
-  background-color: rgba(255, 195, 68, 1);
-  border: 1px solid rgba(255, 195, 68, 1);
+  background-color: rgba(255, 186, 0, 1);
+  border: 1px solid rgba(255, 186, 0, 1);
   color: #fff;
   font-size: 1.1rem;
   font-weight: 500;
 }
 .custom-users-profile .custom-edit-btn:hover,
 .custom-users-profile .custom-edit-btn:focus {
-  background-color: rgba(255, 195, 68, 0.8);
-  border: 1px solid rgba(255, 195, 68, 1);
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
   box-shadow: none;
   color: #1c1a18;
 }
@@ -116,14 +116,14 @@
 
 .custom-users-profile .custom-upload-btn {
   padding: 5px 15px;
-  background-color: rgba(255, 195, 68, 1);
-  border: 1px solid rgba(255, 195, 68, 1);
+  background-color: rgba(255, 186, 0, 1);
+  border: 1px solid rgba(255, 186, 0, 1);
   color: #fff;
 }
 .custom-users-profile .custom-upload-btn:hover,
 .custom-users-profile .custom-upload-btn:focus {
-  background-color: rgba(255, 195, 68, 0.8);
-  border: 1px solid rgba(255, 195, 68, 1);
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
   box-shadow: none;
   color: #1c1a18;
 }
@@ -159,14 +159,14 @@
 
 .btn.custom-save {
   padding: 0;
-  background-color: rgba(255, 195, 68, 1);
-  border: 1px solid rgba(255, 195, 68, 1);
+  background-color: rgba(255, 186, 0, 1);
+  border: 1px solid rgba(255, 186, 0, 1);
   color: #fff;
 }
 .btn.custom-save:hover,
 .btn.custom-save:focus {
-  background-color: rgba(255, 195, 68, 1);
-  border: 1px solid rgba(255, 195, 68, 1);
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
   box-shadow: none;
   color: #1c1a18;
 }

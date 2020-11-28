@@ -85,10 +85,10 @@ include('navbar.php');
                                                 </svg> Edit Account
                                             </a>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                    
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="nav-transaction-history" role="tabpanel" aria-labelledby="nav-transaction-history-tab">
                                 <div class="container custom-users-profile">
                                     <div class="row mt-3">
@@ -127,4 +127,7 @@ include('navbar.php');
     </div>
 </section>
 
-<?php include('footer.php'); ?>
+<?php 
+    include('footer.php'); 
+    include('footer_scripts.php');
+?>

@@ -327,4 +327,7 @@ if (mysqli_num_rows($res) > 0) {
 <?php
 } ?>
 
-<?php include('footer.php'); ?>
+<?php 
+    include('footer.php'); 
+    include('footer_scripts.php');
+?>

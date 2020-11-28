@@ -18,88 +18,143 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>T1 MOVIES: Admin Site</title>
+        <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../css/footer_style.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../css/navbar_style.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>T1 SERVER</title>
-    <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
-    <!-- Bootstrap Lib -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- jQuery and JS bundle w/ Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
-    <!-- Datatable Lib -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
+        <!-- Data Table Library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
 
-<body class="bg-light">
-    <?php include('admin_navbar.php'); ?>
+        <!-- Bootstrap 3 -->
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css"> -->
 
-    <section class="container">
-        <!-- insert navigation bar for tables -->
-    </section>
 
-    <div class="content" style="margin: 0 20% 0 20%">
-        <h2>Cinema</h2>
-        <!-- Movies Table -->
-        <table id="cinema_table" class="table table-bordered table-striped custom-admin-table" style="margin: 0; width: 100%;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>BRANCH ID</th>
-                    <th>CINEMA</th>
-                    <th>SEATS</th>
-                    <th>CURRENT MOVIE</th>
-                    <th scope="col">ACTIVE</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+        <!-- Bootstrap 4 -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js|https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 
-    <div class="content" style="margin: 0 20% 0 20%">
-        <h2>Users</h2>
-        <!-- Movies Table -->
-        <table id="user_table" class="table table-bordered table-striped custom-admin-table" style="margin: 0; width: 100%;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ACCOUNT ID</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL ADDRESS</th>
-                    <th>TYPE</th>
-                    <th>ACTIVE</th>
-                    <th scope="col">MODIFY</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+    </head>
 
-    <div class="content" style="margin: 0 20% 0 20%">
-        <h2>Movies</h2>
-        <!-- Movies Table -->
-        <table id="movie_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>MOVIE ID</th>
-                    <th>MOVIE TITLE</th>
-                    <th>RATED</th>
-                    <th>PREMIERE DATE</th>
-                    <th>ACTIVE</th>
-                    <th scope="col">MODIFY</th>
-                </tr>
-            </thead>
-        </table>
-        <div align="right">
-            <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
-        </div>
-    </div>
-</body>
+    <body class="bg-light">
+        <?php include('navbar.php'); ?>
 
+        <section class="container-fluid" style="margin-top: 150px; width:80%">
+            <div class="custom-admin-site">
+                <h2>ADMIN SITE</h2>
+                <hr/>
+                <div class="row">
+                    <div class="col-12 custom-admin-navbar">
+                        <ul class="nav nav-tabs nav-justified" id="adminTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active px-auto" id="nav-admin-cinemas-tab" data-toggle="tab" href="#nav-admin-cinemas" role="tab" aria-controls="home" aria-selected="true">CINEMA</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link px-auto" id="nav-admin-users-tab" data-toggle="tab" href="#nav-admin-users" role="tab" aria-controls="contact" aria-selected="false">USERS</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link px-auto" id="nav-admin-movies-tab" data-toggle="tab" href="#nav-admin-movies" role="tab" aria-controls="contact" aria-selected="false">MOVIES</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content mt-4 mb-5" id="adminTabContent">
+                            <!-- ADMIN CINEMA -->
+                            <div class="tab-pane fade show active" id="nav-admin-cinemas" role="tabpanel" aria-labelledby="nav-admin-cinemas-tab">
+                                <div class="container-fluid custom-admin-cinema-table">
+                                    <h3>Cinema</h3>
+                                    <!-- Movies Table -->
+                                    <table id="cinema_table" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>BRANCH ID</th>
+                                                <th>CINEMA</th>
+                                                <th>SEATS</th>
+                                                <th>CURRENT MOVIE</th>
+                                                <th scope="col">ACTIVE</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- ADMIN USERS -->
+                            <div class="tab-pane fade active" id="nav-admin-users" role="tabpanel" aria-labelledby="nav-admin-users-tab">
+                                <div class="container-fluid custom-admin-users-table">
+                                    <h3>Users</h3>
+                                    <!-- Users Table -->
+                                    
+                                    <table id="user_table" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">ACCOUNT ID</th>
+                                                <th scope="col">USERNAME</th>
+                                                <th scope="col">EMAIL ADDRESS</th>
+                                                <th scope="col">TYPE</th>
+                                                <th scope="col">ACTIVE</th>
+                                                <th scope="col">MODIFY</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- ADMIN MOVIES -->
+                            <div class="tab-pane fade active" id="nav-admin-movies" role="tabpanel" aria-labelledby="nav-admin-movies-tab">
+                                <div class="container-fluid custom-admin-movies-table">
+                                    <h3>Movies</h3>
+                                    <!-- Movies Table -->
+                                    <table id="movie_table" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>MOVIE ID</th>
+                                                <th>MOVIE TITLE</th>
+                                                <th>RATED</th>
+                                                <th>PREMIERE DATE</th>
+                                                <th>ACTIVE</th>
+                                                <th scope="col">MODIFY</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn custom-edit-btn">Add Movie</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php include('footer.php'); ?>
+
+    </body>
 </html>
 
+<!-- MODALS -->
 <div id="userModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="user_form" enctype="multipart/form-data">

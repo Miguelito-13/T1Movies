@@ -60,8 +60,127 @@ header {
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* ADMIN TABLES */
+/* ADMIN NAVIGATION TABLE */
 
-.custom-admin-table {
+.custom-admin-site h2 {
+  color: #1c1a18;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.custom-admin-navbar h3 {
+  color: #1c1a18;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.custom-admin-navbar ul {
+  display: flex;
+  justify-content: start;
+}
+
+.custom-admin-navbar a {
+  color: #1c1a18;
+  font-size: 1.15rem;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.custom-admin-navbar a:hover {
+  color: #ffba00;
+}
+.custom-admin-navbar a.active {
+  color: #1c1a18;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 720px) {
+  .custom-admin-navbar a {
+    color: #1c1a18;
+    font-size: 1.15rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .custom-admin-navbar ul {
+    display: flex;
+    justify-content: center;
+  }
+  .custom-admin-navbar a {
+    color: #1c1a18;
+    font-size: 0.9rem;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Admin Table */
+
+.custom-admin-cinema-table table,
+.custom-admin-users-table table,
+.custom-admin-movies-table table {
   cursor: default;
+  min-width: 100%;
+}
+
+.custom-admin-cinema-table thead,
+.custom-admin-users-table thead,
+.custom-admin-movies-table thead {
+  color: #fff;
+  background-color: #1c1a18;
+}
+
+.custom-admin-cinema-table button,
+.custom-admin-users-table button,
+.custom-admin-movies-table button {
+  background-color: rgba(255, 186, 0, 1);
+  border: 1px solid rgba(255, 186, 0, 1);
+  color: #fff;
+  font-weight: 500;
+}
+.custom-admin-cinema-table button:hover,
+.custom-admin-users-table button:hover,
+.custom-admin-movies-table button:hover,
+.custom-admin-cinema-table button:focus,
+.custom-admin-users-table button:focus,
+.custom-admin-movies-table button:focus {
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
+  box-shadow: none;
+  color: #1c1a18;
+  font-weight: 500;
+}
+
+.custom-admin-movies-table .custom-edit-btn {
+  background-color: rgba(28, 26, 24, 1);
+  border: 1px solid rgba(28, 26, 24, 1);
+  color: #fff;
+  font-weight: 500;
+}
+.custom-admin-movies-table .custom-edit-btn:hover,
+.custom-admin-movies-table .custom-edit-btn:focus {
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
+  box-shadow: none;
+  color: #1c1a18;
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1c1a18;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaaaaa;
 }
