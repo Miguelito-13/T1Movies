@@ -15,7 +15,7 @@ $sql = "SELECT * from genre LEFT JOIN movies ON movies.MOVIE_ID = genre.MOVIE_ID
 $res = mysqli_query($link,  $sql);
 if (mysqli_num_rows($res) > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
-        $date = substr($row['PREMIERE_DATE'], 0, 4);?>
+        $date = substr($row['PREMIERE_DATE'], 0, 4); ?>
         <section id="movie-profile">
             <section class="container-fluid custom-movie-profile mb-auto p-0" style="background: url(../images/movies/poster_bg/<?= $row['POSTER_BG'] ?>); background-size: cover; background-position: center; min-height: 88.5vh">
                 <!-- set horizontal poster as background with css -->
@@ -127,10 +127,10 @@ if (mysqli_num_rows($res) > 0) {
                             <h3 class="mx-auto">COMING SOON</h3>
                         </div>
                         <div class="col-12">
-                            
-                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date=date_create($row['PREMIERE_DATE']);echo date_format($date,"F d, Y");?></b></p>
+
+                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date = date_create($row['PREMIERE_DATE']); echo date_format($date, "F d, Y"); ?></b></p>
                             <p class="mx-auto">
-                                <a href="home.php">Go back to homepage</a>, or try browsing what is 
+                                <a href="home.php">Go back to homepage</a>, or try browsing what is
                                 <a href="now_showing.php">now showing</a> and other
                                 <a href="coming_soon.php">upcoming movies</a>.
                             </p>
@@ -288,21 +288,22 @@ if (mysqli_num_rows($res) > 0) {
             <!-- set horizontal poster as background with css
         ETO CHIEF! 
     -->
-            <div class="container-fluid search-results"> <!-- removed "opacity" class -->
+            <div class="container-fluid search-results">
+                <!-- removed "opacity" class -->
                 <?php if (is_numeric($movie_id) == 1) { ?>
 
                     <!-- Movie Not Found -->
                     <div class="movies-list-container">
                         <!--  for "< ?= $movie_id ? >" -->
                         <h3>SEARCH RESULTS</h3>
-                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);"/>
+                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);" />
                     </div>
                     <?php include('movie_not_found.php'); ?>
 
                 <?php } else { ?>
                     <div class="movies-list-container">
                         <h3>SEARCH RESULTS for "<?= $movie_id ?>"</h3>
-                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);"/>
+                        <hr style="border-top: 1px solid rgba(0,0,0,0.15);" />
                     </div>
                     <?php
                     $sql = "SELECT * FROM movies WHERE MOVIE_TITLE LIKE '%$movie_id%' LIMIT 50";
@@ -310,16 +311,9 @@ if (mysqli_num_rows($res) > 0) {
                         if (mysqli_stmt_execute($stmt)) {
                             $result = mysqli_stmt_get_result($stmt);
                             if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                    $date = substr($row['PREMIERE_DATE'], 0, 4); ?>
-
-                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                        <input name="view_id" type="text" value="<?= $row['MOVIE_ID'] ?>" style="display: none;">
-
-                                        <!-- design this [Don't Delete: name="view_movie" & type="submit"]-->
-                                        <!-- SEARCH RESULTS -->
-                                        <?php include ('search_results.php'); ?>
-                                    </form>
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                                    <!-- SEARCH RESULTS -->
+                                    <?php include('search_results.php'); ?>
                 <?php
                                 }
                             }
