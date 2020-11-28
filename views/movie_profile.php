@@ -286,9 +286,6 @@ if (mysqli_num_rows($res) > 0) {
 } else { ?>
     <section class="container-fluid search-results-container mb-5" style="margin-top: 150px; width: 90%">
         <section class="container-fluid custom-movie-profile mb-auto p-0">
-            <!-- set horizontal poster as background with css
-        ETO CHIEF! 
-    -->
             <div class="container-fluid search-results">
                 <!-- removed "opacity" class -->
                 <?php if (is_numeric($movie_id) == 1) { ?>
