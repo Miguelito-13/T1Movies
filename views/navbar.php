@@ -20,7 +20,21 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     <div class="collapse navbar-collapse my-2 py-2" id="collapsibleNavbar">
       <!-- <ul class="navbar-nav ml-auto my-auto"> -->
       <ul class="navbar-nav mr-auto my-auto">
-        <li class="nav-item active"><a class="nav-link mx-1 px-3" href="home.php">HOME</a></li>
+        <li class="nav-item active">
+          <a class="nav-link mx-1 px-3" href="home.php">
+            <?php
+            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+              if ($_SESSION["user_type"] !== 'ADMIN') { ?>
+                HOME
+              <?php } else { ?>
+                ADMIN
+              <?php }
+            } else { ?>
+              HOME
+            <?php }
+            ?>
+          </a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mx-1 px-3" href="#" id="navbardrop" data-toggle="dropdown">MOVIES </a>
           <div class="dropdown-menu py-0 my-2">
