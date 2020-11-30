@@ -103,6 +103,8 @@ $(document).ready(function () {
         data.active == 0
           ? $("#user_inactive").prop("checked", true)
           : $("#user_active").prop("checked", true);
+
+        $(".user-title").text("Edit User Details");
       },
     });
   });
@@ -112,7 +114,7 @@ $(document).ready(function () {
 
   $("#add_button").click(function () {
     $("#movie_form")[0].reset();
-    $(".modal-title").text("Add Movie Details");
+    $(".movie-title").text("Add Movie Details");
     $("#action").val("Add");
     $("#operation").val("Add");
     $(".p-title").text("Movie Poster *");
@@ -1254,7 +1256,7 @@ $(document).ready(function () {
         }
 
         $("#movieModal").modal("show");
-        $(".modal-title").text("Edit Movie Details");
+        $(".movie-title").text("Edit Movie Details");
         $(".p-title").text("Update Movie Poster");
         $(".pbg-title").text("Update Movie Poster Background");
         $("#movie_id").val(movie_id);
