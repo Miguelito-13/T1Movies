@@ -17,7 +17,7 @@ header {
 .navbar-custom .nav-item:hover .nav-link,
 .dropdown-menu .dropdown-item.active {
   background-color: #1c1a18;
-  color: #ffc344;
+  color: #ffba00;
 }
 .navbar-nav li {
   font-size: 1.25rem;
@@ -37,7 +37,7 @@ header {
 }
 .navbar-custom .dropdown-menu a:hover,
 .navbar-custom .dropdown-menu button:hover {
-  color: #ffc344;
+  color: #ffba00;
   background-color: rgba(255, 255, 255, 0.15);
 }
 .custom-toggler.navbar-toggler {
@@ -84,7 +84,7 @@ header {
   margin: auto;
   padding: 7px 10px;
   padding-right: 20px;
-  border: 1px solid #ffc344;
+  border: 1px solid #ffba00;
   border-top: none;
   cursor: pointer;
 }
