@@ -27,6 +27,7 @@ header {
 }
 .navbar-nav a {
   font-size: 1.75rem;
+  font-weight: 400;
 }
 .admin-navbar-custom .dropdown-menu,
 .admin-navbar-custom .dropdown-menu button {
@@ -35,7 +36,8 @@ header {
 }
 .admin-navbar-custom .dropdown-menu a,
 .admin-navbar-custom .dropdown-menu button {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
+  font-weight: 400;
   height: auto;
   padding: 10px 20px;
   margin: auto;
