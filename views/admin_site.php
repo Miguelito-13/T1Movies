@@ -30,7 +30,6 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     <!-- Bootstrap Lib -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     <!-- Datatable Lib -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -40,7 +39,6 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 
 <body class="bg-light">
     <?php include('admin_navbar.php'); ?>
-
     <section class="container-fluid" style="margin-top: 115px; width:80%">
         <div class="custom-admin-site my-4">
             <h2>ADMIN SITE</h2>
@@ -60,9 +58,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     </thead>
                 </table>
             </div>
-
             <hr />
-
             <div class="container-fluid custom-admin-users-table mb-5">
                 <h3>USERS</h3>
                 <!-- Movies Table -->
@@ -79,9 +75,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     </thead>
                 </table>
             </div>
-
             <hr />
-
             <div class="container-fluid custom-admin-movies-table mb-3">
                 <h3>MOVIES</h3>
                 <!-- Movies Table -->
@@ -97,14 +91,12 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                         </tr>
                     </thead>
                 </table>
-
                 <div class="d-flex justify-content-end mb-5">
                     <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn custom-edit-btn">Add Movie</button>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- FOOTER -->
     <footer class="footer page-footer font-small footer-custom pt-2" id="main-footer">
         <div class="container-fluid text-center text-md-left pb-2">
@@ -113,7 +105,6 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="img-fluid py-2" style="height: 100px" />
                 </div>
                 <hr class="clearfix w-100 d-md-none pb-3">
-
                 <div class="col-md-3 mb-md-0 my-3 py-auto">
                     <h3 class="text-uppercase pb-2">ABOUT US</h3>
                     <ul class="list-unstyled">
@@ -125,7 +116,6 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                         </li>
                     </ul>
                 </div>
-
                 <div class="col-md-3 mb-md-0 my-3 py-auto">
                     <h3 class="text-uppercase pb-2">QUICK LINKS</h3>
                     <ul class="list-unstyled">
@@ -137,7 +127,6 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                         </li>
                     </ul>
                 </div>
-
                 <div class="col-md-2 mb-md-0 my-3 py-auto">
                     <h3 class="text-uppercase pb-2">MOVIES</h3>
                     <ul class="list-unstyled">
@@ -149,14 +138,11 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
-
         <div class="footer-copyright text-center py-2">
             <p>©2020 <a href="home.php">T1 Movies Inc.</a> All Rights Reserved.</p>
         </div>
-
     </footer>
 </body>
 
@@ -225,8 +211,8 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 <div class="modal-footer">
                     <input type="hidden" name="account_id" id="account_id" />
                     <input type="hidden" name="user_operation" id="user_operation" />
-                    <input type="submit" name="user_action" id="user_action" class="btn btn-primary" value="Save" />
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <input type="submit" name="user_action" id="user_action" class="btn btn-warning" value="Save" />
+                    <button type="button" class="btn btn-dark text-light" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </form>
@@ -238,7 +224,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
         <form method="post" id="movie_form" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Movie</h4>
+                    <h4 class="modal-title movie-title">Add Movie</h4>
                     <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
@@ -401,8 +387,8 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     <input type="hidden" name="movie_id" id="movie_id" />
                     <input type="hidden" name="operation" id="operation" />
                     <button type="button" class="btn btn-secondary delete mr-auto">Delete</button>
-                    <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <input type="submit" name="action" id="action" class="btn btn-warning" value="Add" />
+                    <button type="button" class="btn btn-dark text-light" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </form>
