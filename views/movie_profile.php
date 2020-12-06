@@ -128,7 +128,12 @@ if (mysqli_num_rows($res) > 0) {
                         </div>
                         <div class="col-12">
 
+<<<<<<< HEAD
                             <p class="mx-auto">Ticket reservation will be available on <b><?php $date = date_create($row['PREMIERE_DATE']); echo date_format($date, "F d, Y"); ?></b></p>
+=======
+                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date = date_create($row['PREMIERE_DATE']);
+                                                                                            echo date_format($date, "F d, Y"); ?></b></p>
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
                             <p class="mx-auto">
                                 <a href="home.php">Go back to homepage</a>, or try browsing what is
                                 <a href="now_showing.php">now showing</a> and other
@@ -285,9 +290,12 @@ if (mysqli_num_rows($res) > 0) {
 } else { ?>
     <section class="container-fluid search-results-container mb-5" style="margin-top: 150px; width: 90%">
         <section class="container-fluid custom-movie-profile mb-auto p-0">
+<<<<<<< HEAD
             <!-- set horizontal poster as background with css
         ETO CHIEF! 
     -->
+=======
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
             <div class="container-fluid search-results">
                 <!-- removed "opacity" class -->
                 <?php if (is_numeric($movie_id) == 1) { ?>
@@ -327,7 +335,11 @@ if (mysqli_num_rows($res) > 0) {
 <?php
 } ?>
 
+<<<<<<< HEAD
 <?php 
     include('footer.php'); 
     include('footer_scripts.php');
 ?>
+=======
+<?php include('footer.php'); ?>
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc

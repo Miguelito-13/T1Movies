@@ -24,6 +24,7 @@ header {
 .dropdown-menu .dropdown-item.active {
   background-color: #1c1a18;
   color: #ffc344;
+<<<<<<< HEAD
 }
 .navbar-nav a {
   font-size: 1.75rem;
@@ -56,14 +57,54 @@ header {
   height: 25px;
   width: 25px;
   margin: auto;
+=======
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
+}
+.navbar-nav a {
+  font-size: 1.25rem;
+}
+.admin-navbar-custom .dropdown-menu,
+.admin-navbar-custom .dropdown-menu button {
+  background-color: #1c1a18;
+  color: white;
+}
+.admin-navbar-custom .dropdown-menu a,
+.admin-navbar-custom .dropdown-menu button {
+  font-size: 1.25rem;
+  height: auto;
+  padding: 10px 20px;
+  margin: auto;
+  text-align: left;
+}
+.admin-navbar-custom .dropdown-menu a:hover,
+.admin-navbar-custom .dropdown-menu button:hover {
+  color: #ffc344;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.custom-toggler.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.8);
+  height: 50px;
+  width: 50px;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  height: 25px;
+  width: 25px;
+  margin: auto;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
+<<<<<<< HEAD
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
+
+=======
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
 /* ADMIN NAVIGATION TABLE */
 
 .custom-admin-site h2 {
   color: #1c1a18;
+<<<<<<< HEAD
   font-size: 2.75rem;
   font-weight: bolder;
 }
@@ -75,10 +116,24 @@ header {
 }
 
 .custom-admin-site ul {
+=======
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.custom-admin-navbar h3 {
+  color: #1c1a18;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.custom-admin-navbar ul {
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   display: flex;
   justify-content: start;
 }
 
+<<<<<<< HEAD
 .custom-admin-site a {
   color: #1c1a18;
   font-size: 1.65rem;
@@ -89,11 +144,24 @@ header {
   color: #ffba00;
 }
 .custom-admin-site a.active {
+=======
+.custom-admin-navbar a {
+  color: #1c1a18;
+  font-size: 1.15rem;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.custom-admin-navbar a:hover {
+  color: #ffba00;
+}
+.custom-admin-navbar a.active {
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   color: #1c1a18;
   font-weight: 700;
 }
 
 @media screen and (max-width: 720px) {
+<<<<<<< HEAD
   .custom-admin-site a {
     color: #1c1a18;
     font-size: 1.65rem;
@@ -107,6 +175,21 @@ header {
   .custom-admin-site a {
     color: #1c1a18;
     font-size: 1.4rem;
+=======
+  .custom-admin-navbar a {
+    color: #1c1a18;
+    font-size: 1.15rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .custom-admin-navbar ul {
+    display: flex;
+    justify-content: center;
+  }
+  .custom-admin-navbar a {
+    color: #1c1a18;
+    font-size: 0.9rem;
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -121,9 +204,12 @@ header {
 .custom-admin-movies-table table {
   cursor: default;
   min-width: 100%;
+<<<<<<< HEAD
   border: 1px solid rgba(28, 26, 24, 0.5);
   font-weight: 500;
   font-size: 1.5rem;
+=======
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
 }
 
 .custom-admin-cinema-table thead,
@@ -140,7 +226,10 @@ header {
   border: 1px solid rgba(255, 186, 0, 1);
   color: #fff;
   font-weight: 500;
+<<<<<<< HEAD
   font-size: 1.45rem;
+=======
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
 }
 .custom-admin-cinema-table button:hover,
 .custom-admin-users-table button:hover,
@@ -153,6 +242,7 @@ header {
   box-shadow: none;
   color: #1c1a18;
   font-weight: 500;
+<<<<<<< HEAD
 }
 
 .custom-admin-movies-table .custom-edit-btn {
@@ -185,6 +275,23 @@ header {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #cccccc;
+=======
+}
+
+.custom-admin-movies-table .custom-edit-btn {
+  background-color: rgba(28, 26, 24, 1);
+  border: 1px solid rgba(28, 26, 24, 1);
+  color: #fff;
+  font-weight: 500;
+}
+.custom-admin-movies-table .custom-edit-btn:hover,
+.custom-admin-movies-table .custom-edit-btn:focus {
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
+  box-shadow: none;
+  color: #1c1a18;
+  font-weight: 500;
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -195,6 +302,7 @@ header {
 
 /* Footer */
 
+<<<<<<< HEAD
 .footer-custom {
   background-color: #3f3f3f;
   color: white;
@@ -245,4 +353,23 @@ header {
 .aboutus-p {
   text-indent: 3rem;
   text-align: justify;
+=======
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1c1a18;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaaaaa;
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
 }

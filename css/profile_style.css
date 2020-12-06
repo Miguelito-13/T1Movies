@@ -82,16 +82,26 @@
 .custom-users-profile .custom-edit-btn {
   height: 40px;
   padding: 5px 20px;
+<<<<<<< HEAD
   background-color: rgba(255, 186, 0, 1);
   border: 1px solid rgba(255, 186, 0, 1);
+=======
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   color: #fff;
   font-size: 1.1rem;
   font-weight: 500;
 }
 .custom-users-profile .custom-edit-btn:hover,
 .custom-users-profile .custom-edit-btn:focus {
+<<<<<<< HEAD
   background-color: rgba(255, 186, 0, 0.75);
   border: 1px solid rgba(255, 186, 0, 0.75);
+=======
+  background-color: rgba(255, 195, 68, 0.8);
+  border: 1px solid rgba(255, 195, 68, 1);
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   box-shadow: none;
   color: #1c1a18;
 }
@@ -116,14 +126,24 @@
 
 .custom-users-profile .custom-upload-btn {
   padding: 5px 15px;
+<<<<<<< HEAD
   background-color: rgba(255, 186, 0, 1);
   border: 1px solid rgba(255, 186, 0, 1);
+=======
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   color: #fff;
 }
 .custom-users-profile .custom-upload-btn:hover,
 .custom-users-profile .custom-upload-btn:focus {
+<<<<<<< HEAD
   background-color: rgba(255, 186, 0, 0.75);
   border: 1px solid rgba(255, 186, 0, 0.75);
+=======
+  background-color: rgba(255, 195, 68, 0.8);
+  border: 1px solid rgba(255, 195, 68, 1);
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   box-shadow: none;
   color: #1c1a18;
 }
@@ -159,14 +179,24 @@
 
 .btn.custom-save {
   padding: 0;
+<<<<<<< HEAD
   background-color: rgba(255, 186, 0, 1);
   border: 1px solid rgba(255, 186, 0, 1);
+=======
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   color: #fff;
 }
 .btn.custom-save:hover,
 .btn.custom-save:focus {
+<<<<<<< HEAD
   background-color: rgba(255, 186, 0, 0.75);
   border: 1px solid rgba(255, 186, 0, 0.75);
+=======
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
   box-shadow: none;
   color: #1c1a18;
 }

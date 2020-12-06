@@ -136,7 +136,11 @@ include('navbar.php');
     </div>
 </section>
 
+<<<<<<< HEAD
 <?php 
     include('footer.php'); 
     include('footer_scripts.php');
 ?>
+=======
+<?php include('footer.php'); ?>
+>>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
