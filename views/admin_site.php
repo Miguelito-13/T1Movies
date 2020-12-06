@@ -18,88 +18,93 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>T1 MOVIES: Admin Site</title>
+        <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
+        <!-- <link rel="stylesheet" href="../css/footer_style.css?v=<?php //echo time(); ?>"> -->
+        <!-- Bootstrap Lib -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>T1 SERVER</title>
-    <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
-    <!-- Bootstrap Lib -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-</head>
+        <!-- Datatable Lib -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
 
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <body class="bg-light">
+        <?php include ('admin_navbar.php'); ?>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="../views/profile.php">Profile</a></li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-danger" href="../config/logout.php">Sign out</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <section class="container-fluid" style="margin-top: 115px; width:80%">
+            <div class="custom-admin-site my-4">
+                <h2>ADMIN SITE</h2>
+                <hr/>
+                <div class="container-fluid custom-admin-cinema-table mb-5">
+                    <h3>CINEMA</h3>
+                    <!-- Movies Table -->
+                    <table id="cinema_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>BRANCH ID</th>
+                                <th>CINEMA</th>
+                                <th>SEATS</th>
+                                <th>CURRENT MOVIE</th>
+                                <th scope="col">ACTIVE</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                
+                <hr/>
 
-    <div class="content" style="margin: 0 20% 0 20%">
-        <h2>Cinema</h2>
-        <!-- Movies Table -->
-        <table id="cinema_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>BRANCH ID</th>
-                    <th>CINEMA</th>
-                    <th>SEATS</th>
-                    <th>CURRENT MOVIE</th>
-                    <th scope="col">ACTIVE</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+                <div class="container-fluid custom-admin-users-table mb-5">
+                    <h3>USERS</h3>
+                    <!-- Movies Table -->
+                    <table id="user_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ACCOUNT ID</th>
+                                <th>USERNAME</th>
+                                <th>EMAIL ADDRESS</th>
+                                <th>TYPE</th>
+                                <th>ACTIVE</th>
+                                <th scope="col">MODIFY</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
 
-    <div class="content" style="margin: 0 20% 0 20%">
-        <h2>Users</h2>
-        <!-- Movies Table -->
-        <table id="user_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ACCOUNT ID</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL ADDRESS</th>
-                    <th>TYPE</th>
-                    <th>ACTIVE</th>
-                    <th scope="col">MODIFY</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+                <hr/>
 
-    <div class="content" style="margin: 0 20% 0 20%">
-        <h2>Movies</h2>
-        <!-- Movies Table -->
-        <table id="movie_table" class="table table-bordered table-striped" style="margin: 0; width: 100%;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>MOVIE ID</th>
-                    <th>MOVIE TITLE</th>
-                    <th>RATED</th>
-                    <th>PREMIERE DATE</th>
-                    <th>ACTIVE</th>
-                    <th scope="col">MODIFY</th>
-                </tr>
-            </thead>
-        </table>
-        <div align="right">
-            <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
-        </div>
-    </div>
-</body>
+                <div class="container-fluid custom-admin-movies-table mb-3">
+                    <h3>MOVIES</h3>
+                    <!-- Movies Table -->
+                    <table id="movie_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>MOVIE ID</th>
+                                <th>MOVIE TITLE</th>
+                                <th>RATED</th>
+                                <th>PREMIERE DATE</th>
+                                <th>ACTIVE</th>
+                                <th scope="col">MODIFY</th>
+                            </tr>
+                        </thead>
+                    </table>
 
+                    <div class="d-flex justify-content-end mb-5">
+                        <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn custom-edit-btn">Add Movie</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php include('footer.php'); ?>
+    </body>
 </html>
 
 <div id="userModal" class="modal fade">
@@ -325,7 +330,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 <div class="modal-footer">
                     <input type="hidden" name="movie_id" id="movie_id" />
                     <input type="hidden" name="operation" id="operation" />
-                    <button type="button" class="btn btn-secondary delete mr-auto" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-secondary delete mr-auto">Delete</button>
                     <input type="submit" name="action" id="action" class="btn btn-primary" value="Add" />
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
@@ -333,14 +338,5 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
         </form>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
-<!-- Datatable -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 <script src="../js/server.js"></script>

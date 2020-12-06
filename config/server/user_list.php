@@ -35,7 +35,7 @@ foreach ($result as $row) {
     } else {
         $sub_array[] = '<span class="text-success">(1) Active</span>';
     }
-    $sub_array[] = '<button style="width: 100%" type="button" id="' . $row["ACCOUNT_ID"] . '" class="btn btn-sm edit-user" data-toggle="modal" data-target="#userModal">Edit</button>';
+    $sub_array[] = '<button style="width: 100%" type="button" id="' . $row["ACCOUNT_ID"] . '" class="btn btn-info btn-sm edit-user">Edit</button>';
 
     $data[] = $sub_array;
 }
