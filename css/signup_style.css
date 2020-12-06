@@ -86,27 +86,27 @@ input[type="number"] {
 
 .btn.custom-signup {
   padding: 0;
-  background-color: rgba(255, 186, 0, 1);
-  border: 1px solid rgba(255, 186, 0, 1);
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;
 }
 .btn.custom-signup:hover,
 .btn.custom-signup:focus {
-  background-color: rgba(255, 186, 0, 0.75);
-  border: 1px solid rgba(255, 186, 0, 0.75);
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
   box-shadow: none;
   color: #1c1a18;
 }
 
 .btn.custom-close {
-  background-color: rgba(255, 186, 0, 1);
-  border: 1px solid rgba(255, 186, 0, 1);
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
   color: #fff;
 }
 .btn.custom-close:hover,
 .btn.custom-close:focus {
-  background-color: rgba(255, 186, 0, 0.75);
-  border: 1px solid rgba(255, 186, 0, 0.75);
+  background-color: rgba(255, 195, 68, 1);
+  border: 1px solid rgba(255, 195, 68, 1);
   box-shadow: none;
   color: #1c1a18;
 }

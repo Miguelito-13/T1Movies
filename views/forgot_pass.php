@@ -74,10 +74,7 @@ include('navbar.php');
 </section>
 
 <?php include('termsandconditions.php'); ?>
-<?php 
-    include('footer.php'); 
-    include('footer_scripts.php');
-?>
+<?php include('footer.php'); ?>
 
 <script>
     //Show Verify Code

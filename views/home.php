@@ -105,10 +105,7 @@ include('header.php');
   </section>
   <!-- End of Main Body -->
 
-  <?php 
-    include('footer.php'); 
-    include('footer_scripts.php');
-?>
+  <?php include('footer.php'); ?>
 
 </body>
 

@@ -103,11 +103,8 @@ $(document).ready(function () {
         data.active == 0
           ? $("#user_inactive").prop("checked", true)
           : $("#user_active").prop("checked", true);
-<<<<<<< HEAD
-=======
 
         $(".user-title").text("Edit User Details");
->>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
       },
     });
   });
@@ -117,11 +114,7 @@ $(document).ready(function () {
 
   $("#add_button").click(function () {
     $("#movie_form")[0].reset();
-<<<<<<< HEAD
-    $(".modal-title").text("Add Movie Details");
-=======
     $(".movie-title").text("Add Movie Details");
->>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
     $("#action").val("Add");
     $("#operation").val("Add");
     $(".p-title").text("Movie Poster *");
@@ -1263,11 +1256,7 @@ $(document).ready(function () {
         }
 
         $("#movieModal").modal("show");
-<<<<<<< HEAD
-        $(".modal-title").text("Edit Movie Details");
-=======
         $(".movie-title").text("Edit Movie Details");
->>>>>>> 07e63dec4acbb2372b6fbb3f7f3ea5583811f7dc
         $(".p-title").text("Update Movie Poster");
         $(".pbg-title").text("Update Movie Poster Background");
         $("#movie_id").val(movie_id);
