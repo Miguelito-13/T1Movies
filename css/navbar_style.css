@@ -17,7 +17,7 @@ header {
 .navbar-custom .nav-item:hover .nav-link,
 .dropdown-menu .dropdown-item.active {
   background-color: #1c1a18;
-  color: #ffc344;
+  color: #ffba00;
 }
 .navbar-nav li {
   font-size: 1.25rem;
@@ -37,7 +37,7 @@ header {
 }
 .navbar-custom .dropdown-menu a:hover,
 .navbar-custom .dropdown-menu button:hover {
-  color: #ffc344;
+  color: #ffba00;
   background-color: rgba(255, 255, 255, 0.15);
 }
 .custom-toggler.navbar-toggler {
@@ -75,23 +75,26 @@ header {
   position: absolute;
   z-index: 999;
   top: 100%;
-  left: 0;
-}
-.search-box input[type="text"],
-.search-result {
-  width: 100%;
-  box-sizing: border-box;
+  background-color: #1c1a18;
+  min-width: 210px;
 }
 /* Formatting search-result items */
 .search-result p {
-  margin: 0;
+  color: white;
+  margin: auto;
   padding: 7px 10px;
-  border: 1px solid #cccccc;
+  padding-right: 20px;
+  border: 1px solid #ffba00;
   border-top: none;
   cursor: pointer;
 }
 .search-result p:hover {
-  background: #f2f2f2;
+  background: #ffba00;
+}
+.form-search-custom,
+.form-search-custom i {
+  caret-color: #ffba00;
+  color: #ffba00;
 }
 
 @media (max-width: 600px) {

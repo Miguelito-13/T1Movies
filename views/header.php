@@ -1,18 +1,21 @@
+<?php include('../config/functions.php'); ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>T1 CINEMA: Your Choice for Movie Tickets</title>
+    <title>T1 MOVIES: Your Choice for Movie Tickets</title>
     <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="../css/admin_style.css?v=<?php //echo time(); ?>"> -->
     <link rel="stylesheet" href="../css/announcements_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/footer_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/genre_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/login_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/navbar_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/movies_style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/profile_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/signup_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
