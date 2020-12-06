@@ -26,7 +26,7 @@ header {
   color: #ffc344;
 }
 .navbar-nav a {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
 }
 .admin-navbar-custom .dropdown-menu,
 .admin-navbar-custom .dropdown-menu button {
@@ -35,7 +35,7 @@ header {
 }
 .admin-navbar-custom .dropdown-menu a,
 .admin-navbar-custom .dropdown-menu button {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   height: auto;
   padding: 10px 20px;
   margin: auto;
@@ -64,49 +64,49 @@ header {
 
 .custom-admin-site h2 {
   color: #1c1a18;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.75rem;
+  font-weight: bolder;
 }
 
-.custom-admin-navbar h3 {
+.custom-admin-site h3 {
   color: #1c1a18;
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
-.custom-admin-navbar ul {
+.custom-admin-site ul {
   display: flex;
   justify-content: start;
 }
 
-.custom-admin-navbar a {
+.custom-admin-site a {
   color: #1c1a18;
-  font-size: 1.15rem;
+  font-size: 1.65rem;
   padding-left: 25px;
   padding-right: 25px;
 }
-.custom-admin-navbar a:hover {
+.custom-admin-site a:hover {
   color: #ffba00;
 }
-.custom-admin-navbar a.active {
+.custom-admin-site a.active {
   color: #1c1a18;
   font-weight: 700;
 }
 
 @media screen and (max-width: 720px) {
-  .custom-admin-navbar a {
+  .custom-admin-site a {
     color: #1c1a18;
-    font-size: 1.15rem;
+    font-size: 1.65rem;
   }
 }
 @media screen and (max-width: 480px) {
-  .custom-admin-navbar ul {
+  .custom-admin-site ul {
     display: flex;
     justify-content: center;
   }
-  .custom-admin-navbar a {
+  .custom-admin-site a {
     color: #1c1a18;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -121,6 +121,9 @@ header {
 .custom-admin-movies-table table {
   cursor: default;
   min-width: 100%;
+  border: 1px solid rgba(28, 26, 24, 0.5);
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
 .custom-admin-cinema-table thead,
@@ -137,6 +140,7 @@ header {
   border: 1px solid rgba(255, 186, 0, 1);
   color: #fff;
   font-weight: 500;
+  font-size: 1.45rem;
 }
 .custom-admin-cinema-table button:hover,
 .custom-admin-users-table button:hover,
@@ -156,6 +160,8 @@ header {
   border: 1px solid rgba(28, 26, 24, 1);
   color: #fff;
   font-weight: 500;
+  font-size: 1.5rem;
+  padding: 11px 18px 11px 18px;
 }
 .custom-admin-movies-table .custom-edit-btn:hover,
 .custom-admin-movies-table .custom-edit-btn:focus {
@@ -183,4 +189,60 @@ header {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #aaaaaa;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Footer */
+
+.footer-custom {
+  background-color: #3f3f3f;
+  color: white;
+}
+.footer-custom h3 {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+.footer-custom a {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.75;
+}
+.footer-custom a:hover {
+  color: #ffc344;
+  text-decoration: none;
+}
+.footer-copyright {
+  background-color: #1c1a18;
+  color: white;
+}
+.footer-copyright p {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.footer-copyright a {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.aboutus-title {
+  color: #1c1a18;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.aboutus-subtitle {
+  color: #1c1a18;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.aboutus p {
+  color: #1c1a18;
+  font-size: 1.15rem;
+  margin: 5px 20px 5px 20px;
+  line-height: 2.25rem;
+}
+.aboutus-p {
+  text-indent: 3rem;
+  text-align: justify;
 }

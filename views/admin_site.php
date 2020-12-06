@@ -22,9 +22,11 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>T1 SERVER</title>
+    <title>T1 MOVIES: Admin Site</title>
     <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="../css/footer_style.css?v=<?php //echo time(); 
+                                                                ?>"> -->
     <!-- Bootstrap Lib -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,80 +39,125 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <?php include('admin_navbar.php'); ?>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-info" href="../views/profile.php">Profile</a></li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-danger" href="../config/logout.php">Sign out</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <section class="container-fluid" style="margin-top: 115px; width:80%">
+        <div class="custom-admin-site my-4">
+            <h2>ADMIN SITE</h2>
+            <hr />
+            <div class="container-fluid custom-admin-cinema-table mb-5">
+                <h3>CINEMA</h3>
+                <!-- Movies Table -->
+                <table id="cinema_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>BRANCH ID</th>
+                            <th>CINEMA</th>
+                            <th>SEATS</th>
+                            <th>CURRENT MOVIE</th>
+                            <th scope="col">ACTIVE</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#Cinema">Cinema</a></li>
-        <li><a data-toggle="tab" href="#Users">Users</a></li>
-        <li><a data-toggle="tab" href="#Movies">Movies</a></li>
-    </ul>
+            <hr />
 
-    <div class="tab-content">
-        <div id="Cinema" class="tab-pane fade in active">
-            <h2>Cinema</h2>
-            <!-- Cinema Table -->
-            <table id="cinema_table" class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>BRANCH ID</th>
-                        <th>CINEMA</th>
-                        <th>SEATS</th>
-                        <th>CURRENT MOVIE</th>
-                        <th scope="col">ACTIVE</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div id="Users" class="tab-pane fade active">
-            <h2>Users</h2>
-            <!-- Users Table -->
-            <table id="user_table" class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ACCOUNT ID</th>
-                        <th>USERNAME</th>
-                        <th>EMAIL ADDRESS</th>
-                        <th>TYPE</th>
-                        <th>ACTIVE</th>
-                        <th scope="col">MODIFY</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div id="Movies" class="tab-pane fade active">
-            <h2>Movies</h2>
-            <!-- Movies Table -->
-            <table id="movie_table" class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>MOVIE ID</th>
-                        <th>MOVIE TITLE</th>
-                        <th>RATED</th>
-                        <th>PREMIERE DATE</th>
-                        <th>ACTIVE</th>
-                        <th scope="col">MODIFY</th>
-                    </tr>
-                </thead>
-            </table>
-            <div align="right">
-                <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn btn-success">Add Movie</button>
+            <div class="container-fluid custom-admin-users-table mb-5">
+                <h3>USERS</h3>
+                <!-- Movies Table -->
+                <table id="user_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ACCOUNT ID</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL ADDRESS</th>
+                            <th>TYPE</th>
+                            <th>ACTIVE</th>
+                            <th scope="col">MODIFY</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <hr />
+
+            <div class="container-fluid custom-admin-movies-table mb-3">
+                <h3>MOVIES</h3>
+                <!-- Movies Table -->
+                <table id="movie_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>MOVIE ID</th>
+                            <th>MOVIE TITLE</th>
+                            <th>RATED</th>
+                            <th>PREMIERE DATE</th>
+                            <th>ACTIVE</th>
+                            <th scope="col">MODIFY</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="d-flex justify-content-end mb-5">
+                    <button type="button" id="add_button" data-toggle="modal" data-target="#movieModal" class="btn custom-edit-btn">Add Movie</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer page-footer font-small footer-custom pt-2" id="main-footer">
+        <div class="container-fluid text-center text-md-left pb-2">
+            <div class="row">
+                <div class="col-md-3 my-auto mx-5">
+                    <img src="../images/T1_Logo_Final1.svg" alt="T1 Movies" class="img-fluid py-2" style="height: 100px" />
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-3 mb-md-0 my-3 py-auto">
+                    <h3 class="text-uppercase pb-2">ABOUT US</h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="aboutus1.php">Who We Are</a>
+                        </li>
+                        <li>
+                            <a href="aboutus2.php">Our Mission & Vision</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-md-0 my-3 py-auto">
+                    <h3 class="text-uppercase pb-2">QUICK LINKS</h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="movies.php">Movies</a>
+                        </li>
+                        <li>
+                            <a href="theaters.php">Theaters</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 mb-md-0 my-3 py-auto">
+                    <h3 class="text-uppercase pb-2">MOVIES</h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="now_showing.php">Now Showing</a>
+                        </li>
+                        <li>
+                            <a href="coming_soon.php">Coming Soon</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-copyright text-center py-2">
+            <p>©2020 <a href="home.php">T1 Movies Inc.</a> All Rights Reserved.</p>
+        </div>
+
+    </footer>
 </body>
 
 </html>
@@ -191,7 +238,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
         <form method="post" id="movie_form" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title movie-title">Add Movie</h4>
+                    <h4 class="modal-title">Add Movie</h4>
                     <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">

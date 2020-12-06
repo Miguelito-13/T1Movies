@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>T1 MOVIES: Your Choice for Movie Tickets</title>
     <link rel="shortcut icon" href="../images/T1_Logo_Final2.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../css/admin_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/announcements_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/footer_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/genre_style.css?v=<?php echo time(); ?>">
