@@ -27,6 +27,7 @@ header {
 }
 .navbar-nav a {
   font-size: 1.75rem;
+  font-weight: 400;
 }
 .admin-navbar-custom .dropdown-menu,
 .admin-navbar-custom .dropdown-menu button {
@@ -35,7 +36,8 @@ header {
 }
 .admin-navbar-custom .dropdown-menu a,
 .admin-navbar-custom .dropdown-menu button {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
+  font-weight: 400;
   height: auto;
   padding: 10px 20px;
   margin: auto;
@@ -170,6 +172,19 @@ header {
   box-shadow: none;
   color: #1c1a18;
   font-weight: 500;
+}
+
+.modal-footer .btn.custom-save-btn {
+  background-color: rgba(255, 186, 0, 1);
+  border: 1px solid rgba(255, 186, 0, 1);
+  color: #fff;
+}
+.modal-footer .btn.custom-save-btn:hover,
+.modal-footer .btn.custom-save-btn:focus {
+  background-color: rgba(255, 186, 0, 0.75);
+  border: 1px solid rgba(255, 186, 0, 0.75);
+  box-shadow: none;
+  color: #1c1a18;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */

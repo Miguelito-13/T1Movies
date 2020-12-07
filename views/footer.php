@@ -23,7 +23,7 @@
         <h3 class="text-uppercase pb-2">QUICK LINKS</h3>
         <ul class="list-unstyled">
           <li>
-            <a href="movies.php">Movies</a>
+            <a href="home.php">Movies</a>
           </li>
           <li>
             <a href="theaters.php">Theaters</a>

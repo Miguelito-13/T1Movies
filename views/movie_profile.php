@@ -36,7 +36,7 @@ if (mysqli_num_rows($res) > 0) {
 
                                     <div class="col-md-12 mb-1">
                                         <h6>
-                                            • <?= $date ?>
+                                            <i class="fas fa-info-circle"></i> <?= $date ?>
                                             <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
                                             <?php if ($row['ADVENTURE'] != 0) { ?>/&nbsp;Adventure<?php } ?>
                                             <?php if ($row['ANIMATION'] != 0) { ?>/&nbsp;Animation<?php } ?>
@@ -56,7 +56,7 @@ if (mysqli_num_rows($res) > 0) {
                                         <h6><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $row['MOVIE_DURATION'] ?> min/s</h6>
                                     </div>
                                     <div class="col-md-9">
-                                        <h6><i class="fa fa-star-half-o" aria-hidden="true"></i> <?= $row['RATED'] ?></h6>
+                                        <h6><i class="fas fa-star-half-alt"></i> <?= $row['RATED'] ?></h6>
                                     </div>
 
                                     <div class="col-md-12">

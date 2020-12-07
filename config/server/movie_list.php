@@ -42,7 +42,7 @@ foreach ($result as $row) {
     } else {
         $sub_array[] = '<span class="text-success">(2) Now Showing</span>';
     }
-    $sub_array[] = '<button style="width: 100%" type="button" id="' . $row["MOVIE_ID"] . '" class="btn btn-info btn-sm edit-movie">Edit</button>';
+    $sub_array[] = '<button style="width: 100%" type="button" id="' . $row["MOVIE_ID"] . '" class="btn btn-sm edit-movie">Edit</button>';
 
     $data[] = $sub_array;
 }
