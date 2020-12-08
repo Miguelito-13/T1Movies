@@ -24,7 +24,7 @@ if (mysqli_num_rows($res) > 0) {
                         <div class="row" style="margin-top:49px">
                             <!-- Movie Description -->
                             <div class="col-md-3 col-sm-5 mb-4 pr-5">
-                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" alt="<?= $row['MOVIE_TITLE'] ?>" />
+                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-profile-poster" alt="<?= $row['MOVIE_TITLE'] ?>" />
                             </div>
                             <div class="col-md-9 col-sm-7">
                                 <div class="row pr-3">

@@ -174,13 +174,18 @@ header {
   font-weight: 500;
 }
 
-.modal-footer .btn.custom-save-btn {
+.modal-footer .btn.custom-save-btn,
+.modal-footer .btn.custom-add-btn,
+.modal-footer .btn.edit-movie,
+.modal-footer .btn.edit-user {
   background-color: rgba(255, 186, 0, 1);
   border: 1px solid rgba(255, 186, 0, 1);
   color: #fff;
 }
 .modal-footer .btn.custom-save-btn:hover,
-.modal-footer .btn.custom-save-btn:focus {
+.modal-footer .btn.custom-save-btn:focus,
+.modal-footer .btn.custom-add-btn:hover,
+.modal-footer .btn.custom-add-btn:focus {
   background-color: rgba(255, 186, 0, 0.75);
   border: 1px solid rgba(255, 186, 0, 0.75);
   box-shadow: none;

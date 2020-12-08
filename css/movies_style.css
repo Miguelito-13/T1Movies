@@ -364,6 +364,16 @@
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
+  height: 35vh;
+  object-fit: cover;
+}
+
+.custom-movie-profile-poster {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 45vh;
+  object-fit: cover;
 }
 
 .custom-movie-profile h3 {
