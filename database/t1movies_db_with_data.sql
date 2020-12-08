@@ -549,9 +549,7 @@ ALTER TABLE `genre`
 -- Constraints for table `now_showing`
 --
 ALTER TABLE `now_showing`
-  ADD CONSTRAINT `now_showing_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `movies` (`MOVIE_ID`),
-  ADD CONSTRAINT `now_showing_ibfk_2` FOREIGN KEY (`CINEMA_ID`) REFERENCES `cinema` (`CINEMA_ID`),
-  ADD CONSTRAINT `now_showing_ibfk_3` FOREIGN KEY (`BRANCH_ID`) REFERENCES `movie_branches` (`BRANCH_ID`);
+  ADD CONSTRAINT `now_showing_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `movies` (`MOVIE_ID`);
 
 --
 -- Constraints for table `receipt`
@@ -563,9 +561,7 @@ ALTER TABLE `receipt`
 -- Constraints for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `users_account` (`ACCOUNT_ID`),
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`NOW_ID`) REFERENCES `now_showing` (`NOW_ID`),
-  ADD CONSTRAINT `reservation_ibfk_3` FOREIGN KEY (`VIEWING_ID`) REFERENCES `viewing_time` (`VIEWING_ID`);
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `users_account` (`ACCOUNT_ID`);
 
 --
 -- Constraints for table `tickets`
