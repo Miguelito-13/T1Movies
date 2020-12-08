@@ -387,7 +387,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     <input type="hidden" name="movie_id" id="movie_id" />
                     <input type="hidden" name="operation" id="operation" />
                     <button type="button" class="btn delete mr-auto">Delete</button>
-                    <input type="submit" name="action" id="action" class="btn custom-save-btn" value="Add" />
+                    <input type="submit" name="action" id="action" class="btn custom-add-btn" value="Add" />
                     <button type="button" class="btn btn-dark text-light" data-dismiss="modal">Cancel</button>
                 </div>
             </div>

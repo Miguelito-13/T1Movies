@@ -362,8 +362,43 @@
 
 .custom-movie-poster {
   width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 225px;
+  object-fit: cover;
+}
+.custom-movie-profile-poster {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 300px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 480px) {
+  .custom-movie-poster {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 400px;
+    object-fit: cover;
+  }
+  .custom-movie-profile-poster {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 350px;
+    object-fit: cover;
+  }
+}
+@media screen and (max-width: 720px) {
+  .custom-movie-profile-poster {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 250px;
+    object-fit: cover;
+  }
 }
 
 .custom-movie-profile h3 {
