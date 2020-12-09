@@ -90,9 +90,6 @@ if (mysqli_num_rows($res) > 0) {
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content modal-lg custom-trailer-modal p-0">
                                             <div class="modal-body">
-                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button><br />
                                                 <div class="embed-responsive embed-responsive-16by9 custom-trailer m-0">
                                                     <iframe id="trailer" class="embed-responsive-item" src="<?= $row['TRAILER'] ?>" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
                                                 </div>
