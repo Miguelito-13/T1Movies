@@ -94,7 +94,7 @@ if (mysqli_num_rows($res) > 0) {
                                                     <span aria-hidden="true">&times;</span>
                                                 </button><br />
                                                 <div class="embed-responsive embed-responsive-16by9 custom-trailer m-0">
-                                                    <iframe class="embed-responsive-item" src="<?= $row['TRAILER'] ?>" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
+                                                    <iframe id="trailer" class="embed-responsive-item" src="<?= $row['TRAILER'] ?>" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
                                                 </div>
                                             </div>
                                         </div>
