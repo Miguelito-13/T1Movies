@@ -61,6 +61,7 @@
 <script type="text/javascript">
   let modal = document.getElementById("id01");
   let search = document.getElementById("search");
+  let modal2 = document.getElementById("trailerModal");
 
   //Close when clicked outside
   window.onclick = function(event) {
@@ -99,6 +100,13 @@
             .val($(this).text());
           $("#search_button").trigger("click");
           $(this).parent(".search-result").empty();
+        });
+      });
+    } else if (event.target == modal2) {
+      $(document).ready(function() {
+        $('#trailer').each(function() {
+          var el_src = $(this).attr("src");
+          $(this).attr("src", el_src);
         });
       });
     }
