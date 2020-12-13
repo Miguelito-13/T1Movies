@@ -156,6 +156,15 @@ if (isset($_POST["operation"])) {
                             )
                         );
                     }
+
+                    // RESERVATION
+                    /*
+                    $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );*/
                 }
             } else {
                 echo 'invalid';

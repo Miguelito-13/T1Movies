@@ -14,6 +14,39 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     exit;
 }
 
+date_default_timezone_set('Asia/Manila');
+
+include('../config/config_pdo.php');
+$statement = $connection->prepare("SELECT * FROM movies");
+$statement->execute();
+$result = $statement->fetchAll();
+foreach ($result as $row) {
+    if ($row['ACTIVE'] == 1) {
+        $today = new DateTime();
+        $temp_date = $row['PREMIERE_DATE'];
+        $prem_date = new DateTime($temp_date);
+        if ($prem_date <= $today) {
+            echo '<script type="text/javascript">alert("Coming Soon Movie: ' . $row["MOVIE_TITLE"] . ', premiere date is past due or begins today."); </script>';
+        }
+    } else if ($row['ACTIVE'] == 2) {
+        $today = new DateTime();
+        $temp_date = $row['PREMIERE_DATE'];
+        $prem_date = new DateTime($temp_date);
+        $day = $prem_date->diff($today)->d;
+        if ($day > 7) {
+            /*
+            $movie_id = $row['MOVIE_ID'];
+            $statement2 = $connection->prepare("UPDATE movies SET ACTIVE = ? WHERE MOVIE_ID = ?");
+            $result2 = $statement2->execute(['0', $movie_id]);
+            $statement2 = $connection->prepare("UPDATE cinema SET ACTIVE = ? WHERE MOVIE_ID = ?");
+            $result2 = $statement2->execute(['0', $movie_id]);
+            echo '<script type="text/javascript">alert("Now Showing Movie: ' . $row["MOVIE_TITLE"] . ', duration is beyond the limit of 7 days and is automatically deactivated."); </script>';
+            */
+            echo '<script type="text/javascript">alert("Now Showing Movie: ' . $row["MOVIE_TITLE"] . ', duration is beyond the limit of 7 days."); </script>';
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
