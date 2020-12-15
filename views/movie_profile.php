@@ -468,5 +468,4 @@ if (mysqli_num_rows($res) > 0) {
 <?php
 } ?>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AcKOAjmix6q1xtMtmE_cFwSkuZYaxT_HAKZUu-wek7dxophuTo0uplnX8CUpdW12OdTMWd1ApOFfzgSb&disable-funding=credit,card"></script>
 <?php include('footer.php'); ?>
