@@ -9,6 +9,11 @@ isset($_SESSION["movie_id"]) ? $movie_id = $_SESSION["movie_id"] : $movie_id = 0
 
 date_default_timezone_set('Asia/Manila');
 
+if (isset($_SESSION["send"]) && $_SESSION["send"] == "send") {
+    $temp_code = "";
+    include("../config/email.php");
+}
+
 ?>
 
 <!-- Movie Description and Reservation -->
@@ -143,225 +148,278 @@ if (mysqli_num_rows($res) > 0) {
                 $res = mysqli_query($link,  $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) { ?>
-                        <form method="post" id="reservation_form" enctype="multipart/form-data">
-                            <input type="hidden" name="movie_id" class="movie_id" id="<?= $row["MOVIE_ID"] ?>" />
+                        <input type="hidden" name="movie_id" class="movie_id" id="<?= $row["MOVIE_ID"] ?>" />
 
-                            <nav class="navbar navbar-expand-md m-0 p-0">
-                                <button class="navbar-toggler custom-movie-toggler p-3" type="button" data-toggle="collapse" data-target="#collapsibleMovieNavbar">
-                                    <span style="font-weight: bold">SCHEDULE</span>
-                                </button>
+                        <nav class="navbar navbar-expand-md m-0 p-0">
+                            <button class="navbar-toggler custom-movie-toggler p-3" type="button" data-toggle="collapse" data-target="#collapsibleMovieNavbar">
+                                <span style="font-weight: bold">SCHEDULE</span>
+                            </button>
 
-                                <div class="collapse navbar-collapse" id="collapsibleMovieNavbar">
-                                    <div class="movie-navbar" style="width: 100%">
-                                        <div class="row px-auto d-flex justify-content-center">
-                                            <div class="col-7 col-md-2 input-group mb-3 my-3">
-                                                <select class="custom-select" id="inputSelectTheater" name="inputSelectTheater">
-                                                    <option value="0" selected disabled>Select Theater</option>
-                                                    <?php if ($row['B_MANILA'] != 0) { ?><option value="1">SM Manila</option><?php } ?>
-                                                    <?php if ($row['B_MARIKINA'] != 0) { ?><option value="2">SM Marikina</option><?php } ?>
-                                                    <?php if ($row['B_NORTH'] != 0) { ?><option value="3">SM North Edsa</option><?php } ?>
-                                                    <?php if ($row['B_BACOOR'] != 0) { ?><option value="4">SM Bacoor</option><?php } ?>
-                                                </select>
-                                            </div>
+                            <div class="collapse navbar-collapse" id="collapsibleMovieNavbar">
+                                <div class="movie-navbar" style="width: 100%">
+                                    <div class="row px-auto d-flex justify-content-center">
+                                        <div class="col-7 col-md-2 input-group mb-3 my-3">
+                                            <select class="custom-select" id="inputSelectTheater" name="inputSelectTheater">
+                                                <option value="0" selected disabled>Select Theater</option>
+                                                <?php if ($row['B_MANILA'] != 0) { ?><option value="1">SM Manila</option><?php } ?>
+                                                <?php if ($row['B_MARIKINA'] != 0) { ?><option value="2">SM Marikina</option><?php } ?>
+                                                <?php if ($row['B_NORTH'] != 0) { ?><option value="3">SM North Edsa</option><?php } ?>
+                                                <?php if ($row['B_BACOOR'] != 0) { ?><option value="4">SM Bacoor</option><?php } ?>
+                                            </select>
+                                        </div>
 
-                                            <div class=" col-7 col-md-2 input-group mb-3 my-3">
-                                                <select class="custom-select" id="inputSelectDate" name="inputSelectDate">
-                                                    <option selected disabled>Select Date</option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'];
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="1<?php $date = date_create($row['PREMIERE_DATE']);
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE']);
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'] . '+ 1 days';
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="2<?php $date = date_create($row['PREMIERE_DATE'] . '+ 1 days');
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 1 days');
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'] . '+ 2 days';
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="3<?php $date = date_create($row['PREMIERE_DATE'] . '+ 2 days');
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 2 days');
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'] . '+ 3 days';
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="4<?php $date = date_create($row['PREMIERE_DATE'] . '+ 3 days');
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 3 days');
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'] . '+ 4 days';
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="5<?php $date = date_create($row['PREMIERE_DATE'] . '+ 4 days');
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 4 days');
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'] . '+ 5 days';
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="6<?php $date = date_create($row['PREMIERE_DATE'] . '+ 5 days');
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 5 days');
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                    <option <?php $today = new DateTime();
-                                                            $today = date_format($today, 'Y-m-d');
-                                                            $temp_date = $row['PREMIERE_DATE'] . '+ 6 days';
-                                                            $prem_date = new DateTime($temp_date);
-                                                            $prem_date = date_format($prem_date, 'Y-m-d');
-                                                            if ($prem_date < $today) { ?> disabled <?php } ?> value="7<?php $date = date_create($row['PREMIERE_DATE'] . '+ 6 days');
-                                                                                                                        echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 6 days');
-                                                                                                                                                                echo date_format($date, "F d, Y"); ?></option>
-                                                </select>
-                                            </div>
-                                            <?php /*if (time() > strtotime('10:30 am')) {
+                                        <div class=" col-7 col-md-2 input-group mb-3 my-3">
+                                            <select class="custom-select" id="inputSelectDate" name="inputSelectDate">
+                                                <option selected disabled>Select Date</option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'];
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="1<?php $date = date_create($row['PREMIERE_DATE']);
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE']);
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'] . '+ 1 days';
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="2<?php $date = date_create($row['PREMIERE_DATE'] . '+ 1 days');
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 1 days');
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'] . '+ 2 days';
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="3<?php $date = date_create($row['PREMIERE_DATE'] . '+ 2 days');
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 2 days');
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'] . '+ 3 days';
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="4<?php $date = date_create($row['PREMIERE_DATE'] . '+ 3 days');
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 3 days');
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'] . '+ 4 days';
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="5<?php $date = date_create($row['PREMIERE_DATE'] . '+ 4 days');
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 4 days');
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'] . '+ 5 days';
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="6<?php $date = date_create($row['PREMIERE_DATE'] . '+ 5 days');
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 5 days');
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                                <option <?php $today = new DateTime();
+                                                        $today = date_format($today, 'Y-m-d');
+                                                        $temp_date = $row['PREMIERE_DATE'] . '+ 6 days';
+                                                        $prem_date = new DateTime($temp_date);
+                                                        $prem_date = date_format($prem_date, 'Y-m-d');
+                                                        if ($prem_date < $today) { ?> disabled <?php } ?> value="7<?php $date = date_create($row['PREMIERE_DATE'] . '+ 6 days');
+                                                                                                                    echo date_format($date, "Y-m-d"); ?>"><?php $date = date_create($row['PREMIERE_DATE'] . '+ 6 days');
+                                                                                                                                                            echo date_format($date, "F d, Y"); ?></option>
+                                            </select>
+                                        </div>
+                                        <?php /*if (time() > strtotime('10:30 am')) {
                                         }
                                         */ ?>
-                                            <div class=" col-7 col-md-2 input-group mb-3 my-3">
-                                                <select class="custom-select" id="inputSelectTime" name="inputSelectTime">
-                                                    <option selected disabled>Select Time</option>
-                                                    <option value="1" id="time1">9:30 am</option>
-                                                    <option value="2" id="time2">1:00 pm</option>
-                                                    <option value="3" id="time3">4:30 pm</option>
-                                                </select>
-                                            </div>
+                                        <div class=" col-7 col-md-2 input-group mb-3 my-3">
+                                            <select class="custom-select" id="inputSelectTime" name="inputSelectTime">
+                                                <option selected disabled>Select Time</option>
+                                                <option value="1" id="time1">9:30 am</option>
+                                                <option value="2" id="time2">1:00 pm</option>
+                                                <option value="3" id="time3">4:30 pm</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </nav>
+                            </div>
+                        </nav>
 
-                            <section class="container-fluid custom-movie-profile-more">
-                                <div class="row mx-auto mt-3" style="width: 88%">
-                                    <!-- Seat Plan -->
-                                    <div class="col-md-8 order-md-12 custom-seats">
-                                        <div class="row">
-                                            <!-- Seat Reservation Navbar -->
-                                            <div class="col-md-12 custom-seats-legend">
-                                                <div class="row mx-auto">
-                                                    <div class="col-md-12">
-                                                        <div class="row d-flex justify-content-center mx-auto mt-3 mb-0 px-auto py-2">
-                                                            <div class="col-md-3 col-sm-4 col-4">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="customCheckAvailable" onclick="return false">
-                                                                    <label class="custom-control-label" for="customCheckAvailable">Available</label>
-                                                                </div>
+                        <section class="container-fluid custom-movie-profile-more">
+                            <div class="row mx-auto mt-3" style="width: 88%">
+                                <!-- Seat Plan -->
+                                <div class="col-md-8 order-md-12 custom-seats">
+                                    <div class="row">
+                                        <!-- Seat Reservation Navbar -->
+                                        <div class="col-md-12 custom-seats-legend">
+                                            <div class="row mx-auto">
+                                                <div class="col-md-12">
+                                                    <div class="row d-flex justify-content-center mx-auto mt-3 mb-0 px-auto py-2">
+                                                        <div class="col-md-3 col-sm-4 col-4">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="customCheckAvailable" onclick="return false">
+                                                                <label class="custom-control-label" for="customCheckAvailable">Available</label>
                                                             </div>
-                                                            <div class="col-md-3 col-sm-4 col-4">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="Selected" checked="checked" onclick="return false">
-                                                                    <label class="custom-control-label" for="Selected">Selected</label>
-                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-4 col-4">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="Selected" checked="checked" onclick="return false">
+                                                                <label class="custom-control-label" for="Selected">Selected</label>
                                                             </div>
-                                                            <div class="col-md-2 col-sm-4 col-4">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="Sold" checked="checked" disabled>
-                                                                    <label class="custom-control-label" for="Sold">Reserved</label>
-                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-4 col-4">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="Sold" checked="checked" disabled>
+                                                                <label class="custom-control-label" for="Sold">Reserved</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- Seat Reservation -->
-                                            <div class="col-md-12 custom-seats-reservation py-3">
-                                                <?php include('seat_reservation.php'); ?>
-                                            </div>
+                                        <!-- Seat Reservation -->
+                                        <div class="col-md-12 custom-seats-reservation py-3">
+                                            <?php include('seat_reservation.php'); ?>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <!-- Seat Reservation Payment -->
-                                    <div class="col-md-4 order-md-1 mb-4 px-4 py-3 custom-transaction">
-                                        <table class="table table-hover table-borderless">
+                                <!-- Seat Reservation Payment -->
+                                <div class="col-md-4 order-md-1 mb-4 px-4 py-3 custom-transaction">
+                                    <table class="table table-hover table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3" class="transaction-table-title">SEATS RESERVED</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <thead>
-                                                <tr>
-                                                    <th colspan="3" class="transaction-table-title">SEATS RESERVED</th>
-                                                </tr>
+                                                <td class="transaction-table-subtitle">Seat Plan</td>
+                                                <td class="transaction-table-subtitle">Quantity</td>
+                                                <td class="transaction-table-subtitle">Price</td>
                                             </thead>
-                                            <tbody>
-                                                <thead>
-                                                    <td class="transaction-table-subtitle">Seat Plan</td>
-                                                    <td class="transaction-table-subtitle">Quantity</td>
-                                                    <td class="transaction-table-subtitle">Price</td>
-                                                </thead>
-                                                <tr>
-                                                    <td>Regular</td>
-                                                    <td>
-                                                        <div id="checkCount">0</div>
-                                                    </td>
-                                                    <td>
-                                                        <div>₱<span id="printSubtotal">0</span>.00</div> <!-- checkCount * price -->
-                                                    </td>
-                                                </tr>
-                                                <thead style="border-top: 1px solid #1c1a18">
-                                                    <td class="transaction-table-total">Total</td>
-                                                    <td class="transaction-table-total">-</td>
-                                                    <td class="transaction-table-total">
-                                                        <div>₱<span id="printTotal">0</span>.00</div> <!-- checkCount * price -->
-                                                    </td>
-                                                </thead>
-                                            </tbody>
-                                        </table>
+                                            <tr>
+                                                <td>Regular</td>
+                                                <td>
+                                                    <div id="checkCount">0</div>
+                                                </td>
+                                                <td>
+                                                    <div>₱<span id="printSubtotal">0</span>.00</div> <!-- checkCount * price -->
+                                                </td>
+                                            </tr>
+                                            <thead style="border-top: 1px solid #1c1a18">
+                                                <td class="transaction-table-total">Total</td>
+                                                <td class="transaction-table-total">-</td>
+                                                <td class="transaction-table-total">
+                                                    <div>₱<span id="printTotal">0</span>.00</div> <!-- checkCount * price -->
+                                                </td>
+                                            </thead>
+                                        </tbody>
+                                    </table>
 
-                                        <!-- Transaction -->
-                                        <div class="transaction-button d-flex align-items-end justify-content-end mb-5">
-                                            <button type="button" id="purchase_button" data-toggle="modal" data-target="#reserve_modal" class="btn buy-ticket-button">
+                                    <!-- Transaction -->
+                                    <div class="transaction-button d-flex align-items-end justify-content-end mb-5">
+                                        <?php
+                                        $account_id = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
+                                        $sql = "SELECT * from users_account  WHERE ACCOUNT_ID = '$account_id' LIMIT 1";
+                                        $res = mysqli_query($link,  $sql);
+                                        if (mysqli_num_rows($res) > 0) {
+                                            while ($row = mysqli_fetch_assoc($res)) {
+                                                $verified = $row["VERIFIED"];
+                                            }
+                                        }
+                                        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                                            if ($verified == 1) { ?>
+                                                <button type="button" id="purchase_button" data-toggle="modal" data-target="#reserve_modal" class="btn buy-ticket-button">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.354-7.646a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                    </svg>
+                                                    Purchase
+                                                </button>
+                                            <?php } else { ?>
+                                                <a href="verify_email.php" class="btn buy-ticket-button" target="_blank">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.354-7.646a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                                                    </svg>
+                                                    Purchase
+                                                </a>
+                                            <?php }
+                                        } else { ?>
+                                            <button type="button" id="purchase_button" data-toggle="modal" data-target="#" class="btn buy-ticket-button" disabled>
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.354-7.646a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
                                                 </svg>
                                                 Purchase
                                             </button>
-                                        </div>
-                                        <div id="reserve_modal" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title movie-title">Confirm Purchase</h4>
-                                                        <button type="button" class="close p-0 mr-1 mt-3" data-dismiss="modal">×</button>
+                                        <?php } ?>
+                                    </div>
+                                    <div id="reserve_modal" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title movie-title">Confirm Purchase</h4>
+                                                    <button type="button" class="close p-0 mr-1 mt-3" data-dismiss="modal">×</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h6>Movie: </h6>
+                                                    <span>
+                                                        <?php
+                                                        $movie_id = $_SESSION["movie_id"];
+                                                        $sql = "SELECT * from movies WHERE MOVIE_ID = '$movie_id'";
+                                                        $res = mysqli_query($link,  $sql);
+                                                        if (mysqli_num_rows($res) > 0) {
+                                                            while ($row = mysqli_fetch_assoc($res)) {
+                                                                echo $row["MOVIE_TITLE"];
+                                                            }
+                                                        } ?>
+                                                    </span>
+                                                    <br><br>
+                                                    <h6>Movie Branch: </h6>
+                                                    <span class="branch-title"></span>
+                                                    <br><br>
+                                                    <h6>Date: </h6>
+                                                    <span class="branch-date"></span>
+                                                    <br><br>
+                                                    <h6>Time: </h6>
+                                                    <span class="branch-time"></span>
+                                                    <br><br>
+                                                    <h6>Seat/s: <span class="branch-quantity"></span></h6>
+                                                    <span class="branch-seat"></span>
+                                                    <br><br>
+                                                    <h6>Price: </h6>
+                                                    <span class="branch-price"></span>
+                                                    <br><br>
+                                                    <div id="paypal-payment-button">
+                                                        <!-- Transaction Button -->
                                                     </div>
-                                                    <div class="modal-body">
-                                                        Movie Branch: <h6 class="branch-title"></h6>
-                                                        <div id="paypal-payment-button">
-                                                            <!-- Transaction Button -->
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End of Transaction -->
+                                    </div>
+                                    <!-- End of Transaction -->
 
-                                        <!-- Guidelines -->
-                                        <div class="transaction-guidelines">
-                                            <hr />
-                                            <h4 class="mb-4">GUIDELINES FOR ONLINE TICKET PURCHASING:</h4>
-                                            <p>Please note that the following should ALL bear the SAME NAME when buying tickets online:</p>
-                                            <ol>
-                                                <li><b>Login/Signup</b> to <b>T1 Movies</b>.</li>
-                                                <li><b>Verify</b> your email address in profile page.</li>
-                                                <li><b>Choose</b> your desired Now Showing Movie.</li>
-                                                <li>Pay through <b>Paypal</b>.</li>
-                                                <li><b>Redeem</b> ticket sent to your verified email address.</li>
-                                            </ol>
-                                            <p>Ticket redemption through a representative is <b>NOT</b> allowed. Only the cardholder who transacted online can redeem the ticket.</p>
-                                            <p>By proceeding to payment, you agree with the above redemption process. Price is inclusive of standard ticket charges.</p>
-                                        </div>
+                                    <!-- Guidelines -->
+                                    <div class="transaction-guidelines">
+                                        <hr />
+                                        <h4 class="mb-4">GUIDELINES FOR ONLINE TICKET PURCHASING:</h4>
+                                        <p>Please note that the following should ALL bear the SAME NAME when buying tickets online:</p>
+                                        <ol>
+                                            <li><b>Login/Signup</b> to <b>T1 Movies</b>.</li>
+                                            <li><b>Verify</b> your email address in profile page.</li>
+                                            <li><b>Choose</b> your desired Now Showing Movie.</li>
+                                            <li>Pay through <b>Paypal</b>.</li>
+                                            <li><b>Redeem</b> ticket sent to your verified email address.</li>
+                                        </ol>
+                                        <p>Ticket redemption through a representative is <b>NOT</b> allowed. Only the cardholder who transacted online can redeem the ticket.</p>
+                                        <p>By proceeding to payment, you agree with the above redemption process. Price is inclusive of standard ticket charges.</p>
                                     </div>
                                 </div>
-                            </section>
-                        </form>
+                            </div>
+                        </section>
+
             <?php }
                 }
             } ?>

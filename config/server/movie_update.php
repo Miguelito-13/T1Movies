@@ -84,6 +84,10 @@ if (isset($_POST["operation"])) {
                     $result = $statement->execute([$new_img_name, $curr_id]);
                 }
 
+                // SALES
+                $statement = $connection->prepare("INSERT INTO sales (MOVIE_ID) VALUES ('$curr_id')");
+                $result = $statement->execute();
+
                 // INACTIVE
                 if ($active == 0) {
                     $statement = $connection->prepare("INSERT INTO coming_soon (MOVIE_ID, ACTIVE) VALUES ('$curr_id', '0')");

@@ -77,8 +77,45 @@ foreach ($result as $row) {
             <h2>ADMIN SITE</h2>
             <hr />
             <div class="container-fluid custom-admin-cinema-table mb-5">
+                <h3>RECENT TRANSACTIONS</h3>
+                <!-- Transaction Table -->
+                <table id="transac_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>NO.</th>
+                            <th>TRANSACTION DATE</th>
+                            <th>ACCOUNT (ID) USERNAME</th>
+                            <th>MOVIE</th>
+                            <th>MOVIE BRANCH</th>
+                            <th>TICKET DATE</th>
+                            <th>TIME</th>
+                            <th>TICKETS</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <hr />
+            <div class="container-fluid custom-admin-users-table mb-5">
+                <h3>USERS</h3>
+                <!-- Users Table -->
+                <table id="user_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ACCOUNT ID</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL ADDRESS</th>
+                            <th>TYPE</th>
+                            <th>ACTIVE</th>
+                            <th scope="col">MODIFY</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <hr />
+            <div class="container-fluid custom-admin-cinema-table mb-5">
                 <h3>CINEMA</h3>
-                <!-- Movies Table -->
+                <!-- Cinema Table -->
                 <table id="cinema_table" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -92,18 +129,15 @@ foreach ($result as $row) {
                 </table>
             </div>
             <hr />
-            <div class="container-fluid custom-admin-users-table mb-5">
-                <h3>USERS</h3>
-                <!-- Movies Table -->
-                <table id="user_table" class="table table-bordered table-striped">
+            <div class="container-fluid custom-admin-cinema-table mb-5">
+                <h3>SALES</h3>
+                <!-- Sales Table -->
+                <table id="sales_table" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ACCOUNT ID</th>
-                            <th>USERNAME</th>
-                            <th>EMAIL ADDRESS</th>
-                            <th>TYPE</th>
-                            <th>ACTIVE</th>
-                            <th scope="col">MODIFY</th>
+                            <th>MOVIE</th>
+                            <th>TOTAL EARNINGS</th>
+                            <th>RECENT TRANSACTION</th>
                         </tr>
                     </thead>
                 </table>
@@ -189,58 +223,61 @@ foreach ($result as $row) {
                     <h4 class="modal-title user-title">Edit User</h4>
                     <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
                 </div>
+                <!--
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#Account">Account</a></li>
-                    <li><a data-toggle="tab" href="#Transaction">Transaction</a></li>
+                    <li><a data-toggle="tab" href="#Transaction">Transaction/s</a></li>
                 </ul>
-
+-->
+                <!--
                 <div class="tab-content">
                     <div id="Account" class="tab-pane fade in active">
-                        <div class="modal-body">
-                            <label>Account ID: </label>
-                            <span class="account_id"></span><br>
-                            <label>User ID: </label>
-                            <span class="user_id"></span><br>
-                            <label>Full Name: </label>
-                            <span class="name"></span><br>
-                            <label>Username: </label>
-                            <span class="username"></span><br>
-                            <label>Email: </label>
-                            <span class="email"></span><br>
-                            <label>Password Hash: </label>
-                            <span class="password"></span><br>
-                            <label>Address: </label>
-                            <span class="address"></span><br>
-                            <label>Contact: </label>
-                            <span class="contact"></span><br>
-                            <label>Gender: </label>
-                            <span class="gender"></span><br>
-                            <label>Birthdate: </label>
-                            <span class="birthdate"></span><br>
-                            <label>Age: </label>
-                            <span class="age"></span><br>
-                            <label>Last Verification Code: </label>
-                            <span class="code"></span><br>
-                            <label class="title">User Type: &nbsp;</label>
-                            <input id="type_admin" name="users_type" class="radio-button" type="radio" value="ADMIN" />
-                            <label for="type_admin">Admin &nbsp;</label>
-                            <input id="type_user" name="users_type" class="radio-button" type="radio" value="USERS" />
-                            <label for="type_user">User &nbsp;</label>
-                            <br>
-                            <label class="title">User Active: &nbsp;</label>
-                            <input id="user_inactive" name="users_active" class="radio-button" type="radio" value=0 />
-                            <label for="user_inactive">Inactive &nbsp;</label>
-                            <input id="user_active" name="users_active" class="radio-button" type="radio" value=1 />
-                            <label for="user_active">Active &nbsp;</label>
-                        </div>
-                    </div>
+-->
+                <div class="modal-body">
+                    <label>Account ID: </label>
+                    <span class="account_id"></span><br>
+                    <label>User ID: </label>
+                    <span class="user_id"></span><br>
+                    <label>Full Name: </label>
+                    <span class="name"></span><br>
+                    <label>Username: </label>
+                    <span class="username"></span><br>
+                    <label>Email: </label>
+                    <span class="email"></span><br>
+                    <label>Password Hash: </label>
+                    <span class="password"></span><br>
+                    <label>Address: </label>
+                    <span class="address"></span><br>
+                    <label>Contact: </label>
+                    <span class="contact"></span><br>
+                    <label>Gender: </label>
+                    <span class="gender"></span><br>
+                    <label>Birthdate: </label>
+                    <span class="birthdate"></span><br>
+                    <label>Age: </label>
+                    <span class="age"></span><br>
+                    <label>Last Verification Code: </label>
+                    <span class="code"></span><br>
+                    <label class="title">User Type: &nbsp;</label>
+                    <input id="type_admin" name="users_type" class="radio-button" type="radio" value="ADMIN" />
+                    <label for="type_admin">Admin &nbsp;</label>
+                    <input id="type_user" name="users_type" class="radio-button" type="radio" value="USERS" />
+                    <label for="type_user">User &nbsp;</label>
+                    <br>
+                    <label class="title">User Active: &nbsp;</label>
+                    <input id="user_inactive" name="users_active" class="radio-button" type="radio" value=0 />
+                    <label for="user_inactive">Inactive &nbsp;</label>
+                    <input id="user_active" name="users_active" class="radio-button" type="radio" value=1 />
+                    <label for="user_active">Active &nbsp;</label>
+                </div>
+                <!--
+            </div>
                     <div id="Transaction" class="tab-pane fade active">
                         <div class="modal-body">
 
                         </div>
                     </div>
-                </div>
-
+                </div>-->
                 <div class="modal-footer">
                     <input type="hidden" name="account_id" id="account_id" />
                     <input type="hidden" name="user_operation" id="user_operation" />

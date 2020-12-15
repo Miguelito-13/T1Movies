@@ -500,7 +500,7 @@
 <script type="text/javascript">
     // Seat Reservation Form Checkbox
     window.updateCount = function() {
-        const counter = $(".checkCounter:checked").length;
+        const counter = $(".checkCounter:checked:not(:disabled)").length;
         document.getElementById("checkCount").innerHTML = counter;
 
         // Subtotal

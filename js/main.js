@@ -59,48 +59,329 @@ $(document).ready(function () {
   };
 
   /********************************************************************************************/
-  // Transaction
-  var price;
-  var quantity;
-  $(".checkCounter").change(function () {
-    price = $("#printTotal").text();
-    quantity = $("#checkCount").text();
-  });
-
-  paypal
-    .Buttons({
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: price,
-              },
-            },
-          ],
-        });
-      },
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          console.log(details);
-          alert(
-            "Thank you for purchasing! You can check your transaction history in the profile page."
-          );
-          location.reload();
-        });
-      },
-      onCancel: function (data) {
-        //window.location.replace("home.php");
-      },
-    })
-    .render("#paypal-payment-button");
-
-  /********************************************************************************************/
   // Movie Profile
-
+  var movie_id;
+  var day;
+  var datePrint;
+  var today;
   var theater;
   var date;
   var time;
+  var price;
+  var quantity;
+  var seats = "";
+  var seat_a1 = "";
+  var seat_a2 = "";
+  var seat_a3 = "";
+  var seat_a4 = "";
+  var seat_a5 = "";
+  var seat_a6 = "";
+  var seat_a7 = "";
+  var seat_a8 = "";
+  var seat_b1 = "";
+  var seat_b2 = "";
+  var seat_b3 = "";
+  var seat_b4 = "";
+  var seat_b5 = "";
+  var seat_b6 = "";
+  var seat_b7 = "";
+  var seat_b8 = "";
+  var seat_b9 = "";
+  var seat_b10 = "";
+  var seat_c1 = "";
+  var seat_c2 = "";
+  var seat_c3 = "";
+  var seat_c4 = "";
+  var seat_c5 = "";
+  var seat_c6 = "";
+  var seat_c7 = "";
+  var seat_c8 = "";
+  var seat_c9 = "";
+  var seat_c10 = "";
+  var seat_d1 = "";
+  var seat_d2 = "";
+  var seat_d3 = "";
+  var seat_d4 = "";
+  var seat_d5 = "";
+  var seat_d6 = "";
+  var seat_d7 = "";
+  var seat_d8 = "";
+  var seat_e1 = "";
+  var seat_e2 = "";
+  var seat_e3 = "";
+  var seat_e4 = "";
+  var seat_e5 = "";
+  var seat_e6 = "";
+  var seat_e7 = "";
+  var seat_e8 = "";
+  var seat_f1 = "";
+  var seat_f2 = "";
+  var seat_f3 = "";
+  var seat_f4 = "";
+  var seat_f5 = "";
+  var seat_f6 = "";
+  var seat_f7 = "";
+  var seat_f8 = "";
+  var seat_f9 = "";
+  var seat_f10 = "";
+  var seat_g1 = "";
+  var seat_g2 = "";
+  var seat_g3 = "";
+  var seat_g4 = "";
+  var seat_g5 = "";
+  var seat_g6 = "";
+  var seat_g7 = "";
+  var seat_g8 = "";
+  var seat_g9 = "";
+  var seat_g10 = "";
+  var seat_h1 = "";
+  var seat_h2 = "";
+  var seat_h3 = "";
+  var seat_h4 = "";
+  var seat_h5 = "";
+  var seat_h6 = "";
+  var seat_h7 = "";
+  var seat_h8 = "";
+  var seat_h9 = "";
+  var seat_h10 = "";
+
+  $(".checkCounter").change(function () {
+    price = $("#printTotal").text();
+    quantity = $("#checkCount").text();
+
+    $(".branch-price").text("₱" + price + ".00");
+
+    // A
+    $("#customCheckA1").is(":checked") && !$("#customCheckA1").is(":disabled")
+      ? (seat_a1 = $("#customCheckA1").val())
+      : (seat_a1 = "");
+    $("#customCheckA2").is(":checked") && !$("#customCheckA2").is(":disabled")
+      ? (seat_a2 = $("#customCheckA2").val())
+      : (seat_a2 = "");
+    $("#customCheckA3").is(":checked") && !$("#customCheckA3").is(":disabled")
+      ? (seat_a3 = $("#customCheckA3").val())
+      : (seat_a3 = "");
+    $("#customCheckA4").is(":checked") && !$("#customCheckA4").is(":disabled")
+      ? (seat_a4 = $("#customCheckA4").val())
+      : (seat_a4 = "");
+    $("#customCheckA5").is(":checked") && !$("#customCheckA5").is(":disabled")
+      ? (seat_a5 = $("#customCheckA5").val())
+      : (seat_a5 = "");
+    $("#customCheckA6").is(":checked") && !$("#customCheckA6").is(":disabled")
+      ? (seat_a6 = $("#customCheckA6").val())
+      : (seat_a6 = "");
+    $("#customCheckA7").is(":checked") && !$("#customCheckA7").is(":disabled")
+      ? (seat_a7 = $("#customCheckA7").val())
+      : (seat_a7 = "");
+    $("#customCheckA8").is(":checked") && !$("#customCheckA8").is(":disabled")
+      ? (seat_a8 = $("#customCheckA8").val())
+      : (seat_a8 = "");
+    // B
+    $("#customCheckB1").is(":checked") && !$("#customCheckB1").is(":disabled")
+      ? (seat_b1 = $("#customCheckB1").val())
+      : (seat_b1 = "");
+    $("#customCheckB2").is(":checked") && !$("#customCheckB2").is(":disabled")
+      ? (seat_b2 = $("#customCheckB2").val())
+      : (seat_b2 = "");
+    $("#customCheckB3").is(":checked") && !$("#customCheckB3").is(":disabled")
+      ? (seat_b3 = $("#customCheckB3").val())
+      : (seat_b3 = "");
+    $("#customCheckB4").is(":checked") && !$("#customCheckB4").is(":disabled")
+      ? (seat_b4 = $("#customCheckB4").val())
+      : (seat_b4 = "");
+    $("#customCheckB5").is(":checked") && !$("#customCheckB5").is(":disabled")
+      ? (seat_b5 = $("#customCheckB5").val())
+      : (seat_b5 = "");
+    $("#customCheckB6").is(":checked") && !$("#customCheckB6").is(":disabled")
+      ? (seat_b6 = $("#customCheckB6").val())
+      : (seat_b6 = "");
+    $("#customCheckB7").is(":checked") && !$("#customCheckB7").is(":disabled")
+      ? (seat_b7 = $("#customCheckB7").val())
+      : (seat_b7 = "");
+    $("#customCheckB8").is(":checked") && !$("#customCheckB8").is(":disabled")
+      ? (seat_b8 = $("#customCheckB8").val())
+      : (seat_b8 = "");
+    $("#customCheckB9").is(":checked") && !$("#customCheckB9").is(":disabled")
+      ? (seat_b9 = $("#customCheckB9").val())
+      : (seat_b9 = "");
+    $("#customCheckB10").is(":checked") && !$("#customCheckB10").is(":disabled")
+      ? (seat_b10 = $("#customCheckB10").val())
+      : (seat_b10 = "");
+    // C
+    $("#customCheckC1").is(":checked") && !$("#customCheckC1").is(":disabled")
+      ? (seat_c1 = $("#customCheckC1").val())
+      : (seat_c1 = "");
+    $("#customCheckC2").is(":checked") && !$("#customCheckC2").is(":disabled")
+      ? (seat_c2 = $("#customCheckC2").val())
+      : (seat_c2 = "");
+    $("#customCheckC3").is(":checked") && !$("#customCheckC3").is(":disabled")
+      ? (seat_c3 = $("#customCheckC3").val())
+      : (seat_c3 = "");
+    $("#customCheckC4").is(":checked") && !$("#customCheckC4").is(":disabled")
+      ? (seat_c4 = $("#customCheckC4").val())
+      : (seat_c4 = "");
+    $("#customCheckC5").is(":checked") && !$("#customCheckC5").is(":disabled")
+      ? (seat_c5 = $("#customCheckC5").val())
+      : (seat_c5 = "");
+    $("#customCheckC6").is(":checked") && !$("#customCheckC6").is(":disabled")
+      ? (seat_c6 = $("#customCheckC6").val())
+      : (seat_c6 = "");
+    $("#customCheckC7").is(":checked") && !$("#customCheckC7").is(":disabled")
+      ? (seat_c7 = $("#customCheckC7").val())
+      : (seat_c7 = "");
+    $("#customCheckC8").is(":checked") && !$("#customCheckC8").is(":disabled")
+      ? (seat_c8 = $("#customCheckC8").val())
+      : (seat_c8 = "");
+    $("#customCheckC9").is(":checked") && !$("#customCheckC9").is(":disabled")
+      ? (seat_c9 = $("#customCheckC9").val())
+      : (seat_c9 = "");
+    $("#customCheckC10").is(":checked") && !$("#customCheckC10").is(":disabled")
+      ? (seat_c10 = $("#customCheckC10").val())
+      : (seat_c10 = "");
+    // D
+    $("#customCheckD1").is(":checked") && !$("#customCheckD1").is(":disabled")
+      ? (seat_d1 = $("#customCheckD1").val())
+      : (seat_d1 = "");
+    $("#customCheckD2").is(":checked") && !$("#customCheckD2").is(":disabled")
+      ? (seat_d2 = $("#customCheckD2").val())
+      : (seat_d2 = "");
+    $("#customCheckD3").is(":checked") && !$("#customCheckD3").is(":disabled")
+      ? (seat_d3 = $("#customCheckD3").val())
+      : (seat_d3 = "");
+    $("#customCheckD4").is(":checked") && !$("#customCheckD4").is(":disabled")
+      ? (seat_d4 = $("#customCheckD4").val())
+      : (seat_d4 = "");
+    $("#customCheckD5").is(":checked") && !$("#customCheckD5").is(":disabled")
+      ? (seat_d5 = $("#customCheckD5").val())
+      : (seat_d5 = "");
+    $("#customCheckD6").is(":checked") && !$("#customCheckD6").is(":disabled")
+      ? (seat_d6 = $("#customCheckD6").val())
+      : (seat_d6 = "");
+    $("#customCheckD7").is(":checked") && !$("#customCheckD7").is(":disabled")
+      ? (seat_d7 = $("#customCheckD7").val())
+      : (seat_d7 = "");
+    $("#customCheckD8").is(":checked") && !$("#customCheckD8").is(":disabled")
+      ? (seat_d8 = $("#customCheckD8").val())
+      : (seat_d8 = "");
+    // E
+    $("#customCheckE1").is(":checked") && !$("#customCheckE1").is(":disabled")
+      ? (seat_e1 = $("#customCheckE1").val())
+      : (seat_e1 = "");
+    $("#customCheckE2").is(":checked") && !$("#customCheckE2").is(":disabled")
+      ? (seat_e2 = $("#customCheckE2").val())
+      : (seat_e2 = "");
+    $("#customCheckE3").is(":checked") && !$("#customCheckE3").is(":disabled")
+      ? (seat_e3 = $("#customCheckE3").val())
+      : (seat_e3 = "");
+    $("#customCheckE4").is(":checked") && !$("#customCheckE4").is(":disabled")
+      ? (seat_e4 = $("#customCheckE4").val())
+      : (seat_e4 = "");
+    $("#customCheckE5").is(":checked") && !$("#customCheckE5").is(":disabled")
+      ? (seat_e5 = $("#customCheckE5").val())
+      : (seat_e5 = "");
+    $("#customCheckE6").is(":checked") && !$("#customCheckE6").is(":disabled")
+      ? (seat_e6 = $("#customCheckE6").val())
+      : (seat_e6 = "");
+    $("#customCheckE7").is(":checked") && !$("#customCheckE7").is(":disabled")
+      ? (seat_e7 = $("#customCheckE7").val())
+      : (seat_e7 = "");
+    $("#customCheckE8").is(":checked") && !$("#customCheckE8").is(":disabled")
+      ? (seat_e8 = $("#customCheckE8").val())
+      : (seat_e8 = "");
+    // F
+    $("#customCheckF1").is(":checked") && !$("#customCheckF1").is(":disabled")
+      ? (seat_f1 = $("#customCheckF1").val())
+      : (seat_f1 = "");
+    $("#customCheckF2").is(":checked") && !$("#customCheckF2").is(":disabled")
+      ? (seat_f2 = $("#customCheckF2").val())
+      : (seat_f2 = "");
+    $("#customCheckF3").is(":checked") && !$("#customCheckF3").is(":disabled")
+      ? (seat_f3 = $("#customCheckF3").val())
+      : (seat_f3 = "");
+    $("#customCheckF4").is(":checked") && !$("#customCheckF4").is(":disabled")
+      ? (seat_f4 = $("#customCheckF4").val())
+      : (seat_f4 = "");
+    $("#customCheckF5").is(":checked") && !$("#customCheckF5").is(":disabled")
+      ? (seat_f5 = $("#customCheckF5").val())
+      : (seat_f5 = "");
+    $("#customCheckF6").is(":checked") && !$("#customCheckF6").is(":disabled")
+      ? (seat_f6 = $("#customCheckF6").val())
+      : (seat_f6 = "");
+    $("#customCheckF7").is(":checked") && !$("#customCheckF7").is(":disabled")
+      ? (seat_f7 = $("#customCheckF7").val())
+      : (seat_f7 = "");
+    $("#customCheckF8").is(":checked") && !$("#customCheckF8").is(":disabled")
+      ? (seat_f8 = $("#customCheckF8").val())
+      : (seat_f8 = "");
+    $("#customCheckF9").is(":checked") && !$("#customCheckF9").is(":disabled")
+      ? (seat_f9 = $("#customCheckF9").val())
+      : (seat_f9 = "");
+    $("#customCheckF10").is(":checked") && !$("#customCheckF10").is(":disabled")
+      ? (seat_f10 = $("#customCheckF10").val())
+      : (seat_f10 = "");
+    // G
+    $("#customCheckG1").is(":checked") && !$("#customCheckG1").is(":disabled")
+      ? (seat_g1 = $("#customCheckG1").val())
+      : (seat_g1 = "");
+    $("#customCheckG2").is(":checked") && !$("#customCheckG2").is(":disabled")
+      ? (seat_g2 = $("#customCheckG2").val())
+      : (seat_g2 = "");
+    $("#customCheckG3").is(":checked") && !$("#customCheckG3").is(":disabled")
+      ? (seat_g3 = $("#customCheckG3").val())
+      : (seat_g3 = "");
+    $("#customCheckG4").is(":checked") && !$("#customCheckG4").is(":disabled")
+      ? (seat_g4 = $("#customCheckG4").val())
+      : (seat_g4 = "");
+    $("#customCheckG5").is(":checked") && !$("#customCheckG5").is(":disabled")
+      ? (seat_g5 = $("#customCheckG5").val())
+      : (seat_g5 = "");
+    $("#customCheckG6").is(":checked") && !$("#customCheckG6").is(":disabled")
+      ? (seat_g6 = $("#customCheckG6").val())
+      : (seat_g6 = "");
+    $("#customCheckG7").is(":checked") && !$("#customCheckG7").is(":disabled")
+      ? (seat_g7 = $("#customCheckG7").val())
+      : (seat_g7 = "");
+    $("#customCheckG8").is(":checked") && !$("#customCheckG8").is(":disabled")
+      ? (seat_g8 = $("#customCheckG8").val())
+      : (seat_g8 = "");
+    $("#customCheckG9").is(":checked") && !$("#customCheckG9").is(":disabled")
+      ? (seat_g9 = $("#customCheckG9").val())
+      : (seat_g9 = "");
+    $("#customCheckG10").is(":checked") && !$("#customCheckG10").is(":disabled")
+      ? (seat_g10 = $("#customCheckG10").val())
+      : (seat_g10 = "");
+    // H
+    $("#customCheckH1").is(":checked") && !$("#customCheckH1").is(":disabled")
+      ? (seat_h1 = $("#customCheckH1").val())
+      : (seat_h1 = "");
+    $("#customCheckH2").is(":checked") && !$("#customCheckH2").is(":disabled")
+      ? (seat_h2 = $("#customCheckH2").val())
+      : (seat_h2 = "");
+    $("#customCheckH3").is(":checked") && !$("#customCheckH3").is(":disabled")
+      ? (seat_h3 = $("#customCheckH3").val())
+      : (seat_h3 = "");
+    $("#customCheckH4").is(":checked") && !$("#customCheckH4").is(":disabled")
+      ? (seat_h4 = $("#customCheckH4").val())
+      : (seat_h4 = "");
+    $("#customCheckH5").is(":checked") && !$("#customCheckH5").is(":disabled")
+      ? (seat_h5 = $("#customCheckH5").val())
+      : (seat_h5 = "");
+    $("#customCheckH6").is(":checked") && !$("#customCheckH6").is(":disabled")
+      ? (seat_h6 = $("#customCheckH6").val())
+      : (seat_h6 = "");
+    $("#customCheckH7").is(":checked") && !$("#customCheckH7").is(":disabled")
+      ? (seat_h7 = $("#customCheckH7").val())
+      : (seat_h7 = "");
+    $("#customCheckH8").is(":checked") && !$("#customCheckH8").is(":disabled")
+      ? (seat_h8 = $("#customCheckH8").val())
+      : (seat_h8 = "");
+    $("#customCheckH9").is(":checked") && !$("#customCheckH9").is(":disabled")
+      ? (seat_h9 = $("#customCheckH9").val())
+      : (seat_h9 = "");
+    $("#customCheckH10").is(":checked") && !$("#customCheckH10").is(":disabled")
+      ? (seat_h10 = $("#customCheckH10").val())
+      : (seat_h10 = "");
+  });
 
   // Theater
   if (!$("#inputSelectTheater").val()) {
@@ -200,6 +481,98 @@ $(document).ready(function () {
     $("#printTotal").text("0");
     $("#printSubtotal").text("0");
     $("#checkCount").text("0");
+
+    // Transaction
+    if (theater == 1) {
+      $(".branch-title").text("SM Manila");
+    } else if (theater == 2) {
+      $(".branch-title").text("SM Marikina");
+    } else if (theater == 3) {
+      $(".branch-title").text("SM North Edsa");
+    } else {
+      $(".branch-title").text("SM Bacoor");
+    }
+    $(".branch-date").text("");
+    $(".branch-time").text("");
+    $(".branch-quantity").text("");
+    $(".branch-price").text("");
+    seats = "";
+    price = "";
+    quantity = undefined;
+    seat_a1 = "";
+    seat_a2 = "";
+    seat_a3 = "";
+    seat_a4 = "";
+    seat_a5 = "";
+    seat_a6 = "";
+    seat_a7 = "";
+    seat_a8 = "";
+    seat_b1 = "";
+    seat_b2 = "";
+    seat_b3 = "";
+    seat_b4 = "";
+    seat_b5 = "";
+    seat_b6 = "";
+    seat_b7 = "";
+    seat_b8 = "";
+    seat_b9 = "";
+    seat_b10 = "";
+    seat_c1 = "";
+    seat_c2 = "";
+    seat_c3 = "";
+    seat_c4 = "";
+    seat_c5 = "";
+    seat_c6 = "";
+    seat_c7 = "";
+    seat_c8 = "";
+    seat_c9 = "";
+    seat_c10 = "";
+    seat_d1 = "";
+    seat_d2 = "";
+    seat_d3 = "";
+    seat_d4 = "";
+    seat_d5 = "";
+    seat_d6 = "";
+    seat_d7 = "";
+    seat_d8 = "";
+    seat_e1 = "";
+    seat_e2 = "";
+    seat_e3 = "";
+    seat_e4 = "";
+    seat_e5 = "";
+    seat_e6 = "";
+    seat_e7 = "";
+    seat_e8 = "";
+    seat_f1 = "";
+    seat_f2 = "";
+    seat_f3 = "";
+    seat_f4 = "";
+    seat_f5 = "";
+    seat_f6 = "";
+    seat_f7 = "";
+    seat_f8 = "";
+    seat_f9 = "";
+    seat_f10 = "";
+    seat_g1 = "";
+    seat_g2 = "";
+    seat_g3 = "";
+    seat_g4 = "";
+    seat_g5 = "";
+    seat_g6 = "";
+    seat_g7 = "";
+    seat_g8 = "";
+    seat_g9 = "";
+    seat_g10 = "";
+    seat_h1 = "";
+    seat_h2 = "";
+    seat_h3 = "";
+    seat_h4 = "";
+    seat_h5 = "";
+    seat_h6 = "";
+    seat_h7 = "";
+    seat_h8 = "";
+    seat_h9 = "";
+    seat_h10 = "";
 
     // Disable all seats
     // A
@@ -545,7 +918,7 @@ $(document).ready(function () {
     $("#customCheckH9").prop("checked", false);
     $("#customCheckH10").prop("checked", false);
 
-    var today = new Date().toISOString().split("T")[0];
+    today = new Date().toISOString().split("T")[0];
     date = $("#inputSelectDate").val().substr(1);
     if (today === date) {
       var d = new Date(); //without params it defaults to "now"
@@ -567,6 +940,105 @@ $(document).ready(function () {
       $("#time2").attr("disabled", false);
       $("#time3").attr("disabled", false);
     }
+
+    // Transaction
+    day = $("#inputSelectDate").val().substr(0, 1);
+    datePrint = new Date(date).toDateString();
+    if (day == 1) {
+      $(".branch-date").text(datePrint);
+    } else if (day == 2) {
+      $(".branch-date").text(datePrint);
+    } else if (day == 3) {
+      $(".branch-date").text(datePrint);
+    } else if (day == 4) {
+      $(".branch-date").text(datePrint);
+    } else if (day == 5) {
+      $(".branch-date").text(datePrint);
+    } else if (day == 6) {
+      $(".branch-date").text(datePrint);
+    } else {
+      $(".branch-date").text(datePrint);
+    }
+    $(".branch-time").text("");
+    $(".branch-quantity").text("");
+    $(".branch-price").text("");
+    seats = "";
+    price = "";
+    quantity = undefined;
+    seat_a1 = "";
+    seat_a2 = "";
+    seat_a3 = "";
+    seat_a4 = "";
+    seat_a5 = "";
+    seat_a6 = "";
+    seat_a7 = "";
+    seat_a8 = "";
+    seat_b1 = "";
+    seat_b2 = "";
+    seat_b3 = "";
+    seat_b4 = "";
+    seat_b5 = "";
+    seat_b6 = "";
+    seat_b7 = "";
+    seat_b8 = "";
+    seat_b9 = "";
+    seat_b10 = "";
+    seat_c1 = "";
+    seat_c2 = "";
+    seat_c3 = "";
+    seat_c4 = "";
+    seat_c5 = "";
+    seat_c6 = "";
+    seat_c7 = "";
+    seat_c8 = "";
+    seat_c9 = "";
+    seat_c10 = "";
+    seat_d1 = "";
+    seat_d2 = "";
+    seat_d3 = "";
+    seat_d4 = "";
+    seat_d5 = "";
+    seat_d6 = "";
+    seat_d7 = "";
+    seat_d8 = "";
+    seat_e1 = "";
+    seat_e2 = "";
+    seat_e3 = "";
+    seat_e4 = "";
+    seat_e5 = "";
+    seat_e6 = "";
+    seat_e7 = "";
+    seat_e8 = "";
+    seat_f1 = "";
+    seat_f2 = "";
+    seat_f3 = "";
+    seat_f4 = "";
+    seat_f5 = "";
+    seat_f6 = "";
+    seat_f7 = "";
+    seat_f8 = "";
+    seat_f9 = "";
+    seat_f10 = "";
+    seat_g1 = "";
+    seat_g2 = "";
+    seat_g3 = "";
+    seat_g4 = "";
+    seat_g5 = "";
+    seat_g6 = "";
+    seat_g7 = "";
+    seat_g8 = "";
+    seat_g9 = "";
+    seat_g10 = "";
+    seat_h1 = "";
+    seat_h2 = "";
+    seat_h3 = "";
+    seat_h4 = "";
+    seat_h5 = "";
+    seat_h6 = "";
+    seat_h7 = "";
+    seat_h8 = "";
+    seat_h9 = "";
+    seat_h10 = "";
   });
 
   // Time
@@ -742,8 +1214,9 @@ $(document).ready(function () {
     $("#printSubtotal").text("0");
     $("#checkCount").text("0");
     time = $("#inputSelectTime").val();
-    var movie_id = $(".movie_id").attr("id");
-    var day = $("#inputSelectDate").val().substr(0, 1);
+    movie_id = $(".movie_id").attr("id");
+    day = $("#inputSelectDate").val().substr(0, 1);
+
     $.ajax({
       url: "../config/server/reservation_data.php",
       method: "POST",
@@ -1283,7 +1756,301 @@ $(document).ready(function () {
           $("#customCheckH10").attr("disabled", false);
           $("#customCheckH10").prop("checked", false);
         }
+
+        // Transaction
+        if (time == 1) {
+          $(".branch-time").text("9:30 am");
+        } else if (time == 2) {
+          $(".branch-time").text("1:00 pm");
+        } else {
+          $(".branch-time").text("4:30 pm");
+        }
+        $(".branch-quantity").text("");
+        $(".branch-price").text("");
+        seats = "";
+        price = "";
+        quantity = undefined;
+        seat_a1 = "";
+        seat_a2 = "";
+        seat_a3 = "";
+        seat_a4 = "";
+        seat_a5 = "";
+        seat_a6 = "";
+        seat_a7 = "";
+        seat_a8 = "";
+        seat_b1 = "";
+        seat_b2 = "";
+        seat_b3 = "";
+        seat_b4 = "";
+        seat_b5 = "";
+        seat_b6 = "";
+        seat_b7 = "";
+        seat_b8 = "";
+        seat_b9 = "";
+        seat_b10 = "";
+        seat_c1 = "";
+        seat_c2 = "";
+        seat_c3 = "";
+        seat_c4 = "";
+        seat_c5 = "";
+        seat_c6 = "";
+        seat_c7 = "";
+        seat_c8 = "";
+        seat_c9 = "";
+        seat_c10 = "";
+        seat_d1 = "";
+        seat_d2 = "";
+        seat_d3 = "";
+        seat_d4 = "";
+        seat_d5 = "";
+        seat_d6 = "";
+        seat_d7 = "";
+        seat_d8 = "";
+        seat_e1 = "";
+        seat_e2 = "";
+        seat_e3 = "";
+        seat_e4 = "";
+        seat_e5 = "";
+        seat_e6 = "";
+        seat_e7 = "";
+        seat_e8 = "";
+        seat_f1 = "";
+        seat_f2 = "";
+        seat_f3 = "";
+        seat_f4 = "";
+        seat_f5 = "";
+        seat_f6 = "";
+        seat_f7 = "";
+        seat_f8 = "";
+        seat_f9 = "";
+        seat_f10 = "";
+        seat_g1 = "";
+        seat_g2 = "";
+        seat_g3 = "";
+        seat_g4 = "";
+        seat_g5 = "";
+        seat_g6 = "";
+        seat_g7 = "";
+        seat_g8 = "";
+        seat_g9 = "";
+        seat_g10 = "";
+        seat_h1 = "";
+        seat_h2 = "";
+        seat_h3 = "";
+        seat_h4 = "";
+        seat_h5 = "";
+        seat_h6 = "";
+        seat_h7 = "";
+        seat_h8 = "";
+        seat_h9 = "";
+        seat_h10 = "";
       },
     });
   });
+
+  // Transaction
+  $("#purchase_button").click(function () {
+    seats = " ";
+
+    seats = seats + " " + seat_a1;
+    seats = seats + " " + seat_a2;
+    seats = seats + " " + seat_a3;
+    seats = seats + " " + seat_a4;
+    seats = seats + " " + seat_a5;
+    seats = seats + " " + seat_a6;
+    seats = seats + " " + seat_a7;
+    seats = seats + " " + seat_a8;
+    seats = seats + " " + seat_b1;
+    seats = seats + " " + seat_b2;
+    seats = seats + " " + seat_b3;
+    seats = seats + " " + seat_b4;
+    seats = seats + " " + seat_b5;
+    seats = seats + " " + seat_b6;
+    seats = seats + " " + seat_b7;
+    seats = seats + " " + seat_b8;
+    seats = seats + " " + seat_b9;
+    seats = seats + " " + seat_b10;
+    seats = seats + " " + seat_c1;
+    seats = seats + " " + seat_c2;
+    seats = seats + " " + seat_c3;
+    seats = seats + " " + seat_c4;
+    seats = seats + " " + seat_c5;
+    seats = seats + " " + seat_c6;
+    seats = seats + " " + seat_c7;
+    seats = seats + " " + seat_c8;
+    seats = seats + " " + seat_c9;
+    seats = seats + " " + seat_c10;
+    seats = seats + " " + seat_d1;
+    seats = seats + " " + seat_d2;
+    seats = seats + " " + seat_d3;
+    seats = seats + " " + seat_d4;
+    seats = seats + " " + seat_d5;
+    seats = seats + " " + seat_d6;
+    seats = seats + " " + seat_d7;
+    seats = seats + " " + seat_d8;
+    seats = seats + " " + seat_e1;
+    seats = seats + " " + seat_e2;
+    seats = seats + " " + seat_e3;
+    seats = seats + " " + seat_e4;
+    seats = seats + " " + seat_e5;
+    seats = seats + " " + seat_e6;
+    seats = seats + " " + seat_e7;
+    seats = seats + " " + seat_e8;
+    seats = seats + " " + seat_f1;
+    seats = seats + " " + seat_f2;
+    seats = seats + " " + seat_f3;
+    seats = seats + " " + seat_f4;
+    seats = seats + " " + seat_f5;
+    seats = seats + " " + seat_f6;
+    seats = seats + " " + seat_f7;
+    seats = seats + " " + seat_f8;
+    seats = seats + " " + seat_f9;
+    seats = seats + " " + seat_f10;
+    seats = seats + " " + seat_g1;
+    seats = seats + " " + seat_g2;
+    seats = seats + " " + seat_g3;
+    seats = seats + " " + seat_g4;
+    seats = seats + " " + seat_g5;
+    seats = seats + " " + seat_g6;
+    seats = seats + " " + seat_g7;
+    seats = seats + " " + seat_g8;
+    seats = seats + " " + seat_g9;
+    seats = seats + " " + seat_g10;
+    seats = seats + " " + seat_h1;
+    seats = seats + " " + seat_h2;
+    seats = seats + " " + seat_h3;
+    seats = seats + " " + seat_h4;
+    seats = seats + " " + seat_h5;
+    seats = seats + " " + seat_h6;
+    seats = seats + " " + seat_h7;
+    seats = seats + " " + seat_h8;
+    seats = seats + " " + seat_h9;
+    seats = seats + " " + seat_h10;
+
+    if (quantity != undefined) {
+      $(".branch-quantity").text("( " + quantity + " )");
+    }
+    $(".branch-seat").text(seats);
+  });
+
+  // PayPal
+  paypal
+    .Buttons({
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: price,
+              },
+            },
+          ],
+        });
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+          //console.log(details);
+          $.ajax({
+            url: "../config/server/transaction_update.php",
+            method: "POST",
+            data: {
+              movie_id: movie_id,
+              day: day,
+              datePrint: datePrint,
+              today: today,
+              theater: theater,
+              date: date,
+              time: time,
+              price: price,
+              quantity: quantity,
+              seats: seats,
+              seat_a1: seat_a1,
+              seat_a2: seat_a2,
+              seat_a3: seat_a3,
+              seat_a4: seat_a4,
+              seat_a5: seat_a5,
+              seat_a6: seat_a6,
+              seat_a7: seat_a7,
+              seat_a8: seat_a8,
+              seat_b1: seat_b1,
+              seat_b2: seat_b2,
+              seat_b3: seat_b3,
+              seat_b4: seat_b4,
+              seat_b5: seat_b5,
+              seat_b6: seat_b6,
+              seat_b7: seat_b7,
+              seat_b8: seat_b8,
+              seat_b9: seat_b9,
+              seat_b10: seat_b10,
+              seat_c1: seat_c1,
+              seat_c2: seat_c2,
+              seat_c3: seat_c3,
+              seat_c4: seat_c4,
+              seat_c5: seat_c5,
+              seat_c6: seat_c6,
+              seat_c7: seat_c7,
+              seat_c8: seat_c8,
+              seat_c9: seat_c9,
+              seat_c10: seat_c10,
+              seat_d1: seat_d1,
+              seat_d2: seat_d2,
+              seat_d3: seat_d3,
+              seat_d4: seat_d4,
+              seat_d5: seat_d5,
+              seat_d6: seat_d6,
+              seat_d7: seat_d7,
+              seat_d8: seat_d8,
+              seat_e1: seat_e1,
+              seat_e2: seat_e2,
+              seat_e3: seat_e3,
+              seat_e4: seat_e4,
+              seat_e5: seat_e5,
+              seat_e6: seat_e6,
+              seat_e7: seat_e7,
+              seat_e8: seat_e8,
+              seat_f1: seat_f1,
+              seat_f2: seat_f2,
+              seat_f3: seat_f3,
+              seat_f4: seat_f4,
+              seat_f5: seat_f5,
+              seat_f6: seat_f6,
+              seat_f7: seat_f7,
+              seat_f8: seat_f8,
+              seat_f9: seat_f9,
+              seat_f10: seat_f10,
+              seat_g1: seat_g1,
+              seat_g2: seat_g2,
+              seat_g3: seat_g3,
+              seat_g4: seat_g4,
+              seat_g5: seat_g5,
+              seat_g6: seat_g6,
+              seat_g7: seat_g7,
+              seat_g8: seat_g8,
+              seat_g9: seat_g9,
+              seat_g10: seat_g10,
+              seat_h1: seat_h1,
+              seat_h2: seat_h2,
+              seat_h3: seat_h3,
+              seat_h4: seat_h4,
+              seat_h5: seat_h5,
+              seat_h6: seat_h6,
+              seat_h7: seat_h7,
+              seat_h8: seat_h8,
+              seat_h9: seat_h9,
+              seat_h10: seat_h10,
+            },
+            success: function (data) {
+              alert(
+                "Thank you for purchasing! Please check your email for your ticket redemption."
+              );
+              location.reload();
+            },
+          });
+        });
+      },
+      onCancel: function (data) {
+        //window.location.replace("home.php");
+      },
+    })
+    .render("#paypal-payment-button");
 });

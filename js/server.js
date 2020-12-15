@@ -5,6 +5,52 @@
 
 $(document).ready(function () {
   /********************************************************************************************/
+  // SALES
+  // Fetch
+  var salesTable = $("#sales_table").DataTable({
+    scrollY: "50vh",
+    scrollCollapse: true,
+    paging: false,
+    processing: true,
+    serverSide: true,
+    order: [],
+    info: true,
+    ajax: {
+      url: "../config/server/sales_list.php",
+      type: "POST",
+    },
+    columnDefs: [
+      {
+        orderable: false,
+        targets: [0, 1, 2],
+      },
+    ],
+  });
+
+  /********************************************************************************************/
+  // TRANSACTIONS
+  // Fetch
+  var transacTable = $("#transac_table").DataTable({
+    scrollY: "50vh",
+    scrollCollapse: true,
+    paging: false,
+    processing: true,
+    serverSide: true,
+    order: [],
+    info: true,
+    ajax: {
+      url: "../config/server/transaction_list.php",
+      type: "POST",
+    },
+    columnDefs: [
+      {
+        orderable: false,
+        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      },
+    ],
+  });
+
+  /********************************************************************************************/
   // CINEMA
   // Fetch
   var cinemaTable = $("#cinema_table").DataTable({
