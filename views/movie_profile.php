@@ -21,10 +21,10 @@ if (mysqli_num_rows($res) > 0) {
                 <!-- set horizontal poster as background with css -->
                 <div class="container-fluid opacity">
                     <div class="row mx-auto" style="width: 80%">
-                        <div class="row" style="margin-top:49px">
+                        <div class="row" style="margin-top:45px">
                             <!-- Movie Description -->
-                            <div class="col-md-3 col-sm-5 mb-4 pr-5">
-                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-profile-poster" alt="<?= $row['MOVIE_TITLE'] ?>" />
+                            <div class="col-md-3 col-sm-5 col-12 d-flex justify-content-center mx-auto mb-4">
+                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-profile-poster mx-auto" alt="<?= $row['MOVIE_TITLE'] ?>" />
                             </div>
                             <div class="col-md-9 col-sm-7">
                                 <div class="row pr-3">
