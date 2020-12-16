@@ -41,7 +41,7 @@ include('header.php');
                 $res = mysqli_query($link,  $sql);
                 if (mysqli_num_rows($res) > 0) {
                   while ($row = mysqli_fetch_assoc($res)) { ?>
-                    <div class="col-md-2 container mx-auto my-3 p-0">
+                    <div class="col-md-2 container d-flex justify-content-center mx-auto my-3 p-0">
                       <img src="../images/movies/poster/<?= $row['POSTER'] ?>" alt="<?= $row['MOVIE_TITLE'] ?>" class="movie-poster">
                       <div class="overlay">
                         <a class="text"><?= $row['MOVIE_TITLE'] ?></a>
