@@ -2,6 +2,9 @@
 body {
   background-color: #eeeeee;
   margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* main body */
@@ -51,7 +54,7 @@ body {
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* Movie Details */
-.container {
+.movie-poster-container {
   position: relative;
   width: 100%;
 }
@@ -59,7 +62,8 @@ body {
 .movie-poster {
   display: block;
   width: 100%;
-  height: auto;
+  height: 300px;
+  object-fit: cover;
 }
 
 .overlay {

@@ -1,0 +1,64 @@
+.theaters-holder h3 {
+  color: #1c1a18;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.theaters-holder h4 {
+  color: #1c1a18;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.theaters-holder iframe {
+  object-fit: contain;
+}
+
+.theaters-holder .theater-image-holder {
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+}
+.theaters-holder img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+@media screen and (max-width: 480px) {
+  .theaters-holder img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+.google-maps {
+  position: relative;
+  padding-bottom: 50%;
+  height: 0;
+  overflow: hidden;
+}
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+@media screen and (max-width: 720px) {
+  .google-maps {
+    position: relative;
+    padding-bottom: 70%;
+    height: 0;
+    overflow: hidden;
+  }
+  .google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

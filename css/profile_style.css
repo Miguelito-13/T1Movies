@@ -114,20 +114,6 @@
   font-weight: bold;
 }
 
-.custom-users-profile .custom-upload-btn {
-  padding: 5px 15px;
-  background-color: rgba(255, 186, 0, 1);
-  border: 1px solid rgba(255, 186, 0, 1);
-  color: #fff;
-}
-.custom-users-profile .custom-upload-btn:hover,
-.custom-users-profile .custom-upload-btn:focus {
-  background-color: rgba(255, 186, 0, 0.75);
-  border: 1px solid rgba(255, 186, 0, 0.75);
-  box-shadow: none;
-  color: #1c1a18;
-}
-
 .custom-users-profile label {
   color: #1c1a18;
   font-size: 1.15rem;
