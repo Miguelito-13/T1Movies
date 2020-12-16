@@ -2,12 +2,14 @@
   color: #1c1a18;
   font-size: 2rem;
   font-weight: bold;
+  cursor: default;
 }
 
 .signup-form h4 {
   color: #1c1a18;
   font-size: 1.5rem;
   font-weight: 700;
+  cursor: default;
 }
 
 .signup-form label {

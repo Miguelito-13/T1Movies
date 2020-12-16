@@ -21,7 +21,7 @@ include('navbar.php');
                     </div>
                     <div class="col-12">
                         <h6>Mall Hours</h6>
-                        <ul>
+                        <ul class="list-unstyled">
                             <li>Monday to Sunday</li>
                             <li>10:00 a.m. to 10:00 p.m</li>
                         </ul>
@@ -67,7 +67,7 @@ include('navbar.php');
                     </div>
                     <div class="col-12">
                         <h6>Mall Hours</h6>
-                        <ul>
+                        <ul class="list-unstyled">
                             <li>Monday to Sunday</li>
                             <li>10:00 a.m. to 10:00 p.m</li>
                         </ul>
@@ -113,7 +113,7 @@ include('navbar.php');
                     </div>
                     <div class="col-12">
                         <h6>Mall Hours</h6>
-                        <ul>
+                        <ul class="list-unstyled">
                             <li>Monday to Sunday</li>
                             <li>10:00 a.m. to 10:00 p.m</li>
                         </ul>
@@ -159,7 +159,7 @@ include('navbar.php');
                     </div>
                     <div class="col-12">
                         <h6>Mall Hours</h6>
-                        <ul>
+                        <ul class="list-unstyled">
                             <li>Monday to Sunday</li>
                             <li>10:00 a.m. to 9:00 p.m</li>
                         </ul>
