@@ -841,6 +841,7 @@ $(document).ready(function () {
                 $("#movieModal").modal("hide");
                 movieTable.ajax.reload();
                 cinemaTable.ajax.reload();
+                salesTable.ajax.reload();
               }
             },
           });
@@ -862,6 +863,7 @@ $(document).ready(function () {
               $("#movieModal").modal("hide");
               movieTable.ajax.reload();
               cinemaTable.ajax.reload();
+              salesTable.ajax.reload();
             }
           },
         });

@@ -1,5 +1,5 @@
 <?php
-// Session already started at index.php
+// Session already started at home.php
 
 // Include config
 require_once "config.php";
@@ -8,6 +8,7 @@ require_once "config.php";
 $username_login = $password_login = "";
 $username_err_login = $password_err_login = "";
 $email_login = "";
+$show = $show_logout = "";
 
 // Register variables
 $username = $password = $confirm_password = "";
@@ -20,7 +21,6 @@ $contact = $contact_err = "";
 $bdate = $bdate_err = "";
 $sex = $sex_err = $sex_male_check = $sex_female_check = "";
 $terms_err = $terms_check = "";
-$show = "";
 
 // Forgot variables
 $username_forgot = $username_err_forgot = "";
