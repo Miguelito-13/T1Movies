@@ -24,7 +24,7 @@ if (mysqli_num_rows($res) > 0) {
                         <div class="row" style="margin-top:49px">
                             <!-- Movie Description -->
                             <div class="col-md-3 col-sm-5 mb-4 pr-5">
-                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" alt="<?= $row['MOVIE_TITLE'] ?>" />
+                                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-profile-poster" alt="<?= $row['MOVIE_TITLE'] ?>" />
                             </div>
                             <div class="col-md-9 col-sm-7">
                                 <div class="row pr-3">
@@ -36,7 +36,7 @@ if (mysqli_num_rows($res) > 0) {
 
                                     <div class="col-md-12 mb-1">
                                         <h6>
-                                            • <?= $date ?>
+                                            <i class="fas fa-info-circle"></i> <?= $date ?>
                                             <?php if ($row['ACTION'] != 0) { ?>/&nbsp;Action<?php } ?>
                                             <?php if ($row['ADVENTURE'] != 0) { ?>/&nbsp;Adventure<?php } ?>
                                             <?php if ($row['ANIMATION'] != 0) { ?>/&nbsp;Animation<?php } ?>
@@ -56,7 +56,7 @@ if (mysqli_num_rows($res) > 0) {
                                         <h6><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $row['MOVIE_DURATION'] ?> min/s</h6>
                                     </div>
                                     <div class="col-md-9">
-                                        <h6><i class="fa fa-star-half-o" aria-hidden="true"></i> <?= $row['RATED'] ?></h6>
+                                        <h6><i class="fas fa-star-half-alt"></i> <?= $row['RATED'] ?></h6>
                                     </div>
 
                                     <div class="col-md-12">
@@ -90,11 +90,8 @@ if (mysqli_num_rows($res) > 0) {
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content modal-lg custom-trailer-modal p-0">
                                             <div class="modal-body">
-                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button><br />
                                                 <div class="embed-responsive embed-responsive-16by9 custom-trailer m-0">
-                                                    <iframe class="embed-responsive-item" src="<?= $row['TRAILER'] ?>" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
+                                                    <iframe id="trailer" class="embed-responsive-item" src="<?= $row['TRAILER'] ?>" allowfullscreen="true"></iframe> <!-- replace "watch?v=" with "embed/" -->
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +125,8 @@ if (mysqli_num_rows($res) > 0) {
                         </div>
                         <div class="col-12">
 
-                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date = date_create($row['PREMIERE_DATE']); echo date_format($date, "F d, Y"); ?></b></p>
+                            <p class="mx-auto">Ticket reservation will be available on <b><?php $date = date_create($row['PREMIERE_DATE']);
+                                                                                            echo date_format($date, "F d, Y"); ?></b></p>
                             <p class="mx-auto">
                                 <a href="home.php">Go back to homepage</a>, or try browsing what is
                                 <a href="now_showing.php">now showing</a> and other
@@ -283,11 +281,8 @@ if (mysqli_num_rows($res) > 0) {
     <?php
     }
 } else { ?>
-    <section class="container-fluid search-results-container mb-5" style="margin-top: 150px; width: 90%">
+    <section class="container-fluid search-results-container mb-5" style="margin-top: 50px; width: 90%">
         <section class="container-fluid custom-movie-profile mb-auto p-0">
-            <!-- set horizontal poster as background with css
-        ETO CHIEF! 
-    -->
             <div class="container-fluid search-results">
                 <!-- removed "opacity" class -->
                 <?php if (is_numeric($movie_id) == 1) { ?>
@@ -327,7 +322,4 @@ if (mysqli_num_rows($res) > 0) {
 <?php
 } ?>
 
-<?php 
-    include('footer.php'); 
-    include('footer_scripts.php');
-?>
+<?php include('footer.php'); ?>

@@ -10,7 +10,7 @@ include('navbar.php');
 ?>
 
 
-<section class="container-fluid pb-4 mb-1 bg-light" style="margin-top: 120px; width: 85%">
+<section class="container-fluid pb-4 mb-1" style="margin-top: 20px; width: 85%">
     <div class="container custom-users-profile">
         <h3 class="pt-3">EDIT PROFILE</h3>
         <hr />
@@ -136,7 +136,4 @@ include('navbar.php');
     </div>
 </section>
 
-<?php 
-    include('footer.php'); 
-    include('footer_scripts.php');
-?>
+<?php include('footer.php'); ?>

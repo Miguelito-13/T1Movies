@@ -19,10 +19,10 @@ include('navbar.php');
 
 ?>
 
-<section class="container-fluid" style="margin-top: 150px; width:80%">
+<section class="container-fluid" style="margin-top: 50px; width:80%">
     <div class="custom-profile">
         <h3>PROFILE</h3>
-        <hr/>
+        <hr />
         <div class="row">
             <?php
             $account_id = $_SESSION["id"];
@@ -52,12 +52,15 @@ include('navbar.php');
                                 <div class="container custom-users-profile">
                                     <div class="row mt-3">
                                         <div class="col-12 col-md-7">
-                                            <p>NAME: <span><?= $row['FIRST_NAME'] ?> <?= $row['MI'] ?><?php if(strlen($row['MI'])>0){echo ".";} ?> <?= $row['LAST_NAME'] ?></span></p>
+                                            <p>NAME: <span><?= $row['FIRST_NAME'] ?> <?= $row['MI'] ?><?php if (strlen($row['MI']) > 0) {
+                                                                                                            echo ".";
+                                                                                                        } ?> <?= $row['LAST_NAME'] ?></span></p>
                                             <p>ADDRESS: <span><?= $row['ADDRESS'] ?></span></p>
                                             <p>CONTACT NO: <span><?= $row['CONTACT_NO'] ?></span></p>
                                         </div>
                                         <div class="col-12 col-md-5">
-                                            <p>BIRTH DATE: <span><?php $date = date_create($row['BIRTHDATE']); echo date_format($date, "F d, Y"); ?></span></p>
+                                            <p>BIRTH DATE: <span><?php $date = date_create($row['BIRTHDATE']);
+                                                                    echo date_format($date, "F d, Y"); ?></span></p>
                                             <p>SEX: <span><?php if ($row['GENDER_ID'] == 1) { ?>Male<?php } else { ?>Female<?php } ?></span></p>
                                             <div class="col-12 d-flex justify-content-start px-0">
                                                 <a href="edit_profile.php" class="btn custom-edit-btn p-auto" name="edit_profile">
@@ -66,11 +69,11 @@ include('navbar.php');
                                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                     </svg> Edit Profile
                                                 </a>
-                                            </div>  
+                                            </div>
                                         </div>
                                     </div>
                                     <hr />
-                                    
+
                                     <div class="row">
                                         <div class="col-12 col-md-7">
                                             <p>USERNAME: <span><?= $row['USERNAME'] ?></span></p>
@@ -78,17 +81,24 @@ include('navbar.php');
                                         </div>
 
                                         <div class="col-12 col-md-5 d-flex justify-content-start mx-auto">
-                                            <a href="edit_account.php" class="btn custom-edit-btn p-auto" name="edit_account">
+                                            <a href="verify_email.php" class="btn custom-edit-btn p-auto" name="edit_account">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                    <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z" />
+                                                </svg> Verify Email
+                                            </a>
+
+                                            <a href="edit_account.php" class="btn custom-edit-btn p-auto ml-5" name="edit_account">
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                 </svg> Edit Account
                                             </a>
                                         </div>
-                                    </div>                                    
+                                    </div>
+
                                 </div>
                             </div>
-
                             <div class="tab-pane fade" id="nav-transaction-history" role="tabpanel" aria-labelledby="nav-transaction-history-tab">
                                 <div class="container custom-users-profile">
                                     <div class="row mt-3">
@@ -127,7 +137,4 @@ include('navbar.php');
     </div>
 </section>
 
-<?php 
-    include('footer.php'); 
-    include('footer_scripts.php');
-?>
+<?php include('footer.php'); ?>

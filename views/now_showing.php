@@ -6,7 +6,7 @@ include('header.php');
 include('navbar.php');
 
 ?>
-<section class="container-fluid mb-5" style="margin-top: 150px; width: 90%">
+<section class="container-fluid mb-5" style="margin-top: 50px; width: 90%">
   <div class="movies-list-container">
     <h3>NOW SHOWING</h3>
     <hr />
@@ -23,7 +23,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -57,7 +57,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -90,7 +90,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -123,7 +123,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -156,7 +156,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -189,7 +189,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -222,7 +222,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -255,7 +255,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -288,7 +288,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -321,7 +321,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -354,7 +354,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -387,7 +387,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -420,7 +420,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -453,7 +453,7 @@ include('navbar.php');
           while ($row = mysqli_fetch_assoc($res)) { ?>
             <div class="row justify-content-center custom-table mx-auto py-3">
               <div class="col-12 col-sm-4 col-md-2">
-                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" class="custom-movie-poster" style="width: 100%" />
               </div>
               <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
                 <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>
@@ -503,7 +503,4 @@ include('navbar.php');
     </nav> -->
 </section>
 
-<?php 
-    include('footer.php'); 
-    include('footer_scripts.php');
-?>
+<?php include('footer.php'); ?>

@@ -17,7 +17,7 @@ include('navbar.php');
 
 ?>
 
-<section class="container-fluid bg-light pb-4 mb-1" style="margin-top: 150px; width:90%">
+<section class="container-fluid pb-4 mb-1" style="margin-top: 50px; width:90%">
 	<div class="signup-form ">
 		<h3 class="pt-3">REGISTER</h3>
 		<hr />
@@ -57,7 +57,7 @@ include('navbar.php');
 					</div>
 					<div class="form-group <?php echo (!empty($lastName_err)) ? 'has-error' : ''; ?>">
 						<label for="signup-lname" class="signup-label">Last Name</label><br>
-						<input id="signup-lname" name="lastName" type="text" placeholder="Enter your Last Name" value="<?php echo $lastName; ?>" pattern="[a-zA-Z]{1,}" title="Last name only" />
+						<input id="signup-lname" name="lastName" type="text" placeholder="Enter your Last Name" value="<?php echo $lastName; ?>" pattern="[a-z A-Z]{1,}" title="Last name only" />
 						<span class="help-block text-danger"><?php echo $lastName_err; ?></span>
 					</div>
 					<div class="row">
