@@ -25,7 +25,7 @@ include('header.php');
   <!-- main body -->
   <section class="container-fluid">
     <div class="general-container">
-      <div class="row mt-5">
+      <div class="row mt-3">
         <div class="col-md-12 mb-5 custom-general-holder">
           <span class="row px-3">
             <h3>NOW SHOWING</h3>
@@ -50,7 +50,7 @@ include('header.php');
                           <input name="view_movie" type="submit" value="View Movie" class="btn btn-warning buy-button">
                         </form>
                       </div>
-                    </div>
+                    </div>                    
                   <?php
                   }
                 } else { ?>
@@ -83,7 +83,7 @@ include('header.php');
                     <div class="col-md-2 container movie-poster-container mx-auto my-3 p-0">
                       <img src="../images/movies/poster/<?= $row['POSTER'] ?>" alt="<?= $row['MOVIE_TITLE'] ?>" class="movie-poster"> <!-- palitan nung php for db -->
                       <div class="overlay">
-                        <a class="text"><?= $row['MOVIE_TITLE'] ?></a> <!-- palitan nung php for db -->
+                        <a class="text"><?= $row['MOVIE_TITLE'] ?></a>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                           <input name="view_id" type="text" value="<?= $row['MOVIE_ID'] ?>" style="display: none;">
                           <input name="view_movie" type="submit" value="View Movie" class="btn buy-button">

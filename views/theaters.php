@@ -35,13 +35,13 @@ include('navbar.php');
             <div class="col-md-6 col-12 theater-image-holder">
                 <div id="carouselSMManila" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-interval="3000">
                             <img src="../images/sm-manila-1.jpg" class="d-block w-100" alt="SM City Manila">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="3000">
                             <img src="../images/sm-manila-2.jpg" class="d-block w-100" alt="SM City Manila">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="5000">
                             <iframe class="d-block w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.162304007927!2d120.98076651449828!3d14.589825781252848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cb209479aa11%3A0x872db4487b1bb367!2sSM%20City%20Manila!5e0!3m2!1sen!2sph!4v1608038954077!5m2!1sen!2sph" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                     </div>
@@ -81,13 +81,13 @@ include('navbar.php');
             <div class="col-md-6 col-12 order-md-1">
                 <div id="carouselSMMarikina" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-interval="3000">
                             <img src="../images/sm-marikina-1.jpg" class="d-block w-100" alt="SM City Marikina">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="3000">
                             <img src="../images/sm-marikina-2.jpg" class="d-block w-100" alt="SM City Marikina">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="5000">
                             <iframe class="d-block w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.528329509815!2d121.08169516449865!3d14.625924530377473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b8261d0f20b5%3A0x45e3362dac0fc52a!2sSM%20City%20Marikina!5e0!3m2!1sen!2sph!4v1608038979011!5m2!1sen!2sph" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                     </div>
@@ -127,13 +127,13 @@ include('navbar.php');
             <div class="col-md-6 col-12">
                 <div id="carouselSMNorthEdsa" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-interval="3000">
                             <img src="../images/sm-North-Edsa-1.jpg" class="d-block w-100" alt="SM City North Edsa">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="3000">
                             <img src="../images/sm-North-Edsa-2.jpg" class="d-block w-100" alt="SM City North Edsa">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="5000">
                             <iframe class="d-block w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1929.99401191912!2d121.03032980795362!3d14.656621092372369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7c7722bc6f1%3A0xdc87cf9ed19d652e!2sSM%20City%20North%20EDSA!5e0!3m2!1sen!2sph!4v1608038810022!5m2!1sen!2sph" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                     </div>
@@ -173,13 +173,13 @@ include('navbar.php');
             <div class="col-md-6 col-12 order-md-1">
                 <div id="carouselSMBacoor" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-interval="3000">
                             <img src="../images/sm-bacoor-1.jpg" class="d-block w-100" alt="SM City Bacoor">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="3000">
                             <img src="../images/sm-bacoor-2.jpg" class="d-block w-100" alt="SM City Bacoor">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="5000">
                             <iframe class="d-block w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61828.46457258473!2d120.93738257291747!3d14.411071552121745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cd9231e8a84f%3A0xc54eff9fa78b81f3!2sSM%20City%20Bacoor!5e0!3m2!1sen!2sph!4v1608039337139!5m2!1sen!2sph" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                     </div>
