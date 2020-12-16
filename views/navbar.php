@@ -75,7 +75,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
 <script>
   // Modal call
-  let modal = document.getElementById('id01');
+  modal = document.getElementById('id01');
   let search = document.getElementById('search');
 
   //Close when clicked outside

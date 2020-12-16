@@ -191,8 +191,12 @@ include('navbar.php');
                             </div>
                         </div>
                     </div>
-            <?php }
-            } ?>
+                <?php }
+            } else { ?>
+                <div class="col-12 custom-profile-navbar">
+                    PROFILE IS TEMPORARILY UNAVAILABLE!
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>

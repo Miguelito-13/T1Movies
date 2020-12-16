@@ -20,6 +20,7 @@ $contact = $contact_err = "";
 $bdate = $bdate_err = "";
 $sex = $sex_err = $sex_male_check = $sex_female_check = "";
 $terms_err = $terms_check = "";
+$show = "";
 
 // Forgot variables
 $username_forgot = $username_err_forgot = "";
@@ -411,8 +412,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
                 mysqli_stmt_execute($stmt2);
 
                 $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $id_login;
-                $_SESSION["email"] = $email_login;
+                $_SESSION["id"] = $account_id;
                 $_SESSION["user_type"] = "USERS";
 
                 echo '<script type="text/javascript">alert("Sign up Successful. Directing you to the home page."); window.location = "./home.php"; </script>';
