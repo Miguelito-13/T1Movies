@@ -37,7 +37,8 @@ $filtered_rows = $statement->rowCount();
 foreach ($result as $row) {
     $sub_array = array();
     $sub_array[] = $row["TRANS_ID"];
-    $sub_array[] = $row["CREATED_ON"];
+    $date = date_create($row["CREATED_ON"]);
+    $sub_array[] = date_format($date, "(D) M j, Y, g:i a");
     if ($row["ACCOUNT_ID"] != 0) {
         $acc_id = $row["ACCOUNT_ID"];
         require_once '../config.php';
@@ -77,7 +78,8 @@ foreach ($result as $row) {
     } else {
         $sub_array[] = '<span class="text-secondary">(4) Bacoor</span>';
     }
-    $sub_array[] = $row["DATE"];
+    $date2 = date_create($row["DATE"]);
+    $sub_array[] = date_format($date2, "(D) M j, Y");
     if ($row["TIME"] == 1) {
         $sub_array[] = '<span class="text-primary">(1) 9:30 am</span>';
     } else if ($row["TIME"] == 2) {

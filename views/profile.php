@@ -105,10 +105,11 @@ include('navbar.php');
                                         <div class="col-12 mb-3 mx-auto px-3 py-3 custom-transaction-history">
                                             <table class="table table-hover table-striped">
                                                 <tbody>
-                                                    <thead>
-                                                        <th class="transaction-table-subtitle">DATE</td>
+                                                    <thead class="thead-dark">
+                                                        <th class="transaction-table-subtitle">TRANSACTION DATE</td>
                                                         <th class="transaction-table-subtitle">MOVIE</td>
                                                         <th class="transaction-table-subtitle">BRANCH</td>
+                                                        <th class="transaction-table-subtitle">CINEMA DATE</td>
                                                         <th class="transaction-table-subtitle">TIME</td>
                                                         <th class="transaction-table-subtitle">NO. OF TICKETS</td>
                                                         <th class="transaction-table-subtitle">TOTAL</td>
@@ -124,8 +125,8 @@ include('navbar.php');
                                                             <tr>
                                                                 <td>
                                                                     <?php
-                                                                    $date2 = date_create($row2["DATE"]);
-                                                                    echo date_format($date2, "F j, Y");
+                                                                    $date2 = date_create($row2["CREATED_ON"]);
+                                                                    echo date_format($date2, "(D) M j, Y, g:i a");
                                                                     ?>
                                                                 </td>
                                                                 <td>
@@ -154,6 +155,12 @@ include('navbar.php');
                                                                             echo "SM Bacoor";
                                                                         }
                                                                     }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    $date2 = date_create($row2["DATE"]);
+                                                                    echo date_format($date2, "(D) M j, Y");
                                                                     ?>
                                                                 </td>
                                                                 <td>

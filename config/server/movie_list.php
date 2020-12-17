@@ -34,7 +34,8 @@ foreach ($result as $row) {
     $sub_array[] = $row["MOVIE_ID"];
     $sub_array[] = $row["MOVIE_TITLE"];
     $sub_array[] = $row["RATED"];
-    $sub_array[] = $row["PREMIERE_DATE"];
+    $date = date_create($row["PREMIERE_DATE"]);
+    $sub_array[] = date_format($date, "(D) M j, Y, g:i a");
     if ($row["ACTIVE"] == 0) {
         $sub_array[] = '<span class="text-danger">(0) Inactive</span>';
     } else if ($row["ACTIVE"] == 1) {

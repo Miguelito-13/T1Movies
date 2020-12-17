@@ -23,7 +23,7 @@ if (isset($_POST["account_id"])) {
     $result = $statement->fetchAll();
     foreach ($result as $row) {
         $output["user_id"] = $row["USERS_ID"];
-        $output["name"] = $row["FIRST_NAME"] . ' ' . $row["MI"] . '. ' . $row["LAST_NAME"];
+        $output["name"] = $row["FIRST_NAME"] . ' ' . $row["MI"] . $row["LAST_NAME"];
         $output["contact"] = $row["CONTACT_NO"];
         $output["address"] = $row["ADDRESS"];
         $output["gender"] = $row["GENDER_ID"];

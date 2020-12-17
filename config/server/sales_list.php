@@ -36,7 +36,8 @@ foreach ($result as $row) {
         $sub_array[] = $row["MOVIE_ID"];
     }
     $sub_array[] = '₱ ' . $row["TOTAL_EARNINGS"] . '.00';
-    $sub_array[] = $row["MODIFIED_ON"];
+    $date = date_create($row["MODIFIED_ON"]);
+    $sub_array[] = date_format($date, "(D) M j, Y, g:i a");
 
     $data[] = $sub_array;
 }
