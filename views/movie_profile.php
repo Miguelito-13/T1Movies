@@ -390,6 +390,7 @@ if (mysqli_num_rows($res) > 0) {
                                                     <h6>Price: </h6>
                                                     <span class="branch-price"></span>
                                                     <br><br>
+                                                    <h6>Choose Payment Method: </h6>
                                                     <div id="paypal-payment-button">
                                                         <!-- Transaction Button -->
                                                     </div>
