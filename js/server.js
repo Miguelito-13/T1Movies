@@ -116,6 +116,8 @@ $(document).ready(function () {
 
   // Update
   $(document).on("click", ".edit-user", function () {
+    $("#user_transac_table").empty();
+
     var account_id = $(this).attr("id");
     $.ajax({
       url: "../config/server/user_data.php",
@@ -151,6 +153,55 @@ $(document).ready(function () {
           : $("#user_active").prop("checked", true);
 
         $(".user-title").text("Edit User Details");
+
+        $(".accountID").text(data.transac1);
+
+        var content = '<table class="table table-bordered table-striped">';
+        content +=
+          '<thead class="thead-dark"><th>TRANSACTION DATE</th><th>MOVIE ID</th><th>BRANCH ID</th><th>CINEMA DATE</th><th>TIME</th><th>TICKETS</th><th>TOTAL</th></thead>';
+
+        var trans_tDate;
+        var trans_movie;
+        var trans_branch;
+        var trans_cDate;
+        var trans_time;
+        var trans_ticket;
+        var trans_total;
+
+        for (i = 0; i < data.count; i++) {
+          trans_tDate = "data." + "transac_tDate" + i;
+          trans_movie = "data." + "transac_movie" + i;
+          trans_branch = "data." + "transac_branch" + i;
+          trans_cDate = "data." + "transac_cDate" + i;
+          trans_time = "data." + "transac_time" + i;
+          trans_ticket = "data." + "transac_seats" + i;
+          trans_total = "data." + "transac_price" + i;
+          content +=
+            "<tr><td>" +
+            eval(trans_tDate) +
+            "</td><td>" +
+            eval(trans_movie) +
+            "</td><td>" +
+            eval(trans_branch) +
+            "</td><td>" +
+            eval(trans_cDate) +
+            "</td><td>" +
+            eval(trans_time) +
+            "</td><td>" +
+            eval(trans_ticket) +
+            "</td><td>" +
+            eval(trans_total) +
+            "</td></tr>";
+        }
+
+        if (data.count == "empty") {
+          content +=
+            '<tr><td colspan="7" class="text-center">NO TRANSACTIONS YET</td></tr>';
+        }
+
+        content += "</table>";
+
+        $("#user_transac_table").append(content);
       },
     });
   });
