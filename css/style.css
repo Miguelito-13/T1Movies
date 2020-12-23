@@ -175,11 +175,13 @@ body {
   margin: 0;
   cursor: pointer;
 }
-.movie-card .buy-button:hover {
+.movie-card .buy-button:hover,
+.movie-card .buy-button:focus {
   background-color: #ffba00;
   border: 1px solid #ffba00;
   color: #1c1a18;
   text-align: center;
+  box-shadow: none;
   font-weight: 500;
   padding: 7px;
   margin: 0;
