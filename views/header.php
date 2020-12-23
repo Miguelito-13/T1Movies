@@ -24,4 +24,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Glide JS -->
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/glide.core.min.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/glide.theme.min.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css"> -->
 </head>

@@ -35,6 +35,8 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet" />
 </head>
 
 <body class="bg-light">
