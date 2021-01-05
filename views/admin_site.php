@@ -14,6 +14,39 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     exit;
 }
 
+date_default_timezone_set('Asia/Manila');
+
+include('../config/config_pdo.php');
+$statement = $connection->prepare("SELECT * FROM movies");
+$statement->execute();
+$result = $statement->fetchAll();
+foreach ($result as $row) {
+    if ($row['ACTIVE'] == 1) {
+        $today = new DateTime();
+        $temp_date = $row['PREMIERE_DATE'];
+        $prem_date = new DateTime($temp_date);
+        if ($prem_date <= $today) {
+            echo '<script type="text/javascript">alert("Coming Soon Movie: ' . $row["MOVIE_TITLE"] . ', premiere date is past due or begins today."); </script>';
+        }
+    } else if ($row['ACTIVE'] == 2) {
+        $today = new DateTime();
+        $temp_date = $row['PREMIERE_DATE'];
+        $prem_date = new DateTime($temp_date);
+        $day = $prem_date->diff($today)->d;
+        if ($day > 7) {
+            /*
+            $movie_id = $row['MOVIE_ID'];
+            $statement2 = $connection->prepare("UPDATE movies SET ACTIVE = ? WHERE MOVIE_ID = ?");
+            $result2 = $statement2->execute(['0', $movie_id]);
+            $statement2 = $connection->prepare("UPDATE cinema SET ACTIVE = ? WHERE MOVIE_ID = ?");
+            $result2 = $statement2->execute(['0', $movie_id]);
+            echo '<script type="text/javascript">alert("Now Showing Movie: ' . $row["MOVIE_TITLE"] . ', duration is beyond the limit of 7 days and is automatically deactivated."); </script>';
+            */
+            echo '<script type="text/javascript">alert("Now Showing Movie: ' . $row["MOVIE_TITLE"] . ', duration is beyond the limit of 7 days."); </script>';
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +68,7 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet" />
 </head>
@@ -46,8 +80,45 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
             <h2>ADMIN SITE</h2>
             <hr />
             <div class="container-fluid custom-admin-cinema-table mb-5">
+                <h3>RECENT TRANSACTIONS</h3>
+                <!-- Transaction Table -->
+                <table id="transac_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>NO.</th>
+                            <th>TRANSACTION DATE</th>
+                            <th>ACCOUNT (ID) USERNAME</th>
+                            <th>MOVIE</th>
+                            <th>MOVIE BRANCH</th>
+                            <th>TICKET DATE</th>
+                            <th>TIME</th>
+                            <th>TICKETS</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <hr />
+            <div class="container-fluid custom-admin-users-table mb-5">
+                <h3>USERS</h3>
+                <!-- Users Table -->
+                <table id="user_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ACCOUNT ID</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL ADDRESS</th>
+                            <th>TYPE</th>
+                            <th>ACTIVE</th>
+                            <th scope="col">MODIFY</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <hr />
+            <div class="container-fluid custom-admin-cinema-table mb-5">
                 <h3>CINEMA</h3>
-                <!-- Movies Table -->
+                <!-- Cinema Table -->
                 <table id="cinema_table" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -61,18 +132,15 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                 </table>
             </div>
             <hr />
-            <div class="container-fluid custom-admin-users-table mb-5">
-                <h3>USERS</h3>
-                <!-- Movies Table -->
-                <table id="user_table" class="table table-bordered table-striped">
+            <div class="container-fluid custom-admin-cinema-table mb-5">
+                <h3>SALES</h3>
+                <!-- Sales Table -->
+                <table id="sales_table" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ACCOUNT ID</th>
-                            <th>USERNAME</th>
-                            <th>EMAIL ADDRESS</th>
-                            <th>TYPE</th>
-                            <th>ACTIVE</th>
-                            <th scope="col">MODIFY</th>
+                            <th>MOVIE</th>
+                            <th>TOTAL EARNINGS</th>
+                            <th>RECENT TRANSACTION</th>
                         </tr>
                     </thead>
                 </table>
@@ -158,13 +226,16 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                     <h4 class="modal-title user-title">Edit User</h4>
                     <button type="button" class="close p-0 mr-1" data-dismiss="modal">×</button>
                 </div>
+
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#Account">Account</a></li>
-                    <li><a data-toggle="tab" href="#Transaction">Transaction</a></li>
+                    <li><a data-toggle="tab" href="#Transaction">Transactions</a></li>
                 </ul>
+
 
                 <div class="tab-content">
                     <div id="Account" class="tab-pane fade in active">
+
                         <div class="modal-body">
                             <label>Account ID: </label>
                             <span class="account_id"></span><br>
@@ -202,14 +273,16 @@ if ($_SESSION["user_type"] !== 'ADMIN') {
                             <input id="user_active" name="users_active" class="radio-button" type="radio" value=1 />
                             <label for="user_active">Active &nbsp;</label>
                         </div>
+
                     </div>
                     <div id="Transaction" class="tab-pane fade active">
                         <div class="modal-body">
+                            <div id="user_transac_table">
 
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <input type="hidden" name="account_id" id="account_id" />
                     <input type="hidden" name="user_operation" id="user_operation" />

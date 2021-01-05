@@ -77,9 +77,9 @@
                 </div>
             </div>
 
-            <div class="carousel-item">
+            <!-- <div class="carousel-item">
                 <img class="d-block w-100" src="../images/sample_banner.svg" alt="Second slide">
-            </div>
+            </div> -->
 
         </div>
         <a class="carousel-control-prev" href="#carouselAnnouncements" role="button" data-slide="prev">
