@@ -62,7 +62,8 @@ body {
 
 .movie-card {
   border: 1px solid rgba(28, 26, 24, 0.3);
-  box-shadow: 2px 3px 3px 2px rgba(28, 26, 24, 0.5);
+  box-shadow: 2px 4px 5px 0 rgba(28, 26, 24, 0.4),
+    0 6px 10px 0 rgba(28, 26, 24, 0.39);
   padding: 10px;
   height: 400px;
   background-color: #f2f2f2;
@@ -97,73 +98,6 @@ body {
   object-fit: cover;
   margin: auto;
 }
-
-/* .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 190px;
-  opacity: 0;
-  transition: 0.5s ease;
-  background-color: rgba(28, 26, 24, 0.75);
-  margin: auto;
-}
-
-.container:hover .overlay {
-  opacity: 1;
-}
-
-.text {
-  color: white;
-  text-align: center;
-  font-size: 1.25rem;
-  text-decoration: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  cursor: default;
-}
-.overlay:hover .text {
-  color: #ffba00;
-  text-align: center;
-  font-size: 1.25rem;
-  text-decoration: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-
-@media screen and (max-width: 768px) {
-  .text {
-    color: white;
-    text-align: center;
-    font-size: 1.5rem;
-    text-decoration: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-  }
-  .overlay:hover .text {
-    color: #ffba00;
-    text-align: center;
-    font-size: 1.5rem;
-    text-decoration: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-  }
-} */
 
 .movie-card .buy-button {
   background-color: #ffba00;

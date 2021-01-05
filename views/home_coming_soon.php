@@ -64,7 +64,7 @@ include('header.php');
 <script src ="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script>
     const config2 = {
-        type: "carousel",
+        type: "slider",
         perView: 5,
         breakpoints: {
             1200: {
