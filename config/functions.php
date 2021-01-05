@@ -1,5 +1,5 @@
 <?php
-// Session already started at index.php
+// Session already started at home.php
 
 // Include config
 require_once "config.php";
@@ -8,6 +8,7 @@ require_once "config.php";
 $username_login = $password_login = "";
 $username_err_login = $password_err_login = "";
 $email_login = "";
+$show = $show_logout = "";
 
 // Register variables
 $username = $password = $confirm_password = "";
@@ -411,8 +412,7 @@ else if (($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST["register_butto
                 mysqli_stmt_execute($stmt2);
 
                 $_SESSION["loggedin"] = true;
-                $_SESSION["id"] = $id_login;
-                $_SESSION["email"] = $email_login;
+                $_SESSION["id"] = $account_id;
                 $_SESSION["user_type"] = "USERS";
 
                 echo '<script type="text/javascript">alert("Sign up Successful. Directing you to the home page."); window.location = "./home.php"; </script>';

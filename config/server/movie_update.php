@@ -84,6 +84,10 @@ if (isset($_POST["operation"])) {
                     $result = $statement->execute([$new_img_name, $curr_id]);
                 }
 
+                // SALES
+                $statement = $connection->prepare("INSERT INTO sales (MOVIE_ID) VALUES ('$curr_id')");
+                $result = $statement->execute();
+
                 // INACTIVE
                 if ($active == 0) {
                     $statement = $connection->prepare("INSERT INTO coming_soon (MOVIE_ID, ACTIVE) VALUES ('$curr_id', '0')");
@@ -131,11 +135,271 @@ if (isset($_POST["operation"])) {
                                 ':cinema_manila' =>  $_POST["cinema_manila"]
                             )
                         );
+
+                        // RESERVATION
+                        $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':a1' =>  $reset,
+                                ':a2' =>  $reset,
+                                ':a3' =>  $reset,
+                                ':a4' =>  $reset,
+                                ':a5' =>  $reset,
+                                ':a6' =>  $reset,
+                                ':a7' =>  $reset,
+                                ':a8' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':b1' =>  $reset,
+                                ':b2' =>  $reset,
+                                ':b3' =>  $reset,
+                                ':b4' =>  $reset,
+                                ':b5' =>  $reset,
+                                ':b6' =>  $reset,
+                                ':b7' =>  $reset,
+                                ':b8' =>  $reset,
+                                ':b9' =>  $reset,
+                                ':b10' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':c1' =>  $reset,
+                                ':c2' =>  $reset,
+                                ':c3' =>  $reset,
+                                ':c4' =>  $reset,
+                                ':c5' =>  $reset,
+                                ':c6' =>  $reset,
+                                ':c7' =>  $reset,
+                                ':c8' =>  $reset,
+                                ':c9' =>  $reset,
+                                ':c10' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':d1' =>  $reset,
+                                ':d2' =>  $reset,
+                                ':d3' =>  $reset,
+                                ':d4' =>  $reset,
+                                ':d5' =>  $reset,
+                                ':d6' =>  $reset,
+                                ':d7' =>  $reset,
+                                ':d8' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':e1' =>  $reset,
+                                ':e2' =>  $reset,
+                                ':e3' =>  $reset,
+                                ':e4' =>  $reset,
+                                ':e5' =>  $reset,
+                                ':e6' =>  $reset,
+                                ':e7' =>  $reset,
+                                ':e8' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':f1' =>  $reset,
+                                ':f2' =>  $reset,
+                                ':f3' =>  $reset,
+                                ':f4' =>  $reset,
+                                ':f5' =>  $reset,
+                                ':f6' =>  $reset,
+                                ':f7' =>  $reset,
+                                ':f8' =>  $reset,
+                                ':f9' =>  $reset,
+                                ':f10' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':g1' =>  $reset,
+                                ':g2' =>  $reset,
+                                ':g3' =>  $reset,
+                                ':g4' =>  $reset,
+                                ':g5' =>  $reset,
+                                ':g6' =>  $reset,
+                                ':g7' =>  $reset,
+                                ':g8' =>  $reset,
+                                ':g9' =>  $reset,
+                                ':g10' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                        $result = $statement->execute(
+                            array(
+                                ':h1' =>  $reset,
+                                ':h2' =>  $reset,
+                                ':h3' =>  $reset,
+                                ':h4' =>  $reset,
+                                ':h5' =>  $reset,
+                                ':h6' =>  $reset,
+                                ':h7' =>  $reset,
+                                ':h8' =>  $reset,
+                                ':h9' =>  $reset,
+                                ':h10' =>  $reset,
+                                ':cinema_manila' =>  $_POST["cinema_manila"]
+                            )
+                        );
                     }
                     if ($marikina == 2 && isset($_POST["Marikina"])) {
                         $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
                         $result = $statement->execute(
                             array(
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+
+                        // RESERVATION
+                        $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':a1' =>  $reset,
+                                ':a2' =>  $reset,
+                                ':a3' =>  $reset,
+                                ':a4' =>  $reset,
+                                ':a5' =>  $reset,
+                                ':a6' =>  $reset,
+                                ':a7' =>  $reset,
+                                ':a8' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':b1' =>  $reset,
+                                ':b2' =>  $reset,
+                                ':b3' =>  $reset,
+                                ':b4' =>  $reset,
+                                ':b5' =>  $reset,
+                                ':b6' =>  $reset,
+                                ':b7' =>  $reset,
+                                ':b8' =>  $reset,
+                                ':b9' =>  $reset,
+                                ':b10' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':c1' =>  $reset,
+                                ':c2' =>  $reset,
+                                ':c3' =>  $reset,
+                                ':c4' =>  $reset,
+                                ':c5' =>  $reset,
+                                ':c6' =>  $reset,
+                                ':c7' =>  $reset,
+                                ':c8' =>  $reset,
+                                ':c9' =>  $reset,
+                                ':c10' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':d1' =>  $reset,
+                                ':d2' =>  $reset,
+                                ':d3' =>  $reset,
+                                ':d4' =>  $reset,
+                                ':d5' =>  $reset,
+                                ':d6' =>  $reset,
+                                ':d7' =>  $reset,
+                                ':d8' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':e1' =>  $reset,
+                                ':e2' =>  $reset,
+                                ':e3' =>  $reset,
+                                ':e4' =>  $reset,
+                                ':e5' =>  $reset,
+                                ':e6' =>  $reset,
+                                ':e7' =>  $reset,
+                                ':e8' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':f1' =>  $reset,
+                                ':f2' =>  $reset,
+                                ':f3' =>  $reset,
+                                ':f4' =>  $reset,
+                                ':f5' =>  $reset,
+                                ':f6' =>  $reset,
+                                ':f7' =>  $reset,
+                                ':f8' =>  $reset,
+                                ':f9' =>  $reset,
+                                ':f10' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':g1' =>  $reset,
+                                ':g2' =>  $reset,
+                                ':g3' =>  $reset,
+                                ':g4' =>  $reset,
+                                ':g5' =>  $reset,
+                                ':g6' =>  $reset,
+                                ':g7' =>  $reset,
+                                ':g8' =>  $reset,
+                                ':g9' =>  $reset,
+                                ':g10' =>  $reset,
+                                ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                        $result = $statement->execute(
+                            array(
+                                ':h1' =>  $reset,
+                                ':h2' =>  $reset,
+                                ':h3' =>  $reset,
+                                ':h4' =>  $reset,
+                                ':h5' =>  $reset,
+                                ':h6' =>  $reset,
+                                ':h7' =>  $reset,
+                                ':h8' =>  $reset,
+                                ':h9' =>  $reset,
+                                ':h10' =>  $reset,
                                 ':cinema_marikina' =>  $_POST["cinema_marikina"]
                             )
                         );
@@ -147,11 +411,271 @@ if (isset($_POST["operation"])) {
                                 ':cinema_north' =>  $_POST["cinema_north"]
                             )
                         );
+
+                        // RESERVATION
+                        $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':a1' =>  $reset,
+                                ':a2' =>  $reset,
+                                ':a3' =>  $reset,
+                                ':a4' =>  $reset,
+                                ':a5' =>  $reset,
+                                ':a6' =>  $reset,
+                                ':a7' =>  $reset,
+                                ':a8' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':b1' =>  $reset,
+                                ':b2' =>  $reset,
+                                ':b3' =>  $reset,
+                                ':b4' =>  $reset,
+                                ':b5' =>  $reset,
+                                ':b6' =>  $reset,
+                                ':b7' =>  $reset,
+                                ':b8' =>  $reset,
+                                ':b9' =>  $reset,
+                                ':b10' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':c1' =>  $reset,
+                                ':c2' =>  $reset,
+                                ':c3' =>  $reset,
+                                ':c4' =>  $reset,
+                                ':c5' =>  $reset,
+                                ':c6' =>  $reset,
+                                ':c7' =>  $reset,
+                                ':c8' =>  $reset,
+                                ':c9' =>  $reset,
+                                ':c10' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':d1' =>  $reset,
+                                ':d2' =>  $reset,
+                                ':d3' =>  $reset,
+                                ':d4' =>  $reset,
+                                ':d5' =>  $reset,
+                                ':d6' =>  $reset,
+                                ':d7' =>  $reset,
+                                ':d8' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':e1' =>  $reset,
+                                ':e2' =>  $reset,
+                                ':e3' =>  $reset,
+                                ':e4' =>  $reset,
+                                ':e5' =>  $reset,
+                                ':e6' =>  $reset,
+                                ':e7' =>  $reset,
+                                ':e8' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':f1' =>  $reset,
+                                ':f2' =>  $reset,
+                                ':f3' =>  $reset,
+                                ':f4' =>  $reset,
+                                ':f5' =>  $reset,
+                                ':f6' =>  $reset,
+                                ':f7' =>  $reset,
+                                ':f8' =>  $reset,
+                                ':f9' =>  $reset,
+                                ':f10' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':g1' =>  $reset,
+                                ':g2' =>  $reset,
+                                ':g3' =>  $reset,
+                                ':g4' =>  $reset,
+                                ':g5' =>  $reset,
+                                ':g6' =>  $reset,
+                                ':g7' =>  $reset,
+                                ':g8' =>  $reset,
+                                ':g9' =>  $reset,
+                                ':g10' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                        $result = $statement->execute(
+                            array(
+                                ':h1' =>  $reset,
+                                ':h2' =>  $reset,
+                                ':h3' =>  $reset,
+                                ':h4' =>  $reset,
+                                ':h5' =>  $reset,
+                                ':h6' =>  $reset,
+                                ':h7' =>  $reset,
+                                ':h8' =>  $reset,
+                                ':h9' =>  $reset,
+                                ':h10' =>  $reset,
+                                ':cinema_north' =>  $_POST["cinema_north"]
+                            )
+                        );
                     }
                     if ($bacoor == 4 && isset($_POST["Bacoor"])) {
                         $statement = $connection->prepare("UPDATE cinema SET MOVIE_ID = '$curr_id', ACTIVE = '1', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
                         $result = $statement->execute(
                             array(
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+
+                        // RESERVATION
+                        $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':a1' =>  $reset,
+                                ':a2' =>  $reset,
+                                ':a3' =>  $reset,
+                                ':a4' =>  $reset,
+                                ':a5' =>  $reset,
+                                ':a6' =>  $reset,
+                                ':a7' =>  $reset,
+                                ':a8' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':b1' =>  $reset,
+                                ':b2' =>  $reset,
+                                ':b3' =>  $reset,
+                                ':b4' =>  $reset,
+                                ':b5' =>  $reset,
+                                ':b6' =>  $reset,
+                                ':b7' =>  $reset,
+                                ':b8' =>  $reset,
+                                ':b9' =>  $reset,
+                                ':b10' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':c1' =>  $reset,
+                                ':c2' =>  $reset,
+                                ':c3' =>  $reset,
+                                ':c4' =>  $reset,
+                                ':c5' =>  $reset,
+                                ':c6' =>  $reset,
+                                ':c7' =>  $reset,
+                                ':c8' =>  $reset,
+                                ':c9' =>  $reset,
+                                ':c10' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':d1' =>  $reset,
+                                ':d2' =>  $reset,
+                                ':d3' =>  $reset,
+                                ':d4' =>  $reset,
+                                ':d5' =>  $reset,
+                                ':d6' =>  $reset,
+                                ':d7' =>  $reset,
+                                ':d8' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':e1' =>  $reset,
+                                ':e2' =>  $reset,
+                                ':e3' =>  $reset,
+                                ':e4' =>  $reset,
+                                ':e5' =>  $reset,
+                                ':e6' =>  $reset,
+                                ':e7' =>  $reset,
+                                ':e8' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':f1' =>  $reset,
+                                ':f2' =>  $reset,
+                                ':f3' =>  $reset,
+                                ':f4' =>  $reset,
+                                ':f5' =>  $reset,
+                                ':f6' =>  $reset,
+                                ':f7' =>  $reset,
+                                ':f8' =>  $reset,
+                                ':f9' =>  $reset,
+                                ':f10' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':g1' =>  $reset,
+                                ':g2' =>  $reset,
+                                ':g3' =>  $reset,
+                                ':g4' =>  $reset,
+                                ':g5' =>  $reset,
+                                ':g6' =>  $reset,
+                                ':g7' =>  $reset,
+                                ':g8' =>  $reset,
+                                ':g9' =>  $reset,
+                                ':g10' =>  $reset,
+                                ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                            )
+                        );
+                        $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                        $result = $statement->execute(
+                            array(
+                                ':h1' =>  $reset,
+                                ':h2' =>  $reset,
+                                ':h3' =>  $reset,
+                                ':h4' =>  $reset,
+                                ':h5' =>  $reset,
+                                ':h6' =>  $reset,
+                                ':h7' =>  $reset,
+                                ':h8' =>  $reset,
+                                ':h9' =>  $reset,
+                                ':h10' =>  $reset,
                                 ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
                             )
                         );
@@ -239,6 +763,16 @@ if (isset($_POST["operation"])) {
                 move_uploaded_file($tmp_name, $img_upload_path);
                 $statement = $connection->prepare("UPDATE movies SET POSTER_BG = ? WHERE MOVIE_ID = ?");
                 $result = $statement->execute([$new_img_name, $curr_id]);
+            }
+        }
+
+        $stmt = $connection->query("SELECT * FROM now_showing WHERE MOVIE_ID = '$curr_id'");
+        while ($row = $stmt->fetch()) {
+            if ($row["ACTIVE"] == 1) {
+                $c_manila = $row["C_MANILA"];
+                $c_marikina = $row["C_MARIKINA"];
+                $c_north = $row["C_NORTH"];
+                $c_bacoor = $row["C_BACOOR"];
             }
         }
 
@@ -335,9 +869,258 @@ if (isset($_POST["operation"])) {
                         ':cinema_manila' =>  $_POST["cinema_manila"]
                     )
                 );
+
+                // RESERVATION
+                $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                $result = $statement->execute(
+                    array(
+                        ':cinema_manila' =>  $_POST["cinema_manila"]
+                    )
+                );
+
                 if ($cinema != $_POST["cinema_manila"]) {
                     $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
                     $result = $statement->execute();
+
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset
+                        )
+                    );
+                }
+
+                if ($c_manila != $_POST["cinema_manila"]) {
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '1' AND CINEMA_NO = :cinema_manila");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset,
+                            ':cinema_manila' =>  $_POST["cinema_manila"]
+                        )
+                    );
                 }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '1' AND MOVIE_ID = '$curr_id'");
@@ -358,9 +1141,258 @@ if (isset($_POST["operation"])) {
                         ':cinema_marikina' =>  $_POST["cinema_marikina"]
                     )
                 );
+
+                // RESERVATION
+                $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                $result = $statement->execute(
+                    array(
+                        ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                    )
+                );
+
                 if ($cinema != $_POST["cinema_marikina"]) {
                     $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
                     $result = $statement->execute();
+
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset
+                        )
+                    );
+                }
+
+                if ($c_marikina != $_POST["cinema_marikina"]) {
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '2' AND CINEMA_NO = :cinema_marikina");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset,
+                            ':cinema_marikina' =>  $_POST["cinema_marikina"]
+                        )
+                    );
                 }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '2' AND MOVIE_ID = '$curr_id'");
@@ -381,9 +1413,258 @@ if (isset($_POST["operation"])) {
                         ':cinema_north' =>  $_POST["cinema_north"]
                     )
                 );
+
+                // RESERVATION
+                $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                $result = $statement->execute(
+                    array(
+                        ':cinema_north' =>  $_POST["cinema_north"]
+                    )
+                );
+
                 if ($cinema != $_POST["cinema_north"]) {
                     $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
                     $result = $statement->execute();
+
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset
+                        )
+                    );
+                }
+
+                if ($c_north != $_POST["cinema_north"]) {
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '3' AND CINEMA_NO = :cinema_north");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset,
+                            ':cinema_north' =>  $_POST["cinema_north"]
+                        )
+                    );
                 }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '3' AND MOVIE_ID = '$curr_id'");
@@ -404,9 +1685,258 @@ if (isset($_POST["operation"])) {
                         ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
                     )
                 );
+
+                // RESERVATION
+                $statement = $connection->prepare("UPDATE reservation SET MOVIE_ID = '$curr_id', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                $result = $statement->execute(
+                    array(
+                        ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                    )
+                );
+
                 if ($cinema != $_POST["cinema_bacoor"]) {
                     $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
                     $result = $statement->execute();
+
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = '$cinema'");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset
+                        )
+                    );
+                }
+
+                if ($c_bacoor != $_POST["cinema_bacoor"]) {
+                    $statement = $connection->prepare("UPDATE reservation SET A1 = :a1, A2 = :a2, A3 = :a3, A4 = :a4, A5 = :a5, A6 = :a6, A7 = :a7, A8 = :a8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':a1' =>  $reset,
+                            ':a2' =>  $reset,
+                            ':a3' =>  $reset,
+                            ':a4' =>  $reset,
+                            ':a5' =>  $reset,
+                            ':a6' =>  $reset,
+                            ':a7' =>  $reset,
+                            ':a8' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET B1 = :b1, B2 = :b2, B3 = :b3, B4 = :b4, B5 = :b5, B6 = :b6, B7 = :b7, B8 = :b8, B9 = :b9, B10 = :b10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':b1' =>  $reset,
+                            ':b2' =>  $reset,
+                            ':b3' =>  $reset,
+                            ':b4' =>  $reset,
+                            ':b5' =>  $reset,
+                            ':b6' =>  $reset,
+                            ':b7' =>  $reset,
+                            ':b8' =>  $reset,
+                            ':b9' =>  $reset,
+                            ':b10' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET C1 = :c1, C2 = :c2, C3 = :c3, C4 = :c4, C5 = :c5, C6 = :c6, C7 = :c7, C8 = :c8, C9 = :c9, C10 = :c10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':c1' =>  $reset,
+                            ':c2' =>  $reset,
+                            ':c3' =>  $reset,
+                            ':c4' =>  $reset,
+                            ':c5' =>  $reset,
+                            ':c6' =>  $reset,
+                            ':c7' =>  $reset,
+                            ':c8' =>  $reset,
+                            ':c9' =>  $reset,
+                            ':c10' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET D1 = :d1, D2 = :d2, D3 = :d3, D4 = :d4, D5 = :d5, D6 = :d6, D7 = :d7, D8 = :d8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':d1' =>  $reset,
+                            ':d2' =>  $reset,
+                            ':d3' =>  $reset,
+                            ':d4' =>  $reset,
+                            ':d5' =>  $reset,
+                            ':d6' =>  $reset,
+                            ':d7' =>  $reset,
+                            ':d8' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET E1 = :e1, E2 = :e2, E3 = :e3, E4 = :e4, E5 = :e5, E6 = :e6, E7 = :e7, E8 = :e8 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':e1' =>  $reset,
+                            ':e2' =>  $reset,
+                            ':e3' =>  $reset,
+                            ':e4' =>  $reset,
+                            ':e5' =>  $reset,
+                            ':e6' =>  $reset,
+                            ':e7' =>  $reset,
+                            ':e8' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET F1 = :f1, F2 = :f2, F3 = :f3, F4 = :f4, F5 = :f5, F6 = :f6, F7 = :f7, F8 = :f8, F9 = :f9, F10 = :f10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':f1' =>  $reset,
+                            ':f2' =>  $reset,
+                            ':f3' =>  $reset,
+                            ':f4' =>  $reset,
+                            ':f5' =>  $reset,
+                            ':f6' =>  $reset,
+                            ':f7' =>  $reset,
+                            ':f8' =>  $reset,
+                            ':f9' =>  $reset,
+                            ':f10' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET G1 = :g1, G2 = :g2, G3 = :g3, G4 = :g4, G5 = :g5, G6 = :g6, G7 = :g7, G8 = :g8, G9 = :g9, G10 = :g10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':g1' =>  $reset,
+                            ':g2' =>  $reset,
+                            ':g3' =>  $reset,
+                            ':g4' =>  $reset,
+                            ':g5' =>  $reset,
+                            ':g6' =>  $reset,
+                            ':g7' =>  $reset,
+                            ':g8' =>  $reset,
+                            ':g9' =>  $reset,
+                            ':g10' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
+                    $statement = $connection->prepare("UPDATE reservation SET H1 = :h1, H2 = :h2, H3 = :h3, H4 = :h4, H5 = :h5, H6 = :h6, H7 = :h7, H8 = :h8, H9 = :h9, H10 = :h10 WHERE MOVIE_ID = '$curr_id' AND BRANCH_ID = '4' AND CINEMA_NO = :cinema_bacoor");
+                    $result = $statement->execute(
+                        array(
+                            ':h1' =>  $reset,
+                            ':h2' =>  $reset,
+                            ':h3' =>  $reset,
+                            ':h4' =>  $reset,
+                            ':h5' =>  $reset,
+                            ':h6' =>  $reset,
+                            ':h7' =>  $reset,
+                            ':h8' =>  $reset,
+                            ':h9' =>  $reset,
+                            ':h10' =>  $reset,
+                            ':cinema_bacoor' =>  $_POST["cinema_bacoor"]
+                        )
+                    );
                 }
             } else {
                 $statement = $connection->prepare("UPDATE cinema SET ACTIVE = '0', MODIFIED_ON = '$today' WHERE BRANCH_ID = '4' AND MOVIE_ID = '$curr_id'");

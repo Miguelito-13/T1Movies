@@ -1,18 +1,16 @@
 <?php
 
 include('../config_pdo.php');
-include('cinema_records.php');
+include('sales_records.php');
 
 // Fetch
 $query = '';
 $output = array();
-$query .= "SELECT * FROM cinema ";
+$query .= "SELECT * FROM sales ";
 
 if (isset($_POST["search"]["value"])) {
-    $query .= 'WHERE CINEMA_NO LIKE "%' . $_POST["search"]["value"] . '%" ';
-    $query .= 'OR NO_SEATS LIKE "%' . $_POST["search"]["value"] . '%" ';
-    $query .= 'OR MOVIE_ID LIKE "%' . $_POST["search"]["value"] . '%" ';
-    $query .= 'OR ACTIVE LIKE "%' . $_POST["search"]["value"] . '%" ';
+    $query .= 'WHERE MOVIE_ID LIKE "%' . $_POST["search"]["value"] . '%" ';
+    $query .= 'OR TOTAL_EARNINGS LIKE "%' . $_POST["search"]["value"] . '%" ';
 }
 
 $statement = $connection->prepare($query);
@@ -22,17 +20,6 @@ $data = array();
 $filtered_rows = $statement->rowCount();
 foreach ($result as $row) {
     $sub_array = array();
-    if ($row["BRANCH_ID"] == 1) {
-        $sub_array[] = '<span class="text-primary">(1) Manila</span>';
-    } else if ($row["BRANCH_ID"] == 2) {
-        $sub_array[] = '<span class="text-danger">(2) Marikina</span>';
-    } else if ($row["BRANCH_ID"] == 3) {
-        $sub_array[] = '<span class="text-success">(3) North Edsa</span>';
-    } else {
-        $sub_array[] = '<span class="text-secondary">(4) Bacoor</span>';
-    }
-    $sub_array[] = $row["CINEMA_NO"];
-    $sub_array[] = $row["NO_SEATS"];
     if ($row["MOVIE_ID"] != 0) {
         $movie_id = $row["MOVIE_ID"];
         require_once '../config.php';
@@ -48,12 +35,9 @@ foreach ($result as $row) {
     } else {
         $sub_array[] = $row["MOVIE_ID"];
     }
-
-    if ($row["ACTIVE"] == 0) {
-        $sub_array[] = '<span class="text-danger">(0) Inactive</span>';
-    } else {
-        $sub_array[] = '<span class="text-success">(1) Active</span>';
-    }
+    $sub_array[] = '₱ ' . $row["TOTAL_EARNINGS"] . '.00';
+    $date = date_create($row["MODIFIED_ON"]);
+    $sub_array[] = date_format($date, "(D) M j, Y, g:i a");
 
     $data[] = $sub_array;
 }
