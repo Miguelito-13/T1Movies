@@ -44,8 +44,10 @@ include('header.php');
                             <?php
                                 }
                                 } else { ?>
-                                    <div class="col-md-12 text-center container mx-auto my-3 p-0">
-                                    <h1>Movies Showing Soon...</h1>
+                                    <div class="row">
+                                        <div class="col-12 text-center container mx-auto my-3 p-0">
+                                            <h4>Movies Showing Soon...</h4>
+                                        </div>
                                     </div>
                                 <?php
                             } ?>
