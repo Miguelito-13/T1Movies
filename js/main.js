@@ -862,7 +862,6 @@ $(document).ready(function () {
           purchase_units: [
             {
               amount: {
-                //currency_code: "PHP",
                 value: price,
               },
             },

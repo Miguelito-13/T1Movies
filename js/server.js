@@ -158,7 +158,7 @@ $(document).ready(function () {
 
         var content = '<table class="table table-bordered table-striped">';
         content +=
-          '<thead class="thead-dark"><th>TRANSACTION DATE</th><th>MOVIE ID</th><th>BRANCH ID</th><th>CINEMA DATE</th><th>TIME</th><th>TICKETS</th><th>TOTAL</th></thead>';
+          '<thead class="thead-dark"><th>TRANSACTION DATE</th><th>MOVIE</th><th>BRANCH</th><th>CINEMA DATE</th><th>TIME</th><th>TICKETS</th><th>TOTAL</th></thead>';
 
         var trans_tDate;
         var trans_movie;
