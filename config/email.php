@@ -39,9 +39,7 @@ if ($code == $temp_code) {
                 <span>' . $e->getMessage() . '</span>
               </div>';*/
   }
-}
-
-if ($_SESSION["send"] == "send") {
+} else if ($_SESSION["send"] == "send") {
 
   $email = $_SESSION["send_email"];
   $movie = $_SESSION["send_movie"];
