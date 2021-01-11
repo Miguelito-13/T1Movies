@@ -6,7 +6,7 @@ include('header.php');
 include('navbar.php');
 
 ?>
-<section class="container-fluid mb-5" style="margin-top: 150px; width: 90%">
+<section class="container-fluid mb-5" style="margin-top: 50px; width: 90%">
   <div class="movies-list-container">
     <h3>NOW SHOWING</h3>
     <hr />

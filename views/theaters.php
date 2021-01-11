@@ -7,14 +7,13 @@ include('navbar.php');
 
 ?>
 
-<section class="container-fluid pt-3 bg-light" style="width:80%">
+<section class="container-fluid" style="width:80%">
     <div class="theaters-holder my-5">
         <h3 class="theaters-title">THEATERS</h3>
         <hr />
         <div class="row">
             <div class="col-md-6 col-12">
-                <h4>SM MANILA</h4>
-                <hr />
+                <h4>SM MANILA</h4><hr/>
                 <div class="row">
                     <div class="col-12">
                         <h6>Address</h6>
@@ -57,11 +56,10 @@ include('navbar.php');
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-md-6 col-12 order-md-12">
-                <h4>SM MARIKINA</h4>
-                <hr />
+                <h4>SM MARIKINA</h4><hr/>
                 <div class="row">
                     <div class="col-12">
                         <h6>Address</h6>
@@ -104,11 +102,10 @@ include('navbar.php');
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-md-6 col-12">
-                <h4>SM NORTH EDSA</h4>
-                <hr />
+                <h4>SM NORTH EDSA</h4><hr/>
                 <div class="row">
                     <div class="col-12">
                         <h6>Address</h6>
@@ -151,11 +148,10 @@ include('navbar.php');
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-md-6 col-12 order-md-12">
-                <h4>SM BACOOR</h4>
-                <hr />
+                <h4>SM BACOOR</h4><hr/>
                 <div class="row">
                     <div class="col-12">
                         <h6>Address</h6>
@@ -198,11 +194,11 @@ include('navbar.php');
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
         <div class="row">
             <div class="col-12 google-maps">
                 <!-- <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1oscMiFcfNM_QRTel2DvYwYCe2iaeiRm5" width="640" height="480"></iframe> -->
-                <iframe src="https://www.atlistmaps.com/map/3d7e05b3-1698-4b4a-93be-ea5c064efeca?share=true" allow="geolocation" width="100%" height="400px" frameborder="0" scrolling="no" allowfullscreen></iframe>
+				<iframe src="https://www.atlistmaps.com/map/3d7e05b3-1698-4b4a-93be-ea5c064efeca?share=true" allow="geolocation" width="100%" height="400px" frameborder="0" scrolling="no" allowfullscreen></iframe>
             </div>
         </div>
     </div>

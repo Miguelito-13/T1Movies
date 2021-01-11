@@ -19,7 +19,7 @@ include('navbar.php');
 
 ?>
 
-<section class="container-fluid" style="margin-top: 150px; width:80%">
+<section class="container-fluid" style="margin-top: 50px; width:80%">
     <div class="custom-profile">
         <h3>PROFILE</h3>
         <hr />
@@ -30,12 +30,6 @@ include('navbar.php');
             $res = mysqli_query($link,  $sql);
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
-                    /*
-                    <div class="col-9 col-md-3 mx-auto px-auto custom-profile-picture mb-3">
-                        <!-- <img src="../images/Default_DP.png" class="d-flex justify-content-center profile-picture" /> -->
-                        <img src="../images/users/<?= $row[''] ?>" class="d-flex justify-content-center profile-picture" />
-                    </div>
-                    */
             ?>
                     <div class="col-12 custom-profile-navbar">
                         <ul class="nav nav-tabs nav-justified" id="profileTab" role="tablist">
@@ -184,7 +178,7 @@ include('navbar.php');
                                                         <?php }
                                                     } else { ?>
                                                         <tr>
-                                                            <td colspan="6" class="text-center">
+                                                            <td colspan="7" class="text-center">
                                                                 THERE ARE CURRENTLY NO TRANSACTIONS
                                                             </td>
                                                         </tr>

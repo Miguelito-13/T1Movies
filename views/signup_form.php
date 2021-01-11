@@ -17,7 +17,7 @@ include('navbar.php');
 
 ?>
 
-<section class="container-fluid bg-light pb-4 mb-1" style="margin-top: 150px; width:90%">
+<section class="container-fluid pb-4 mb-1" style="margin-top: 50px; width:90%">
 	<div class="signup-form ">
 		<h3 class="pt-3">REGISTER</h3>
 		<hr />

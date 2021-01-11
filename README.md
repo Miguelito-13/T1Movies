@@ -1,4 +1,4 @@
-# T1Movies (Sprint 3)
+# T1Movies (Sprint 2)
 
 Online Movie Ticketing System
 

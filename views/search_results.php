@@ -2,7 +2,7 @@
     <div>
         <div class="row justify-content-center custom-table mx-auto py-3">
             <div class="col-12 col-sm-4 col-md-2">
-            <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" />
+                <img src="../images/movies/poster/<?= $row['POSTER'] ?>" style="width: 100%" class="custom-movie-poster"/>
             </div>
             <div class="col-12 col-sm-8 col-md-10 custom-movies-description">
             <h4 class="pt-2"><?= $row['MOVIE_TITLE'] ?></h4>

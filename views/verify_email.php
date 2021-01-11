@@ -9,7 +9,7 @@ include('header.php');
 include('navbar.php');
 ?>
 
-<section class="container-fluid pb-4 mb-1 bg-light" style="margin-top: 120px; width: 85%">
+<section class="container-fluid pb-4 mb-1" style="margin-top: 20px; width: 85%">
     <div class="container custom-users-profile">
         <h3 class="pt-3">VERIFY EMAIL</h3>
         <hr />
