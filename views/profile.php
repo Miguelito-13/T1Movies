@@ -105,24 +105,91 @@ include('navbar.php');
                                         <div class="col-12 mb-3 mx-auto px-3 py-3 custom-transaction-history">
                                             <table class="table table-hover table-striped">
                                                 <tbody>
-                                                    <thead>
-                                                        <th class="transaction-table-subtitle">DATE</td>
-                                                        <th class="transaction-table-subtitle">SEAT PLAN</td>
+                                                    <thead class="thead-dark">
+                                                        <th class="transaction-table-subtitle">TRANSACTION DATE</td>
+                                                        <th class="transaction-table-subtitle">MOVIE</td>
+                                                        <th class="transaction-table-subtitle">BRANCH</td>
+                                                        <th class="transaction-table-subtitle">CINEMA DATE</td>
+                                                        <th class="transaction-table-subtitle">TIME</td>
                                                         <th class="transaction-table-subtitle">NO. OF TICKETS</td>
                                                         <th class="transaction-table-subtitle">TOTAL</td>
                                                     </thead>
 
                                                     <!-- PHP: If there are previous transactions, print this table. Else, print: "No Previous Transactions" -->
-                                                    <tr>
-                                                        <td>00/00/0000</td> <!-- insert php for date -->
-                                                        <td>Regular</td>
-                                                        <td>
-                                                            <div id="checkCount">0</div>
-                                                        </td>
-                                                        <td>
-                                                            <div>₱<span id="printTotal">0</span>.00</div> <!-- checkCount * price -->
-                                                        </td>
-                                                    </tr>
+
+                                                    <?php
+                                                    $sql = "SELECT * from transaction WHERE ACCOUNT_ID = '$account_id' ORDER BY TRANS_ID DESC";
+                                                    $res = mysqli_query($link,  $sql);
+                                                    if (mysqli_num_rows($res) > 0) {
+                                                        while ($row2 = mysqli_fetch_assoc($res)) { ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php
+                                                                    $date2 = date_create($row2["CREATED_ON"]);
+                                                                    echo date_format($date2, "(D) M j, Y, g:i a");
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    require_once "../config/config_pdo.php";
+                                                                    $stmt = $connection->query("SELECT * FROM movies WHERE MOVIE_ID = '" . $row2["MOVIE_ID"] . "'");
+                                                                    while ($row3 = $stmt->fetch()) {
+                                                                        if ($row3["MOVIE_ID"] == $row2["MOVIE_ID"]) {
+                                                                            echo $row3["MOVIE_TITLE"];
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    require_once "../config/config_pdo.php";
+                                                                    $stmt = $connection->query("SELECT * FROM now_showing WHERE MOVIE_ID = '" . $row2["MOVIE_ID"] . "'");
+                                                                    while ($row3 = $stmt->fetch()) {
+                                                                        if ($row3["B_MANILA"] == $row2["BRANCH_ID"]) {
+                                                                            echo "SM Manila";
+                                                                        } else if ($row3["B_MARIKINA"] == $row2["BRANCH_ID"]) {
+                                                                            echo "SM Marikina";
+                                                                        } else if ($row3["B_NORTH"] == $row2["BRANCH_ID"]) {
+                                                                            echo "SM North Edsa";
+                                                                        } else {
+                                                                            echo "SM Bacoor";
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    $date2 = date_create($row2["DATE"]);
+                                                                    echo date_format($date2, "(D) M j, Y");
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    if ($row2["TIME"] == 1) {
+                                                                        echo "9:30 am";
+                                                                    } else if ($row2["TIME"] == 2) {
+                                                                        echo "1:00 pm";
+                                                                    } else {
+                                                                        echo "4:30 pm";
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <?= $row2["SEATS"] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <div>₱<?= $row2["PRICE"] ?></span>.00</div> <!-- checkCount * price -->
+                                                                </td>
+                                                            </tr>
+                                                        <?php }
+                                                    } else { ?>
+                                                        <tr>
+                                                            <td colspan="6" class="text-center">
+                                                                THERE ARE CURRENTLY NO TRANSACTIONS
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -131,8 +198,12 @@ include('navbar.php');
                             </div>
                         </div>
                     </div>
-            <?php }
-            } ?>
+                <?php }
+            } else { ?>
+                <div class="col-12 custom-profile-navbar">
+                    PROFILE IS TEMPORARILY UNAVAILABLE!
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>

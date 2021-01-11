@@ -67,7 +67,7 @@ include('header.php');
         <div class="col-md-12 mb-5 custom-general-holder">
           <span class="row px-3">
             <h3>COMING SOON</h3>
-            <a href="coming_soon.php" class="ml-auto see-more my-auto">SEE MORE</a>
+            <a href="coming_soon.php" class="ml-auto see-more my-auto">SEE MORE ></a>
           </span>
           <hr />
           <ul class="list-unstyled">
