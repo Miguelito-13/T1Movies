@@ -27,8 +27,8 @@ include('header.php');
                                             <div class="card-title">
                                                 <h5>
                                                     <?=
-                                                        substr($row['MOVIE_TITLE'], 0, 20);
-                                                        if(strlen($row['MOVIE_TITLE']) > 20) {
+                                                        substr($row['MOVIE_TITLE'], 0, 15);
+                                                        if(strlen($row['MOVIE_TITLE']) > 15) {
                                                             echo "...";
                                                         }
                                                     ?>
