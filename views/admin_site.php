@@ -219,7 +219,7 @@ foreach ($result as $row) {
 </html>
 
 <div id="userModal" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <form method="post" id="user_form" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
