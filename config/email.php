@@ -10,6 +10,10 @@ $mail = new PHPMailer(true);
 
 $alert = '';
 
+if (!isset($_SESSION["send"])) {
+  $_SESSION["send"] = "";
+}
+
 if ($code == $temp_code) {
 
   try {
@@ -39,7 +43,9 @@ if ($code == $temp_code) {
                 <span>' . $e->getMessage() . '</span>
               </div>';*/
   }
-} else if ($_SESSION["send"] == "send") {
+}
+
+if ($_SESSION["send"] == "send") {
 
   $email = $_SESSION["send_email"];
   $movie = $_SESSION["send_movie"];
